@@ -31,7 +31,7 @@
           <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Actividades</a>
+          <a class="nav-link" href="actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="especialista_perfil.php">Especialistas</a>

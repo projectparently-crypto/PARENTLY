@@ -426,13 +426,13 @@
           <a class="nav-link active" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Actividades</a>
+          <a class="nav-link" href="actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="especialistas.php">Especialistas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Comunidades</a>
+          <a class="nav-link" href="comunidades.php">Comunidades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contactanos.php">Contactanos</a>

@@ -87,7 +87,7 @@ $specialists = [
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav mx-auto gap-2">
                 <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Actividades</a></li>
+                <li class="nav-item"><a class="nav-link" href="actividades.php">Actividades</a></li>
                 <li class="nav-item"><a class="nav-link active" href="especialistas.php">Especialistas</a></li>
                 <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactanos.php">Contactanos</a></li>
