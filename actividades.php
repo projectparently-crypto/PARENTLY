@@ -426,12 +426,9 @@ session_start();
 
     <!-- FOOTER -->
 
-    <footer>
-
-        <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png">
-
-        <h2>Parently</h2>
-
+    <footer class="specialist-footer">
+        <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+        <strong>Parently</strong>
     </footer>
 
 </body>
