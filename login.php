@@ -389,10 +389,15 @@ body {
                 <button type="submit" class="btn-primary">Iniciar sesión</button>
             </form>
 
-            <p class="social-text">O inicia sesión con plataformas sociales.</p>
-            <div class="social-icons">
-                <a href="#" class="social-btn">💬</a>
-                <a href="#" class="social-btn">f</a>
+            <div class="redes">
+                <a href="https://www.whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" target="blank">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+
+                <a href="https://www.facebook.com/groups/1705256237363562/?rdid=5WkbALIZ6qhi6OW5&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1CgdV2AhZ4%2F#" target="blank">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </div>
             </div>
         </div>
     </div>
