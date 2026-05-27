@@ -44,11 +44,7 @@
             color: #D94571 !important;
         }
 
-        .navbar-nav .nav-link.active {
-            background-color: #ffffff;
-            color: #D94571 !important;
-            border-bottom: 3px solid #00bcd4;
-        }
+        
 
         /* ===== HEADER RECURSOS ===== */
         .recursos-header {
@@ -56,7 +52,7 @@
             padding: 40px;
             text-align: center;
             color: white;
-            border-bottom: 4px solid #00bcd4;
+            
         }
 
         .recursos-header h1 {
@@ -492,11 +488,13 @@
 </div>
 
 <!-- LO MÁS VISTO -->
-<h2 class="section-title">Lo más visto del mes 👀</h2>
+<h2 class="section-title">Lo más visto del mes </h2>
 
 <div class="cards-grid">
   <div class="card-item">
-    <div class="card-item-img">📱</div>
+      <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="card-item-body">
       <h3>¿Es buena idea prohibir las redes sociales?</h3>
       <p>Si eres madre, padre, cuidador o educadores normali sentirse abrumado, sabes que prohibir puede limitar el acceso de adolescentes a las...</p>
@@ -505,7 +503,9 @@
   </div>
 
   <div class="card-item">
-    <div class="card-item-img">💪</div>
+     <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="card-item-body">
       <h3>Estrategias cotidianas de autocuidado</h3>
       <p>Cuando cuidas de ti también te ayudas a cuidar
@@ -519,11 +519,13 @@ en los días más difíciles....</p>
 </div>
 
 <!-- CONSEJOS PARA TI EN EL DÍA A DÍA -->
-<h2 class="section-title">Consejos para ti en el día a día 💭</h2>
+<h2 class="section-title">Consejos para ti en el día a día </h2>
 
 <div class="consejos-grid">
   <div class="consejo-card">
-    <div class="consejo-img">👨‍👩‍👧‍👦</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="consejo-body">
       <h4>La salud mental en época pediátricas</h4>
       <p>Descubre estrategias para promover la salud mental y cómo identificar signos de problemas emocionales.</p>
@@ -532,7 +534,9 @@ en los días más difíciles....</p>
   </div>
 
   <div class="consejo-card">
-    <div class="consejo-img">🧘‍♀️</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="consejo-body">
       <h4>Cómo ayudar a tu hij@s a atravesar una crisis</h4>
       <p>Consejos prácticos para apoyar emocionalmente a tus hijos durante momentos difíciles.</p>
@@ -541,7 +545,9 @@ en los días más difíciles....</p>
   </div>
 
   <div class="consejo-card">
-    <div class="consejo-img">🍽️</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="consejo-body">
       <h4>Hábitos en el desarrollo de tu hij@ - VÍDEO</h4>
       <p>Aprende sobre los hábitos más importantes para el desarrollo saludable de tu hijo/a.</p>
@@ -550,7 +556,9 @@ en los días más difíciles....</p>
   </div>
 
   <div class="consejo-card">
-    <div class="consejo-img">❤️</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="consejo-body">
       <h4>¿Qué comer durante la violencia de niños y niñas</h4>
       <p>Estrategias y herramientas para criar en valores y promover la salud emocional desde el primer año de vida.</p>
@@ -561,35 +569,45 @@ en los días más difíciles....</p>
 
 <!-- ETAPAS -->
 <div class="etapas-section">
-  <h3>¿Qué estás buscando? 🔍</h3>
+  <h3>¿Qué estás buscando? </h3>
   <p style="color: #D94571; font-size: 16px; margin-bottom: 30px;">Ingresá a la etapa de tu interés:</p>
   
   <div class="etapas-buttons">
     <button class="etapa-btn">
-      <span class="etapa-icon">🤰</span>
+      <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
       Embarazo
     </button>
     <button class="etapa-btn">
-      <span class="etapa-icon">👶</span>
+      <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
       Primeros años
     </button>
     <button class="etapa-btn">
-      <span class="etapa-icon">🧒</span>
+      <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
       Pre-Adolescencia
     </button>
     <button class="etapa-btn">
-      <span class="etapa-icon">👦</span>
+      <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
       Adolescencia
     </button>
   </div>
 </div>
 
 <!-- GUÍAS PARA FAMILIAS -->
-<h2 class="section-title">Guías para familias 👪</h2>
+<h2 class="section-title">Guías para familias </h2>
 
 <div class="guias-grid">
   <div class="guia-card">
-    <div class="guia-img">📚</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="guia-body">
       <h5>¿Mucho, poquito o nada?</h5>
       <p>Guía sobre nutrición infantil y opciones saludables para los primeros años de vida.</p>
@@ -598,7 +616,9 @@ en los días más difíciles....</p>
   </div>
 
   <div class="guia-card">
-    <div class="guia-img">💤</div>
+   <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="guia-body">
       <h5>Hola, bebé</h5>
       <p>Descubre el ambiente ideal para el primer año de vida y los primeros cuidados.</p>
@@ -607,7 +627,9 @@ en los días más difíciles....</p>
   </div>
 
   <div class="guia-card">
-    <div class="guia-img">🎮</div>
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="guia-body">
       <h5>Jugar, amar, compartir</h5>
       <p>Actividades y estrategias para fortalecer los vínculos familiares a través del juego.</p>
@@ -615,8 +637,10 @@ en los días más difíciles....</p>
     </div>
   </div>
 
-  <div class="guia-card" style="border-color: #00bcd4; border: 3px solid #00bcd4;">
-    <div class="guia-img" style="background: linear-gradient(135deg, #00bcd4, #0097a7);">🏠</div>
+  <div class="guia-card">
+    <div class="card-img-container">
+          <img src="img/foro2.jpg" alt="Sueño">
+      </div>
     <div class="guia-body">
       <h5>Pantallas en casa</h5>
       <p>Guía completa sobre el uso responsable de pantallas e internet en el hogar familiar.</p>
@@ -632,7 +656,7 @@ en los días más difíciles....</p>
     <h2>Parently</h2>
   </div>
   <p style="margin-top: 20px; font-size: 16px;">
-    Tu compañero de confianza en la crianza 👨‍👩‍👧‍👦
+    Tu compañero de confianza en la crianza 
   </p>
 </div>
 
