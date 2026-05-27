@@ -31,10 +31,14 @@
           <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link" href="actividades.php">Actividades</a>
+=======
+          <a class="nav-link" href="">Actividades</a>
+>>>>>>> cb0d0f8e0fa7bed32cad68af9b2621825699b42b
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="especialista_perfil.php">Especialistas</a>
+          <a class="nav-link" href="especialista.php">Especialistas</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="comunidades.php">Comunidades</a>
