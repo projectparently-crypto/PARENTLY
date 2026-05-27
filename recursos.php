@@ -429,7 +429,7 @@
           <a class="nav-link" href="#">Actividades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Especialistas</a>
+          <a class="nav-link" href="especialistas.php">Especialistas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Comunidades</a>
