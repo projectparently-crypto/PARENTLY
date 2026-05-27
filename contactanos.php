@@ -28,7 +28,7 @@
 /* FONDO GENERAL */
 body{
     background-color: #f5e8d9;
-    padding: 40px;
+    padding: 0;
 }
  
  .navbar-nav .nav-link {
@@ -56,6 +56,8 @@ body{
 /* CONTENEDOR */
 .contacto{
     width: 100%;
+    padding: 40px;
+
 }
  
 /* PARTE SUPERIOR */
@@ -277,7 +279,7 @@ body{
  
         <div class="imagen">
             <!-- CAMBIA la imagen por la tuya -->
-            <img src="familia.png" alt="Familia">
+            <img src="familia.jpg" alt="familia">
         </div>
  
     </div>
@@ -327,7 +329,7 @@ body{
  
     </div>
  
-</section
+</section>
 
 </body>
 </html>
