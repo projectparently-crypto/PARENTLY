@@ -374,7 +374,7 @@ body{
                 </li>
  
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Comunidades</a>
+                    <a class="nav-link" href="comunidades.php">Comunidades</a>
                 </li>
  
                 <li class="nav-item">
@@ -537,7 +537,7 @@ body{
         </div>
  
         <textarea placeholder="Déjanos tus comentarios..."></textarea>
- 
+
         <div class="comentario-footer">
  
             <img src="photos/contactanos/osito.png" alt="Osito">

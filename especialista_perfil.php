@@ -86,8 +86,8 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
                 <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Actividades</a></li>
                 <li class="nav-item"><a class="nav-link active" href="especialistas.php">Especialistas</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Comunidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contactanos</a></li>
+                <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
+                <li class="nav-item"><a class="nav-link" href="contactanos.php">Contactanos</a></li>
             </ul>
 
             <div class="d-flex gap-2 align-items-center">

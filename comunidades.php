@@ -31,10 +31,10 @@
           <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Actividades</a>
+          <a class="nav-link" href="">Actividades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="especialista_perfil.php">Especialistas</a>
+          <a class="nav-link" href="especialista.php">Especialistas</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="comunidades.php">Comunidades</a>
