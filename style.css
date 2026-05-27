@@ -637,3 +637,15 @@ body {
     margin-top:3px;
 }
    
+.redes i{
+    font-size: 32px;
+    margin: 10px;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.redes i:hover{
+    transform: translateY(-5px);
+    color: #ff69b4;
+}
