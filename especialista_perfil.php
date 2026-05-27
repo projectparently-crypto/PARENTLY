@@ -140,7 +140,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
         <section class="profile-main-info">
             <div class="profile-actions">
                 <a href="especialistas.php" class="profile-action">Regresar</a>
-                <a href="mailto:<?php echo htmlspecialchars($specialist["email"]); ?>" class="profile-action">Reseñas</a>
+                <a href="" class="profile-action">Reseñas</a>
             </div>
             <article class="education-card">
                 <h2>Educacion</h2>
