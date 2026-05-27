@@ -435,7 +435,7 @@
           <a class="nav-link" href="#">Comunidades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contactanos</a>
+          <a class="nav-link" href="contactanos.php">Contactanos</a>
         </li>
       </ul>
 
