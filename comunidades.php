@@ -68,6 +68,9 @@
   </div>
 </nav>
 
+<div class="hero position-relative">
+
+
 <!-- IMAGEN + TEXTO ENCIMA -->
 <div class="position-relative">
 
