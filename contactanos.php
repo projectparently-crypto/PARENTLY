@@ -1,16 +1,22 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parently</title>
-    <link rel="stylesheet" href="homepage.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parently</title>
+ 
+<link rel="stylesheet" href="homepage.css">
+ 
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+ 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+ 
 <style>
  
 *{
@@ -20,10 +26,40 @@
     font-family: Arial, sans-serif;
 }
  
-/* FONDO */
+/* =========================
+   BODY
+========================= */
+ 
 body{
     background-color: #f5e8d9;
-    padding: 30px;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* =========================
+   NAVBAR
+========================= */
+ 
+.navbar{
+    background-color: #FE7AA1;
+    padding: 15px 40px;
+    width: 100%;
+}
+ 
+.navbar-brand{
+    color: white !important;
+    font-size: 28px;
+    font-weight: bold;
+}
+ 
+.nav-link{
+    color: white !important;
+    font-weight: bold;
+    font-size: 17px;
+}
+ 
+.nav-link:hover{
+    color: #ffe4ec !important;
 }
  
 /* =========================
@@ -32,14 +68,26 @@ body{
  
 .contacto{
     width: 100%;
+    padding: 40px 60px;
 }
  
 /* PARTE SUPERIOR */
+ 
 .contacto-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 40px;
+ 
+    background-color: white;
+ 
+    padding: 30px;
+ 
+    border-radius: 25px;
+ 
     margin-bottom: 40px;
+ 
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
 }
  
 .texto h1{
@@ -49,17 +97,20 @@ body{
 }
  
 .texto p{
-    font-size: 18px;
+    font-size: 17px;
     color: #333;
     line-height: 1.5;
+    max-width: 300px;
 }
  
 /* IMAGEN */
+ 
 .imagen img{
-    width: 220px;
+    width: 180px;
 }
  
 /* CONTENEDOR */
+ 
 .contenedor-contacto{
     display: flex;
     justify-content: space-between;
@@ -67,6 +118,7 @@ body{
 }
  
 /* FORMULARIO */
+ 
 .formulario{
     width: 55%;
     background-color: #FFBDC8;
@@ -109,13 +161,14 @@ body{
     margin-top: 20px;
     border: none;
     border-radius: 12px;
-    background-color: #EFA8CA;
+    background-color: #FE7AA1;
     color: white;
     font-size: 18px;
     cursor: pointer;
 }
  
 /* INFO CONTACTO */
+ 
 .info-contacto{
     width: 40%;
     background-color: #FFBDC8;
@@ -130,8 +183,9 @@ body{
 }
  
 /* TARJETAS */
+ 
 .card{
-    background-color: #EFA8CA;
+    background-color: #FE7AA1;
     color: white;
     padding: 18px;
     border-radius: 15px;
@@ -152,13 +206,14 @@ body{
 ========================= */
  
 .comentarios{
-    margin-top: 50px;
+    margin: 50px 60px;
     background-color: #EFA8CA;
     padding: 25px;
     border-radius: 20px;
 }
  
 /* CAJA */
+ 
 .comentarios-box{
     background-color: #FFBDC8;
     padding: 30px;
@@ -166,6 +221,7 @@ body{
 }
  
 /* TITULO */
+ 
 .comentarios-box h2{
     text-align: center;
     color: #9b004f;
@@ -174,6 +230,7 @@ body{
 }
  
 /* ESTRELLAS */
+ 
 .estrellas{
     text-align: center;
     font-size: 45px;
@@ -181,6 +238,7 @@ body{
 }
  
 /* TEXTAREA */
+ 
 .comentarios-box textarea{
     width: 100%;
     height: 140px;
@@ -194,6 +252,7 @@ body{
 }
  
 /* FOOTER */
+ 
 .comentario-footer{
     display: flex;
     justify-content: space-between;
@@ -202,13 +261,15 @@ body{
 }
  
 /* OSITO */
+ 
 .comentario-footer img{
     width: 90px;
 }
  
 /* BOTON */
+ 
 .comentario-footer button{
-    background-color: #EFA8CA;
+    background-color: #FE7AA1;
     color: white;
     border: none;
     padding: 14px 25px;
@@ -218,6 +279,7 @@ body{
 }
  
 /* SEGURIDAD */
+ 
 .seguridad{
     margin-top: 30px;
     text-align: center;
@@ -226,8 +288,19 @@ body{
     color: black;
 }
  
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
+ 
 @media(max-width: 900px){
+ 
+    .contacto{
+        padding: 20px;
+    }
+ 
+    .comentarios{
+        margin: 20px;
+    }
  
     .contacto-header{
         flex-direction: column;
@@ -259,6 +332,115 @@ body{
  
 <body>
  
+<!-- NAVBAR -->
+ 
+<nav class="navbar navbar-expand-lg">
+ 
+    <div class="container-fluid">
+ 
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
+ 
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
+                 width="40"
+                 class="me-2">
+ 
+            Parently
+ 
+        </a>
+ 
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+ 
+            <span class="navbar-toggler-icon"></span>
+ 
+        </button>
+ 
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+ 
+            <ul class="navbar-nav mx-auto gap-2">
+ 
+                <li class="nav-item">
+                    <a class="nav-link active" href="recursos.php">Recursos</a>
+                </li>
+ 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Actividades</a>
+                </li>
+ 
+                <li class="nav-item">
+                    <a class="nav-link" href="especialistas.php">Especialistas</a>
+                </li>
+ 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Comunidades</a>
+                </li>
+ 
+                <li class="nav-item">
+                    <a class="nav-link" href="contactanos.php">Contactanos</a>
+                </li>
+ 
+            </ul>
+ 
+            <div class="d-flex gap-2 align-items-center">
+ 
+                <?php if (isset($_SESSION['usuario_nombre'])): ?>
+ 
+                    <div class="d-flex align-items-center gap-2">
+ 
+                        <div style="width: 45px;
+                                    height: 45px;
+                                    background: linear-gradient(135deg, #ff6fa5, #ff4081);
+                                    border-radius: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: white;
+                                    font-weight: bold;
+                                    font-size: 18px;
+                                    cursor: pointer;"
+                             onclick="window.location.href='perfil.php'">
+ 
+                            <?php echo strtoupper(substr($_SESSION['usuario_nombre'], 0, 1)); ?>
+ 
+                        </div>
+ 
+                        <span style="color: white;
+                                     font-weight: bold;
+                                     cursor: pointer;"
+                              onclick="window.location.href='perfil.php'">
+ 
+                            <?php echo $_SESSION['usuario_nombre']; ?>
+ 
+                        </span>
+ 
+                    </div>
+ 
+                    <a href="logout.php" class="btn btn-danger btn-sm">
+                        Cerrar Sesión
+                    </a>
+ 
+                <?php else: ?>
+ 
+                    <a href="login.php" class="btn btn-outline-light">
+                        Iniciar Sesión
+                    </a>
+ 
+                    <a href="registro.php" class="btn btn-light">
+                        Registrarse
+                    </a>
+ 
+                <?php endif; ?>
+ 
+            </div>
+ 
+        </div>
+ 
+    </div>
+ 
+</nav>
+ 
 <!-- =========================
      CONTACTO
 ========================= -->
@@ -268,16 +450,20 @@ body{
     <div class="contacto-header">
  
         <div class="texto">
+ 
             <h1>Contáctanos</h1>
  
             <p>
-                Estamos aquí para ayudarte <br>
+                Estamos aquí para ayudarte
                 en la crianza de tus hijos
             </p>
+ 
         </div>
  
         <div class="imagen">
+ 
             <img src="photos/contactanos/familia.png" alt="Familia">
+ 
         </div>
  
     </div>
@@ -285,6 +471,7 @@ body{
     <div class="contenedor-contacto">
  
         <!-- FORMULARIO -->
+ 
         <div class="formulario">
  
             <h2>¡Envíanos un mensaje!</h2>
@@ -303,23 +490,30 @@ body{
         </div>
  
         <!-- INFO -->
+ 
         <div class="info-contacto">
  
             <h2>Otras formas de contacto</h2>
  
             <div class="card">
+ 
                 <h3>WhatsApp</h3>
                 <p>+503 6786-3434</p>
+ 
             </div>
  
             <div class="card">
+ 
                 <h3>Correo electrónico</h3>
                 <p>soporte@parently.com</p>
+ 
             </div>
  
             <div class="card">
+ 
                 <h3>Teléfono</h3>
                 <p>+503 6834-5476</p>
+ 
             </div>
  
         </div>
@@ -346,7 +540,7 @@ body{
  
         <div class="comentario-footer">
  
-            <img src="osito.png" alt="Osito">
+            <img src="photos/contactanos/osito.png" alt="Osito">
  
             <button>Enviar comentario</button>
  
@@ -359,6 +553,10 @@ body{
     </div>
  
 </section>
+ 
+<!-- Bootstrap JS -->
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
  
 </body>
 </html>
