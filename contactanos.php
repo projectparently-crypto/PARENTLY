@@ -537,7 +537,7 @@ body{
         </div>
  
         <textarea placeholder="Déjanos tus comentarios..."></textarea>
-
+ 
         <div class="comentario-footer">
  
             <img src="photos/contactanos/osito.png" alt="Osito">
