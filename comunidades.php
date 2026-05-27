@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <!-- NAVBAR -->
+   <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
 
     <!-- Logo + nombre (izquierda) -->
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="30" class="me-2">
+    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
+      <img src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
@@ -28,26 +28,41 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">Recursos</a>
+          <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Actividades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Especialistas</a>
+          <a class="nav-link" href="especialista_perfil.php">Especialistas</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="comunidades/index.php">Comunidades</a>
+          <a class="nav-link" href="comunidades.php">Comunidades</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="#">Contactanos</a>
+          <a class="nav-link" href="contactanos.php">Contactanos</a>
         </li>
       </ul>
-       <!-- Botones -->
-  <div class="d-flex gap-2">
-    <a href="login-pro/index.php" class="btn btn-outline-success">Iniciar Sesión</a>
-    <a href="login-pro/index.php" class="btn btn-success">Registrarse</a>
-  </div>
+      
+      <!-- Botones - Con sesión o sin sesión -->
+      <div class="d-flex gap-2 align-items-center">
+        <?php if (isset($_SESSION["usuario_nombre"])): ?>
+          <!-- Usuario logueado -->
+          <div class="profile-btn d-flex align-items-center gap-2">
+            <a href="perfil.php" class="avatar-link">
+              <div class="avatar-small">
+                <?php echo strtoupper(substr($_SESSION["usuario_nombre"], 0, 1)); ?>
+              </div>
+            </a>
+            <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+          </div>
+        <?php else: ?>
+          <!-- Usuario sin sesión -->
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="registro.php" class="btn btn-success">Registrarse</a>
+        <?php endif; ?>
+      </div>
     </div>
 
   </div>
@@ -57,7 +72,7 @@
 <div class="position-relative">
 
   <!-- Imagen -->
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+  <img src="img/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
   <!-- Texto encima -->
   <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
@@ -94,7 +109,7 @@
           <div class="banner-conversaciones__sub">Únete a los debates más activos del momento</div>
         </div>
       </div>
-      <a href="comunidades/foros.php" class="btn-white">Ver más</a>
+      <a href="img/foros.php" class="btn-white">Ver más</a>
     </div>
  <!-- Grid de foros -->
 
@@ -106,7 +121,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="photos/foro1.jpg" alt="Sueño">
+                    <img src="img/foro1.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -143,7 +158,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="photos/foro2.jpg" alt="Sueño">
+                    <img src="img/foro2.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -180,7 +195,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="photos/foro3.jpg" alt="Sueño">
+                    <img src="img/foro3.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -217,7 +232,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="photos/foro4.jpg" alt="Sueño">
+                    <img src="img/foro4.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
