@@ -109,7 +109,7 @@
           <div class="banner-conversaciones__sub">Únete a los debates más activos del momento</div>
         </div>
       </div>
-      <a href="comunidades.html" class="btn-white">Ver más</a>
+      <a href="comunidad.php" class="btn-white">Ver más</a>
     </div>
  <!-- Grid de foros -->
 
