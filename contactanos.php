@@ -1,4 +1,17 @@
 <?php session_start(); ?>
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $rating = $_POST["rating"] ?? 0;
+    $comentario = $_POST["comentario"] ?? "";
+
+    // SOLO PRUEBA (después aquí irá base de datos)
+    echo "Gracias por tu opinión<br>";
+    echo "Estrellas: " . $rating . "<br>";
+    echo "Comentario: " . $comentario;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +19,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parently</title>
  
-<link rel="stylesheet" href="homepage.css">
+<link rel="stylesheet" href="contactanos.css">
  
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -17,317 +30,7 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
  
-<style>
- 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
- 
-/* =========================
-   BODY
-========================= */
- 
-body{
-    background-color: #f5e8d9;
-    margin: 0;
-    padding: 0;
-}
- 
-/* =========================
-   NAVBAR
-========================= */
- 
-.navbar{
-    background-color: #FE7AA1;
-    padding: 15px 40px;
-    width: 100%;
-}
- 
-.navbar-brand{
-    color: white !important;
-    font-size: 28px;
-    font-weight: bold;
-}
- 
-.nav-link{
-    color: white !important;
-    font-weight: bold;
-    font-size: 17px;
-}
- 
-.nav-link:hover{
-    color: #ffe4ec !important;
-}
- 
-/* =========================
-   CONTACTO
-========================= */
- 
-.contacto{
-    width: 100%;
-    padding: 40px 60px;
-}
- 
-/* PARTE SUPERIOR */
- 
-.contacto-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
- 
-    background-color: white;
- 
-    padding: 30px;
- 
-    border-radius: 25px;
- 
-    margin-bottom: 40px;
- 
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-}
- 
-.texto h1{
-    color: #c2185b;
-    font-size: 38px;
-    margin-bottom: 10px;
-}
- 
-.texto p{
-    font-size: 17px;
-    color: #333;
-    line-height: 1.5;
-    max-width: 300px;
-}
- 
-/* IMAGEN */
- 
-.imagen img{
-    width: 180px;
-}
- 
-/* CONTENEDOR */
- 
-.contenedor-contacto{
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-}
- 
-/* FORMULARIO */
- 
-.formulario{
-    width: 55%;
-    background-color: #FFBDC8;
-    padding: 25px;
-    border-radius: 20px;
-}
- 
-.formulario h2{
-    color: #c2185b;
-    margin-bottom: 20px;
-    font-size: 25px;
-}
- 
-.formulario label{
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 16px;
-}
- 
-.formulario input,
-.formulario textarea{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    font-size: 14px;
-}
- 
-.formulario textarea{
-    height: 120px;
-    resize: none;
-}
- 
-.formulario button{
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 12px;
-    background-color: #FE7AA1;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
- 
-/* INFO CONTACTO */
- 
-.info-contacto{
-    width: 40%;
-    background-color: #FFBDC8;
-    padding: 25px;
-    border-radius: 20px;
-}
- 
-.info-contacto h2{
-    color: #c2185b;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
- 
-/* TARJETAS */
- 
-.card{
-    background-color: #FE7AA1;
-    color: white;
-    padding: 18px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
- 
-.card h3{
-    margin-bottom: 5px;
-    font-size: 18px;
-}
- 
-.card p{
-    font-size: 14px;
-}
- 
-/* =========================
-   COMENTARIOS
-========================= */
- 
-.comentarios{
-    margin: 50px 60px;
-    background-color: #EFA8CA;
-    padding: 25px;
-    border-radius: 20px;
-}
- 
-/* CAJA */
- 
-.comentarios-box{
-    background-color: #FFBDC8;
-    padding: 30px;
-    border-radius: 15px;
-}
- 
-/* TITULO */
- 
-.comentarios-box h2{
-    text-align: center;
-    color: #9b004f;
-    font-size: 35px;
-    margin-bottom: 20px;
-}
- 
-/* ESTRELLAS */
- 
-.estrellas{
-    text-align: center;
-    font-size: 45px;
-    margin-bottom: 20px;
-}
- 
-/* TEXTAREA */
- 
-.comentarios-box textarea{
-    width: 100%;
-    height: 140px;
-    border: none;
-    border-radius: 15px;
-    padding: 18px;
-    font-size: 15px;
-    resize: none;
-    outline: none;
-    background-color: #f8d7de;
-}
- 
-/* FOOTER */
- 
-.comentario-footer{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-}
- 
-/* OSITO */
- 
-.comentario-footer img{
-    width: 90px;
-}
- 
-/* BOTON */
- 
-.comentario-footer button{
-    background-color: #FE7AA1;
-    color: white;
-    border: none;
-    padding: 14px 25px;
-    border-radius: 12px;
-    font-size: 18px;
-    cursor: pointer;
-}
- 
-/* SEGURIDAD */
- 
-.seguridad{
-    margin-top: 30px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    color: black;
-}
- 
-/* =========================
-   RESPONSIVE
-========================= */
- 
-@media(max-width: 900px){
- 
-    .contacto{
-        padding: 20px;
-    }
- 
-    .comentarios{
-        margin: 20px;
-    }
- 
-    .contacto-header{
-        flex-direction: column;
-        text-align: center;
-    }
- 
-    .contenedor-contacto{
-        flex-direction: column;
-    }
- 
-    .formulario,
-    .info-contacto{
-        width: 100%;
-    }
- 
-    .comentario-footer{
-        flex-direction: column;
-        gap: 15px;
-    }
- 
-    .comentario-footer button{
-        width: 100%;
-    }
- 
-}
- 
-</style>
+
 </head>
  
 <body>
@@ -492,32 +195,64 @@ body{
         <!-- INFO -->
  
         <div class="info-contacto">
- 
-            <h2>Otras formas de contacto</h2>
- 
-            <div class="card">
- 
+
+    <h2>Otras formas de contacto</h2>
+
+    <a href="https://wa.me/50367863434" class="card-link" target="_blank">
+        <div class="card-contact whatsapp">
+            <div class="icono"><i class="fa-brands fa-whatsapp"></i></div>
+            <div>
                 <h3>WhatsApp</h3>
                 <p>+503 6786-3434</p>
- 
             </div>
- 
-            <div class="card">
- 
+        </div>
+    </a>
+
+    <a href="mailto:tucorreo@gmail.com" class="card-link">
+        <div class="card-contact email">
+            <div class="icono"> <i class="bi bi-envelope"></i></div>
+            <div>
                 <h3>Correo electrónico</h3>
                 <p>soporte@parently.com</p>
- 
             </div>
- 
-            <div class="card">
- 
+        </div>
+    </a>
+
+    <a href="tel:+50368345476" class="card-link">
+        <div class="card-contact phone">
+            <div class="icono"><i class="fa-solid fa-mobile"></i></div>
+            <div>
                 <h3>Teléfono</h3>
                 <p>+503 6834-5476</p>
- 
             </div>
- 
+
         </div>
- 
+    </a>
+
+    <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="card-link">
+        <div class="card-contact Instagram">
+            <div class="icono"><i class="bi bi-instagram"></i></div>
+            <div>
+                <h3>Instagram</h3>
+                <p>@Parently</p>
+            </div>
+
+        </div>
+    </a>
+    
+
+    <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="card-link">
+        <div class="card-contact facebook">
+            <div class="icono"><i class="bi bi-facebook"></i></i></div>
+            <div>
+                <h3>Facebook</h3>
+                <p>@ParentlyFC</p>
+            </div>
+
+        </div>
+    </a>
+
+</div>
     </div>
  
 </section>
@@ -530,21 +265,38 @@ body{
  
     <div class="comentarios-box">
  
-        <h2>¿Te ha sido útil Parently?</h2>
- 
-        <div class="estrellas">
-            ⭐ ⭐ ⭐ ⭐ ⭐
-        </div>
- 
-        <textarea placeholder="Déjanos tus comentarios..."></textarea>
- 
-        <div class="comentario-footer">
- 
-            <img src="photos/contactanos/osito.png" alt="Osito">
- 
-            <button>Enviar comentario</button>
- 
-        </div>
+        <form method="POST">
+
+         <h2>¿Te ha sido útil Parently?</h2>
+
+            <div class="rating">
+                <input type="radio" name="rating" value="5" id="star5">
+                <label for="star5">★</label>
+
+                <input type="radio" name="rating" value="4" id="star4">
+                <label for="star4">★</label>
+
+                <input type="radio" name="rating" value="3" id="star3">
+                <label for="star3">★</label>
+
+                <input type="radio" name="rating" value="2" id="star2">
+                <label for="star2">★</label>
+
+                <input type="radio" name="rating" value="1" id="star1">
+                <label for="star1">★</label>
+            </div>
+
+            <textarea name="comentario" placeholder="Déjanos tus comentarios..."></textarea>
+
+            <div class="comentario-footer">
+
+                <img src="photos/contactanos/osito.png" alt="Osito">
+
+                <button type="submit">Enviar comentario</button>
+
+            </div>
+
+        </form>
  
     </div>
  
