@@ -1,17 +1,5 @@
 <?php session_start(); ?>
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $rating = $_POST["rating"] ?? 0;
-    $comentario = $_POST["comentario"] ?? "";
-
-    // SOLO PRUEBA (después aquí irá base de datos)
-    echo "Gracias por tu opinión<br>";
-    echo "Estrellas: " . $rating . "<br>";
-    echo "Comentario: " . $comentario;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

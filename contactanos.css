@@ -85,7 +85,8 @@ body{
 /* IMAGEN */
  
 .imagen img{
-    width: 180px;
+    width: 300px;
+    height: 180px;
 }
  
 /* CONTENEDOR */
