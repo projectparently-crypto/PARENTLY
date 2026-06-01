@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parently</title>
  
-<link rel="stylesheet" href="contactanos.css">
+<link rel="stylesheet" href="../style/contactanos.css">
  
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
  
         <a class="navbar-brand d-flex align-items-center" href="index.php">
  
-            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
+            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
                  width="40"
                  class="me-2">
  
@@ -153,7 +153,7 @@
  
         <div class="imagen">
  
-            <img src="photos/contactanos/familia.png" alt="Familia">
+            <img src="../photos/contactanos/familia.png" alt="Familia">
  
         </div>
  
@@ -278,7 +278,7 @@
 
             <div class="comentario-footer">
 
-                <img src="photos/contactanos/osito.png" alt="Osito">
+                <img src="../photos/contactanos/osito.png" alt="Osito">
 
                 <button type="submit">Enviar comentario</button>
 

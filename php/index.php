@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parently</title>
-    <link rel="stylesheet" href=".../style/homepage.css">
+    <link rel="stylesheet" href="../style/homepage.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -19,7 +19,7 @@
 
     <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
@@ -75,7 +75,7 @@
 <div class="hero position-relative">
 
   <!-- Imagen -->
-  <img src="photos/cheapest_places_to_live_on_the_west_coast__4088x2725___v1222x580.jpg" class="hero-img" alt="familia">
+  <img src="../photos/cheapest_places_to_live_on_the_west_coast__4088x2725___v1222x580.jpg" class="hero-img" alt="familia">
 
   <!-- Capa oscura -->
   <div class="overlay"></div>
@@ -125,7 +125,7 @@
 
   <!-- IMAGEN FUERA -->
   <div class="about-img">
-    <img src="photos/保育園_幼稚園の運動会大成功アイデア集_年齢別種目_親子競技編__保育のお仕事レポート-removebg-preview (1).png" alt="happy family">
+    <img src="../photos/保育園_幼稚園の運動会大成功アイデア集_年齢別種目_親子競技編__保育のお仕事レポート-removebg-preview (1).png" alt="happy family">
   </div>
 
 </div>
@@ -239,7 +239,7 @@ hiddenElements.forEach((el) => {
     <!-- IMAGEN / LOGO -->
     <div class="footer-logo">
 
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
 
     </div>
 

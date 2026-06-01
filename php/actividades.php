@@ -11,7 +11,7 @@ session_start();
 
 
     </style>
-    <link rel="stylesheet" href="style/actividades.css">
+    <link rel="stylesheet" href="../style/actividades.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -25,7 +25,7 @@ session_start();
 
     <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-      <img src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
@@ -188,7 +188,7 @@ session_start();
     <!-- FOOTER -->
 
     <footer class="specialist-footer">
-        <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+        <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
         <strong>Parently</strong>
     </footer>
 
