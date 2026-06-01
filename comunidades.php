@@ -124,7 +124,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro1.jpg" alt="Sueño">
+                    <img src="photos/foro1.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -161,7 +161,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro2.jpg" alt="Sueño">
+                    <img src="photos/foro2.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -198,7 +198,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro3.jpg" alt="Sueño">
+                    <img src="photos/foro3.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -235,7 +235,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro4.jpg" alt="Sueño">
+                    <img src="photos/foro4.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
