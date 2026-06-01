@@ -15,7 +15,7 @@
 
     <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-      <img src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
@@ -75,13 +75,12 @@
 <div class="position-relative">
 
   <!-- Imagen -->
-  <img src="img/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
   <!-- Texto encima -->
   <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
     <h1 class="fw-bold">No estás solo en la crianza </h1>
     <p>Descubre una comunidad pensada para apoyarte, escucharte y ayudarte a crecer como padre o madre.</p>
-    <button class="btn btn-success">Empezar ahora</button>
   </div>
 
 </div>
@@ -124,7 +123,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro1.jpg" alt="Sueño">
+                    <img src="photos/foro1.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -161,7 +160,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro2.jpg" alt="Sueño">
+                    <img src="photos/foro2.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -198,7 +197,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro3.jpg" alt="Sueño">
+                    <img src="photos/foro3.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">
@@ -235,7 +234,7 @@
             <div class="card border-0 h-100">
 
                 <div class="card-img-container">
-                    <img src="img/foro4.jpg" alt="Sueño">
+                    <img src="photos/foro4.jpg" alt="Sueño">
                 </div>
 
                 <div class="card-body">

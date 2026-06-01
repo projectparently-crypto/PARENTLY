@@ -50,16 +50,6 @@ body {
   color: hsl(340, 63%, 57%);
 }
 
-.btn.btn-success {
-    background-color: #d9a7c7; /* rosado pastel */
-    color: white; /* texto blanco */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
 
 .btn.btn-success:hover {
     background-color: #c985b5; /* un poco más oscuro al pasar el mouse */

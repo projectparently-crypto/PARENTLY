@@ -126,7 +126,7 @@ body {
     }
  
     .age-tab:hover { border-color:#ffffff; color:#ffffff; }
-    .age-tab.active { background:#e8c5d8; border-color: #e8c5d8; color: #e8c5d8; box-shadow: 0 4px 14px rgba(253, 251, 251, 0.3); }
+    .age-tab.active { background:#bb1370; border-color: #4b082d; color: #eb65af; box-shadow: 0 4px 14px rgba(253, 251, 251, 0.3); }
      /* ── PAGE WRAPPER ─────────────────────────────────── */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,5vw,40px); }
 
@@ -176,7 +176,7 @@ body {
     .foros-section { padding: 3rem 0 2rem; }
  
     .banner-conversaciones {
-      background: linear-gradient(135deg, #d9a7c7 0%, #e8c5d8 100%);
+      background: linear-gradient(135deg, #8d0059 0%, #a72b6f 100%);
       border-radius: 20px;
       padding: 1.25rem 2rem;
       display: flex;
