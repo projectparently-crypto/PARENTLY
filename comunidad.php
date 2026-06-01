@@ -124,7 +124,7 @@
  
  
         <!-- IMAGEN -->
-        <img src="img/comunidades.jpg"
+        <img src="photos/comunidades.jpg"
              alt="Banner"
              class="forum-banner-img">
  
@@ -294,7 +294,7 @@
  
 <footer class="community-footer">
  
-    <img src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
          alt="Logo">
  
  
