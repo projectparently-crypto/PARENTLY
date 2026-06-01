@@ -560,7 +560,6 @@ en los días más difíciles....</p>
           <img src="img/foro2.jpg" alt="Sueño">
       </div>
     <div class="consejo-body">
-      <h4>¿Qué comer durante la violencia de niños y niñas</h4>
       <p>Estrategias y herramientas para criar en valores y promover la salud emocional desde el primer año de vida.</p>
       <a href="#" class="card-item-link">Leer más ➜</a>
     </div>
