@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="comunidades.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -14,7 +14,7 @@
   <div class="container-fluid">
 
     <!-- Logo + nombre (izquierda) -->
-    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
       <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
@@ -78,11 +78,10 @@
   <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
   <!-- Texto encima -->
-  <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
-    <h1 class="fw-bold">No estás solo en la crianza </h1>
-    <p>Descubre una comunidad pensada para apoyarte, escucharte y ayudarte a crecer como padre o madre.</p>
-  </div>
-
+    <div class="hero-text">
+    <h1 class="title">No estás solo en la crianza</h1>
+    <p class="subtitle">Descubre una comunidad pensada para apoyarte, escucharte y ayudarte a crecer como padre o madre.</p>
+    </div>
 </div>
 <!-- AGE TABS -->
 <div class="age-tabs">
