@@ -109,7 +109,11 @@ body {
 }
 
 .btn.btn-success {
+<<<<<<< HEAD:comunidades.css
     background-color: #D94571 !important;; /* rosado pastel */
+=======
+    background-color: #ca2a90; /* rosado pastel */
+>>>>>>> 00de220704b2cc5b762978e17ea4952bdc13b561:style/comunidades.css
     color: white; /* texto blanco */
     border: none;
     padding: 10px 20px;

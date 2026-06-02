@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Parently</title>
  
-<link rel="stylesheet" href="contactanos.css">
+<link rel="stylesheet" href="../style/contactanos.css">
  
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,112 +25,65 @@
  
 <!-- NAVBAR -->
  
-<nav class="navbar navbar-expand-lg">
- 
-    <div class="container-fluid">
- 
-        <a class="navbar-brand d-flex align-items-center" href="index.php">
- 
-            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
-                 width="40"
-                 class="me-2">
- 
-            Parently
- 
-        </a>
- 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
- 
-            <span class="navbar-toggler-icon"></span>
- 
-        </button>
- 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
- 
-            <ul class="navbar-nav mx-auto gap-2">
- 
-                <li class="nav-item">
-                    <a class="nav-link active" href="recursos.php">Recursos</a>
-                </li>
- 
-                <li class="nav-item">
-                    <a class="nav-link" href="actividades.php">Actividades</a>
-                </li>
- 
-                <li class="nav-item">
-                    <a class="nav-link" href="especialistas.php">Especialistas</a>
-                </li>
- 
-                <li class="nav-item">
-                    <a class="nav-link" href="comunidades.php">Comunidades</a>
-                </li>
- 
-                <li class="nav-item">
-                    <a class="nav-link" href="contactanos.php">Contactanos</a>
-                </li>
- 
-            </ul>
- 
-            <div class="d-flex gap-2 align-items-center">
- 
-                <?php if (isset($_SESSION['usuario_nombre'])): ?>
- 
-                    <div class="d-flex align-items-center gap-2">
- 
-                        <div style="width: 45px;
-                                    height: 45px;
-                                    background: linear-gradient(135deg, #ff6fa5, #ff4081);
-                                    border-radius: 50%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    color: white;
-                                    font-weight: bold;
-                                    font-size: 18px;
-                                    cursor: pointer;"
-                             onclick="window.location.href='perfil.php'">
- 
-                            <?php echo strtoupper(substr($_SESSION['usuario_nombre'], 0, 1)); ?>
- 
-                        </div>
- 
-                        <span style="color: white;
-                                     font-weight: bold;
-                                     cursor: pointer;"
-                              onclick="window.location.href='perfil.php'">
- 
-                            <?php echo $_SESSION['usuario_nombre']; ?>
- 
-                        </span>
- 
-                    </div>
- 
-                    <a href="logout.php" class="btn btn-danger btn-sm">
-                        Cerrar Sesión
-                    </a>
- 
-                <?php else: ?>
- 
-                    <a href="login.php" class="btn btn-outline-light">
-                        Iniciar Sesión
-                    </a>
- 
-                    <a href="registro.php" class="btn btn-light">
-                        Registrarse
-                    </a>
- 
-                <?php endif; ?>
- 
-            </div>
- 
-        </div>
- 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
+
+    <!-- Logo + nombre (izquierda) -->
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      Parently
+    </a>
+
+    <!-- Botón responsive -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opciones (derecha) -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="recursos.php">Recursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="actividades.php">Actividades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="especialistas.php">Especialistas</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="comunidades.php">Comunidades</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="contactanos.php">Contactanos</a>
+        </li>
+      </ul>
+      
+      <!-- Botones - Con sesión o sin sesión -->
+      <div class="d-flex gap-2 align-items-center">
+        <?php if (isset($_SESSION["usuario_nombre"])): ?>
+          <!-- Usuario logueado -->
+          <div class="profile-btn d-flex align-items-center gap-2">
+            <a href="perfil.php" class="avatar-link">
+              <div class="avatar-small">
+                <?php echo strtoupper(substr($_SESSION["usuario_nombre"], 0, 1)); ?>
+              </div>
+            </a>
+            <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+          </div>
+        <?php else: ?>
+          <!-- Usuario sin sesión -->
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="registro.php" class="btn btn-success">Registrarse</a>
+        <?php endif; ?>
+      </div>
     </div>
- 
+
+  </div>
 </nav>
+
  
 <!-- =========================
      CONTACTO
@@ -153,7 +106,7 @@
  
         <div class="imagen">
  
-            <img src="photos/contactanos/familia.png" alt="Familia">
+            <img src="../photos/contactanos/familia.png" alt="Familia">
  
         </div>
  
@@ -164,20 +117,24 @@
         <!-- FORMULARIO -->
  
         <div class="formulario">
- 
-            <h2>¡Envíanos un mensaje!</h2>
- 
-            <label>Nombre</label>
-            <input type="text">
- 
-            <label>Correo electrónico</label>
-            <input type="email" placeholder="Tipo de consulta">
- 
-            <label>Mensaje</label>
-            <textarea></textarea>
- 
-            <button>Enviar</button>
- 
+
+            <form method="POST">
+
+                <h2>¡Envíanos un mensaje!</h2>
+
+                <label>Nombre</label>
+                <input type="text" name="nombre">
+
+                <label>Correo electrónico</label>
+                <input type="email" name="email" placeholder="correo electronico">
+
+                <label>Mensaje</label>
+                <textarea name="mensaje"></textarea>
+
+                <button type="submit">Enviar</button>
+
+            </form>
+
         </div>
  
         <!-- INFO -->
@@ -278,7 +235,7 @@
 
             <div class="comentario-footer">
 
-                <img src="photos/contactanos/osito.png" alt="Osito">
+                <img src="../photos/contactanos/osito.png" alt="Osito">
 
                 <button type="submit">Enviar comentario</button>
 
