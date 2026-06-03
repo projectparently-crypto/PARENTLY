@@ -106,7 +106,7 @@
  
         <div class="imagen">
  
-            <img src="../photos/familia.png" alt="Familia">
+            <img src="../photos/contactanos/familia.png" alt="Familia">
  
         </div>
  

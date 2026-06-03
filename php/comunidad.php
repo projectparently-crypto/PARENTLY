@@ -184,19 +184,16 @@
         </div>
 
         <!-- IMAGEN -->
-<<<<<<< HEAD:comunidad.php
         <img
           src="img/comunidades.jpg"
           alt="Banner"
           class="forum-banner-img"
         >
 
-=======
         <img src="../photos/comunidades.jpg"
              alt="Banner"
              class="forum-banner-img">
  
->>>>>>> e2d922b9d56358edaaa0ec6390f928085b7f87fc:php/comunidad.php
     </div>
 
 
