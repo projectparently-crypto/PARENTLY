@@ -6,12 +6,19 @@
     <title>Comunidades</title>
 
 
+
         <link rel="stylesheet" href="comunidades.css">
 
         <link rel="stylesheet" href="../style/comunidades.css">
 
         <link rel="stylesheet" href="style/comunidades.css">
         <link rel="stylesheet" href="../style/style.css">
+
+ 
+        <link rel="stylesheet" href="comunidades.css">
+ 
+        <link rel="stylesheet" href="../style/comunidades.css">
+ 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,8 +27,9 @@
    <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-
+ 
     <!-- Logo + nombre (izquierda) -->
+
 
     <a class="navbar-brand d-flex align-items-center" href="index.php">
 
@@ -31,16 +39,25 @@
       <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
 
     <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
+
       <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
+
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
+ 
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+ 
 
       Parently
     </a>
-
+ 
     <!-- Botón responsive -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+ 
     <!-- Opciones (derecha) -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
@@ -60,7 +77,7 @@
           <a class="nav-link" href="contactanos.php">Contactanos</a>
         </li>
       </ul>
-      
+     
       <!-- Botones - Con sesión o sin sesión -->
       <div class="d-flex gap-2 align-items-center">
         <?php if (isset($_SESSION["usuario_nombre"])): ?>
@@ -81,26 +98,31 @@
         <?php endif; ?>
       </div>
     </div>
-
+ 
   </div>
 </nav>
-
+ 
 <div class="hero position-relative">
-
-
+ 
+ 
 <!-- IMAGEN + TEXTO ENCIMA -->
 <div class="position-relative">
+ 
 
-  <!-- Imagen -->
-
-
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
   <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
   <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
-  
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+
+
+
+ 
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+ 
+ 
+
   <!-- Texto encima -->
     <div class="hero-text">
     <h1 class="title">No estás solo en la crianza</h1>
@@ -137,162 +159,162 @@
       <a href="comunidad.php" class="btn-white">Ver más</a>
     </div>
  <!-- Grid de foros -->
-
+ 
 <div class="container my-5">
     <div class="row g-4">
-
+ 
         <!-- CARD 1 -->
         <div class="col-md-6">
             <div class="card border-0 h-100">
-
+ 
                 <div class="card-img-container">
                     <img src="photos/foro1.jpg" alt="Sueño">
                 </div>
-
+ 
                 <div class="card-body">
-
+ 
                     <span class="badge rounded-pill px-3 py-2 mb-3"
                         style="background:#dff8f5; color:#20c9b7;">
                         SUEÑO
                     </span>
-
+ 
                     <h5 class="fw-bold">Hábitos de sueño</h5>
-
+ 
                     <p class="text-muted small">
                         Sección enfocada en resolver problemas relacionados con el descanso y las rutinas de sueño de los hijos.
                     </p>
-
+ 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-
+ 
                         <button class="btn btn-verde px-2">
                             VER MAS
                         </button>
-
+ 
                         <button class="btn btn-turquesa px-4">
                             UNIRSE
                         </button>
-
+ 
                     </div>
-
+ 
                 </div>
             </div>
         </div>
-
+ 
         <!-- CARD 2 -->
         <div class="col-md-6">
             <div class="card border-0 h-100">
-
+ 
                 <div class="card-img-container">
                     <img src="photos/foro2.jpg" alt="Sueño">
                 </div>
-
+ 
                 <div class="card-body">
-
+ 
                     <span class="badge rounded-pill px-3 py-2 mb-3"
                         style="background:#fff0e4; color:#ff8a3d;">
                         ALIMENTACIÓN
                     </span>
-
+ 
                     <h5 class="fw-bold">Nutrición y comida</h5>
-
+ 
                     <p class="text-muted small">
                         Espacio dedicado a dudas y consejos sobre hábitos alimenticios, nutrición y conductas relacionadas con la comida.
                     </p>
-
+ 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-
+ 
                         <button class="btn btn-verde px-2">
                             VER MAS
                         </button>
-
+ 
                         <button class="btn btn-naranja px-4">
                             UNIRSE
                         </button>
-
+ 
                     </div>
-
+ 
                 </div>
             </div>
         </div>
-
+ 
         <!-- CARD 3 -->
         <div class="col-md-6">
             <div class="card border-0 h-100">
-
+ 
                 <div class="card-img-container">
                     <img src="photos/foro3.jpg" alt="Sueño">
                 </div>
-
+ 
                 <div class="card-body">
-
+ 
                     <span class="badge rounded-pill px-3 py-2 mb-3"
                         style="background:#f1ebff; color:#7a56d6;">
                         TECNOLOGÍA
                     </span>
-
+ 
                     <h5 class="fw-bold">Pantallas y tecnología</h5>
-
+ 
                     <p class="text-muted small">
                         Espacio para discutir el uso de dispositivos electrónicos, control del tiempo en pantalla y educación digital.
                     </p>
-
+ 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-
+ 
                         <button class="btn btn-verde px-2">
                             VER MAS
                         </button>
-
+ 
                         <button class="btn btn-morado px-4">
                             UNIRSE
                         </button>
-
+ 
                     </div>
-
+ 
                 </div>
             </div>
         </div>
-
+ 
         <!-- CARD 4 -->
         <div class="col-md-6">
             <div class="card border-0 h-100">
-
+ 
                 <div class="card-img-container">
                     <img src="photos/foro4.jpg" alt="Sueño">
                 </div>
-
+ 
                 <div class="card-body">
-
+ 
                     <span class="badge rounded-pill px-3 py-2 mb-3"
                         style="background:#e8f8ea; color:#3c9d47;">
                         EDUCACIÓN
                     </span>
-
+ 
                     <h5 class="fw-bold">Aprendizaje escolar</h5>
-
+ 
                     <p class="text-muted small">
                         Sección enfocada en temas académicos, rendimiento escolar y situaciones relacionadas con la educación.
                     </p>
-
+ 
                     <div class="d-flex justify-content-between align-items-center mt-4">
-
-
+ 
+ 
                         <button class="btn btn-verde px-2">
                             VER MAS
                         </button>
-
+ 
                         <button class="btn btn-verde px-4">
                             UNIRSE
                         </button>
-
+ 
                     </div>
-
+ 
                 </div>
             </div>
         </div>
-
+ 
     </div>
 </div>
-
+ 
 <!-- ── PREGUNTAS ──────────────────────────────────────── -->
 <section class="preguntas-section" id="preguntas">
   <div class="page">
@@ -351,49 +373,49 @@
  
       <!-- Hacer una pregunta -->
         <div class="pregunta-card">
-
+ 
             <div class="pregunta-titulo">
                 ¿Tienes una pregunta?
             </div>
-
+ 
             <div class="pregunta-texto">
                 La comunidad está aquí para ayudarte
             </div>
-
+ 
             <textarea class="pregunta-textarea"
                 placeholder="Escribe tu pregunta aquí..."></textarea>
-
+ 
             <button class="btn-rose pregunta-btn">
                 Publicar pregunta
             </button>
-
+ 
         </div>
  
         <div class="preguntas-populares">
-
+ 
     <div class="preguntas-titulo">
         Preguntas populares
     </div>
-
+ 
     <div class="preguntas-lista">
-
+ 
         <a href="#" class="pregunta-link">
             <span class="pregunta-punto">●</span>
             ¿Cómo manejar los berrinches sin perder la calma?
         </a>
-
+ 
         <a href="#" class="pregunta-link">
             <span class="pregunta-punto">●</span>
             ¿Cuántas horas de pantalla son aceptables a los 6 años?
         </a>
-
+ 
         <a href="#" class="pregunta-link">
             <span class="pregunta-punto">●</span>
             Mi hijo no quiere ir a la escuela, ¿qué puedo hacer?
         </a>
-
+ 
     </div>
-
+ 
 </div>
       </div>
     </div>

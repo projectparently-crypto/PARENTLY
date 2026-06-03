@@ -19,6 +19,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style/comunidades.css">
 
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
    <!-- NAVBAR -->
@@ -28,6 +31,7 @@
     <!-- Logo + nombre (izquierda) -->
  
     <a class="navbar-brand d-flex align-items-center" href="index.php">
+
 
     <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
  
@@ -45,6 +49,11 @@
       <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
 
 
+
+
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+ 
+      Parently
 
     </a>
  
