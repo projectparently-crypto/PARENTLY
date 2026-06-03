@@ -31,12 +31,12 @@ $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <<<<<<< HEAD:php/especialista_perfil.php
     <title><?php echo htmlspecialchars($specialistName); ?> - Parently</title>
-    <link rel="stylesheet" href="homepage.css">
-    <link rel="stylesheet" href="especialistas.css">
+    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="../style/especialistas.css">
 =======
     <title><?php echo htmlspecialchars($specialist["name"]); ?> - Parently</title>
-    <link rel="stylesheet" href="style/homepage.css">
-    <link rel="stylesheet" href="style/especialistas.css">
+    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="../style/especialistas.css">
 >>>>>>> 0ff776b15b6e81d147a48f2cf466b542c3f97e8a:especialista_perfil.php
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -45,7 +45,7 @@ $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
+            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
             Parently
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -85,7 +85,7 @@ $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
 
 <main class="profile-shell">
     <header class="profile-brand">
-        <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+        <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
         <span>Parently</span>
     </header>
 
@@ -122,7 +122,7 @@ $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
 </main>
 
 <footer class="specialist-footer">
-    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
     <strong>Parently</strong>
 </footer>
 

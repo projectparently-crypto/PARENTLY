@@ -21,7 +21,7 @@ $id = $_GET["id"] ?? 1;
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="style/comunidades.css">
+  <link rel="stylesheet" href="../style/comunidades.css">
   <style>
 
 
@@ -377,7 +377,7 @@ $id = $_GET["id"] ?? 1;
 
     <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
