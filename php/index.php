@@ -85,7 +85,9 @@
     <h1 class="title">GUÍA PARA <span>PADRES</span></h1>
     <p class="subtitle">Consejos reales para tu familia.</p>
 
-    <button class="hero-btn">Empezar ahora</button>
+      <button class="hero-btn" onclick="window.location.href='recursos.php'">
+          Empezar ahora
+      </button>
   </div>
 
 </div>
@@ -178,7 +180,7 @@
 
 <section class="features">
 
-  <h2>¿Por qué elegir Parently?</h2>
+  <h2 class="titulo-animado">¿Por qué elegir Parently?</h2>
 
   <div class="feature-grid">
 
