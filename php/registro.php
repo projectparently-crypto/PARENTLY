@@ -327,12 +327,28 @@ body {
     font-size: 1.5rem;
 }
 
+.heart-logo {
+    color: #8F1137;
+    font-size: 3rem;
+    animation: latido 3s infinite;
+}
+
+@keyframes latido {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.2); }
+    50%  { transform: scale(1); }
+    75%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
     </style>
 </head>
 <body>
     <div class="container">
         <div class="left-section">
-            <div class="heart-logo">💛</div>
+            <div class="heart-logo">
+               <i class="bi bi-postcard-heart"></i> 
+            </div>
             <h1>Registro</h1>
 
             <form method="POST" class="form">

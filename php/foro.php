@@ -1,7 +1,10 @@
 <?php
-session_start();
-?>
 
+session_start();
+
+$id = $_GET["id"] ?? 1;
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -331,7 +334,38 @@ session_start();
   border-radius:10px;
 }
 
+.menu {
+  position: relative;
+}
 
+.menu-opciones {
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.search-container{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+#searchInput{
+  padding:10px;
+  border-radius:12px;
+  border:1px solid #ccc;
+}
+
+.hidden{
+  display:none;
+}
 
 </style>
 </head>
@@ -421,10 +455,18 @@ session_start();
     <!-- DERECHA -->
     <div class="info-right">
 
-      <!-- LUPA -->
-      <div class="search-icon">
-        <i class="fa fa-search"></i>
-      </div>
+     <div class="search-container">
+  <div class="search-icon" onclick="toggleSearch()">
+    <i class="fa fa-search"></i>
+  </div>
+
+  <input 
+    id="searchInput"
+    class="hidden"
+    placeholder="Buscar..."
+    oninput="buscar(this.value)"
+  >
+</div>
 
       <!-- BOTON -->
       <button id="btnUnirse" onclick="unirse()">
@@ -443,35 +485,36 @@ session_start();
     <button>Miembros</button>
     <button>Sobre</button>
 
-  </div>
-
-
+  </div> 
+  
   <!-- ================= USUARIO DESTACADO ================= -->
-  <div class="destacado">
+<div class="destacado">
 
-    <!-- IZQUIERDA -->
-    <div class="destacado-user">
+  <!-- IZQUIERDA -->
+  <div class="destacado-user">
 
-      <img src="img/user1.jpg">
+   <img id="destacado-img" src="">
 
-      <div>
+    <div>
 
-        <h3>Usuario destacado</h3>
+      <h3 id="destacado-nombre">Usuario destacado</h3>
 
-        <p>
-          Se unió hace 2 semanas
-        </p>
+      <p id="destacado-info">
+        Se unió hace...
+      </p>
 
-      </div>
-
-    </div>
-
-    <!-- DERECHA -->
-    <div class="chat-icon">
-      <i class="fa fa-comment"></i>
     </div>
 
   </div>
+
+  <!-- DERECHA -->
+  <div class="chat-icon">
+    <i class="fa fa-comment"></i>
+  </div>
+
+</div>
+
+
 
 
   <!-- ================= COMENTAR ================= -->
@@ -496,10 +539,13 @@ session_start();
 
 
 <script>
-let usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
+
+const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
+
+const foroInicial = <?php echo $id; ?>;
+
 </script>
 
-<script src="script.js?v=2"></script>
-
+<script src="script.js?v=10"></script>
 </body>
 </html>

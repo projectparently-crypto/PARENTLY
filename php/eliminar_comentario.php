@@ -6,8 +6,12 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $id = $data["id"];
 
-$conn->query("DELETE FROM comentarios WHERE id=$id");
+$sql = "DELETE FROM comentarios WHERE id='$id'";
 
-echo "ok";
+$conn->query($sql);
+
+echo json_encode([
+  "ok" => true
+]);
 
 ?>
