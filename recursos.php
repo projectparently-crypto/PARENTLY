@@ -504,7 +504,7 @@
 
   <div class="card-item">
      <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="card-item-body">
       <h3>Estrategias cotidianas de autocuidado</h3>
@@ -524,7 +524,7 @@ en los días más difíciles....</p>
 <div class="consejos-grid">
   <div class="consejo-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="consejo-body">
       <h4>La salud mental en época pediátricas</h4>
@@ -535,7 +535,7 @@ en los días más difíciles....</p>
 
   <div class="consejo-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="consejo-body">
       <h4>Cómo ayudar a tu hij@s a atravesar una crisis</h4>
@@ -546,7 +546,7 @@ en los días más difíciles....</p>
 
   <div class="consejo-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="consejo-body">
       <h4>Hábitos en el desarrollo de tu hij@ - VÍDEO</h4>
@@ -557,7 +557,7 @@ en los días más difíciles....</p>
 
   <div class="consejo-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="consejo-body">
       <p>Estrategias y herramientas para criar en valores y promover la salud emocional desde el primer año de vida.</p>
@@ -574,25 +574,25 @@ en los días más difíciles....</p>
   <div class="etapas-buttons">
     <button class="etapa-btn">
       <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
       Embarazo
     </button>
     <button class="etapa-btn">
       <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
       Primeros años
     </button>
     <button class="etapa-btn">
       <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
       Pre-Adolescencia
     </button>
     <button class="etapa-btn">
       <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
       Adolescencia
     </button>
@@ -605,7 +605,7 @@ en los días más difíciles....</p>
 <div class="guias-grid">
   <div class="guia-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="guia-body">
       <h5>¿Mucho, poquito o nada?</h5>
@@ -616,7 +616,7 @@ en los días más difíciles....</p>
 
   <div class="guia-card">
    <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="guia-body">
       <h5>Hola, bebé</h5>
@@ -627,7 +627,7 @@ en los días más difíciles....</p>
 
   <div class="guia-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="guia-body">
       <h5>Jugar, amar, compartir</h5>
@@ -638,7 +638,7 @@ en los días más difíciles....</p>
 
   <div class="guia-card">
     <div class="card-img-container">
-          <img src="img/foro2.jpg" alt="Sueño">
+          <img src="photos/foro2.jpg" alt="Sueño">
       </div>
     <div class="guia-body">
       <h5>Pantallas en casa</h5>

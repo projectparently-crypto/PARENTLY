@@ -78,7 +78,7 @@ $specialists = [
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
             Parently
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -127,23 +127,23 @@ $specialists = [
 
     <section class="specialty-filters" aria-label="Filtrar especialistas">
         <button class="specialty-filter active" type="button" data-filter="all">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
             <span>Todos</span>
         </button>
         <button class="specialty-filter" type="button" data-filter="psicologos">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
             <span>Psicologos</span>
         </button>
         <button class="specialty-filter" type="button" data-filter="pediatras">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
             <span>Pediatras</span>
         </button>
         <button class="specialty-filter" type="button" data-filter="terapeutas">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
             <span>Terapeutas</span>
         </button>
         <button class="specialty-filter" type="button" data-filter="educadores">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
             <span>Educadores</span>
         </button>
     </section>
@@ -165,7 +165,7 @@ $specialists = [
 </main>
 
 <footer class="specialist-footer">
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
     <strong>Parently</strong>
 </footer>
 

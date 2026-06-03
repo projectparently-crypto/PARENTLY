@@ -75,7 +75,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
+            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
             Parently
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -115,7 +115,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 
 <main class="profile-shell">
     <header class="profile-brand">
-        <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+        <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
         <span>Parently</span>
     </header>
 
@@ -152,7 +152,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 </main>
 
 <footer class="specialist-footer">
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
     <strong>Parently</strong>
 </footer>
 
