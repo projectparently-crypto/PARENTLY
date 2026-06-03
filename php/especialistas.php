@@ -15,31 +15,49 @@ if ($result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Especialistas - Parently</title>
-    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="../style/navbar.css">
     <link rel="stylesheet" href="../style/especialistas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body class="specialists-page">
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
-            Parently
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav mx-auto gap-2">
-                <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
-                <li class="nav-item"><a class="nav-link" href="actividades.php">Actividades</a></li>
-                <li class="nav-item"><a class="nav-link active" href="especialistas.php">Especialistas</a></li>
-                <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
-                <li class="nav-item"><a class="nav-link" href="contactanos.php">Contactanos</a></li>
-            </ul>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg ">
+  <div class="container-fluid">
 
-            <div class="d-flex gap-2 align-items-center">
+    <!-- Logo + nombre (izquierda) -->
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      Parently
+    </a>
+
+    <!-- Botón responsive -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Opciones (derecha) -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="recursos.php">Recursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="actividades.php">Actividades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="especialistas.php">Especialistas</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="comunidades.php">Comunidades</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="contactanos.php">Contactanos</a>
+        </li>
+      </ul>
+      
+      <!-- Botones - Con sesión o sin sesión -->
+      <div class="d-flex gap-2 align-items-center">
         <?php if (isset($_SESSION["usuario_nombre"])): ?>
           <!-- Usuario logueado -->
           <div class="profile-btn d-flex align-items-center gap-2">
@@ -58,8 +76,8 @@ if ($result) {
         <?php endif; ?>
       </div>
     </div>
-        </div>
-    </div>
+
+  </div>
 </nav>
 
 <main class="specialists-shell">

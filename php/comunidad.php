@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
  
-        <link rel="stylesheet" href="comunidades.css">
+        <link rel="stylesheet" href="../style/navbar.css">
  
         <link rel="stylesheet" href="../style/comunidades.css">
  
@@ -15,24 +14,23 @@
 </head>
 <body>
    <!-- NAVBAR -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
- 
+
     <!-- Logo + nombre (izquierda) -->
- 
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
- 
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
- 
+
     <!-- Botón responsive -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
- 
+
     <!-- Opciones (derecha) -->
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
         <li class="nav-item">
           <a class="nav-link" href="recursos.php">Recursos</a>
@@ -50,7 +48,7 @@
           <a class="nav-link" href="contactanos.php">Contactanos</a>
         </li>
       </ul>
-     
+      
       <!-- Botones - Con sesión o sin sesión -->
       <div class="d-flex gap-2 align-items-center">
         <?php if (isset($_SESSION["usuario_nombre"])): ?>
@@ -71,7 +69,7 @@
         <?php endif; ?>
       </div>
     </div>
- 
+
   </div>
 </nav>
  
@@ -384,7 +382,6 @@
     </div>
   </div>
 </section>
-=======
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -750,6 +747,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 
->>>>>>> cedfad6628262770093291f7c24a6d8a50788f3d
 </body>
 </html>

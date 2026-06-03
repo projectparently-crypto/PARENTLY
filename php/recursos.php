@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recursos - Parently</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -405,21 +406,26 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
+
+    <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="40" class="me-2">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
+    <!-- Botón responsive -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Opciones (derecha) -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
         <li class="nav-item">
-          <a class="nav-link active" href="recursos.php">Recursos</a>
+          <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="actividades.php">Actividades</a>
@@ -427,31 +433,35 @@
         <li class="nav-item">
           <a class="nav-link" href="especialistas.php">Especialistas</a>
         </li>
-        <li class="nav-item">
+         <li class="nav-item">
           <a class="nav-link" href="comunidades.php">Comunidades</a>
         </li>
-        <li class="nav-item">
+         <li class="nav-item">
           <a class="nav-link" href="contactanos.php">Contactanos</a>
         </li>
       </ul>
-
+      
+      <!-- Botones - Con sesión o sin sesión -->
       <div class="d-flex gap-2 align-items-center">
-        <?php if (isset($_SESSION['usuario_nombre'])): ?>
-          <div class="d-flex align-items-center gap-2">
-            <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #ff6fa5, #ff4081); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; cursor: pointer;" onclick="window.location.href='perfil.php'">
-              <?php echo strtoupper(substr($_SESSION['usuario_nombre'], 0, 1)); ?>
-            </div>
-            <span style="color: white; font-weight: bold; cursor: pointer;" onclick="window.location.href='perfil.php'">
-              <?php echo $_SESSION['usuario_nombre']; ?>
-            </span>
+        <?php if (isset($_SESSION["usuario_nombre"])): ?>
+          <!-- Usuario logueado -->
+          <div class="profile-btn d-flex align-items-center gap-2">
+            <a href="perfil.php" class="avatar-link">
+              <div class="avatar-small">
+                <?php echo strtoupper(substr($_SESSION["usuario_nombre"], 0, 1)); ?>
+              </div>
+            </a>
+            <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
           </div>
-          <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
         <?php else: ?>
-          <a href="login.php" class="btn btn-outline-light">Iniciar Sesión</a>
-          <a href="registro.php" class="btn btn-light">Registrarse</a>
+          <!-- Usuario sin sesión -->
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
     </div>
+
   </div>
 </nav>
 
