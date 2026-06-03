@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
+
+
+
+        <link rel="stylesheet" href="comunidades.css">
+
+        <link rel="stylesheet" href="../style/comunidades.css">
+
+        <link rel="stylesheet" href="style/comunidades.css">
+        <link rel="stylesheet" href="../style/style.css">
+
+ 
+        <link rel="stylesheet" href="comunidades.css">
  
         <link rel="stylesheet" href="../style/comunidades.css">
  
-        <link rel="stylesheet" href="../style/comunidades.css">
- 
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style/comunidades.css">
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
 </head>
 <body>
    <!-- NAVBAR -->
@@ -29,32 +29,28 @@
   <div class="container-fluid">
  
     <!-- Logo + nombre (izquierda) -->
- 
+
+
     <a class="navbar-brand d-flex align-items-center" href="index.php">
 
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
 
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
+    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
+
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
+
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
  
-      Parently
-
-
-
-      <img
-        src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
-        width="50"
-        class="me-3"
-      >
-
-
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-
-
-
-
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
  
-      Parently
 
+      Parently
     </a>
  
     <!-- Botón responsive -->
@@ -112,11 +108,21 @@
 <!-- IMAGEN + TEXTO ENCIMA -->
 <div class="position-relative">
  
-  <!-- Imagen -->
+
+
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+
+  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+
+
+
  
   <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
  
  
+
   <!-- Texto encima -->
     <div class="hero-text">
     <h1 class="title">No estás solo en la crianza</h1>
@@ -199,11 +205,7 @@
             <div class="card border-0 h-100">
  
                 <div class="card-img-container">
-<<<<<<< HEAD
-                    <img src="../img/foros2.webp" alt="Sueño">
-=======
                     <img src="photos/foro2.jpg" alt="Sueño">
->>>>>>> 274e6e66b5011f6dd69c2e499fce0b28adc3c702
                 </div>
  
                 <div class="card-body">
