@@ -1,67 +1,13 @@
-<?php session_start(); ?>
 <?php
-$specialists = [
-    [
-        "id" => "alexander",
-        "name" => "Alexander Benjamin",
-        "last" => "Peraza Soto",
-        "area" => "psicologos",
-        "label" => "Psicologo",
-        "photo" => "https://randomuser.me/api/portraits/men/32.jpg",
-        "phone" => "760305712",
-        "email" => "alexander.peraza@parently.com"
-    ],
-    [
-        "id" => "mariana",
-        "name" => "Mariana Estefani",
-        "last" => "Martinez Fajardo",
-        "area" => "pediatras",
-        "label" => "Pediatra",
-        "photo" => "https://randomuser.me/api/portraits/women/44.jpg",
-        "phone" => "783065712",
-        "email" => "digital.factura06@gmail.com"
-    ],
-    [
-        "id" => "julio",
-        "name" => "Julio Armando",
-        "last" => "Parrales Aguilar",
-        "area" => "terapeutas",
-        "label" => "Terapeuta",
-        "photo" => "https://randomuser.me/api/portraits/men/75.jpg",
-        "phone" => "712345609",
-        "email" => "julio.parrales@parently.com"
-    ],
-    [
-        "id" => "marianna",
-        "name" => "Marianna Yanin",
-        "last" => "Hernandez Mejia",
-        "area" => "educadores",
-        "label" => "Educadora",
-        "photo" => "https://randomuser.me/api/portraits/women/65.jpg",
-        "phone" => "706543219",
-        "email" => "marianna.hernandez@parently.com"
-    ],
-    [
-        "id" => "josue",
-        "name" => "Josue Sebastian",
-        "last" => "Rodriguez Ayala",
-        "area" => "psicologos",
-        "label" => "Psicologo",
-        "photo" => "https://randomuser.me/api/portraits/men/46.jpg",
-        "phone" => "745612378",
-        "email" => "josue.rodriguez@parently.com"
-    ],
-    [
-        "id" => "sofia",
-        "name" => "Sofia Victoria",
-        "last" => "Fernandez Mira",
-        "area" => "pediatras",
-        "label" => "Pediatra",
-        "photo" => "https://randomuser.me/api/portraits/women/68.jpg",
-        "phone" => "790456123",
-        "email" => "sofia.fernandez@parently.com"
-    ]
-];
+session_start();
+require_once "db.php";
+
+$specialists = [];
+$result = $conn->query("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas ORDER BY id ASC");
+
+if ($result) {
+    $specialists = $result->fetch_all(MYSQLI_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -69,8 +15,8 @@ $specialists = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Especialistas - Parently</title>
-    <link rel="stylesheet" href="style/homepage.css">
-    <link rel="stylesheet" href="style/especialistas.css">
+    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="../style/especialistas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -150,10 +96,10 @@ $specialists = [
 
     <section class="specialists-grid" id="specialistsGrid">
         <?php foreach ($specialists as $specialist): ?>
-            <article class="specialist-card" data-area="<?php echo htmlspecialchars($specialist["area"]); ?>">
-                <img class="specialist-photo" src="<?php echo htmlspecialchars($specialist["photo"]); ?>" alt="<?php echo htmlspecialchars($specialist["name"] . " " . $specialist["last"]); ?>">
-                <h2><?php echo htmlspecialchars($specialist["name"]); ?></h2>
-                <p><?php echo htmlspecialchars($specialist["last"]); ?></p>
+            <article class="specialist-card" data-area="<?php echo htmlspecialchars($specialist["especialidad"]); ?>">
+                <img class="specialist-photo" src="<?php echo htmlspecialchars($specialist["foto"]); ?>" alt="<?php echo htmlspecialchars($specialist["nombre"] . " " . $specialist["apellido"]); ?>">
+                <h2><?php echo htmlspecialchars($specialist["nombre"]); ?></h2>
+                <p><?php echo htmlspecialchars($specialist["apellido"]); ?></p>
                 <div class="specialist-icons">
                     <i class="bi bi-instagram"></i>
                     <i class="bi bi-envelope"></i>

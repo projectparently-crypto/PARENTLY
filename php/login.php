@@ -5,7 +5,7 @@ $error = "";
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "login_db"; // Cambia esto
+$database = "db_parently"; // Cambia esto
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -53,6 +53,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
     <style>
 * {
     margin: 0;
@@ -92,6 +93,7 @@ body {
 }
 
 .heart-logo {
+    color: #8b2a5e;
     font-size: 60px;
     margin-bottom: 30px;
     animation: pulse 2s infinite;
@@ -144,6 +146,7 @@ body {
 }
 
 .input-group .icon {
+    color: black;
     position: absolute;
     right: 20px;
     font-size: 20px;
@@ -152,7 +155,7 @@ body {
 
 .btn-primary {
     padding: 15px 30px;
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     color: white;
     border: none;
     border-radius: 25px;
@@ -240,7 +243,7 @@ body {
 }
 
 .right-section {
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     padding: 60px 40px;
     display: flex;
     flex-direction: column;
@@ -287,7 +290,7 @@ body {
 }
 
 .login-left {
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     color: white;
     padding: 60px 40px;
 }
@@ -355,6 +358,22 @@ body {
         font-size: 50px;
     }
 }
+
+.social-btn {
+    display: flex;
+    margin-top: 10px;  
+    gap: 20px;
+    justify-content: center;
+}
+.social-btn i {
+    color: #d44f92 ;
+    font-size: 1.5rem;
+    display: flex;
+    margin-top: 8px;
+    gap: 20px;
+    justify-content: center;
+}
+
     </style>
 </head>
 <body>
@@ -366,18 +385,24 @@ body {
         </div>
 
         <div class="right-section login-right">
-            <div class="heart-logo">💛</div>
+            <div class="heart-logo">
+                <i class="bi bi-door-open-fill"></i>
+            </div>
             <h1>Iniciar sesión</h1>
 
             <form method="POST" class="form">
                 <div class="input-group">
                     <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>
-                    <span class="icon">👤</span>
+                    <span class="icon">
+                            <i class="bi bi-person-fill"></i>
+                    </span>
                 </div>
 
                 <div class="input-group">
                     <input type="password" name="contraseña" placeholder="Contraseña" required>
-                    <span class="icon">🔒</span>
+                    <span class="icon">
+                         <i class="bi bi-lock-fill"></i>
+                    </span>
                 </div>
 
                 <?php if ($error): ?>
@@ -389,12 +414,11 @@ body {
                 <button type="submit" class="btn-primary">Iniciar sesión</button>
             </form>
 
-            <div class="redes">
-                <a href="https://www.whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" target="blank">
+            <div class="social-icons">
+                <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="social-btn">
                     <i class="bi bi-whatsapp"></i>
                 </a>
-
-                <a href="https://www.facebook.com/groups/1705256237363562/?rdid=5WkbALIZ6qhi6OW5&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fg%2F1CgdV2AhZ4%2F#" target="blank">
+                <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="social-btn">
                     <i class="bi bi-facebook"></i>
                 </a>
             </div>
