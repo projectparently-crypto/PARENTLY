@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
 <<<<<<< HEAD:comunidades.php
-        <link rel="stylesheet" href="comunidades.css">
+        <link rel="stylesheet" href="style/comunidades.css">
 =======
         <link rel="stylesheet" href="../style/style.css">
 >>>>>>> 00de220704b2cc5b762978e17ea4952bdc13b561:php/comunidades.php
