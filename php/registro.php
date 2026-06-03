@@ -71,6 +71,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
     <style>
 * {
     margin: 0;
@@ -320,6 +321,12 @@ body {
         font-size: 50px;
     }
 }
+
+.social-btn i {
+    color: #d44f92 ;
+    font-size: 1.5rem;
+}
+
     </style>
 </head>
 <body>
@@ -331,22 +338,30 @@ body {
             <form method="POST" class="form">
                 <div class="input-group">
                     <input type="text" name="nombre_usuario" placeholder="Nombre de usuario" required>
-                    <span class="icon">👤</span>
+                    <span class="icon">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
                 </div>
 
                 <div class="input-group">
                     <input type="email" name="email" placeholder="Email" required>
-                    <span class="icon">✉️</span>
+                    <span class="icon">
+                        <i class="bi bi-envelope-fill"></i>
+                    </span>
                 </div>
 
                 <div class="input-group">
                     <input type="password" name="contraseña" placeholder="Contraseña" required>
-                    <span class="icon">🔒</span>
+                    <span class="icon">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
                 </div>
 
                 <div class="input-group">
                     <input type="password" name="contraseña_confirm" placeholder="Confirmar contraseña" required>
-                    <span class="icon">🔒</span>
+                    <span class="icon">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
                 </div>
 
                 <?php if ($error): ?>
@@ -362,8 +377,12 @@ body {
 
             <p class="social-text">O inicia sesión con plataformas sociales.</p>
             <div class="social-icons">
-                <a href="#" class="social-btn">💬</a>
-                <a href="#" class="social-btn">f</a>
+                <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="social-btn">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="social-btn">
+                    <i class="bi bi-facebook"></i>
+                </a>
             </div>
 
             <p class="login-link">¿Ya tienes cuenta? <a href="login.php">Inicia sesión</a></p>
@@ -375,5 +394,6 @@ body {
             <a href="login.php" class="btn-secondary">Iniciar sesión</a>
         </div>
     </div>
+
 </body>
 </html>

@@ -152,7 +152,7 @@ body {
 
 .btn-primary {
     padding: 15px 30px;
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     color: white;
     border: none;
     border-radius: 25px;
@@ -240,7 +240,7 @@ body {
 }
 
 .right-section {
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     padding: 60px 40px;
     display: flex;
     flex-direction: column;
@@ -287,7 +287,7 @@ body {
 }
 
 .login-left {
-    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    background: linear-gradient(135deg, #FBAEBA 0%, #E22F4B 100%);
     color: white;
     padding: 60px 40px;
 }
@@ -366,7 +366,9 @@ body {
         </div>
 
         <div class="right-section login-right">
-            <div class="heart-logo">💛</div>
+            <div class="heart-logo">
+                <i class="bi bi-heart-fill heart"></i>
+            </div>
             <h1>Iniciar sesión</h1>
 
             <form method="POST" class="form">

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
-<<<<<<< HEAD:comunidades.php
+
         <link rel="stylesheet" href="comunidades.css">
-=======
-        <link rel="stylesheet" href="../style/style.css">
->>>>>>> 00de220704b2cc5b762978e17ea4952bdc13b561:php/comunidades.php
+
+        <link rel="stylesheet" href="../style/comunidades.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -18,13 +18,10 @@
   <div class="container-fluid">
 
     <!-- Logo + nombre (izquierda) -->
-<<<<<<< HEAD:comunidades.php
+
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-=======
-    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
->>>>>>> 00de220704b2cc5b762978e17ea4952bdc13b561:php/comunidades.php
+    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+
       Parently
     </a>
 
@@ -84,12 +81,10 @@
 <div class="position-relative">
 
   <!-- Imagen -->
-<<<<<<< HEAD:comunidades.php
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
-=======
-  <img src="../photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
->>>>>>> 00de220704b2cc5b762978e17ea4952bdc13b561:php/comunidades.php
 
+  <img src="../photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
+
+  
   <!-- Texto encima -->
     <div class="hero-text">
     <h1 class="title">No estás solo en la crianza</h1>
