@@ -4,14 +4,20 @@ include "db.php";
 
 $foro = $_GET["foro_id"];
 
-$result = $conn->query("SELECT * FROM comentarios WHERE foro_id=$foro ORDER BY id DESC");
+$sql = "SELECT * FROM comentarios
+WHERE foro_id='$foro'
+ORDER BY id DESC";
 
-$data = [];
+$result = $conn->query($sql);
+
+$comentarios = [];
 
 while($row = $result->fetch_assoc()){
-  $data[] = $row;
+
+  $comentarios[] = $row;
+
 }
 
-echo json_encode($data);
+echo json_encode($comentarios);
 
 ?>
