@@ -31,7 +31,7 @@
 
     <!-- LOGO -->
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-<<<<<<< HEAD:comunidad.php
+
 
       <img
         src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
@@ -39,10 +39,9 @@
         class="me-3"
       >
 
-=======
+
       <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
->>>>>>> e2d922b9d56358edaaa0ec6390f928085b7f87fc:php/comunidad.php
-      Parently
+
 
     </a>
 
