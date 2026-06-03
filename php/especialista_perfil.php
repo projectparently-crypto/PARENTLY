@@ -66,8 +66,8 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($specialist["name"]); ?> - Parently</title>
-    <link rel="stylesheet" href="homepage.css">
-    <link rel="stylesheet" href="especialistas.css">
+    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="../style/especialistas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -75,7 +75,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
+            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Parently">
             Parently
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -115,7 +115,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 
 <main class="profile-shell">
     <header class="profile-brand">
-        <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+        <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
         <span>Parently</span>
     </header>
 
@@ -152,7 +152,7 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 </main>
 
 <footer class="specialist-footer">
-    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
+    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
     <strong>Parently</strong>
 </footer>
 
