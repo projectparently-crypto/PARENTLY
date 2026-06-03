@@ -199,7 +199,11 @@
             <div class="card border-0 h-100">
  
                 <div class="card-img-container">
+<<<<<<< HEAD
+                    <img src="../img/foros2.webp" alt="Sueño">
+=======
                     <img src="photos/foro2.jpg" alt="Sueño">
+>>>>>>> 274e6e66b5011f6dd69c2e499fce0b28adc3c702
                 </div>
  
                 <div class="card-body">
