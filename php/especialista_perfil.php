@@ -1,71 +1,35 @@
-<?php session_start(); ?>
 <?php
-$specialists = [
-    "alexander" => [
-        "name" => "Alexander Benjamin Peraza Soto",
-        "title" => "Psicologo enfocado en crianza positiva",
-        "area" => "Psicologia infantil",
-        "photo" => "https://randomuser.me/api/portraits/men/32.jpg",
-        "phone" => "760305712",
-        "email" => "alexander.peraza@parently.com",
-        "education" => "Licenciatura en Psicologia - Universidad de El Salvador"
-    ],
-    "mariana" => [
-        "name" => "Mariana Yanin Hernandez Mejia",
-        "title" => "Profesional relacionada con la salud",
-        "area" => "Medicina General",
-        "photo" => "https://randomuser.me/api/portraits/women/44.jpg",
-        "phone" => "783065712",
-        "email" => "digital.factura06@gmail.com",
-        "education" => "Hospital General del Instituto Salvadoreño del Seguro Social 1990"
-    ],
-    "julio" => [
-        "name" => "Julio Armando Parrales Aguilar",
-        "title" => "Terapeuta familiar y emocional",
-        "area" => "Terapia familiar",
-        "photo" => "https://randomuser.me/api/portraits/men/75.jpg",
-        "phone" => "712345609",
-        "email" => "julio.parrales@parently.com",
-        "education" => "Maestria en Terapia Familiar - Universidad Centroamericana"
-    ],
-    "marianna" => [
-        "name" => "Marianna Yanin Hernandez Mejia",
-        "title" => "Educadora especializada en primera infancia",
-        "area" => "Educacion inicial",
-        "photo" => "https://randomuser.me/api/portraits/women/65.jpg",
-        "phone" => "706543219",
-        "email" => "marianna.hernandez@parently.com",
-        "education" => "Licenciatura en Educacion Inicial - Universidad Pedagogica"
-    ],
-    "josue" => [
-        "name" => "Josue Sebastian Rodriguez Ayala",
-        "title" => "Psicologo de desarrollo infantil",
-        "area" => "Psicologia infantil",
-        "photo" => "https://randomuser.me/api/portraits/men/46.jpg",
-        "phone" => "745612378",
-        "email" => "josue.rodriguez@parently.com",
-        "education" => "Especializacion en Desarrollo Infantil - Universidad Evangelica"
-    ],
-    "sofia" => [
-        "name" => "Sofia Victoria Fernandez Mira",
-        "title" => "Pediatra dedicada al bienestar infantil",
-        "area" => "Pediatria",
-        "photo" => "https://randomuser.me/api/portraits/women/68.jpg",
-        "phone" => "790456123",
-        "email" => "sofia.fernandez@parently.com",
-        "education" => "Doctorado en Medicina - Universidad de El Salvador"
-    ]
-];
+session_start();
+require_once "db.php";
 
-$id = $_GET["id"] ?? "mariana";
-$specialist = $specialists[$id] ?? $specialists["mariana"];
+$id = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
+$specialist = null;
+
+if ($id > 0) {
+    $stmt = $conn->prepare("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas WHERE id = ? LIMIT 1");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $specialist = $stmt->get_result()->fetch_assoc();
+}
+
+if (!$specialist) {
+    $result = $conn->query("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas ORDER BY id ASC LIMIT 1");
+    $specialist = $result ? $result->fetch_assoc() : null;
+}
+
+if (!$specialist) {
+    header("Location: especialistas.php");
+    exit;
+}
+
+$specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($specialist["name"]); ?> - Parently</title>
+    <title><?php echo htmlspecialchars($specialistName); ?> - Parently</title>
     <link rel="stylesheet" href="homepage.css">
     <link rel="stylesheet" href="especialistas.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -121,19 +85,19 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
 
     <section class="specialist-profile-layout">
         <article class="profile-contact-card">
-            <img class="profile-photo" src="<?php echo htmlspecialchars($specialist["photo"]); ?>" alt="<?php echo htmlspecialchars($specialist["name"]); ?>">
-            <h1><?php echo htmlspecialchars($specialist["name"]); ?></h1>
-            <p class="profile-title"><?php echo htmlspecialchars($specialist["title"]); ?></p>
+            <img class="profile-photo" src="<?php echo htmlspecialchars($specialist["foto"] ?? ""); ?>" alt="<?php echo htmlspecialchars($specialistName); ?>">
+            <h1><?php echo htmlspecialchars($specialistName); ?></h1>
+            <p class="profile-title"><?php echo htmlspecialchars($specialist["descripcion"] ?? ""); ?></p>
             <h2>Especialidad</h2>
-            <p><?php echo htmlspecialchars($specialist["area"]); ?></p>
+            <p><?php echo htmlspecialchars($specialist["especialidad"]); ?></p>
             <h2>Informacion de contacto</h2>
-            <a href="https://wa.me/503<?php echo htmlspecialchars($specialist["phone"]); ?>">
+            <a href="https://wa.me/503<?php echo htmlspecialchars($specialist["telefono"] ?? ""); ?>">
                 <i class="bi bi-whatsapp"></i>
-                <?php echo htmlspecialchars($specialist["phone"]); ?>
+                <?php echo htmlspecialchars($specialist["telefono"] ?? ""); ?>
             </a>
-            <a href="mailto:<?php echo htmlspecialchars($specialist["email"]); ?>">
+            <a href="mailto:<?php echo htmlspecialchars($specialist["email"] ?? ""); ?>">
                 <i class="bi bi-envelope"></i>
-                <?php echo htmlspecialchars($specialist["email"]); ?>
+                <?php echo htmlspecialchars($specialist["email"] ?? ""); ?>
             </a>
         </article>
 
@@ -143,9 +107,9 @@ $specialist = $specialists[$id] ?? $specialists["mariana"];
                 <a href="" class="profile-action">Reseñas</a>
             </div>
             <article class="education-card">
-                <h2>Educacion</h2>
-                <strong><?php echo htmlspecialchars(strtoupper($specialist["area"])); ?></strong>
-                <p><?php echo htmlspecialchars($specialist["education"]); ?></p>
+                <h2>Descripcion</h2>
+                <strong><?php echo htmlspecialchars(strtoupper($specialist["especialidad"])); ?></strong>
+                <p><?php echo htmlspecialchars($specialist["descripcion"] ?? ""); ?></p>
             </article>
         </section>
     </section>
