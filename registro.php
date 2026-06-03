@@ -71,11 +71,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-<<<<<<< HEAD:registro.php
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
-=======
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
->>>>>>> 68662ac (arreglos de comunidad):php/registro.php
+   git add . <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> 
     <style>
 * {
     margin: 0;
@@ -325,16 +321,10 @@ body {
         font-size: 50px;
     }
 }
-<<<<<<< HEAD:registro.php
-
-=======
- 
->>>>>>> 68662ac (arreglos de comunidad):php/registro.php
 .social-btn i {
     color: #d44f92 ;
     font-size: 1.5rem;
 }
-<<<<<<< HEAD:registro.php
 
 .heart-logo {
     color: #8F1137;
@@ -350,9 +340,6 @@ body {
     100% { transform: scale(1); }
 }
 
-=======
- 
->>>>>>> 68662ac (arreglos de comunidad):php/registro.php
     </style>
 </head>
 <body>
@@ -422,11 +409,6 @@ body {
             <a href="login.php" class="btn-secondary">Iniciar sesión</a>
         </div>
     </div>
-<<<<<<< HEAD:registro.php
-
-=======
- 
->>>>>>> 68662ac (arreglos de comunidad):php/registro.php
 </body>
 </html>
  
