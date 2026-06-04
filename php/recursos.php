@@ -1,12 +1,16 @@
 <?php session_start(); 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include 'db.php';
 include 'get_recursos.php';
+include 'get_consejos.php';
+include 'get_guias.php';
 
 // Obtener datos
 $recursosMasVistos = getRecursosMasVistos(2);
-$consejos = getConsejos(4);
+$consejos = getConsejosDelDia(4);
 $etapas = getEtapas();
-$guias = getGuias(4);
+$guias = getGuiasParaFamilias(4);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -105,36 +109,43 @@ $guias = getGuias(4);
 <h2 class="section-title">Lo más visto del mes</h2>
 
 <div class="cards-grid">
-  <?php while($recurso = $recursosMasVistos->fetch_assoc()): ?>
-    <div class="card-item">
-      <div class="card-img-container">
-        <img src="<?php echo htmlspecialchars($recurso['imagen']); ?>" alt="<?php echo htmlspecialchars($recurso['titulo']); ?>">
+  <?php if($recursosMasVistos && $recursosMasVistos->num_rows > 0): ?>
+    <?php while($recurso = $recursosMasVistos->fetch_assoc()): ?>
+      <div class="card-item">
+        <div class="card-img-container">
+          <img src="<?php echo htmlspecialchars($recurso['imagen']); ?>" alt="<?php echo htmlspecialchars($recurso['titulo']); ?>">
+        </div>
+        <div class="card-item-body">
+          <h3><?php echo htmlspecialchars($recurso['titulo']); ?></h3>
+          <p><?php echo substr(htmlspecialchars($recurso['descripcion']), 0, 100) . '...'; ?></p>
+          <a href="recurso-detalle.php?id=<?php echo $recurso['id']; ?>" class="card-item-link">Seguir leyendo aquí ➜</a>
+        </div>
       </div>
-      <div class="card-item-body">
-        <h3><?php echo htmlspecialchars($recurso['titulo']); ?></h3>
-        <p><?php echo substr(htmlspecialchars($recurso['descripcion']), 0, 100) . '...'; ?></p>
-        <a href="recurso-detalle.php?id=<?php echo $recurso['id']; ?>" class="card-item-link">Seguir leyendo aquí ➜</a>
-      </div>
-    </div>
-  <?php endwhile; ?>
+    <?php endwhile; ?>
+  <?php else: ?>
+    <p class="text-center">No hay recursos disponibles</p>
+  <?php endif; ?>
 </div>
 
 <!-- CONSEJOS PARA TI EN EL DÍA A DÍA -->
-<h2 class="section-title">Consejos para ti en el día a día</h2>
 
 <div class="consejos-grid">
-  <?php while($consejo = $consejos->fetch_assoc()): ?>
-    <div class="consejo-card">
-      <div class="card-img-container">
-        <img src="<?php echo htmlspecialchars($consejo['imagen']); ?>" alt="<?php echo htmlspecialchars($consejo['titulo']); ?>">
+  <?php if($consejos && $consejos->num_rows > 0): ?>
+    <?php while($consejo = $consejos->fetch_assoc()): ?>
+      <div class="consejo-card">
+        <div class="card-img-container">
+          <img src="<?php echo htmlspecialchars($consejo['imagen']); ?>" alt="<?php echo htmlspecialchars($consejo['titulo']); ?>">
+        </div>
+        <div class="consejo-body">
+          <h4><?php echo htmlspecialchars($consejo['titulo']); ?></h4>
+          <p><?php echo htmlspecialchars($consejo['descripcion']); ?></p>
+          <a href="consejo-detalle.php?id=<?php echo $consejo['id']; ?>" class="card-item-link">Leer más </a>
+        </div>
       </div>
-      <div class="consejo-body">
-        <h4><?php echo htmlspecialchars($consejo['titulo']); ?></h4>
-        <p><?php echo htmlspecialchars($consejo['descripcion']); ?></p>
-        <a href="recurso-detalle.php?id=<?php echo $consejo['id']; ?>" class="card-item-link">Leer más ➜</a>
-      </div>
-    </div>
-  <?php endwhile; ?>
+    <?php endwhile; ?>
+  <?php else: ?>
+    <p class="text-center" style="color: #D94571; padding: 20px;"><strong>⚠️ No hay consejos disponibles. Agrega consejos desde el panel de admin.</strong></p>
+  <?php endif; ?>
 </div>
 
 <!-- ETAPAS -->
@@ -143,14 +154,16 @@ $guias = getGuias(4);
   <p>Ingresá a la etapa de tu interés:</p>
   
   <div class="etapas-buttons">
-    <?php while($etapa = $etapas->fetch_assoc()): ?>
-      <button class="etapa-btn" onclick="window.location.href='recursos-etapa.php?etapa=<?php echo urlencode($etapa['slug']); ?>'">
-        <div class="card-img-container">
-          <img src="<?php echo htmlspecialchars($etapa['imagen']); ?>" alt="<?php echo htmlspecialchars($etapa['nombre']); ?>">
-        </div>
-        <?php echo htmlspecialchars($etapa['nombre']); ?>
-      </button>
-    <?php endwhile; ?>
+    <?php if($etapas && $etapas->num_rows > 0): ?>
+      <?php while($etapa = $etapas->fetch_assoc()): ?>
+        <button class="etapa-btn" onclick="window.location.href='recursos-etapa.php?etapa=<?php echo urlencode($etapa['slug']); ?>'">
+          <div class="card-img-container">
+            <img src="<?php echo htmlspecialchars($etapa['imagen']); ?>" alt="<?php echo htmlspecialchars($etapa['nombre']); ?>">
+          </div>
+          <?php echo htmlspecialchars($etapa['nombre']); ?>
+        </button>
+      <?php endwhile; ?>
+    <?php endif; ?>
   </div>
 </div>
 
@@ -158,18 +171,22 @@ $guias = getGuias(4);
 <h2 class="section-title">Guías para familias</h2>
 
 <div class="guias-grid">
-  <?php while($guia = $guias->fetch_assoc()): ?>
-    <div class="guia-card">
-      <div class="card-img-container">
-        <img src="<?php echo htmlspecialchars($guia['imagen']); ?>" alt="<?php echo htmlspecialchars($guia['titulo']); ?>">
+  <?php if($guias && $guias->num_rows > 0): ?>
+    <?php while($guia = $guias->fetch_assoc()): ?>
+      <div class="guia-card">
+        <div class="card-img-container">
+          <img src="<?php echo htmlspecialchars($guia['imagen']); ?>" alt="<?php echo htmlspecialchars($guia['titulo']); ?>">
+        </div>
+        <div class="guia-body">
+          <h5><?php echo htmlspecialchars($guia['titulo']); ?></h5>
+          <p><?php echo htmlspecialchars($guia['descripcion']); ?></p>
+          <a href="guia-detalle.php?id=<?php echo $guia['id']; ?>" class="card-item-link">Leer más ➜</a>
+        </div>
       </div>
-      <div class="guia-body">
-        <h5><?php echo htmlspecialchars($guia['titulo']); ?></h5>
-        <p><?php echo htmlspecialchars($guia['descripcion']); ?></p>
-        <a href="recurso-detalle.php?id=<?php echo $guia['id']; ?>" class="card-item-link">Leer más ➜</a>
-      </div>
-    </div>
-  <?php endwhile; ?>
+    <?php endwhile; ?>
+  <?php else: ?>
+    <p class="text-center" style="color: #D94571; padding: 20px;"><strong>⚠️ No hay guías disponibles. Agrega guías desde el panel de admin.</strong></p>
+  <?php endif; ?>
 </div>
 
 <!-- FOOTER -->
