@@ -8,6 +8,8 @@
 <title>Parently</title>
  
 <link rel="stylesheet" href="../style/contactanos.css">
+
+<link rel="stylesheet" href="../style/navbar.css">
  
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,12 +28,13 @@
 <!-- NAVBAR -->
  
 <!-- NAVBAR -->
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
 
     <!-- Logo + nombre (izquierda) -->
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
 
@@ -83,7 +86,6 @@
 
   </div>
 </nav>
-
  
 <!-- =========================
      CONTACTO

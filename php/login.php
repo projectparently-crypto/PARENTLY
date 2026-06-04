@@ -5,7 +5,7 @@ $error = "";
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "login_db"; // Cambia esto
+$database = "db_parently"; // Cambia esto
 
 $conn = new mysqli($servername, $username, $password, $database);
 

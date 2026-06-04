@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
+<<<<<<< HEAD
+<<<<<<< HEAD:comunidades.php
+        <link rel="stylesheet" href="style/comunidades.css">
+=======
+=======
 
 
 
@@ -12,6 +17,7 @@
         <link rel="stylesheet" href="../style/comunidades.css">
 
         <link rel="stylesheet" href="style/comunidades.css">
+>>>>>>> 853517ef52fc5d9a2a4876ca1ca38b3c916d1d6c
         <link rel="stylesheet" href="../style/style.css">
 
  
