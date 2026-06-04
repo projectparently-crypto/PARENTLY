@@ -128,6 +128,7 @@ $guias = getGuiasParaFamilias(4);
 </div>
 
 <!-- CONSEJOS PARA TI EN EL DÍA A DÍA -->
+<h2 class="section-title">Consejos para ti en el día a día </h2>
 
 <div class="consejos-grid">
   <?php if($consejos && $consejos->num_rows > 0): ?>
