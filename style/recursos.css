@@ -356,8 +356,8 @@
 .consejos-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:20px;
-    padding:80px;
+    gap:30px;
+    padding:250px;
 }
 
 .consejo-card{
@@ -371,6 +371,7 @@
 
 .consejo-card:hover{
     transform:translateY(-5px);
+     border:2px solid #D94571;
     
 }
 
