@@ -9,50 +9,151 @@
             background-color: #f4eadc;
         }
 
-        /* NAVBAR */
+/* NAVBAR BASE */
+.navbar{
+    background-color: #FFBDC8 !important;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-        nav{
-            width: 100%;
-            background-color: #f8a8bc;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 40px;
-        }
+/* BRAND */
+.navbar-brand{
+    font-weight: bold;
+    font-size: 20px !important;
+    color: #333 !important;
+    display: flex;
+    align-items: center;
+}
 
-        .logo{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+/* LINKS NAVBAR */
+.navbar-nav .nav-link{
+    font-size: 18px;
+    font-weight: bold;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
 
-        .logo img{
-            width: 55px;
-        }
+.navbar-nav .nav-link:hover{
+    background-color: white;
+    color: #D94571 !important;
+}
 
-        .nav-links{
-            display: flex;
-            gap: 25px;
-        }
+/* BOTONES */
+.btn{
+    transition: all 0.3s ease !important;
+}
 
-        .nav-links a{
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            padding: 8px 18px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
+.btn:hover{
+    transform: scale(1.05);
+}
 
-        .nav-links a:hover{
-            background-color: white;
-            color: #f06292;
-        }
+/* BOTÓN SUCCESS (REGISTRARSE) */
+.btn.btn-success{
+    background-color: #eb0580 !important;
+    border: none !important;
+}
 
-        .activo{
-            background-color: white;
-            color: #f06292 !important;
-        }
+.btn.btn-success:hover{
+    background-color: #e01284 !important;
+}
+
+/* OUTLINE LOGIN */
+.btn-outline-success{
+    border: 2px solid #D94571 !important;
+    color: #D94571 !important;
+}
+
+.btn-outline-success:hover{
+    background-color: #D94571 !important;
+    color: white !important;
+}
+
+/* PERFIL */
+.profile-btn{
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar-small{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.avatar-small:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+}
+
+.avatar-link{
+    text-decoration: none;
+}
+
+.profile-name{
+    color: #8b2a5e !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.profile-name:hover{
+    color: #ff4081 !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px){
+
+    .navbar-nav{
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .navbar-nav .nav-link{
+        margin-bottom: 8px;
+    }
+
+    .profile-btn{
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+}
+ 
+/* TEXTO HERO */
+.position-absolute p {
+     justify-content: right;
+    animation: fadeDown 1s ease;
+ 
+}
+ 
+/* ===== HEADER RECURSOS ===== */
+.recursos-header {
+    background: linear-gradient(135deg, #ffb3d9 0%, #ff9ac5 100%);
+    padding: 40px;
+    text-align: center;
+    color: white;
+   
+}
+
+.recursos-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 
         /* HERO */
 
