@@ -672,7 +672,27 @@ body {
     color: #333;
     line-height: 1.5;
 }
+/*POR QUE ELEGIR PARENTLY*/
+.titulo-animado {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+}
 
+.titulo-animado::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 3px;
+    background-color: #D94571;
+    transition: width 0.4s ease;
+}
+
+.titulo-animado:hover::after {
+    width: 100%;
+}
 /* NAVBAR */
 .navbar {
   background-color: #FFBDC8 !important;
@@ -817,11 +837,13 @@ body {
 /* FEATURES */
 .feature {
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-color:rgba(233, 30, 99, 0.3) ;
 }
 
 .feature:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+    
 }
 
 /* BOTONES */

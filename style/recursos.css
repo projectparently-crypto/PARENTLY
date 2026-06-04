@@ -353,44 +353,69 @@
 }
 
 /* ===== CONSEJOS GRID ===== */
-.consejos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+.consejos-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    padding:250px;
 }
 
-.consejo-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+.consejo-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    transition:transform .3s ease;
+    
 }
 
-.consejo-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(217, 69, 113, 0.2);
+.consejo-card:hover{
+    transform:translateY(-5px);
+     border:2px solid #D94571;
+    
 }
 
-.consejo-body {
-    padding: 20px;
+.card-img-container{
+    width:100%;
+    height:220px;
+    overflow:hidden;
 }
 
-.consejo-body h4 {
-    color: #D94571;
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 18px;
+.card-img-container img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.consejo-body p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 12px;
+.consejo-body{
+    padding:20px;
+}
+
+.consejo-body h4{
+    margin-bottom:10px;
+    color:#D94571;
+    font-size:1.3rem;
+}
+
+.consejo-body p{
+    color:#666;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.card-item-link{
+    display:inline-block;
+    margin: auto;
+    background:#D94571;
+    color:white;
+    text-decoration:none;
+    padding:10px 15px;
+    border-radius:15px;
+    transition:background .3s;
+}
+
+.card-item-link:hover{
+    background:#b9345a;
 }
 
 /* ===== ETAPAS BUTTONS ===== */

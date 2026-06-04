@@ -128,7 +128,6 @@ $guias = getGuiasParaFamilias(4);
 </div>
 
 <!-- CONSEJOS PARA TI EN EL DÍA A DÍA -->
-<h2 class="section-title">Consejos para ti en el día a día</h2>
 
 <div class="consejos-grid">
   <?php if($consejos && $consejos->num_rows > 0): ?>
@@ -140,7 +139,7 @@ $guias = getGuiasParaFamilias(4);
         <div class="consejo-body">
           <h4><?php echo htmlspecialchars($consejo['titulo']); ?></h4>
           <p><?php echo htmlspecialchars($consejo['descripcion']); ?></p>
-          <a href="consejo-detalle.php?id=<?php echo $consejo['id']; ?>" class="card-item-link">Leer más ➜</a>
+          <a href="consejo-detalle.php?id=<?php echo $consejo['id']; ?>" class="card-item-link">Leer más </a>
         </div>
       </div>
     <?php endwhile; ?>
