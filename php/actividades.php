@@ -12,7 +12,8 @@ session_start();
 
     </style>
 
-    <link rel="stylesheet" href="style/actividades.css">
+
+    <link rel="stylesheet" href="..style/navbar.css">
 
     <link rel="stylesheet" href="../style/actividades.css">
 
@@ -24,20 +25,13 @@ session_start();
 
     <!-- NAVBAR -->
 
-   <nav class="navbar navbar-expand-lg ">
+   <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
 
     <!-- Logo + nombre (izquierda) -->
-    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-<<<<<<< HEAD:actividades.php
-<<<<<<< HEAD
-      <img src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-=======
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
       <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
->>>>>>> 853517ef52fc5d9a2a4876ca1ca38b3c916d1d6c
-=======
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
->>>>>>> fb21b5b2c56e80eba9b92a9df70da20486e26346:php/actividades.php
       Parently
     </a>
 
@@ -56,7 +50,7 @@ session_start();
           <a class="nav-link" href="actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="especialista_perfil.php">Especialistas</a>
+          <a class="nav-link" href="especialistas.php">Especialistas</a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="comunidades.php">Comunidades</a>
@@ -89,7 +83,6 @@ session_start();
 
   </div>
 </nav>
-
 
     <!-- HERO -->
 
