@@ -72,7 +72,7 @@ $guias = getGuias(4);
 <!-- HEADER -->
 <div class="recursos-header">
   <h1>🎓 RECURSOS</h1>
-  <p style="font-size: 18px; margin: 0;">Portal de la Crianza</p>
+  <p>Portal de la Crianza</p>
 </div>
 
 <!-- PORTAL SECTION -->
@@ -95,7 +95,7 @@ $guias = getGuias(4);
     <p>
       <strong>Encontrá contenidos, recursos y herramientas</strong> sobre embarazo, primeros años, etapa escolar y adolescencia.
     </p>
-    <p style="text-align: center; font-style: italic; color: #D94571; margin-top: 25px;">
+    <p>
       <strong>Todo en un solo lugar.</strong>
     </p>
   </div>
@@ -140,7 +140,7 @@ $guias = getGuias(4);
 <!-- ETAPAS -->
 <div class="etapas-section">
   <h3>¿Qué estás buscando?</h3>
-  <p style="color: #D94571; font-size: 16px; margin-bottom: 30px;">Ingresá a la etapa de tu interés:</p>
+  <p>Ingresá a la etapa de tu interés:</p>
   
   <div class="etapas-buttons">
     <?php while($etapa = $etapas->fetch_assoc()): ?>
