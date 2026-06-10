@@ -2,165 +2,7 @@ body {
   background-color: #F5E6D3 !important;
   font-family: Arial, sans-serif;
 }
- 
-/* NAVBAR */
-.navbar {
-  background-color: #FFBDC8;
-  padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
- 
-.navbar-brand {
-  font-weight: bold;
-  font-size: 20px !important;
-  color: #333 !important;
-}
- 
-/* Estilos para perfil en navbar */
-.profile-btn {
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-}
- 
-.avatar-small {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
- 
-.avatar-small:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
-}
- 
-.avatar-link {
-  text-decoration: none;
-}
- 
-.profile-name {
-  color: #8b2a5e !important;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: color 0.3s;
-}
- 
-.profile-name:hover {
-  color: #ff4081 !important;
-}
- 
-.btn-danger {
-  background-color: #D94571 !important;
-  border: none !important;
-}
- 
-.btn-danger:hover {
-  background-color: #e91e63 !important;
-}
- 
-/* CONTENEDOR */
-.nav-container {
-  color: #FFBDC8;
-  display: flex;
-  justify-content: space-between; /* logo izquierda, menú derecha */
-  align-items: center;
-}
- 
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 18px;
-  margin-left: 30px;
-}
- 
-.logo img {
-  width: 35px;
-  margin-right: 10px;
-}
- 
-/* MENÚ */
-.menu {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
- 
-.menu a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-}
- 
-/* HOVER */
-.menu a:hover {
-  color: hsl(340, 63%, 57%);
-}
- 
-.btn.btn-success {
-    background-color: #eb0580; /* rosado fucsia */
-    color: white; /* texto blanco */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
- 
-.btn.btn-success:hover {
-    background-color: #e01284; /* un poco más oscuro al pasar el mouse */
-}
-/* BOTONES */
-.btn {
-    transition: all 0.3s ease !important;
-}
- 
-.btn:hover {
-    transform: scale(1.05);
-}
- 
-/* BOTÓN OUTLINE */
-.btn-outline-success {
-    border: 2px solid #D94571 !important;
-    color: #D94571 !important;
-}
- 
-.btn-outline-success:hover {
-    background-color: #D94571 !important;
-    color: white !important;
-}
- 
-.navbar-nav .nav-link {
-    font-size: 20px;      /* tamaño de letra */
-    font-weight: bold;   /* negrita */
-    color: #ffffff;         /* color normal */
-    transition: 0.3s;
-    padding: 8px 15px;
-    border-radius: 20px;
-}
- 
-/* Cuando pasas el cursor */
-.navbar-nav .nav-link:hover {
-    background-color: #ffffff; /* rosado fucsia */
-    color:#D94571;
-}
- 
-.navbar {
-    background-color: #FFBDC8 !important;
-}
- 
+
 /* TEXTO HERO */
 .position-absolute p {
      justify-content: right;
@@ -183,38 +25,68 @@ body {
     }
  
     /* ── AGE TABS ─────────────────────────────────────── */
-    .age-tabs {
-      background:#F5E6D3;
-      padding: 1.25rem clamp(20px,5vw,60px);
-      border-radius: 30px;
-    }
- 
-    .age-tabs__inner {
-      max-width: 1100px;
-      border-radius: 20px;
-      margin: 0 auto;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
- 
-    .age-tab {
-    background: linear-gradient(135deg, #D94571 0%, #bb1370 100%) !important;
-    padding: 9px 20px;
+  .age-tab{
+    width: 180px;
+    height: 60px;
+    padding: 24px 40px;
+    border-radius: 30em;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    color: var(--teal-dark) !important; /* tu color */
+    background: white;
+
+    box-shadow: 6px 6px 12px #c5c5c5,
+               -6px -6px 12px #ffffff;
+
+    transition: .3s;
+}
+
+.age-tab::before{
+    content: '';
+    width: 0;
+    height: 100%;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* Cambia estos colores por los de Parently */
+    background-image: linear-gradient(
+        to right,
+        #F2747F 0%,
+        #F08A8F 100%
+    );
+
+    transition: .5s ease;
+    z-index: -1;
+}
+
+.age-tab:hover::before{
+    width: 100%;
+}
+
+.age-tab:hover{
+    color: white !important;
+}
+
+.age-tabs__inner{
+    max-width: 1100px;
     border-radius: 20px;
-    font-size: .90rem;
-    font-weight: 700;
-    cursor: pointer;
-    border:#f0e0e6 2px solid var(border);
-    border-color: #e8c5d8;
-    color:#e8325a #e8325a;
-    transition: all .2s;
-    white-space: nowrap;
- 
-    }
- 
-    .age-tab:hover { border-color:#ffffff; color:#ffffff; }
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+    .age-tab:hover { border-color:#ffffff !important; color: #ffffff ; }
     .age-tab.active { background:#bb1370; border-color: #4b082d; color: #eb65af; box-shadow: 0 4px 14px rgba(253, 251, 251, 0.3); }
      /* ── PAGE WRAPPER ─────────────────────────────────── */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,5vw,40px); }
