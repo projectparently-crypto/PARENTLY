@@ -108,7 +108,7 @@
  
         <div class="imagen">
  
-            <img src="../photos/contactanos/familia.png" alt="Familia">
+            <img src="../photos/familia.png" alt="Familia">
  
         </div>
  
@@ -237,7 +237,7 @@
 
             <div class="comentario-footer">
 
-                <img src="../photos/contactanos/osito.png" alt="Osito">
+                <img src="../photos/osito.png" alt="Osito">
 
                 <button type="submit">Enviar comentario</button>
 

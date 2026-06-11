@@ -359,12 +359,15 @@ body{
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    width: 100%;
+  
 }
  
 /* OSITO */
  
 .comentario-footer img{
-    width: 90px;
+    width: 250px ;
+    height: auto ;
 }
  
 /* BOTON */
