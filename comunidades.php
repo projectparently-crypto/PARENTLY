@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comunidades</title>
-<<<<<<< HEAD
-<<<<<<< HEAD:comunidades.php
+
         <link rel="stylesheet" href="style/comunidades.css">
-=======
-=======
+
 
 
 
@@ -17,7 +15,7 @@
         <link rel="stylesheet" href="../style/comunidades.css">
 
         <link rel="stylesheet" href="style/comunidades.css">
->>>>>>> 853517ef52fc5d9a2a4876ca1ca38b3c916d1d6c
+
         <link rel="stylesheet" href="../style/style.css">
 
  
@@ -40,22 +38,7 @@
     <a class="navbar-brand d-flex align-items-center" href="index.php">
 
     <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-
-
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-
-    <a class="navbar-brand d-flex align-items-center" href="comunidades.php">
-
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-
-
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
-
  
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
-    <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
- 
-
       Parently
     </a>
  

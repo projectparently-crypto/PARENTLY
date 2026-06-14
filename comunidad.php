@@ -349,20 +349,14 @@
 <!-- FOOTER -->
 
 <footer class="community-footer">
-<<<<<<< HEAD:comunidad.php
-
     <img
       src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
       alt="Logo"
     >
-
-=======
  
     <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
          alt="Logo">
  
- 
->>>>>>> e2d922b9d56358edaaa0ec6390f928085b7f87fc:php/comunidad.php
     <h3>
       Parently
     </h3>
