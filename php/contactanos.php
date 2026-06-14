@@ -1,4 +1,68 @@
-<?php session_start(); ?>
+<?php
+session_start();
+include("contactanos_conexion.php");
+
+if (isset($_POST["enviar_mensaje"])) {
+
+    if (!isset($_SESSION["usuario_nombre"])) {
+
+        echo "<script>
+            alert('Debes iniciar sesión para enviar mensajes');
+            window.location='login.php';
+        </script>";
+        exit();
+    }
+
+    $nombre = $_POST["nombre"];
+    $email = $_POST["email"];
+    $mensaje = $_POST["mensaje"];
+
+    $sql = "INSERT INTO mensajes (usuario_id, nombre, email, mensaje)
+            VALUES (NULL, '$nombre', '$email', '$mensaje')";
+
+    if(mysqli_query($conn, $sql)){
+
+        echo "<script>
+            alert('Mensaje enviado correctamente');
+            window.location='contactanos.php';
+        </script>";
+        exit();
+    }
+}
+
+if (isset($_POST["enviar_feedback"])) {
+
+    if (!isset($_SESSION["usuario_nombre"])) {
+
+        echo "<script>
+            alert('Debes iniciar sesión para enviar comentarios');
+            window.location='login.php';
+        </script>";
+        exit();
+    }
+
+    $rating = $_POST["rating"];
+    $comentario = $_POST["comentario"];
+
+    $sql = "INSERT INTO feedback (usuario_id, rating, comentario)
+            VALUES (NULL, '$rating', '$comentario')";
+
+    if(mysqli_query($conn, $sql)){
+
+        echo "<script>
+            alert('¡Gracias por tu comentario!');
+            window.location='contactanos.php';
+        </script>";
+        exit();
+
+    } else {
+
+        echo "Error: " . mysqli_error($conn);
+
+    }
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -133,7 +197,7 @@
                 <label>Mensaje</label>
                 <textarea name="mensaje"></textarea>
 
-                <button type="submit">Enviar</button>
+                <button type="submit" name="enviar_mensaje">Enviar</button>
 
             </form>
 
@@ -239,7 +303,7 @@
 
                 <img src="../photos/osito.png" alt="Osito">
 
-                <button type="submit">Enviar comentario</button>
+                <button type="submit" name="enviar_feedback">Enviar comentario</button>
 
             </div>
 
