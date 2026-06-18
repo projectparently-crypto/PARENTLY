@@ -219,8 +219,8 @@
             <a href="php/logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
           </div>
         <?php else: ?>
-          <a href="php/login.php" class="btn btn-outline-success">Iniciar Sesión</a>
-          <a href="php/registro.php" class="btn btn-success">Registrarse</a>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
     </div>
