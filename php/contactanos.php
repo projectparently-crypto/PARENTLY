@@ -233,7 +233,7 @@ if (isset($_POST["enviar_feedback"])) {
             <div class="icono"><i class="bi bi-instagram"></i></div>
             <div>
                 <h3>Instagram</h3>
-                <p>@Parently</p>
+                <p>@Parently.sv</p>
             </div>
 
         </div>
@@ -304,7 +304,8 @@ if (isset($_POST["enviar_feedback"])) {
     </div>
  
 </section>
- 
+
+
 <!-- Bootstrap JS -->
  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
