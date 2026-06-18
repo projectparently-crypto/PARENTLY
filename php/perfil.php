@@ -278,11 +278,50 @@ $inicial = strtoupper(substr($nombre, 0, 1));
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <i class="bi bi-house-fill"></i> Parently
-        </a>
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="index.php">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      Parently
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav mx-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link" href="recursos.php">Recursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="actividades.php">Actividades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="especialistas.php">Especialistas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="comunidades.php">Comunidades</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contactanos.php">Contactanos</a>
+        </li>
+      </ul>
+      <div class="d-flex gap-2 align-items-center">
+        <?php if (isset($_SESSION["usuario_nombre"])): ?>
+          <div class="profile-btn d-flex align-items-center gap-2">
+            <a href="php/perfil.php" class="avatar-link">
+              <div class="avatar-small">
+                <?php echo strtoupper(substr($_SESSION["usuario_nombre"], 0, 1)); ?>
+              </div>
+            </a>
+            <a href="php/perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
+            <a href="php/logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+          </div>
+        <?php else: ?>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="registro.php" class="btn btn-success">Registrarse</a>
+        <?php endif; ?>
+      </div>
     </div>
+  </div>
 </nav>
 
 <!-- CONTENEDOR PERFIL -->
