@@ -1,3 +1,4 @@
+
 body {
   background-color: #F5E6D3 !important;
   font-family: Arial, sans-serif;
@@ -842,8 +843,24 @@ body {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   display: block;
+  border-radius: 25px;
+  overflow: hidden;
+  
 }
- 
+.forum-banner {
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.foro-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
+  display: block;
+}
  
 /* =========================
    CONTENIDO DEL FORO

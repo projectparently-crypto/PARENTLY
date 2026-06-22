@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- CSS -->
+      <link rel="stylesheet" href="../style/navbar.css">
       <link rel="stylesheet" href="../style/comunidades.css">
 
 </head>
@@ -109,12 +110,7 @@
         </div>
 
         <!-- IMAGEN -->
-        <img
-          src="img/comunidades.jpg"
-          alt="Banner"
-          class="forum-banner-img"
-        >
-
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Gente_en_Iquitos.JPG" class="foro-img"> 
     </div>
 
 
