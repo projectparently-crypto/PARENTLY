@@ -7,6 +7,8 @@ $specialist = null;
 $reviewMessage = "";
 $reviewError = "";
 
+$conn->query("ALTER TABLE especialistas ADD COLUMN IF NOT EXISTS lugar_graduacion VARCHAR(180) NULL AFTER descripcion");
+
 $conn->query("CREATE TABLE IF NOT EXISTS especialista_resenas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     especialista_id INT NOT NULL,
@@ -26,14 +28,14 @@ $conn->query("CREATE TABLE IF NOT EXISTS especialista_resenas (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
 if ($id > 0) {
-    $stmt = $conn->prepare("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas WHERE id = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT id, nombre, apellido, especialidad, descripcion, lugar_graduacion, telefono, email, foto FROM especialistas WHERE id = ? LIMIT 1");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $specialist = $stmt->get_result()->fetch_assoc();
 }
 
 if (!$specialist) {
-    $result = $conn->query("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas ORDER BY id ASC LIMIT 1");
+    $result = $conn->query("SELECT id, nombre, apellido, especialidad, descripcion, lugar_graduacion, telefono, email, foto FROM especialistas ORDER BY id ASC LIMIT 1");
     $specialist = $result ? $result->fetch_assoc() : null;
 }
 
@@ -43,6 +45,14 @@ if (!$specialist) {
 }
 
 $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
+$graduationPlace = trim($specialist["lugar_graduacion"] ?? "");
+$educationTitles = [
+    "psicologos" => "Psicologia",
+    "pediatras" => "Medicina general",
+    "terapeutas" => "Terapia familiar",
+    "educadores" => "Educacion inicial",
+];
+$educationTitle = $educationTitles[$specialist["especialidad"]] ?? $specialist["especialidad"];
 $showReviewsTab = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["crear_resena"])) {
@@ -109,7 +119,7 @@ if (count($reviews) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($specialistName); ?> - Parently</title>
     <link rel="stylesheet" href="../style/homepage.css">
-    <link rel="stylesheet" href="../style/especialistas.css">
+    <link rel="stylesheet" href="../style/especialistas.css?v=education">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -150,10 +160,10 @@ if (count($reviews) > 0) {
               </div>
             </a>
             <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
-            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesi&oacute;n</a>
           </div>
         <?php else: ?>
-          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesi&oacute;n</a>
           <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
@@ -193,9 +203,11 @@ if (count($reviews) > 0) {
 
             <div class="profile-info-grid">
                 <article class="education-card profile-view <?php echo !$showReviewsTab ? "active" : ""; ?>" data-profile-panel="education">
-                    <h2>Estudio</h2>
-                    <strong><?php echo htmlspecialchars(strtoupper($specialist["especialidad"])); ?></strong>
-                    <p><?php echo htmlspecialchars($specialist["descripcion"] ?? ""); ?></p>
+                    <h2>Educaci&oacute;n</h2>
+                    <div class="education-entry">
+                        <strong><?php echo htmlspecialchars(strtoupper($educationTitle)); ?></strong>
+                        <p><?php echo htmlspecialchars($graduationPlace !== "" ? $graduationPlace : "Lugar de graduacion no registrado"); ?></p>
+                    </div>
                 </article>
 
                 <aside class="reviews-panel profile-view <?php echo $showReviewsTab ? "active" : ""; ?>" id="resenas" data-profile-panel="reviews" aria-label="Resenas del especialista">
@@ -267,9 +279,42 @@ if (count($reviews) > 0) {
     </section>
 </main>
 
-<footer class="specialist-footer">
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
-    <strong>Parently</strong>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+    </div>
+    <div class="footer-content">
+      <h2>Cont&aacute;ctanos:</h2>
+      <div class="footer-links">
+        <div class="footer-column">
+          <p>
+            <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram:
+            </a>
+          </p>
+          <p>
+            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
+              <i class="bi bi-whatsapp"></i> WhatsApp:
+            </a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <p>
+            <a href="mailto:tucorreo@gmail.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo:
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook:
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -295,6 +340,7 @@ profileTabs.forEach((tab) => {
 
 if (window.location.hash === '#resenas' || new URLSearchParams(window.location.search).has('resena')) {
     showProfilePanel('reviews');
+
 }
 </script>
 </body>

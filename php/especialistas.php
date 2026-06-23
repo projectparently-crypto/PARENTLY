@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once "db.php";
 
@@ -16,7 +16,7 @@ if ($result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Especialistas - Parently</title>
     <link rel="stylesheet" href="../style/navbar.css">
-    <link rel="stylesheet" href="../style/especialistas.css">
+    <link rel="stylesheet" href="../style/especialistas.css?v=footer">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -58,10 +58,10 @@ if ($result) {
               </div>
             </a>
             <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
-            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesi&oacute;n</a>
           </div>
         <?php else: ?>
-          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesi&oacute;n</a>
           <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
@@ -117,9 +117,42 @@ if ($result) {
     </section>
 </main>
 
-<footer class="specialist-footer">
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
-    <strong>Parently</strong>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+    </div>
+    <div class="footer-content">
+      <h2>Cont&aacute;ctanos:</h2>
+      <div class="footer-links">
+        <div class="footer-column">
+          <p>
+            <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram:
+            </a>
+          </p>
+          <p>
+            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
+              <i class="bi bi-whatsapp"></i> WhatsApp:
+            </a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <p>
+            <a href="mailto:tucorreo@gmail.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo:
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook:
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
