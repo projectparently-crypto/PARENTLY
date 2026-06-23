@@ -23,6 +23,6 @@ if(!$resultado){
     <link rel="stylesheet" href="../style/actividades.css">
     
 <body>
-
 </body>
 </html>
+

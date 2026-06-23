@@ -24,6 +24,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  animation: specialistZoomIn 1s ease forwards;
 }
 
 .specialists-hero::before {
@@ -94,6 +95,7 @@
   justify-content: space-between;
   box-shadow: 0 8px 18px rgba(217, 69, 113, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  animation: specialistFloatUp 1s ease forwards;
 }
 
 .specialty-filter img {
@@ -126,6 +128,7 @@
   text-align: center;
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
   transition: transform 0.25s ease, opacity 0.2s ease;
+  animation: specialistFloatUp 1s ease forwards;
 }
 
 .specialist-card:hover {
@@ -283,6 +286,7 @@
   font-size: clamp(54px, 10vw, 96px);
   font-weight: 800;
   font-style: italic;
+  animation: specialistZoomIn 1s ease forwards;
 }
 
 .profile-brand img {
@@ -305,6 +309,7 @@
   min-height: 420px;
   padding: 118px 24px 28px;
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
+  animation: specialistFloatLeft 1s ease forwards;
 }
 
 .profile-photo {
@@ -365,6 +370,66 @@
 
 .profile-main-info {
   padding-top: 12px;
+  animation: specialistFloatRight 1s ease forwards;
+}
+
+@keyframes specialistFloatUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes specialistFloatLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes specialistFloatRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes specialistZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .specialists-hero,
+  .specialty-filter,
+  .specialist-card,
+  .profile-brand,
+  .profile-contact-card,
+  .profile-main-info {
+    animation: none;
+  }
 }
 
 .profile-actions {
