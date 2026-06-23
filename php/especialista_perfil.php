@@ -15,8 +15,15 @@ $conn->query("CREATE TABLE IF NOT EXISTS especialista_resenas (
     puntuacion TINYINT NOT NULL,
     comentario TEXT NOT NULL,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX (especialista_id)
-)");
+    INDEX idx_resenas_especialista_fecha (especialista_id, fecha_creacion),
+    INDEX idx_resenas_usuario (usuario_id),
+    CONSTRAINT fk_resenas_especialista
+        FOREIGN KEY (especialista_id) REFERENCES especialistas(id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_resenas_usuario
+        FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+        ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
 if ($id > 0) {
     $stmt = $conn->prepare("SELECT id, nombre, apellido, especialidad, descripcion, telefono, email, foto FROM especialistas WHERE id = ? LIMIT 1");
@@ -76,7 +83,12 @@ if (isset($_GET["resena"]) && $_GET["resena"] === "ok") {
 
 $reviews = [];
 $averageRating = 0;
-$stmt = $conn->prepare("SELECT nombre_usuario, puntuacion, comentario, fecha_creacion FROM especialista_resenas WHERE especialista_id = ? ORDER BY fecha_creacion DESC");
+$stmt = $conn->prepare("
+    SELECT nombre_usuario, puntuacion, comentario, fecha_creacion
+    FROM especialista_resenas
+    WHERE especialista_id = ?
+    ORDER BY fecha_creacion DESC
+");
 $stmt->bind_param("i", $specialist["id"]);
 $stmt->execute();
 $reviewsResult = $stmt->get_result();
@@ -181,7 +193,7 @@ if (count($reviews) > 0) {
 
             <div class="profile-info-grid">
                 <article class="education-card profile-view <?php echo !$showReviewsTab ? "active" : ""; ?>" data-profile-panel="education">
-                    <h2>Descripcion</h2>
+                    <h2>Estudio</h2>
                     <strong><?php echo htmlspecialchars(strtoupper($specialist["especialidad"])); ?></strong>
                     <p><?php echo htmlspecialchars($specialist["descripcion"] ?? ""); ?></p>
                 </article>

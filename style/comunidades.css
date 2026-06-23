@@ -1,3 +1,4 @@
+
 body {
   background-color: #F5E6D3 !important;
   font-family: Arial, sans-serif;
@@ -30,7 +31,7 @@ body {
     height: 60px;
     padding: 24px 40px;
     border: 3px solid;
-    border-color: #FAC16D;
+    border-color: #FDC473;
     border-radius: 30em;
     font-size: 18px;
     font-weight: 600;
@@ -63,8 +64,8 @@ body {
     /* Cambia estos colores por los de Parently */
     background-image: linear-gradient(
         to right,
-        #FAC16D 0%,
-        #ffea76 100%
+        #f3ea6a 0%,
+        #F2B872 100%
     );
 
     transition: .5s ease;
@@ -797,29 +798,7 @@ body {
     margin: 0;
 }
  
- 
- 
-/* FOOTER */
- 
-.community-footer{
-    background: #E75480;
- 
-    margin-top: 70px;
- 
-    padding: 35px;
- 
-    text-align: center;
-}
- 
-.community-footer img{
-    width: 80px;
-}
- 
-.community-footer h3{
-    color: white;
- 
-    margin-top: 10px;
-}
+
  
  
  
@@ -842,8 +821,24 @@ body {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   display: block;
+  border-radius: 25px;
+  overflow: hidden;
+  
 }
- 
+.forum-banner {
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 20px;
+}
+
+.foro-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
+  display: block;
+}
  
 /* =========================
    CONTENIDO DEL FORO
@@ -1097,4 +1092,313 @@ body {
   color: white;
   border: none;
   padding: 8px 18px;
+}
+
+/* ==========================================
+   PREGUNTAS
+========================================== */
+
+.pregunta-item{
+     background: #ffffff;
+    border-radius: 18px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    border: 1px solid #f0f0f0;
+
+}
+
+.pregunta-user{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:12px;
+
+}
+
+.avatar{
+    width: 30px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 2.20rem;
+}
+
+.pregunta-user-name{
+    font-size: .92rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.pregunta-user-time{
+    font-size: .75rem;
+    color: #999;
+}
+
+.pregunta-text{
+    color:#555;
+    line-height:1.7;
+    margin:15px 0;
+    font-size:.95rem;
+}
+
+/* ==========================================
+   BOTÓN RESPONDER
+========================================== */
+
+.btn-responder{
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 26px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #FC7885;
+  transition: all 0.2s ease;
+}
+
+.btn-responder:active {
+  transform: scale(0.96);
+}
+
+.btn-responder:hover{
+    opacity:.9;
+}
+
+.btn-responder:before,
+.btn-responder:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.btn-responder:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #FC7885 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #FDC473 20%, transparent 30%),
+    radial-gradient(circle, #FC7885 20%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #FC7885 15%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, #FC7885 20%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, #FC7885 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.btn-responder:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #FC7885 20%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #FDC473 15%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, #FC7885 20%, transparent 20%),
+    radial-gradient(circle, #FDC473 20%, transparent 20%),
+    radial-gradient(circle, #FC7885 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+/* ==========================================
+   RESPUESTAS
+========================================== */
+
+.respuesta-card{
+    background:#F8EDF3;
+    border-left:4px solid #FC7885;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.respuesta-label{
+    font-size:.75rem;
+    font-weight:700;
+    color:#FC7885;
+    margin-bottom:10px;
+    text-transform:uppercase;
+}
+
+.respuesta-text{
+    color:#555;
+    line-height:1.6;
+    font-size:.9rem;
+}
+.respuesta-likes{
+    margin-top: 10px;
+    font-size: .75rem;
+    color: #D96A8B;
+    font-weight: 600;
+}
+
+/* ==========================================
+   FORMULARIO RESPONDER
+========================================== */
+
+.form-respuesta{
+    margin-top:15px;
+}
+
+.form-respuesta textarea{
+    width:100%;
+    min-height:80px;
+    border:1px solid #FC7885;
+    border-radius:30px;
+    padding:42px;
+    resize: horizontal ;
+}
+
+.form-respuesta textarea:focus{
+    outline:none;
+    border-color:#FC7885;
+}
+/* ==========================================
+   HACER PREGUNTA
+========================================== */
+
+.pregunta-titulo{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pregunta-texto{
+    color: #777;
+    margin-bottom: 18px;
+}
+
+.pregunta-textarea{
+    width: 100%;
+    height: 140px;
+    border: none;
+    background: #F7F7F7;
+    border-radius: 14px;
+    padding: 15px;
+    resize: none;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+.pregunta-textarea:focus{
+    outline: none;
+}
+
+.pregunta-btn{
+    width: 100%;
+    border: none;
+    background: #FC7885;
+    color: white;
+    padding: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.pregunta-btn:hover{
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   POPULARES
+========================================== */
+
+.preguntas-populares{
+    margin-top: 20px;
+}
+
+.preguntas-titulo{
+    font-size: .8rem;
+    font-weight: bold;
+    color: #FC7885;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.preguntas-lista{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.pregunta-link{
+    text-decoration: none;
+    color: #444;
+    transition: .3s;
+    line-height: 1.5;
+}
+
+.pregunta-link:hover{
+    color: #D9B4C7;
+}
+
+.pregunta-punto{
+    color: #FC7885;
+    margin-right: 6px;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width: 992px){
+
+    .preguntas-layout{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+.card-item {
+  transition: all 0.25s ease;
 }
