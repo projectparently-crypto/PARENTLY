@@ -1,5 +1,7 @@
-
-<?php session_start(); ?>
+<?php
+session_start();
+$busqueda = $_GET['busqueda'] ?? '';
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -14,6 +16,7 @@
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,6 +25,94 @@
       <link rel="stylesheet" href="../style/navbar.css">
       <link rel="stylesheet" href="../style/comunidades.css">
 
+      <style>
+    .footer {
+    background-color: #efb3c2;
+    padding: 30px 50px;
+    margin-top: 10px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: 80px;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding-left: 40px;
+}
+
+/* TÍTULO */
+.footer-content h2 {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* COLUMNAS */
+.footer-link{
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+ 
+  transition: all 0.3s ease;
+}
+
+/* EFECTO AL PASAR EL CURSOR */
+.footer-link:hover{
+  color: #d85999;
+  transform: translateX(8px) scale(1.05);
+  text-shadow: 0 0 8px rgba(255, 51, 187, 0.7);
+}
+
+.footer-link i{
+  transition: transform 0.3s ease;
+}
+
+.footer-link:hover i{
+  transform: rotate(10deg) scale(1.2);
+}
+
+.footer-links {
+    display: flex;
+    gap: 80px;
+}
+
+/* TEXTO */
+.footer-column p {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+ 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ICONOS */
+.footer-column i {
+    font-size: 28px;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* HOVER */
+.footer-column p:hover i {
+    transform: scale(1.2);
+    color: #D94571;
+}
+
+.footer-logo img {
+    width: 200px;
+    height: auto;
+}
+
+}
+</style>
 </head>
 
 <body>
@@ -91,26 +182,13 @@
 
     <div class="forum-banner">
 
-        <!-- BUSCADOR -->
-        <div class="forum-search">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Gente_en_Iquitos.JPG" class="foro-img">
 
-            <input
-              type="text"
-              placeholder="Ingresa el nombre del foro"
-            >
+      <form class="forum-search">
+        <input type="text" name="busqueda" placeholder="Buscar foro">
+        <button type="submit">Buscar</button>
+      </form>
 
-            <button>
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                Buscar
-
-            </button>
-
-        </div>
-
-        <!-- IMAGEN -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Gente_en_Iquitos.JPG" class="foro-img"> 
     </div>
 
 
@@ -127,7 +205,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=1"
-               class="community-card">
+               class="community-card card-item">
 
                 <i class="fa-solid fa-graduation-cap"></i>
 
@@ -144,7 +222,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=2"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-solid fa-bed"></i>
 
@@ -161,7 +239,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=3"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-solid fa-utensils"></i>
 
@@ -178,7 +256,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=4"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-regular fa-face-smile"></i>
 
@@ -195,7 +273,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=5"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-regular fa-heart"></i>
 
@@ -212,7 +290,7 @@
         <div class="col-md-4 col-6">
 
             <a href="foro.php?id=6"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-solid fa-brain"></i>
 
@@ -229,7 +307,7 @@
         <div class="col-md-6 col-6">
 
             <a href="foro.php?id=7"
-               class="community-card">
+                class="community-card card-item">
 
                 <i class="fa-solid fa-book-open"></i>
 
@@ -246,7 +324,7 @@
         <div class="col-md-6 col-6">
 
             <a href="foro.php?id=8"
-               class="community-card">
+               class="community-card card-item"
 
                 <i class="fa-solid fa-heart-pulse"></i>
 
@@ -260,31 +338,84 @@
 
 </section>
 
-
-
-
-
 <!-- FOOTER -->
-
-<footer class="community-footer">
-
-    <img
-      src="img/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
-      alt="Logo"
-    >
-
-    <h3>
-      Parently
-    </h3>
-
+ <!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+    </div>
+    <div class="footer-content">
+      <h2>Contáctanos:</h2>
+      <div class="footer-links">
+        <div class="footer-column">
+          <p>
+            <a href="https://www.instagram.com/parently_team" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram
+            </a>
+          </p>
+          <p>
+            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <p>
+            <a href="mailto:contacto@parently.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/parently" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 
-
-
-
-
 <!-- BOOTSTRAP -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const input = document.querySelector('input[name="busqueda"]');
+  const cards = document.querySelectorAll('.community-card');
+  const noResults = document.createElement("p");
+
+  noResults.id = "no-results";
+  noResults.style.textAlign = "center";
+  noResults.style.marginTop = "20px";
+  noResults.style.display = "none";
+  noResults.innerText = "No se encontraron resultados";
+
+  document.querySelector(".row").after(noResults);
+
+  input.addEventListener("input", function () {
+
+    const val = this.value.toLowerCase();
+    let visible = 0;
+
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+
+      if (text.includes(val)) {
+        card.closest(".col-md-4, .col-md-6").style.display = "";
+        visible++;
+      } else {
+        card.closest(".col-md-4, .col-md-6").style.display = "none";
+      }
+    });
+
+    noResults.style.display = visible === 0 ? "block" : "none";
+  });
+
+});
+</script>
 
 
 </body>

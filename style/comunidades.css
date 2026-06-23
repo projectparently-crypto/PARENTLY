@@ -798,29 +798,7 @@ body {
     margin: 0;
 }
  
- 
- 
-/* FOOTER */
- 
-.community-footer{
-    background: #E75480;
- 
-    margin-top: 70px;
- 
-    padding: 35px;
- 
-    text-align: center;
-}
- 
-.community-footer img{
-    width: 80px;
-}
- 
-.community-footer h3{
-    color: white;
- 
-    margin-top: 10px;
-}
+
  
  
  
@@ -1419,4 +1397,8 @@ body {
         grid-template-columns: 1fr;
     }
 
+}
+
+.card-item {
+  transition: all 0.25s ease;
 }
