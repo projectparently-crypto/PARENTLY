@@ -298,10 +298,48 @@ if (isset($_POST["enviar_feedback"])) {
     </div>
  
     <div class="seguridad">
-        🤍 Tu información es segura con nosotros
+         Tu información es segura con nosotros
     </div>
  
 </section>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+    </div>
+    <div class="footer-content">
+      <h2>Contáctanos:</h2>
+      <div class="footer-links">
+        <div class="footer-column">
+          <p>
+            <a href="https://www.instagram.com/parently_team" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram
+            </a>
+          </p>
+          <p>
+            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <p>
+            <a href="mailto:contacto@parently.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/parently" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
 <!-- Bootstrap JS -->

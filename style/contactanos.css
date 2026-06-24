@@ -10,7 +10,7 @@
 ========================= */
  
 body{
-    background-color: #f5e8d9;
+   background-color: #F5E6D3 !important;
     margin: 0;
     padding: 0;
 }
@@ -20,17 +20,67 @@ body{
 ========================= */
 /* NAVBAR */
 .navbar {
-  background-color: #FFBDC8;
+  background-color: #FFBDC8 !important;
   padding: 15px 30px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* CONTENEDOR */
-.nav-container {
-  color: #FFBDC8;
-  display: flex;
-  justify-content: space-between; /* logo izquierda, menú derecha */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 20px !important;
+  color: #333 !important;
+}
+
+/* Estilos para perfil en navbar */
+.profile-btn {
+  display: flex !important;
   align-items: center;
+  gap: 10px;
+}
+
+.avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.avatar-small:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+}
+
+.avatar-link {
+  text-decoration: none;
+}
+
+.profile-name {
+  color: #8b2a5e !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.profile-name:hover {
+  color: #ff4081 !important;
+}
+
+.btn-danger {
+  background-color: #D94571 !important;
+  border: none !important;
+}
+
+.btn-danger:hover {
+  background-color: #e91e63 !important;
 }
 
 /* LOGO */
@@ -66,8 +116,8 @@ body{
 }
 
 .btn.btn-success {
-    background-color: #eb0580; /* rosado fucsia */
-    color: white; /* texto blanco */
+    background-color: #D94571 !important;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
@@ -77,13 +127,14 @@ body{
 }
 
 .btn.btn-success:hover {
-    background-color: #e01284; /* un poco más oscuro al pasar el mouse */
+    background-color: #e91e63 !important;
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
 }
 
 .navbar-nav .nav-link {
-    font-size: 20px;      /* tamaño de letra */
-    font-weight: bold;   /* negrita */
-    color: #ffffff;         /* color normal */
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff !important;
     transition: 0.3s;
     padding: 8px 15px;
     border-radius: 20px;
@@ -91,14 +142,10 @@ body{
 
 /* Cuando pasas el cursor */
 .navbar-nav .nav-link:hover {
-    background-color: #ffffff; /* rosado fucsia */
-    color:#D94571;
+    background-color: #ffffff;
+    color: #D94571 !important;
 }
 
-.navbar {
-    background-color: #FFBDC8 !important;
-}
- 
 /* =========================
    CONTACTO
 ========================= */
@@ -391,6 +438,87 @@ body{
     font-size: 22px;
     font-weight: bold;
     color: black;
+}
+
+.footer {
+    background-color: #efb3c2;
+    padding: 30px 50px;
+    margin-top: 10px;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* TÍTULO */
+.footer-content h2 {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* COLUMNAS */
+.footer-links {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #d85999;
+  transform: translateX(8px) scale(1.05);
+  text-shadow: 0 0 8px rgba(255, 51, 187, 0.7);
+}
+
+.footer-link i {
+  transition: transform 0.3s ease;
+}
+
+.footer-link:hover i {
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* TEXTO */
+.footer-column p {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ICONOS */
+.footer-column i {
+    font-size: 28px;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* HOVER */
+.footer-column p:hover i {
+    transform: scale(1.2);
+    color: #D94571;
+}
+
+.footer-logo img {
+    width: 200px;
+    height: auto;
 }
  
 /* =========================
