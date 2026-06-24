@@ -24,6 +24,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  animation: specialistZoomIn 1s ease forwards;
 }
 
 .specialists-hero::before {
@@ -94,6 +95,7 @@
   justify-content: space-between;
   box-shadow: 0 8px 18px rgba(217, 69, 113, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  animation: specialistFloatUp 1s ease forwards;
 }
 
 .specialty-filter img {
@@ -126,6 +128,7 @@
   text-align: center;
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
   transition: transform 0.25s ease, opacity 0.2s ease;
+  animation: specialistFloatUp 1s ease forwards;
 }
 
 .specialist-card:hover {
@@ -183,22 +186,93 @@
   text-decoration: none;
 }
 
-.specialist-footer {
-  background: #e9487d;
-  min-height: 78px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: #fff;
-  font-size: clamp(28px, 5vw, 46px);
-  line-height: 1;
+/* ===== FOOTER ===== */
+.specialists-page .footer,
+.specialist-profile-page .footer {
+  background-color: #efb3c2;
+  padding: 30px 50px;
+  margin-top: 10px;
 }
 
-.specialist-footer img {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
+.specialists-page .footer-container,
+.specialist-profile-page .footer-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  padding-left: 40px;
+}
+
+.specialists-page .footer-content h2,
+.specialist-profile-page .footer-content h2 {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.specialists-page .footer-link,
+.specialist-profile-page .footer-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.specialists-page .footer-link:hover,
+.specialist-profile-page .footer-link:hover {
+  color: #d85999;
+  transform: translateX(8px) scale(1.05);
+  text-shadow: 0 0 8px rgba(255, 51, 187, 0.7);
+}
+
+.specialists-page .footer-link i,
+.specialist-profile-page .footer-link i {
+  transition: transform 0.3s ease;
+}
+
+.specialists-page .footer-link:hover i,
+.specialist-profile-page .footer-link:hover i {
+  transform: rotate(10deg) scale(1.2);
+}
+
+.specialists-page .footer-links,
+.specialist-profile-page .footer-links {
+  display: flex;
+  gap: 80px;
+}
+
+.specialists-page .footer-column p,
+.specialist-profile-page .footer-column p {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.specialists-page .footer-column i,
+.specialist-profile-page .footer-column i {
+  font-size: 28px;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.specialists-page .footer-column p:hover i,
+.specialist-profile-page .footer-column p:hover i {
+  transform: scale(1.2);
+  color: #D94571;
+}
+
+.specialists-page .footer-logo img,
+.specialist-profile-page .footer-logo img {
+  width: 200px;
+  height: auto;
 }
 
 .profile-brand {
@@ -212,6 +286,7 @@
   font-size: clamp(54px, 10vw, 96px);
   font-weight: 800;
   font-style: italic;
+  animation: specialistZoomIn 1s ease forwards;
 }
 
 .profile-brand img {
@@ -234,6 +309,7 @@
   min-height: 420px;
   padding: 118px 24px 28px;
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
+  animation: specialistFloatLeft 1s ease forwards;
 }
 
 .profile-photo {
@@ -294,6 +370,66 @@
 
 .profile-main-info {
   padding-top: 12px;
+  animation: specialistFloatRight 1s ease forwards;
+}
+
+@keyframes specialistFloatUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes specialistFloatLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes specialistFloatRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes specialistZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .specialists-hero,
+  .specialty-filter,
+  .specialist-card,
+  .profile-brand,
+  .profile-contact-card,
+  .profile-main-info {
+    animation: none;
+  }
 }
 
 .profile-actions {
@@ -340,7 +476,7 @@
 .education-card {
   background: #f4cfc9;
   border-radius: 6px;
-  padding: 28px 26px;
+  padding: 28px 22px;
   min-height: 170px;
 }
 
@@ -352,25 +488,38 @@
   text-transform: uppercase;
 }
 
+.education-entry {
+  position: relative;
+  padding-left: 18px;
+}
+
+.education-entry::before {
+  content: "";
+  width: 1px;
+  min-height: 48px;
+  background: rgba(185, 77, 88, 0.45);
+  position: absolute;
+  left: 6px;
+  top: 13px;
+}
+
+.education-entry::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #b95a63;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 .education-card strong {
   display: block;
-  position: relative;
   color: #1d1d1d;
   font-size: 13px;
   font-weight: 900;
-  padding-left: 18px;
   margin-bottom: 8px;
-}
-
-.education-card strong::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #e9487d;
-  position: absolute;
-  left: 0;
-  top: 4px;
 }
 
 .education-card p {
@@ -606,6 +755,34 @@
     padding-right: 10px;
   }
 
+  .footer {
+    padding: 28px 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .footer-content h2 {
+    font-size: 32px;
+  }
+
+  .footer-links {
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .footer-column p {
+    font-size: 18px;
+  }
+
+  .footer-logo img {
+    width: 160px;
+  }
+
   .specialists-hero,
   .specialists-hero img {
     min-height: 260px;
@@ -800,13 +977,16 @@
     font-size: 18px;
   }
 
-  .specialist-footer {
-    min-height: 58px;
-    font-size: 26px;
+  .footer-links {
+    flex-direction: column;
+    gap: 0;
   }
 
-  .specialist-footer img {
-    width: 44px;
-    height: 44px;
+  .footer-content h2 {
+    font-size: 28px;
+  }
+
+  .footer-column p {
+    justify-content: center;
   }
 }

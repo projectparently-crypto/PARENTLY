@@ -27,7 +27,7 @@ $resultado = mysqli_query($conexion, $sql);
     <div class="container-fluid">
 
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+            <img src="/parently/photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
             Parently
         </a>
 
@@ -40,23 +40,23 @@ $resultado = mysqli_query($conexion, $sql);
             <ul class="navbar-nav mx-auto gap-2">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="recursos.php">Recursos</a>
+                    <a class="nav-link" href="../php/recursos.php">Recursos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="actividades.php">Actividades</a>
+                    <a class="nav-link" href="../php/actividades.php">Actividades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="especialistas.php">Especialistas</a>
+                    <a class="nav-link" href="../php/especialistas.php">Especialistas</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="comunidades.php">Comunidades</a>
+                    <a class="nav-link" href="../php/comunidades.php">Comunidades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contactanos.php">Contactanos</a>
+                    <a class="nav-link" href="../php/contactanos.php">Contactanos</a>
                 </li>
 
             </ul>
@@ -145,7 +145,7 @@ $resultado = mysqli_query($conexion, $sql);
     <div class="card">
 
         <img
-            src="../photos/<?php echo htmlspecialchars($actividad['imagen']); ?>"
+            src="/parently/photos/<?php echo htmlspecialchars($actividad['imagen']); ?>"
             alt="<?php echo htmlspecialchars($actividad['nombre_actividad']); ?>"
         >
 
@@ -171,7 +171,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 <footer class="specialist-footer">
 
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png">
+    <img src="/parently/photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png">
 
     <strong>Parently</strong>
 

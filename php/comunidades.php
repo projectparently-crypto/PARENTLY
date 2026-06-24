@@ -10,8 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
 </head>
 <body>
    <!-- NAVBAR -->
@@ -159,110 +157,117 @@
     <?php } ?>
     
 <!-- ── PREGUNTAS ──────────────────────────────────────── -->
-<section class="preguntas-section" id="preguntas">
-  <div class="page">
-    <div class="section-header" style="margin-bottom:2rem;">
-      <div class="section-title">
-        <small>Comunidad</small>
-        Preguntas
-      </div>
-      <a href="#" class="btn-link">Ver todas </a>
+ <!-- Hacer una pregunta -->
+ 
+<?php
+
+include("conexion.php");
+
+$sql = "SELECT *
+        FROM preguntasc
+        ORDER BY fecha DESC
+        LIMIT 1";
+
+$resultado = mysqli_query($conexion, $sql);
+
+while($fila = mysqli_fetch_assoc($resultado)){
+
+?>
+
+<div class="pregunta-item">
+
+    <div class="pregunta-user">
+
+        <div class="avatar">
+            <i class="bi bi-person-circle"></i>
+        </div>
+
+        <div>
+
+            <div class="pregunta-user-name">
+                Usuario
+            </div>
+
+            <div class="pregunta-user-time">
+                <?php echo $fila['fecha']; ?>
+            </div>
+
+        </div>
+
     </div>
- 
-    <div class="preguntas-layout">
-      <!-- Pregunta con respuesta -->
-      <div class="pregunta-card">
-        <div class="pregunta-card__header">
-          <span style="font-size:1.2rem;">❓</span>
-          <span class="pregunta-card__header-title">Resuelve tus dudas</span>
+
+    <p class="pregunta-text">
+        "<?php echo $fila['pregunta']; ?>"
+    </p>
+
+    <form
+        action="guardar_respuesta.php"
+        method="POST">
+
+        <input
+            type="hidden"
+            name="id_pregunta"
+            value="<?php echo $fila['id_pregunta']; ?>">
+
+        <textarea
+            name="respuesta"
+            placeholder="Escribe una respuesta..."
+            required>
+        </textarea>
+
+        <br><br>
+
+        <button
+            type="submit"
+            class="btn-responder">
+            Responder
+        </button>
+
+    </form>
+
+<?php
+
+$id = $fila['id_pregunta'];
+
+$sqlRes = "SELECT *
+           FROM respuestasc
+           WHERE id_pregunta = $id
+           ORDER BY fecha ASC
+           LIMIT 2";
+
+$respuestas = mysqli_query(
+    $conexion,
+    $sqlRes
+);
+
+while($respuesta = mysqli_fetch_assoc($respuestas)){
+
+?>
+
+    <div class="respuesta-card">
+
+        <div class="respuesta-label">
+            RESPUESTA
         </div>
- 
-        <div class="pregunta-item">
-          <div class="pregunta-user">
-            <div class="avatar" style="background:linear-gradient(135deg,#FF8FAB,var(--rose));">PG</div>
-            <div>
-              <div class="pregunta-user-name">Paula Gutiérrez</div>
-              <div class="pregunta-user-time">hace 2 horas</div>
-            </div>
-          </div>
-          <p class="pregunta-text">"¿A qué edad debería empezar a enseñarle a mi hija sobre el dinero?"</p>
-          <button class="btn-responder">Responder</button>
- 
-          <div class="respuesta-card">
-            <div class="respuesta-label">Respuestas</div>
-            <div class="pregunta-user" style="margin-bottom:8px;">
-              <div class="avatar" style="width:30px;height:30px;font-size:.72rem;background:linear-gradient(135deg,#FFB74D,var(--amber));">AR</div>
-              <div>
-                <div class="pregunta-user-name" style="font-size:.8rem;">Ana Rodríguez</div>
-              </div>
-            </div>
-            <p class="respuesta-text">En mi caso empecé como a los 5 años, pero con algo básico. Le daba una pequeña cantidad a la semana y lo explicaba que si gastaba todo de una vez, ya no iba a tener después. Al inicio no lo entendía mucho 😅, pero con el tiempo empezó a ahorrar para comprarse cosas que quería.</p>
-            <div class="respuesta-likes">❤ 12 me gusta</div>
-          </div>
-        </div>
- 
-        <div class="pregunta-item">
-          <div class="pregunta-user">
-            <div class="avatar" style="background:linear-gradient(135deg,#80CBC4,var(--teal));">ML</div>
-            <div>
-              <div class="pregunta-user-name">Marco López</div>
-              <div class="pregunta-user-time">hace 5 horas</div>
-            </div>
-          </div>
-          <p class="pregunta-text">"Mi hijo de 4 años tiene rabietas constantes en el supermercado, ¿qué hago?"</p>
-          <button class="btn-responder">Responder</button>
-        </div>
-      </div>
- 
-      <!-- Hacer una pregunta -->
-        <div class="pregunta-card">
- 
-            <div class="pregunta-titulo">
-                ¿Tienes una pregunta?
-            </div>
- 
-            <div class="pregunta-texto">
-                La comunidad está aquí para ayudarte
-            </div>
- 
-            <textarea class="pregunta-textarea"
-                placeholder="Escribe tu pregunta aquí..."></textarea>
- 
-            <button class="btn-rose pregunta-btn">
-                Publicar pregunta
-            </button>
- 
-        </div>
- 
-        <div class="preguntas-populares">
- 
-    <div class="preguntas-titulo">
-        Preguntas populares
+
+        <p class="respuesta-text">
+            <?php echo $respuesta['respuesta']; ?>
+        </p>
+
     </div>
- 
-    <div class="preguntas-lista">
- 
-        <a href="#" class="pregunta-link">
-            <span class="pregunta-punto">●</span>
-            ¿Cómo manejar los berrinches sin perder la calma?
-        </a>
- 
-        <a href="#" class="pregunta-link">
-            <span class="pregunta-punto">●</span>
-            ¿Cuántas horas de pantalla son aceptables a los 6 años?
-        </a>
- 
-        <a href="#" class="pregunta-link">
-            <span class="pregunta-punto">●</span>
-            Mi hijo no quiere ir a la escuela, ¿qué puedo hacer?
-        </a>
- 
-    </div>
- 
+
+<?php
+
+}
+
+?>
+
 </div>
-      </div>
-    </div>
-  </div>
-</section>
+
+<?php
+
+}
+
+?>
 </body>
 </html>

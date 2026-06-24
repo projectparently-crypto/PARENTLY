@@ -73,11 +73,7 @@ $guias = getGuiasParaFamilias(4);
    </div>
 </nav>
  
-<!-- HEADER -->
-<div class="recursos-header">
-  <h1>🎓 RECURSOS</h1>
-  <p>Portal de la Crianza</p>
-</div>
+
 
 <!-- PORTAL SECTION -->
 <div class="portal-section">
@@ -109,22 +105,29 @@ $guias = getGuiasParaFamilias(4);
 <h2 class="section-title">Lo más visto del mes</h2>
 
 <div class="cards-grid">
-  <?php if($recursosMasVistos && $recursosMasVistos->num_rows > 0): ?>
+<?php if($recursosMasVistos && $recursosMasVistos->num_rows > 0): ?>
     <?php while($recurso = $recursosMasVistos->fetch_assoc()): ?>
-      <div class="card-item">
-        <div class="card-img-container">
-          <img src="<?php echo htmlspecialchars($recurso['imagen']); ?>" alt="<?php echo htmlspecialchars($recurso['titulo']); ?>">
+        <div class="card-item">
+            <div class="card-img-container">
+                <img src="<?php echo htmlspecialchars($recurso['imagen']); ?>" alt="<?php echo htmlspecialchars($recurso['titulo']); ?>">
+            </div>
+
+            <div class="card-item-body">
+                <h3><?php echo htmlspecialchars($recurso['titulo']); ?></h3>
+
+                <p>
+                    <?php echo substr(htmlspecialchars($recurso['descripcion']),0,100).'...'; ?>
+                </p>
+
+                <a href="recurso-detalle.php?id=<?php echo $recurso['id']; ?>" class="card-item-link">
+                    Seguir leyendo aquí ➜
+                </a>
+            </div>
         </div>
-        <div class="card-item-body">
-          <h3><?php echo htmlspecialchars($recurso['titulo']); ?></h3>
-          <p><?php echo substr(htmlspecialchars($recurso['descripcion']), 0, 100) . '...'; ?></p>
-          <a href="recurso-detalle.php?id=<?php echo $recurso['id']; ?>" class="card-item-link">Seguir leyendo aquí ➜</a>
-        </div>
-      </div>
     <?php endwhile; ?>
-  <?php else: ?>
+<?php else: ?>
     <p class="text-center">No hay recursos disponibles</p>
-  <?php endif; ?>
+<?php endif; ?>
 </div>
 
 <!-- CONSEJOS PARA TI EN EL DÍA A DÍA -->

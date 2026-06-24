@@ -1,3 +1,5 @@
+
+
 /* NAVBAR */
 .navbar {
   background-color: #FFBDC8 !important;
@@ -124,4 +126,36 @@
 .navbar-nav .nav-link:hover {
     background-color: #ffffff;
     color: #D94571 !important;
+}
+
+.btn-outline-success{
+    border: 2px solid #D94571 !important;
+    color: #D94571 !important;
+    background: white !important;
+}
+
+.btn-outline-success:hover{
+    background: #D94571 !important;
+    color: white !important;
+}
+
+.btn-success{
+    background: #D94571 !important;
+    border-color: #D94571 !important;
+}
+
+.btn-success:hover{
+    background: #c73660 !important;
+    border-color: #c73660 !important;
+}
+
+.btn-outline-success{
+    border-color: #D94571 !important;
+    color: #D94571 !important;
+}
+
+.btn-outline-success:hover{
+    background-color: #D94571 !important;
+    border-color: #D94571 !important;
+    color: white !important;
 }
