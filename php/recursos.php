@@ -73,11 +73,7 @@ $guias = getGuiasParaFamilias(4);
    </div>
 </nav>
  
-<!-- HEADER -->
-<div class="recursos-header">
-  <h1>🎓 RECURSOS</h1>
-  <p>Portal de la Crianza</p>
-</div>
+
 
 <!-- PORTAL SECTION -->
 <div class="portal-section">

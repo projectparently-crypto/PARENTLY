@@ -1,14 +1,22 @@
 <?php
 
 include("conexion.php");
-include("../actividades1.php");
+include("../contenido_actividades.php");
 
-$sql = "SELECT * FROM actividades ORDER BY id ASC";
+$id = isset($_GET['id']) ? intval($_GET['id']) : 1;
+
+$sql = "SELECT * FROM descripcion_actividades WHERE id = $id";
 
 $resultado = mysqli_query($conexion, $sql);
 
 if(!$resultado){
     die("Error en la consulta: " . mysqli_error($conexion));
+}
+
+$actividad = mysqli_fetch_assoc($resultado);
+
+if(!$actividad){
+    die("Actividad no encontrada");
 }
 
 ?>
@@ -20,8 +28,9 @@ if(!$resultado){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <link rel="stylesheet" href="../style/actividades.css">
+    <link rel="stylesheet" href="../style/contenido_actividades.css">
     
 <body>
 </body>
 </html>
+

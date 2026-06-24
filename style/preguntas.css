@@ -24,7 +24,7 @@
     min-height: 100vh;
   }
 
-  
+
  /* ───────── HERO ───────── */
   .hero {
     background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
@@ -87,3 +87,5 @@
     position: relative;
   }
   .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,168,83,0.4); }
+
+  

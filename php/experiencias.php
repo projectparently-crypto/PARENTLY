@@ -64,4 +64,114 @@
   <h1>Un lugar para compartir lo que <span>la vida nos enseña</span></h1>
   <p>Aquí cada historia importa. Comparte tus experiencias, aprende de los demás y encuentra personas que entienden tu camino.</p>
 </header>
+
+<?php
+
+include("conexion.php");
+
+$sql = "SELECT * FROM categorias_experiencias ORDER BY id_categoria";
+$resultado = mysqli_query($conexion, $sql);
+
+$contador = 0;
+?>
+
+<div class="filtros">
+
+<?php while($categoria = mysqli_fetch_assoc($resultado)){ ?>
+
+    <?php if($contador < 4){ ?>
+
+        <button class="btn-categoria">
+            <?php echo $categoria['nombre']; ?>
+        </button>
+
+    <?php } ?>
+
+<?php $contador++; ?>
+
+<?php } ?>
+
+<button id="btnVerTodas" class="btn-categoria">
+    Ver todas ▼
+</button>
+
+</div>
+
+<?php
+
+$sql2 = "SELECT * FROM categorias_experiencias ORDER BY id_categoria";
+$resultado2 = mysqli_query($conexion, $sql2);
+
+$contador = 0;
+
+?>
+
+<div id="categoriasOcultas" class="categorias-ocultas">
+
+<?php while($categoria = mysqli_fetch_assoc($resultado2)){ ?>
+
+    <?php if($contador >= 4){ ?>
+
+        <button class="btn-categoria">
+            <?php echo $categoria['nombre']; ?>
+        </button>
+
+    <?php } ?>
+
+<?php $contador++; ?>
+
+<?php } ?>
+
+</div>
+
+
+<div class="compartir-card">
+
+    <h3>🖍 Compartir experiencia</h3>
+
+    <form action="guardar_experiencia.php" method="POST">
+
+        <input
+            type="text"
+            name="titulo"
+            placeholder="¿Cuál es el título de tu historia?"
+            required
+        >
+
+        <select name="id_categoria" required>
+
+            <option value="">
+                Elige una categoría...
+            </option>
+
+            <?php
+            $sql = "SELECT * FROM categorias_experiencias";
+            $categorias = mysqli_query($conexion,$sql);
+
+            while($cat = mysqli_fetch_assoc($categorias)){
+            ?>
+
+            <option
+                value="<?php echo $cat['id_categoria']; ?>">
+                <?php echo $cat['nombre']; ?>
+            </option>
+
+            <?php } ?>
+
+        </select>
+
+        <textarea
+            name="contenido"
+            rows="6"
+            placeholder="Cuéntanos tu historia con tus propias palabras..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            🌟 Publicar mi experiencia
+        </button>
+
+    </form>
+
+</div>
 </body>
