@@ -31,6 +31,6 @@ if(!$actividad){
     <link rel="stylesheet" href="../style/contenido_actividades.css">
     
 <body>
-
 </body>
 </html>
+
