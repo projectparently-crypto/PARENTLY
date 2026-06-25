@@ -66,13 +66,11 @@ body {
     /* Cambia estos colores por los de Parently */
     background-image: linear-gradient(
         to right,
-<<<<<<< HEAD
         #ffcf86 0%,
         #FAC16D 100%
-=======
         #FDC473 0%,
         #FDC473 100%
->>>>>>> 06fb42ee96e8fad87b0e6265b1a2bdd80cc83a6d
+
     );
 
     transition: .5s ease;
@@ -1679,7 +1677,7 @@ body {
 
 }
 
-<<<<<<< HEAD
+
 .card-item {
   transition: all 0.25s ease;
 }
@@ -1782,7 +1780,7 @@ body {
   padding:10px 20px !important;
   border-radius:10px !important;
 }
-=======
+
 .experiencias{
     width:90%;
     margin: 1px 10px;
@@ -1944,4 +1942,4 @@ body {
     }
 
 }
->>>>>>> 06fb42ee96e8fad87b0e6265b1a2bdd80cc83a6d
+
