@@ -1,201 +1,7 @@
-
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
- 
-        body {
-            background-color: #F5E6D3 !important;
-            font-family: Arial, sans-serif;
-        }
- 
-/* NAVBAR */
-.navbar {
-  background-color: #FFBDC8;
-  padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
- 
-.navbar-brand {
-  font-weight: bold;
-  font-size: 20px !important;
-  color: #333 !important;
-}
- 
-/* Estilos para perfil en navbar */
-.profile-btn {
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-}
- 
-.avatar-small {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ff6fa5 0%, #ff4081 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
- 
-.avatar-small:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
-}
- 
-.avatar-link {
-  text-decoration: none;
-}
- 
-.profile-name {
-  color: #8b2a5e !important;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-  transition: color 0.3s;
-}
- 
-.profile-name:hover {
-  color: #ff4081 !important;
-}
- 
-.btn-danger {
-  background-color: #D94571 !important;
-  border: none !important;
-}
- 
-.btn-danger:hover {
-  background-color: #e91e63 !important;
-}
- 
-/* CONTENEDOR */
-.nav-container {
-  color: #FFBDC8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
- 
-/* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 18px;
-  margin-left: 30px;
-}
- 
-.logo img {
-  width: 35px;
-  margin-right: 10px;
-}
- 
-/* MENÚ */
-.menu {
-  display: flex;
-  list-style: none;
-  gap: 25px;
-}
- 
-.menu a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-}
- 
-/* HOVER */
-.menu a:hover {
-  color: hsl(340, 63%, 57%);
-}
- 
-.btn.btn-success {
-    background-color: #eb0580;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-}
- 
-.btn.btn-success:hover {
-    background-color: #e01284;
-}
-
-/* BOTONES */
-.btn {
-    transition: all 0.3s ease !important;
-}
- 
-.btn:hover {
-    transform: scale(1.05);
-}
- 
-/* BOTÓN OUTLINE */
-.btn-outline-success {
-    border: 2px solid #D94571 !important;
-    color: #D94571 !important;
-}
- 
-.btn-outline-success:hover {
-    background-color: #D94571 !important;
-    color: white !important;
-}
- 
-.navbar-nav .nav-link {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff !important;
-    transition: 0.3s;
-    padding: 8px 15px;
-    border-radius: 20px;
-}
- 
-/* Cuando pasas el cursor */
-.navbar-nav .nav-link:hover {
-    background-color: #ffffff;
-    color:#D94571;
-}
- 
-.navbar {
-    background-color: #FFBDC8 !important;
-}
- 
-/* TEXTO HERO */
-.position-absolute p {
-     justify-content: right;
-    animation: fadeDown 1s ease;
- 
-}
- 
-/* ===== HEADER RECURSOS ===== */
-.recursos-header {
-    background: linear-gradient(135deg, #ffb3d9 0%, #ff9ac5 100%);
-    padding: 40px;
-    text-align: center;
-    color: white;
-   
-}
-
-.recursos-header h1 {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* ===== PORTAL SECTION - CON IMAGEN DE FONDO ===== */
+/* ==================== SECCIÓN "¿QUÉ ESTÁS BUSCANDO?" ==================== */
 .portal-section {
     position: relative;
-    height: 500px;
-    background: linear-gradient(135deg, rgba(217, 69, 113, 0.7) 0%, rgba(232, 50, 90, 0.7) 100%);
+    min-height: 420px;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -203,443 +9,159 @@
     justify-content: center;
     color: white;
     text-align: center;
-    margin: 40px 0;
+    margin: 20px 12px;
     border-radius: 20px;
     overflow: hidden;
-}
-
-.portal-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('../photos/familia.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-}
-
-.portal-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2;
 }
 
 .portal-content {
     position: relative;
     z-index: 3;
-    max-width: 800px;
-    padding: 60px 40px;
+    max-width: 100%;
+    padding: 35px 15px;
+    width: 100%;
 }
 
 .portal-content h2 {
-    font-size: 56px;
-    font-weight: 900;
-    margin-bottom: 20px;
+    font-size: 2.1rem;
     line-height: 1.1;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.portal-content h2 span {
-    color: #FFADAD;
-    display: block;
-}
-
-.portal-content p {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-    font-weight: 500;
-}
-
-.portal-content strong {
-    color: #fff;
-    font-weight: bold;
-}
-
-.portal-image {
-    display: none;
-}
-
-/* ===== SECTION TITLE ===== */
-.section-title {
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    color: #D94571;
-    margin: 60px 0 40px;
-    padding: 0 20px;
-}
-
-/* ===== LO MÁS VISTO ===== */
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.card-item {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.card-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(217, 69, 113, 0.2);
-}
-
-.card-img-container {
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(135deg, #ffb3d9, #ff9ac5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    color: white;
-    overflow: hidden;
-}
-
-.card-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-item-body {
-    padding: 25px;
-}
-
-.card-item-body h3 {
-    color: #D94571;
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 12px;
 }
 
-.card-item-body p {
-    font-size: 15px;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 15px;
+.portal-content p {
+    font-size: 1.05rem;
 }
 
-.card-item-link {
-    color: #D94571;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.card-item-link:hover {
-    color: #ff4081;
-    text-decoration: underline;
-}
-
-/* ===== CONSEJOS GRID ===== */
-
-.section-title {
-    text-align: center;
-    font-size: 40px;
-    font-weight: bold;
-    color: #D94571;
-    margin: 60px 0 5px;
-    padding: 0 10px;
-}
-
-.consejos-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-    padding:220px;
-}
-
-.consejo-card{
-    background:#fff;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,.1);
-    transition:transform .3s ease;
-    
-}
-
-.consejo-card:hover{
-    transform:translateY(-5px);
-     border:2px solid #D94571;
-    
-}
-
-.card-img-container{
-    width:100%;
-    height:180px;
-    overflow:hidden;
-}
-
-.card-img-container img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.consejo-body{
-    padding:20px;
-}
-
-.consejo-body h4{
-    margin-bottom:10px;
-    color:#D94571;
-    font-size:1.3rem;
-}
-
-.consejo-body p{
-    color:#666;
-    line-height:1.6;
-    margin-bottom:15px;
-}
-
-.card-item-link{
-    display:inline-block;
-    margin: auto;
-    background:#D94571;
-    color:white;
-    text-decoration:none;
-    padding:10px 15px;
-    border-radius:15px;
-    transition:background .3s;
-}
-
-.card-item-link:hover{
-    background:#b9345a;
-}
-
-/* ===== ETAPAS BUTTONS ===== */
-.etapas-section {
-    text-align: center;
-    padding: 40px;
-    background: rgba(255, 179, 217, 0.1);
-    border-radius: 20px;
-    margin: 40px auto;
-    max-width: 1200px;
-}
-
-.etapas-section h3 {
-    color: #D94571;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
+/* Tarjetas de etapas (lo más importante para tu captura) */
 .etapas-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 10px 5px;
+    width: 100%;
+    max-width: 100%;
 }
 
 .etapa-btn {
-    padding: 20px 30px;
-    background: linear-gradient(135deg, #ff6fa5, #ff4081);
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    padding: 15px 10px;
+    border-radius: 18px;
+    font-size: 15px;
+    min-height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
 }
 
-.etapa-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 25px rgba(255, 64, 129, 0.3);
-}
-
-.etapa-icon {
-    font-size: 40px;
-}
-
-/* ===== GUÍAS SECTION ===== */
-.guias-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 25px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.guia-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: 3px solid transparent;
-}
-
-.guia-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(217, 69, 113, 0.2);
-    border-color: #D94571;
-}
-
-.guia-body {
-    padding: 20px;
-}
-
-.guia-body h5 {
-    color: #D94571;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.guia-body p {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 10px;
-}
-
-/* ===== FOOTER ===== */
-
+/* ==================== FOOTER ==================== */
 .footer {
     background-color: #efb3c2;
-    padding: 30px 50px;
-    margin-top: 10px;
+    padding: 45px 15px 30px;
+    margin-top: 30px;
+    color: white;
 }
 
 .footer-container {
+    max-width: 100%;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin-right: 80px;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    padding-left: 40px;
+    text-align: center;
+    gap: 30px;
 }
 
-/* TÍTULO */
+.footer-logo img {
+    width: 130px;
+}
+
 .footer-content h2 {
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* COLUMNAS */
-.footer-link{
-  color: white;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
- 
-  transition: all 0.3s ease;
-}
-
-/* EFECTO AL PASAR EL CURSOR */
-.footer-link:hover{
-  color: #d85999;
-  transform: translateX(8px) scale(1.05);
-  text-shadow: 0 0 8px rgba(255, 51, 187, 0.7);
-}
-
-.footer-link i{
-  transition: transform 0.3s ease;
-}
-
-.footer-link:hover i{
-  transform: rotate(10deg) scale(1.2);
+    font-size: 1.65rem;
+    margin-bottom: 18px;
 }
 
 .footer-links {
     display: flex;
-    gap: 80px;
-}
-
-/* TEXTO */
-.footer-column p {
-    color: white;
-    font-size: 20px;
-    margin-bottom: 15px;
- 
-    display: flex;
+    flex-direction: column;
+    gap: 16px;
     align-items: center;
-    gap: 12px;
+    width: 100%;
 }
 
-/* ICONOS */
-.footer-column i {
-    font-size: 28px;
-    color: white;
-    transition: 0.3s ease;
+.footer-link {
+    font-size: 1.05rem;
+    justify-content: center;
+    width: 100%;
+    max-width: 280px;
 }
 
-/* HOVER */
-.footer-column p:hover i {
-    transform: scale(1.2);
-    color: #D94571;
-}
+/* ==================== RESPONSIVE - MÁS AGRESIVO PARA MÓVIL ==================== */
 
-.footer-logo img {
-    width: 200px;
-    height: auto;
-}
-
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .portal-section {
-        height: 350px;
-    }
-
-    .portal-content {
-        padding: 40px 20px;
-    }
-
     .portal-content h2 {
-        font-size: 36px;
-    }
-
-    .portal-content p {
-        font-size: 14px;
-    }
-
-    .recursos-header h1 {
-        font-size: 32px;
-    }
-
-    .section-title {
-        font-size: 28px;
-        margin: 40px 0 30px;
-    }
-
-    .cards-grid, .consejos-grid, .guias-grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 20px;
+        font-size: 1.85rem;
     }
 
     .etapas-buttons {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+        gap: 12px;
+        padding: 8px;
+    }
+
+    .etapa-btn {
+        font-size: 14.5px;
+        padding: 14px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portal-section {
+        margin: 15px 10px;
+        min-height: 380px;
+    }
+
+    .portal-content {
+        padding: 30px 12px;
+    }
+
+    .portal-content h2 {
+        font-size: 1.7rem;
+    }
+
+    .etapas-buttons {
+        gap: 10px;
+    }
+
+    .footer {
+        padding: 40px 12px 25px;
+    }
+
+    .footer-logo img {
+        width: 115px;
+    }
+
+    .footer-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .portal-content h2 {
+        font-size: 1.55rem;
+    }
+
+    .etapa-btn {
+        min-height: 145px;
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 35px 10px 20px;
+    }
+
+    .footer-logo img {
+        width: 100px;
     }
 }
