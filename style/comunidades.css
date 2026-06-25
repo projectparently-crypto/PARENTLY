@@ -809,11 +809,267 @@ body {
  
 /* RESPONSIVE */
  
+/* =====================================
+   RESPONSIVE FINAL
+===================================== */
+
 @media(max-width:768px){
- 
-    .community-grid{
-        grid-template-columns: repeat(2,1fr);
+
+
+    body{
+        overflow-x:hidden;
     }
+
+
+    /* HERO */
+    .hero-text{
+        left:20px;
+        bottom:30px;
+        max-width:90%;
+        align-items:flex-start;
+    }
+
+
+    .title{
+        font-size:45px;
+    }
+
+
+    .subtitle{
+        font-size:20px;
+    }
+
+
+
+    /* EDADES */
+    .age-tabs__inner{
+        padding:15px;
+        gap:15px;
+    }
+
+
+    .age-tab{
+        width:140px;
+        height:50px;
+        font-size:15px;
+    }
+
+
+
+    /* SECCIONES */
+    .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+
+
+    /* FOROS */
+    .banner-conversaciones{
+        flex-direction:column;
+        text-align:center;
+        padding:20px;
+    }
+
+
+    .banner-conversaciones__left{
+        flex-direction:column;
+    }
+
+
+
+    .foros-grid{
+        grid-template-columns:1fr;
+    }
+
+
+
+    .community-grid{
+        grid-template-columns:1fr;
+    }
+
+
+    .forum-banner{
+        margin:10px;
+    }
+
+
+    .foro-img{
+        height:250px;
+    }
+
+
+
+    /* INFORMACION FORO */
+
+    .info-foro{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+
+    .info-left h1{
+        font-size:28px;
+    }
+
+
+    .info-right{
+        width:100%;
+        justify-content:space-between;
+    }
+
+
+
+    /* TABS */
+
+    .tabs{
+        width:95%;
+        overflow-x:auto;
+        justify-content:flex-start;
+        gap:10px;
+    }
+
+
+
+    /* DESTACADO */
+
+    .destacado{
+        flex-direction:column;
+        gap:20px;
+        align-items:flex-start;
+    }
+
+
+
+    /* COMENTAR */
+
+    .coment-box{
+        flex-direction:column;
+    }
+
+
+    .coment-box button{
+        width:100%;
+    }
+
+
+
+
+    /* PREGUNTAS */
+
+    .preguntas-layout{
+        grid-template-columns:1fr;
+    }
+
+
+    .pregunta-item{
+        height:auto;
+    }
+
+
+    .pregunta-card{
+        padding:15px;
+    }
+
+
+
+
+    /* EXPERIENCIAS */
+
+    .experiencias{
+        width:100%;
+        margin:0;
+    }
+
+
+    .card-experiencia{
+        width:100%;
+        padding:20px;
+    }
+
+
+    .header-exp{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+
+    .titulo{
+        font-size:24px;
+    }
+
+
+    .contenido{
+        font-size:16px;
+    }
+
+
+
+    .acciones{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+
+    .acciones a{
+        margin-left:0;
+    }
+
+
+
+}
+
+
+
+/* CELULARES PEQUEÑOS */
+
+@media(max-width:480px){
+
+
+    .title{
+        font-size:35px;
+    }
+
+
+    .subtitle{
+        font-size:18px;
+    }
+
+
+    .age-tab{
+        width:120px;
+    }
+
+
+    .forum-search{
+        width:95%;
+    }
+
+
+    .forum-search button{
+        padding:0 15px;
+    }
+
+
+    .card-img-container{
+        height:150px;
+    }
+
+
+    .usuario{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+
+    .avatar{
+        width:50px;
+        height:50px;
+    }
+
+
 }
  
 /* =========================

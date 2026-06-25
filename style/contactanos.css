@@ -522,45 +522,6 @@ body{
 }
  
 /* =========================
-   RESPONSIVE
-========================= */
- 
-@media(max-width: 900px){
- 
-    .contacto{
-        padding: 20px;
-    }
- 
-    .comentarios{
-        margin: 20px;
-    }
- 
-    .contacto-header{
-        flex-direction: column;
-        text-align: center;
-    }
- 
-    .contenedor-contacto{
-        flex-direction: column;
-    }
- 
-    .formulario,
-    .info-contacto{
-        width: 100%;
-    }
- 
-    .comentario-footer{
-        flex-direction: column;
-        gap: 15px;
-    }
- 
-    .comentario-footer button{
-        width: 100%;
-    }
- 
-}
- 
-/* =========================
    ESTRELLAS RATING
 ========================= */
 
@@ -712,3 +673,120 @@ body{
         transform: scale(1);
     }
 }
+
+
+html,body{
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+ 
+@media(max-width:900px){
+
+    body{
+        overflow-x:hidden;
+        width:100%;
+    }
+
+
+    .navbar{
+        width:100%;
+        padding:15px;
+    }
+
+
+    .contacto{
+        width:100%;
+        padding:15px;
+    }
+
+
+    .contacto-header{
+        width:100%;
+        flex-direction:column;
+        text-align:center;
+        padding:20px;
+    }
+
+
+    .imagen img{
+        width:220px;
+        height:auto;
+    }
+
+
+    .contenedor-contacto{
+        width:100%;
+        flex-direction:column;
+    }
+
+
+    .formulario,
+    .info-contacto{
+        width:100%;
+    }
+
+
+    .comentarios{
+        margin:20px 15px;
+        width:auto;
+    }
+
+
+    .comentario-footer{
+        flex-direction:column;
+    }
+
+
+    .comentario-footer img{
+        width:180px;
+    }
+
+    .footer{
+    padding: 30px 15px;
+    width: 100%;
+   }
+
+
+    .footer-container{
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    gap: 25px;
+    }
+
+    .footer-content h2{
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .footer-links{
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .footer-link{
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    .footer-column p{
+        font-size: 16px;
+        justify-content: center;
+    }
+
+    .footer-column i{
+        font-size: 22px;
+    }
+
+    .footer-logo img{
+        width: 140px;
+    }
+
+}
+
