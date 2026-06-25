@@ -4,6 +4,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+
 /* TEXTO HERO */
 .position-absolute p {
      justify-content: right;
@@ -124,16 +126,19 @@ body {
     }
  
     .btn-link {
-      font-size: .82rem;
-      font-weight: 700;
-      color: var(--rose);
+      background: #fff;
+      color: #FAC16D;
+      font-size: 1.10rem;
+      font-weight: 800;
+      padding: 9px 22px;
+      border: 2px solid;
+      border-color: #FAC16D;
+      border-radius: 20px;
       text-decoration: none;
-      border: 2px solid var(--rose);
-      padding: 7px 18px;
-      border-radius: var(--r-xl);
       transition: all .2s;
       white-space: nowrap;
-    }
+      box-shadow: 0 4px 14px rgba(0,0,0,.1);
+     }
  
     .btn-link:hover { background: var(--rose); color: #fff; }
  
@@ -1101,7 +1106,9 @@ body {
 .pregunta-item{
      background: #ffffff;
     border-radius: 18px;
-    padding: 10px;
+    padding: 14px 16px 16px; 
+    width: 100%;
+    height: 490px;
     margin-bottom: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,.08);
     border: 1px solid #f0f0f0;
@@ -1255,7 +1262,7 @@ body {
     background:#F8EDF3;
     border-left:4px solid #FC7885;
     border-radius:12px;
-    padding:15px;
+    padding:5px;
     margin-top:15px;
 }
 
@@ -1292,7 +1299,7 @@ body {
     min-height:80px;
     border:1px solid #FC7885;
     border-radius:30px;
-    padding:42px;
+    padding:10px;
     resize: horizontal ;
 }
 
@@ -1399,6 +1406,110 @@ body {
 
 }
 
-.card-item {
-  transition: all 0.25s ease;
+.experiencias{
+    width:90%;
+    margin: 1px 10px;
+    padding:5px;
 }
+
+.card-experiencia{
+    background:#fff;
+    border-radius:20px;
+    height: 100%;
+    width: 120%;
+    padding:40px;
+    margin-bottom:30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.header-exp{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#000000;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.usuario h3{
+    margin:0;
+    color:#333;
+}
+
+.usuario span{
+    color:#888;
+    font-size:14px;
+}
+
+.categoria{
+    background:#E5EFE8;
+    color:#5B7A62;
+    padding:8px 15px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.titulo{
+    color:#35518A;
+    margin-bottom:15px;
+    font-size:32px;
+}
+
+.contenido{
+    color:#666;
+    line-height:1.8;
+    font-size:20px;
+}
+
+.card-experiencia hr{
+    border:none;
+    border-top:1px solid #eee;
+    margin:25px 0;
+}
+
+.acciones{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.acciones button{
+    border:1px solid #eee;
+    background:#FFF8EE;
+    border-radius:30px;
+    padding:10px 20px;
+    cursor:pointer;
+    color:#666;
+    font-size:15px;
+}
+
+.acciones button strong{
+    margin-left:5px;
+}
+
+.acciones a{
+    margin-left:auto;
+    text-decoration:none;
+    color:#35518A;
+    font-weight:600;
+}
+
