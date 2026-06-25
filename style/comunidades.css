@@ -1157,7 +1157,9 @@ body {
    BOTÓN RESPONDER
 ========================================== */
 
+
 .btn-responder{
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   position: relative;
   padding: 10px 22px;
   border-radius: 26px;
@@ -1259,8 +1261,8 @@ body {
 ========================================== */
 
 .respuesta-card{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background:#F8EDF3;
-    border-left:4px solid #FC7885;
     border-radius:12px;
     padding:5px;
     margin-top:15px;
