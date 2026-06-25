@@ -1,10 +1,11 @@
-<?php session_start(); 
+<?php 
+session_start(); 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'db.php';
-include 'get_recursos.php';
+include 'get_consejos.php';
 
-// Obtener ID del recurso
+// Obtener ID del consejo
 $id = isset($_GET['id']) ? intval($_GET['id']) : null;
 
 if (!$id) {
@@ -12,31 +13,35 @@ if (!$id) {
     exit();
 }
 
-// Obtener recurso completo
-$recurso = getRecursoById($id);
+// Obtener consejo completo de la BD
+$consejo = getConsejoDetalleById($id);
 
-if (!$recurso) {
+if (!$consejo) {
     header("Location: recursos.php");
     exit();
 }
+
+// Obtener otros consejos relacionados (mismo tipo o categoría)
+$consejosRelacionados = getConsejosPorCategoria($consejo['categoria']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($recurso['titulo']); ?> - Parently</title>
+    <title><?php echo htmlspecialchars($consejo['titulo']); ?> - Parently</title>
     <link rel="stylesheet" href="../style/recurso-detalle.css">
+        <link rel="stylesheet" href="../style/navbar.css">
+    <link rel="stylesheet" href="../style/consejo-detalle.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style/navbar.css">
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg navbar-custom">
   <div class="container-fluid">
      <a class="navbar-brand d-flex align-items-center" href="index.php">
      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
@@ -87,9 +92,10 @@ if (!$recurso) {
 <nav aria-label="breadcrumb" class="breadcrumb-section">
   <div class="container">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="../index.php">Inicio</a></li>
+      <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
       <li class="breadcrumb-item"><a href="recursos.php">Recursos</a></li>
-      <li class="breadcrumb-item active"><?php echo htmlspecialchars($recurso['titulo']); ?></li>
+      <li class="breadcrumb-item"><a href="recursos.php">Consejos del día</a></li>
+      <li class="breadcrumb-item active"><?php echo htmlspecialchars(substr($consejo['titulo'], 0, 50)); ?></li>
     </ol>
   </div>
 </nav>
@@ -98,9 +104,9 @@ if (!$recurso) {
 <div class="recurso-header">
   <div class="header-content">
     <div class="header-image">
-      <img src="<?php echo htmlspecialchars($recurso['imagen']); ?>" alt="<?php echo htmlspecialchars($recurso['titulo']); ?>" class="img-fluid">
+      <img src="<?php echo htmlspecialchars($consejo['imagen']); ?>" alt="<?php echo htmlspecialchars($consejo['titulo']); ?>" class="img-fluid">
       <div class="category-badge">
-        <?php echo htmlspecialchars($recurso['categoria']); ?>
+        💡 Consejo del Día
       </div>
     </div>
   </div>
@@ -113,35 +119,57 @@ if (!$recurso) {
     <div class="col-lg-8">
       <!-- TÍTULO Y META INFO -->
       <div class="recurso-header-info">
-        <h1 class="recurso-titulo"><?php echo htmlspecialchars($recurso['titulo']); ?></h1>
+        <div class="categoria-label">
+          <?php echo htmlspecialchars($consejo['categoria']); ?>
+        </div>
+        
+        <h1 class="recurso-titulo"><?php echo htmlspecialchars($consejo['titulo']); ?></h1>
+        
+        <div class="tiempo-lectura">
+          <i class="bi bi-clock"></i>
+          <span><?php echo intval($consejo['tiempo_lectura']); ?> min de lectura</span>
+        </div>
         
         <div class="recurso-meta">
           <span class="meta-item">
-            <i class="bi bi-tag"></i>
-            <strong>Categoría:</strong> <?php echo htmlspecialchars($recurso['categoria']); ?>
+            <i class="bi bi-calendar"></i>
+            <strong>Publicado:</strong> <?php echo date('d/m/Y', strtotime($consejo['fecha_creacion'])); ?>
           </span>
           <span class="meta-item">
-            <i class="bi bi-calendar"></i>
-            <strong>Fecha:</strong> <?php echo date('d/m/Y', strtotime($recurso['fecha_creacion'])); ?>
+            <i class="bi bi-tag"></i>
+            <strong>Tipo:</strong> <?php echo htmlspecialchars(ucfirst($consejo['tipo_consejo'])); ?>
           </span>
         </div>
       </div>
 
+      <!-- ETAPA RECOMENDADA -->
+      <?php if (!empty($consejo['etapa'])): ?>
+        <div class="etapa-info">
+          <strong><i class="bi bi-info-circle"></i> Recomendado para:</strong>
+          <span><?php echo htmlspecialchars(ucfirst(str_replace('_', ' ', $consejo['etapa']))); ?></span>
+        </div>
+      <?php endif; ?>
+
       <!-- DESCRIPCIÓN CORTA -->
       <div class="recurso-intro">
         <p class="intro-text">
-          <?php echo htmlspecialchars($recurso['descripcion']); ?>
+          <?php echo htmlspecialchars($consejo['descripcion']); ?>
         </p>
       </div>
 
-      <!-- CONTENIDO LARGO -->
+      <!-- CONTENIDO LARGO (CONSEJO COMPLETO) -->
       <div class="recurso-contenido">
-        <h2>Más información</h2>
-        <div class="contenido-body">
-          <?php if (!empty($recurso['contenido_largo'])): ?>
-            <p><?php echo nl2br(htmlspecialchars($recurso['contenido_largo'])); ?></p>
+        <h2>Consejo Completo</h2>
+        <div class="contenido-consejo">
+          <?php if (!empty($consejo['contenido_largo'])): ?>
+            <?php echo nl2br(htmlspecialchars($consejo['contenido_largo'])); ?>
           <?php else: ?>
-            <p>Contenido detallado disponible próximamente.</p>
+            <p>Para obtener más detalles sobre este consejo, te recomendamos:</p>
+            <ul>
+              <li>Consultar con un especialista en desarrollo infantil</li>
+              <li>Visitar nuestra sección de guías para familias</li>
+              <li>Participar en nuestra comunidad de padres</li>
+            </ul>
           <?php endif; ?>
         </div>
       </div>
@@ -150,39 +178,20 @@ if (!$recurso) {
       <div class="recurso-sections">
         <!-- Puntos destacados -->
         <div class="section-box destacados-section">
-          <h3><i class="bi bi-star"></i> Puntos destacados</h3>
+          <h3><i class="bi bi-star"></i> Puntos Clave</h3>
           <ul class="puntos-lista">
-            <li>Información confiable y verificada</li>
-            <li>Diseñado para padres y cuidadores</li>
-            <li>Fácil de entender y aplicar</li>
-            <li>Actualizado periódicamente</li>
+            <li>Consejo basado en evidencia científica</li>
+            <li>Fácil de implementar en tu día a día</li>
+            <li>Adaptable a diferentes edades y situaciones</li>
+            <li>Ayuda a mejorar la relación con tus hijos</li>
           </ul>
         </div>
 
-        <!-- Archivos disponibles -->
+        <!-- Información adicional -->
         <div class="section-box archivos-section">
-          <h3><i class="bi bi-download"></i> Archivos disponibles para descargar</h3>
-          <div class="archivos-grid">
-            <a href="#" class="archivo-card">
-              <div class="archivo-icon">
-                <i class="bi bi-file-pdf"></i>
-              </div>
-              <div class="archivo-info">
-                <p class="archivo-nombre">Guía PDF</p>
-                <p class="archivo-peso">2.4 MB</p>
-              </div>
-              <i class="bi bi-download archivo-btn"></i>
-            </a>
-            <a href="#" class="archivo-card">
-              <div class="archivo-icon">
-                <i class="bi bi-file-word"></i>
-              </div>
-              <div class="archivo-info">
-                <p class="archivo-nombre">Documento Word</p>
-                <p class="archivo-peso">1.8 MB</p>
-              </div>
-              <i class="bi bi-download archivo-btn"></i>
-            </a>
+          <h3><i class="bi bi-lightbulb"></i> ¿Por qué es importante?</h3>
+          <div class="info-text">
+            <p>Este consejo es parte de nuestra misión de acompañarte en cada etapa de la crianza. La información que compartimos está seleccionada cuidadosamente para ayudarte a tomar mejores decisiones y disfrutar más del proceso de criar a tus hijos.</p>
           </div>
         </div>
       </div>
@@ -193,26 +202,35 @@ if (!$recurso) {
       <!-- CAJA DE INFORMACIÓN -->
       <div class="info-sidebar">
         <div class="info-card">
-          <h3>Información del recurso</h3>
+          <h3>📋 Información del Consejo</h3>
           
           <div class="info-item">
-            <span class="info-label">Tipo:</span>
-            <span class="info-value"><?php echo htmlspecialchars($recurso['tipo']); ?></span>
+            <span class="info-label">Tipo de contenido:</span>
+            <span class="info-value">
+              <span class="consejo-tipo-badge consejo-tipo-<?php echo htmlspecialchars($consejo['tipo_consejo']); ?>">
+                <?php echo htmlspecialchars(ucfirst($consejo['tipo_consejo'])); ?>
+              </span>
+            </span>
           </div>
 
           <div class="info-item">
             <span class="info-label">Categoría:</span>
-            <span class="info-value"><?php echo htmlspecialchars($recurso['categoria']); ?></span>
+            <span class="info-value"><?php echo htmlspecialchars($consejo['categoria']); ?></span>
           </div>
 
           <div class="info-item">
             <span class="info-label">Para etapa:</span>
-            <span class="info-value"><?php echo htmlspecialchars($recurso['etapa']); ?></span>
+            <span class="info-value"><?php echo htmlspecialchars(ucfirst(str_replace('_', ' ', $consejo['etapa']))); ?></span>
           </div>
 
           <div class="info-item">
-            <span class="info-label">Publicado:</span>
-            <span class="info-value"><?php echo date('d \d\e F \d\e Y', strtotime($recurso['fecha_creacion'])); ?></span>
+            <span class="info-label">Tiempo de lectura:</span>
+            <span class="info-value"><?php echo intval($consejo['tiempo_lectura']); ?> minutos</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Fecha de publicación:</span>
+            <span class="info-value"><?php echo date('d \d\e F \d\e Y', strtotime($consejo['fecha_creacion'])); ?></span>
           </div>
 
           <button class="btn btn-compartir">
@@ -223,29 +241,42 @@ if (!$recurso) {
         <!-- CAJA DE LLAMADA A ACCIÓN -->
         <div class="cta-card">
           <h3>¿Te fue útil?</h3>
-          <p>Comparte este recurso con otros padres que puedan beneficiarse.</p>
+          <p>Comparte este consejo con otros padres que puedan beneficiarse de esta información.</p>
           <div class="cta-buttons">
-            <button class="btn btn-cta-primary">
+            <button class="btn btn-cta-primary" onclick="alert('¡Gracias por tu me gusta!')">
               <i class="bi bi-heart"></i> Me gusta
             </button>
-            <button class="btn btn-cta-secondary">
+            <button class="btn btn-cta-secondary" onclick="alert('Consejo guardado en tus favoritos')">
               <i class="bi bi-bookmark"></i> Guardar
             </button>
           </div>
         </div>
 
-        <!-- OTROS RECURSOS RELACIONADOS -->
+        <!-- OTROS CONSEJOS RELACIONADOS -->
         <div class="related-resources">
-          <h3>Recursos relacionados</h3>
-          <div class="related-item">
-            <img src="../photos/familia.jpg" alt="Relacionado">
-            <h4>Otro recurso importante</h4>
-            <a href="#">Ver más →</a>
-          </div>
-          <div class="related-item">
-            <img src="../photos/familia.jpg" alt="Relacionado">
-            <h4>Guía complementaria</h4>
-            <a href="#">Ver más →</a>
+          <h3>🔗 Consejos Relacionados</h3>
+          <div class="consejos-relacionados-grid">
+            <?php 
+            $contador = 0;
+            if ($consejosRelacionados && $consejosRelacionados->num_rows > 0): 
+              while($relac = $consejosRelacionados->fetch_assoc()):
+                if ($relac['id'] != $consejo['id'] && $contador < 3):
+            ?>
+              <a href="consejo-detalle.php?id=<?php echo $relac['id']; ?>" class="consejo-relacionado-card">
+                <img src="<?php echo htmlspecialchars($relac['imagen']); ?>" alt="<?php echo htmlspecialchars($relac['titulo']); ?>" class="consejo-relacionado-img">
+                <div class="consejo-relacionado-body">
+                  <h5><?php echo htmlspecialchars(substr($relac['titulo'], 0, 50)); ?></h5>
+                  <a href="consejo-detalle.php?id=<?php echo $relac['id']; ?>" class="consejo-relacionado-link">
+                    Ver más <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+              </a>
+            <?php 
+                  $contador++;
+                endif;
+              endwhile;
+            endif; 
+            ?>
           </div>
         </div>
       </div>
@@ -273,7 +304,7 @@ if (!$recurso) {
       <div class="footer-links">
         <div class="footer-column">
           <p>
-            <a href="https://www.instagram.com/parently_team" class="footer-link">
+            <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
               <i class="bi bi-instagram"></i> Instagram
             </a>
           </p>
