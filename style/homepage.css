@@ -1007,7 +1007,8 @@ body {
 
 .footer {
     background-color: #efb3c2;
-    padding: 30px 50px;
+    text-align: center;
+    padding: 40px 20px;
     margin-top: 10px;
 }
 

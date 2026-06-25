@@ -1,7 +1,9 @@
 <?php
 session_start();
 include("php/conexion.php");
-include("php/actividades1.php");
+
+$sql = "SELECT * FROM actividades ORDER BY id ASC";
+$resultado = mysqli_query($conexion, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@ include("php/actividades1.php");
     <div class="container-fluid">
 
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+            <img src="/parently/photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
             Parently
         </a>
 
@@ -143,7 +145,7 @@ include("php/actividades1.php");
     <div class="card">
 
         <img
-            src="../photos/<?php echo htmlspecialchars($actividad['image']); ?>"
+            src="/parently/photos/<?php echo htmlspecialchars($actividad['image']); ?>"
             alt="<?php echo htmlspecialchars($actividad['activity_name']); ?>"
         >
 
@@ -153,7 +155,7 @@ include("php/actividades1.php");
                 <?php echo htmlspecialchars($actividad['activity_name']); ?>
             </h3>
 
-            <a href=".php">
+            <a href="contenido_actividades.php">
                 <button type="button">Ver más</button>
             </a>
 
@@ -169,7 +171,7 @@ include("php/actividades1.php");
 
 <footer class="specialist-footer">
 
-    <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png">
+    <img src="/parently/photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png">
 
     <strong>Parently</strong>
 

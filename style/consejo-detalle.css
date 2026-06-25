@@ -1,0 +1,293 @@
+/* ==========================================
+   ESTILOS PARA CONSEJO-DETALLE.PHP
+   ========================================== */
+
+/* BADGES Y ETIQUETAS */
+.consejo-tipo-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.consejo-tipo-articulo { 
+    background: #e3f2fd; 
+    color: #1976d2; 
+}
+
+.consejo-tipo-video { 
+    background: #fce4ec; 
+    color: #c2185b; 
+}
+
+.consejo-tipo-tip { 
+    background: #f3e5f5; 
+    color: #7b1fa2; 
+}
+
+.categoria-label {
+    display: inline-block;
+    background: #FFBDC8;
+    color: #D94571;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* TIEMPO DE LECTURA */
+.tiempo-lectura {
+    background: #fff3e0;
+    color: #e65100;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    font-weight: 500;
+    border-left: 4px solid #ff9800;
+}
+
+.tiempo-lectura i {
+    font-size: 1.1rem;
+}
+
+/* INFORMACIÓN DE ETAPA */
+.etapa-info {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 15px 20px;
+    border-left: 4px solid #4caf50;
+    border-radius: 4px;
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.etapa-info i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.etapa-info strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* CONTENIDO DEL CONSEJO */
+.contenido-consejo {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #333;
+    margin: 30px 0;
+}
+
+.contenido-consejo p {
+    margin-bottom: 20px;
+}
+
+.contenido-consejo ul,
+.contenido-consejo ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.contenido-consejo li {
+    margin-bottom: 12px;
+    list-style-position: outside;
+}
+
+/* SECCIÓN DE PUNTOS CLAVE */
+.puntos-lista {
+    list-style: none;
+    padding-left: 0;
+}
+
+.puntos-lista li {
+    padding: 12px 0;
+    padding-left: 35px;
+    position: relative;
+    color: #555;
+    line-height: 1.6;
+}
+
+.puntos-lista li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #4caf50;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* GRID DE CONSEJOS RELACIONADOS */
+.consejos-relacionados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* TARJETA DE CONSEJO RELACIONADO */
+.consejo-relacionado-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+}
+
+.consejo-relacionado-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: #D94571;
+}
+
+/* IMAGEN DEL CONSEJO RELACIONADO */
+.consejo-relacionado-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.consejo-relacionado-card:hover .consejo-relacionado-img {
+    transform: scale(1.05);
+}
+
+/* CUERPO DEL CONSEJO RELACIONADO */
+.consejo-relacionado-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.consejo-relacionado-body h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+/* LINK DE CONSEJO RELACIONADO */
+.consejo-relacionado-link {
+    color: #D94571;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+    margin-top: auto;
+}
+
+.consejo-relacionado-link:hover {
+    color: #b8345a;
+}
+
+.consejo-relacionado-link i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.consejo-relacionado-card:hover .consejo-relacionado-link i {
+    transform: translateX(3px);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .consejos-relacionados-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .consejo-relacionado-img {
+        height: 120px;
+    }
+
+    .contenido-consejo {
+        font-size: 1rem;
+    }
+
+    .tiempo-lectura {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .etapa-info {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .consejos-relacionados-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consejo-tipo-badge {
+        font-size: 0.75rem;
+        padding: 6px 12px;
+    }
+
+    .categoria-label {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+    }
+
+    .tiempo-lectura {
+        font-size: 0.85rem;
+        padding: 7px 10px;
+    }
+
+    .consejo-relacionado-body h5 {
+        font-size: 0.9rem;
+    }
+
+    .consejo-relacionado-link {
+        font-size: 0.85rem;
+    }
+}
+
+/* ANIMACIONES */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.consejo-relacionado-card {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.consejo-relacionado-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.consejo-relacionado-card:nth-child(3) {
+    animation-delay: 0.2s;
+}

@@ -4,6 +4,8 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
+
 /* TEXTO HERO */
 .position-absolute p {
      justify-content: right;
@@ -64,8 +66,13 @@ body {
     /* Cambia estos colores por los de Parently */
     background-image: linear-gradient(
         to right,
+<<<<<<< HEAD
         #ffcf86 0%,
         #FAC16D 100%
+=======
+        #FDC473 0%,
+        #FDC473 100%
+>>>>>>> 06fb42ee96e8fad87b0e6265b1a2bdd80cc83a6d
     );
 
     transition: .5s ease;
@@ -124,16 +131,19 @@ body {
     }
  
     .btn-link {
-      font-size: .82rem;
-      font-weight: 700;
-      color: var(--rose);
+      background: #fff;
+      color: #FAC16D;
+      font-size: 1.10rem;
+      font-weight: 800;
+      padding: 9px 22px;
+      border: 2px solid;
+      border-color: #FAC16D;
+      border-radius: 20px;
       text-decoration: none;
-      border: 2px solid var(--rose);
-      padding: 7px 18px;
-      border-radius: var(--r-xl);
       transition: all .2s;
       white-space: nowrap;
-    }
+      box-shadow: 0 4px 14px rgba(0,0,0,.1);
+     }
  
     .btn-link:hover { background: var(--rose); color: #fff; }
  
@@ -228,7 +238,7 @@ body {
     overflow: hidden;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     cursor: pointer;
-    background-color: rgba(255, 215, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.15);
     border: 1px solid rgba (255, 193, 7, 0.5);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
@@ -268,7 +278,7 @@ body {
  
 /* EFECTO HOVER EN BOTÓN */
 .card .btn:hover {
-    color: rgb(100, 50, 50) !important;
+    color: rgb(255, 255, 255) !important;
     transform: scale(1.05);
 }
  
@@ -1111,7 +1121,9 @@ body {
 .pregunta-item{
      background: #ffffff;
     border-radius: 18px;
-    padding: 10px;
+    padding: 14px 16px 16px; 
+    width: 100%;
+    height: 490px;
     margin-bottom: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,.08);
     border: 1px solid #f0f0f0;
@@ -1160,7 +1172,9 @@ body {
    BOTÓN RESPONDER
 ========================================== */
 
+
 .btn-responder{
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   position: relative;
   padding: 10px 22px;
   border-radius: 26px;
@@ -1262,10 +1276,10 @@ body {
 ========================================== */
 
 .respuesta-card{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background:#F8EDF3;
-    border-left:4px solid #FC7885;
     border-radius:12px;
-    padding:15px;
+    padding:5px;
     margin-top:15px;
 }
 
@@ -1302,7 +1316,7 @@ body {
     min-height:80px;
     border:1px solid #FC7885;
     border-radius:30px;
-    padding:42px;
+    padding:10px;
     resize: horizontal ;
 }
 
@@ -1409,6 +1423,7 @@ body {
 
 }
 
+<<<<<<< HEAD
 .card-item {
   transition: all 0.25s ease;
 }
@@ -1511,3 +1526,166 @@ body {
   padding:10px 20px !important;
   border-radius:10px !important;
 }
+=======
+.experiencias{
+    width:90%;
+    margin: 1px 10px;
+    padding:5px;
+}
+
+.card-experiencia{
+    background:#fff;
+    border-radius:20px;
+    height: 100%;
+    width: 120%;
+    padding:40px;
+    margin-bottom:30px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.header-exp{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#000000;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.usuario h3{
+    margin:0;
+    color:#333;
+}
+
+.usuario span{
+    color:#888;
+    font-size:14px;
+}
+
+.categoria{
+    background:#E5EFE8;
+    color:#5B7A62;
+    padding:8px 15px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.titulo{
+    color:#35518A;
+    margin-bottom:15px;
+    font-size:32px;
+}
+
+.contenido{
+    color:#666;
+    line-height:1.8;
+    font-size:20px;
+}
+
+.card-experiencia hr{
+    border:none;
+    border-top:1px solid #eee;
+    margin:25px 0;
+}
+
+.acciones{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.acciones button{
+    border:1px solid #eee;
+    background:#FFF8EE;
+    border-radius:30px;
+    padding:10px 20px;
+    cursor:pointer;
+    color:#666;
+    font-size:15px;
+}
+
+.acciones button strong{
+    margin-left:5px;
+}
+
+.acciones a{
+    margin-left:auto;
+    text-decoration:none;
+    color:#35518A;
+    font-weight:600;
+}
+
+
+.reacciones{
+    display:flex;
+    gap:10px;
+}
+
+.btn-reaccion{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    background:#f8f8f8;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:.3s;
+}
+
+.btn-reaccion i{
+    font-size:20px;
+    transition:.3s;
+}
+
+.btn-reaccion:hover{
+    transform:translateY(-3px);
+}
+
+.btn-reaccion.activa{
+    background:#FAC16D;
+    color:white;
+}
+
+.btn-reaccion.activa i{
+    animation:reaccion .3s ease;
+}
+
+@keyframes reaccion{
+
+    0%{
+        transform:scale(.5);
+    }
+
+    50%{
+        transform:scale(1.4);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+>>>>>>> 06fb42ee96e8fad87b0e6265b1a2bdd80cc83a6d

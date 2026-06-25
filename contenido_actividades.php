@@ -1,24 +1,30 @@
 <?php
 session_start();
-
 include("php/conexion.php");
 
-$sql = "SELECT * FROM contenido_actividades ORDER BY id ASC";
+
+$sql = "SELECT * FROM descripcion_actividades ORDER BY id ASC";
 $resultado = mysqli_query($conexion, $sql);
+$actividad = mysqli_fetch_assoc($resultado);
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades</title>
+
+    <title>
+        <?php echo htmlspecialchars($actividad['nombre_activity']); ?>
+    </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style/contenido_actividades.css">
 
-    <link rel="stylesheet" href="style/actividades.css">
 </head>
+
 <body>
 
 <!-- NAVBAR -->
@@ -102,68 +108,78 @@ $resultado = mysqli_query($conexion, $sql);
     </div>
 </nav>
 
-<!-- HERO -->
 
-<section class="hero">
+<!-- CONTENIDO -->
 
-    <div class="hero-text">
+<section class="actividad-container">
 
-        <h1>CONECTAR, JUGAR Y APRENDER JUNTOS</h1>
+    <h1 class="titulo">
+        <?php echo htmlspecialchars($actividad['nombre_activity']); ?>
+    </h1>
 
-        <p>
-            Descubre ideas para disfrutar de tiempo en familia,
-            estimular el desarrollo de tus hijos y fortalecer
-            el vínculo parental.
-        </p>
+    <div class="imagen-principal">
+
+        <img
+            src="/PARENTLY/photos/<?php echo htmlspecialchars($actividad['image']); ?>"
+            alt="<?php echo htmlspecialchars($actividad['nombre_activity']); ?>"
+        >
 
     </div>
 
-</section>
+    <div class="contenido-principal">
 
-<!-- TITULO -->
+        <!-- COLUMNA IZQUIERDA -->
 
-<h1 class="titulo">Actividades</h1>
+        <div class="columna-izquierda">
 
-<!-- BOTONES -->
+            <div class="materiales">
 
-<div class="edades">
+                <h2>Materiales</h2>
 
-    <button class="edad-btn">0-3 años</button>
-    <button class="edad-btn">4-6 años</button>
-    <button class="edad-btn">7-9 años</button>
-    <button class="edad-btn">9-12 años</button>
-    <button class="edad-btn">+13 años</button>
+                <p>
+                    <?php echo nl2br(htmlspecialchars($actividad['materiales'])); ?>
+                </p>
 
-</div>
+            </div>
 
-<!-- CARDS DINAMICAS -->
+            <div class="imagen-descriptiva">
 
-<section class="contenedor-cards">
+                <img
+                    src="/parently/photos/<?php echo htmlspecialchars($actividad['descriptive_image']); ?>"
+                    alt="Imagen descriptiva"
+                >
 
-<?php while($actividad = mysqli_fetch_assoc($resultado)): ?>
+            </div>
 
-    <div class="card">
+        </div>
 
-        <img
-            src="/parently/photos/<?php echo htmlspecialchars($actividad['imagen']); ?>"
-            alt="<?php echo htmlspecialchars($actividad['nombre_actividad']); ?>"
-        >
+        <!-- COLUMNA DERECHA -->
 
-        <div class="card-content">
+        <div class="columna-derecha">
 
-            <h3>
-                <?php echo htmlspecialchars($actividad['nombre_actividad']); ?>
-            </h3>
+            <div class="pasos">
 
-            <a href="actividades1.php">
-                <button type="button">Ver más</button>
-            </a>
+                <h2>Paso a paso</h2>
+
+                <p>
+                    <?php echo nl2br(htmlspecialchars($actividad['pasos'])); ?>
+                </p>
+
+            </div>
+
+            <div class="dato-curioso">
+
+                <h2>Dato curioso</h2>
+
+                <p>
+                    <?php echo htmlspecialchars($actividad['fun_fact']); ?>
+                </p>
+
+            </div>
 
         </div>
 
     </div>
-
-<?php endwhile; ?>
 
 </section>
 
@@ -180,4 +196,4 @@ $resultado = mysqli_query($conexion, $sql);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html>
+</html>|
