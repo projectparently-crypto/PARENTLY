@@ -1,25 +1,32 @@
 let foros = [];
 let actual = 1;
 
-
 /* =========================
-   CARGAR FOROS
+   CARGAR FOROS (SEGURO)
 ========================= */
 
 fetch("get_foros.php")
+.then(res => res.text())
+.then(text => {
 
-.then(res => res.json())
+  console.log("RAW:", text);
 
-.then(data => {
+  let data;
 
-  foros = data;
+  try {
+    data = JSON.parse(text);
+  } catch (e) {
+    console.error("JSON inválido en get_foros.php", text);
+    return;
+  }
+
+  foros = Array.isArray(data) ? data : [];
 
   cargarForo(foroInicial);
-
   cargarDestacado();
 
-});
-
+})
+.catch(err => console.error("Error fetch foros:", err));
 
 /* =========================
    MOSTRAR FORO
@@ -33,78 +40,64 @@ function cargarForo(id){
 
   if(!foro) return;
 
-  document.getElementById("foro-titulo").innerText =
-  foro.nombre;
+  document.getElementById("foro-titulo").innerText = foro.nombre;
+  document.getElementById("foro-img").src = "../" + foro.imagen;
+  document.getElementById("miembros").innerText = foro.miembros;
 
-  document.getElementById("foro-img").src =
-  foro.imagen;
+  let btn = document.getElementById("btnUnirse");
 
-  document.getElementById("miembros").innerText =
-  foro.miembros;
+  if (btn) {
+    btn.dataset.estado = "no";
+    btn.innerText = "Unirse";
+  }
 
+  cargarComentarios();
+  cargarDestacado();
 }
 
-function cargarForo(id){
-
-  actual = id;
-
-  let foro = foros.find(f => f.id == id);
-
-  if(!foro) return;
-
-  document.getElementById("foro-titulo").innerText =
-  foro.nombre;
-
-  document.getElementById("foro-img").src =
-  foro.imagen;
-
-  document.getElementById("miembros").innerText =
-  foro.miembros;
-
-  cargarComentarios(); // <- AGREGA ESTO
-
-}
+/* =========================
+   COMENTARIOS
+========================= */
 
 function cargarComentarios(){
 
   fetch("get_comentarios.php?foro_id=" + actual)
+  .then(r => r.text())
+  .then(text => {
 
-  .then(r => r.json())
+    let data;
 
-  .then(data => {
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error("Error JSON comentarios", text);
+      return;
+    }
 
     let cont = document.getElementById("comentarios");
+    if (!cont) return;
 
     cont.innerHTML = "";
 
-    data.forEach(c => {
+    (Array.isArray(data) ? data : []).forEach(c => {
 
       cont.innerHTML += `
-      
-      <div class="comentario">
+        <div class="comentario">
 
-        <div class="comentario-top">
+          <div class="comentario-top">
+            <b>${c.usuario ?? "Anónimo"}</b>
+          </div>
 
-          <b>${c.usuario}</b>
+          <div class="comentario-texto">
+            ${c.texto ?? ""}
+          </div>
+
+          <button onclick="eliminarComentario(${c.id})">
+            Eliminar
+          </button>
 
         </div>
-
-        <div class="comentario-texto">
-
-          ${c.texto}
-
-        </div>
-
-        <button onclick="eliminarComentario(${c.id})">
-
-          Eliminar
-
-        </button>
-
-      </div>
-
       `;
-
     });
 
   });
@@ -112,144 +105,173 @@ function cargarComentarios(){
 }
 
 /* =========================
-   UNIRSE
+   UNIRSE (BOTÓN)
 ========================= */
 
 function unirse(){
 
-  let btn =
-  document.getElementById("btnUnirse");
+  let btn = document.getElementById("btnUnirse");
+  if (!btn) return;
 
-  if(btn.innerText == "Unirse"){
+  if(btn.dataset.estado !== "unido"){
 
-    btn.innerText = "Salir";
+    btn.dataset.estado = "unido";
+    btn.innerText = "Participante";
 
-  }else{
+  } else {
 
-    btn.innerText = "Unirse";
-
+    let modal = document.getElementById("modalSalir");
+    if (modal) modal.classList.remove("hidden");
   }
-
 }
+
+/* =========================
+   PUBLICAR COMENTARIO
+========================= */
 
 function publicar(){
 
-  let texto = document.getElementById("inputComentario").value;
+  let input = document.getElementById("inputComentario");
+  if (!input) return;
+
+  let texto = input.value;
 
   if(texto.trim() == "") return;
 
   fetch("comentarios.php", {
-
     method:"POST",
-
-    headers:{
-      "Content-Type":"application/json"
-    },
-
+    headers:{ "Content-Type":"application/json" },
     body:JSON.stringify({
       foro_id:actual,
       comentario:texto,
       usuario:usuario
     })
-
   })
-  .then(r=>r.json())
-  .then(data=>{
+  .then(r => r.text())
+  .then(() => {
 
-    document.getElementById("inputComentario").value="";
-
+    input.value = "";
     cargarComentarios();
 
   });
 
 }
+
+/* =========================
+   ELIMINAR COMENTARIO
+========================= */
 
 function eliminarComentario(id){
 
   fetch("eliminar_comentario.php", {
-
     method:"POST",
-
-    headers:{
-      "Content-Type":"application/json"
-    },
-
-    body:JSON.stringify({
-      id:id
-    })
-
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({ id:id })
   })
-
-  .then(r => r.json())
-
-  .then(data => {
-
-    cargarComentarios();
-
-  });
+  .then(() => cargarComentarios());
 
 }
+
+/* =========================
+   DESTACADO (SEGURO)
+========================= */
 
 function cargarDestacado(){
 
   fetch("get_destacado.php?foro_id=" + actual)
-  .then(r => r.json())
-  .then(data => {
+  .then(r => r.text())
+  .then(text => {
 
-    if(!data) return;
+    let data;
 
-    document.querySelector(".destacado-user h3").innerText =
-      data.usuario;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error("Error JSON destacado", text);
+      return;
+    }
 
-    document.querySelector(".destacado-user p").innerText =
-      "Se unió hace " + calcularTiempo(data.fecha_union);
+    if(!data || !data.data){
 
-  });
-
-}
-function calcularTiempo(fecha){
-
-  let f = new Date(fecha);
-  let ahora = new Date();
-
-  let dias = Math.floor((ahora - f) / (1000 * 60 * 60 * 24));
-
-  if(dias == 0) return "hoy";
-  if(dias == 1) return "1 día";
-  return dias + " días";
-}
-
-function cargarDestacado(){
-
-  fetch("get_destacado.php?foro_id=" + actual)
-
-  .then(r => r.json())
-
-  .then(data => {
-
-    console.log(data);
-
-    //  si no hay usuario destacado
-    if(!data || !data.usuario){
-
-      document.getElementById("destacado-nombre").innerText =
-        "Sin participantes";
-
-      document.getElementById("destacado-info").innerText =
-        "Aún nadie se ha unido";
-
+      document.getElementById("destacado-nombre").innerText = "Sin participantes";
+      document.getElementById("destacado-info").innerText = "Aún nadie se ha unido";
       document.getElementById("destacado-img").src = "";
 
       return;
     }
 
-    // SI EXISTE
     document.getElementById("destacado-nombre").innerText =
-      data.usuario;
+      data.data.nombre_usuario;
 
     document.getElementById("destacado-info").innerText =
       "Miembro destacado";
 
   });
 
+}
+
+/* =========================
+   BUSCADOR
+========================= */
+
+function toggleSearch() {
+  const input = document.getElementById("searchInput");
+
+  if (!input) return;
+
+  input.classList.toggle("hidden");
+
+  if (!input.classList.contains("hidden")) {
+    input.focus();
+  } else {
+    input.value = "";
+    buscar("");
+  }
+}
+
+function buscar(texto) {
+
+  let comentarios = document.querySelectorAll(".comentario");
+  let encontrados = 0;
+
+  comentarios.forEach(c => {
+
+    let contenido = c.innerText.toLowerCase();
+
+    if (contenido.includes(texto.toLowerCase())) {
+      c.style.display = "block";
+      encontrados++;
+    } else {
+      c.style.display = "none";
+    }
+
+  });
+
+  let resultado = document.getElementById("resultadoBusqueda");
+
+  if (resultado) {
+    resultado.innerText =
+      texto === "" ? "" : `Resultados: ${encontrados}`;
+  }
+}
+
+/* =========================
+   MODAL SALIR
+========================= */
+
+function confirmarSalida(){
+
+  let btn = document.getElementById("btnUnirse");
+
+  if (btn) {
+    btn.dataset.estado = "no";
+    btn.innerText = "Unirse";
+  }
+
+  cerrarModal();
+}
+
+function cerrarModal(){
+  let modal = document.getElementById("modalSalir");
+  if (modal) modal.classList.add("hidden");
 }

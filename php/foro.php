@@ -442,30 +442,32 @@ $id = $_GET["id"] ?? 1;
 
     </div>
 
+    
     <!-- DERECHA -->
-    <div class="info-right">
+<div class="info-right">
 
-     <div class="search-container">
-  <div class="search-icon" onclick="toggleSearch()">
-    <i class="fa fa-search"></i>
-  </div>
+  <div class="search-container">
 
-  <input 
-    id="searchInput"
-    class="hidden"
-    placeholder="Buscar..."
-    oninput="buscar(this.value)"
-  >
-</div>
-
-      <!-- BOTON -->
-      <button id="btnUnirse" onclick="unirse()">
-        Unirse
-      </button>
-
+    <div class="search-icon" onclick="toggleSearch()">
+      <i class="fa fa-search"></i>
     </div>
 
+    <input 
+      id="searchInput"
+      class="hidden"
+      placeholder="Buscar..."
+      oninput="buscar(this.value)"
+    >
+
+    <p id="resultadoBusqueda"></p>
+
   </div>
+
+  <button id="btnUnirse" onclick="unirse()" data-estado="no">
+    Unirse
+  </button>
+</div>
+</div>
 
   <!-- TABS -->
   <div class="tabs">
@@ -526,10 +528,30 @@ $id = $_GET["id"] ?? 1;
   <div id="comentarios"></div>
 
 </div>
-
-<p>prueba
   
-</p>
+<div id="modalSalir" class="modal-salir hidden">
+
+  <div class="modal-contenido">
+
+    <h3>¿Salir del foro?</h3>
+
+    <p>¿Estás seguro de que deseas salir de esta comunidad?</p>
+
+    <div class="modal-botones">
+
+      <button class="btn-cancelar" onclick="cerrarModal()">
+        Cancelar
+      </button>
+
+      <button class="btn-salir" onclick="confirmarSalida()">
+        Sí, salir
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 <script>
 
 const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
@@ -538,6 +560,6 @@ const foroInicial = <?php echo $id; ?>;
 
 </script>
 
-<script src="script.js?v=10"></script>
+<script src="../script.js?v=11"></script>
 </body>
 </html>

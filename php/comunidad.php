@@ -324,7 +324,7 @@ $busqueda = $_GET['busqueda'] ?? '';
         <div class="col-md-6 col-6">
 
             <a href="foro.php?id=8"
-               class="community-card card-item"
+               class="community-card card-item">
 
                 <i class="fa-solid fa-heart-pulse"></i>
 
