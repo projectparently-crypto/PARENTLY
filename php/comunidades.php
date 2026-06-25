@@ -68,7 +68,7 @@
  
   <!-- Imagen -->
  
-  <img src="../photos/photo_5019457631378148225_y.jpg" class="w-100" height="750" alt="familia">
+  <img src="../photos/_HispanicFamilyUS[1].jpg" class="w-100" height="750" alt="familia">
  
  
   <!-- Texto encima -->
@@ -292,7 +292,12 @@ while($respuesta = mysqli_fetch_assoc($respuestas)){
  
 
 <?php
+
 include("conexion.php");
+$sql = "SELECT *
+        FROM experiencias
+        ORDER BY fecha ASC
+        LIMIT 2";
 
 $sql = "SELECT
 e.*,

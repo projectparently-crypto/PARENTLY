@@ -66,8 +66,8 @@ body {
     /* Cambia estos colores por los de Parently */
     background-image: linear-gradient(
         to right,
-        #f3ea6a 0%,
-        #F2B872 100%
+        #FDC473 0%,
+        #FDC473 100%
     );
 
     transition: .5s ease;
@@ -233,7 +233,7 @@ body {
     overflow: hidden;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
     cursor: pointer;
-    background-color: rgba(255, 215, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.15);
     border: 1px solid rgba (255, 193, 7, 0.5);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
@@ -273,7 +273,7 @@ body {
  
 /* EFECTO HOVER EN BOTÓN */
 .card .btn:hover {
-    color: rgb(100, 50, 50) !important;
+    color: rgb(255, 255, 255) !important;
     transform: scale(1.05);
 }
  
@@ -1513,3 +1513,57 @@ body {
     font-weight:600;
 }
 
+
+.reacciones{
+    display:flex;
+    gap:10px;
+}
+
+.btn-reaccion{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    background:#f8f8f8;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:.3s;
+}
+
+.btn-reaccion i{
+    font-size:20px;
+    transition:.3s;
+}
+
+.btn-reaccion:hover{
+    transform:translateY(-3px);
+}
+
+.btn-reaccion.activa{
+    background:#FAC16D;
+    color:white;
+}
+
+.btn-reaccion.activa i{
+    animation:reaccion .3s ease;
+}
+
+@keyframes reaccion{
+
+    0%{
+        transform:scale(.5);
+    }
+
+    50%{
+        transform:scale(1.4);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
