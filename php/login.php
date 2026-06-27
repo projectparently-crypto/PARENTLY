@@ -1,5 +1,6 @@
 <?php
 session_start();
+session_regenerate_id(true);
 $error = "";
 
 $servername = "localhost";
@@ -30,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($contraseña, $row["contraseña"])) {
                 $_SESSION["usuario_id"] = $row["id"];
                 $_SESSION["usuario_nombre"] = $row["nombre_usuario"];
+                session_regenerate_id(true);
+
                 $stmt->close();
                 $conn->close();
                 header("Location: index.php");

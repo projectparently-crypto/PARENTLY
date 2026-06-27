@@ -437,8 +437,7 @@ $id = $_GET["id"] ?? 1;
 
       <p>
         <span id="tipo-foro">Público</span> ·
-        <span id="miembros">0</span> miembros
-      </p>
+        <span id="miembros">0</span>
 
     </div>
 
@@ -553,11 +552,12 @@ $id = $_GET["id"] ?? 1;
 
 </div>
 <script>
-
-const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
-
-const foroInicial = <?php echo $id; ?>;
-
+  window.foroInicial = <?php echo $_GET['id'] ?? 1; ?>;
+  window.actual = window.foroInicial;
+</script>
+<script>
+  
+  const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
 </script>
 
 <script src="../script.js?v=11"></script>

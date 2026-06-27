@@ -1,15 +1,15 @@
 let foros = [];
-let actual = 1;
+let actual;
+
+// 🔥 BASE FIJA DE RUTAS (IMPORTANTE)
+const BASE = "/parently/PARENTLY/php/";
 
 /* =========================
-   CARGAR FOROS (SEGURO)
+   CARGAR FOROS
 ========================= */
-
-fetch("get_foros.php")
+fetch(BASE + "get_foros.php")
 .then(res => res.text())
 .then(text => {
-
-  console.log("RAW:", text);
 
   let data;
 
@@ -22,46 +22,39 @@ fetch("get_foros.php")
 
   foros = Array.isArray(data) ? data : [];
 
-  cargarForo(foroInicial);
-  cargarDestacado();
+  if (typeof foroInicial !== "undefined") {
+    cargarForo(foroInicial);
+  }
 
 })
 .catch(err => console.error("Error fetch foros:", err));
 
+
 /* =========================
    MOSTRAR FORO
 ========================= */
-
 function cargarForo(id){
 
   actual = id;
 
   let foro = foros.find(f => f.id == id);
-
   if(!foro) return;
 
   document.getElementById("foro-titulo").innerText = foro.nombre;
   document.getElementById("foro-img").src = "../" + foro.imagen;
-  document.getElementById("miembros").innerText = foro.miembros;
-
-  let btn = document.getElementById("btnUnirse");
-
-  if (btn) {
-    btn.dataset.estado = "no";
-    btn.innerText = "Unirse";
-  }
 
   cargarComentarios();
   cargarDestacado();
+  actualizarEstado(id);
 }
+
 
 /* =========================
    COMENTARIOS
 ========================= */
-
 function cargarComentarios(){
 
-  fetch("get_comentarios.php?foro_id=" + actual)
+  fetch(BASE + "get_comentarios.php?foro_id=" + actual)
   .then(r => r.text())
   .then(text => {
 
@@ -83,7 +76,6 @@ function cargarComentarios(){
 
       cont.innerHTML += `
         <div class="comentario">
-
           <div class="comentario-top">
             <b>${c.usuario ?? "Anónimo"}</b>
           </div>
@@ -95,90 +87,100 @@ function cargarComentarios(){
           <button onclick="eliminarComentario(${c.id})">
             Eliminar
           </button>
-
         </div>
       `;
     });
 
   });
-
 }
 
-/* =========================
-   UNIRSE (BOTÓN)
-========================= */
 
+/* =========================
+   UNIRSE / SALIR (TOGGLE)
+========================= */
 function unirse(){
 
-  let btn = document.getElementById("btnUnirse");
-  if (!btn) return;
-
-  if(btn.dataset.estado !== "unido"){
-
-    btn.dataset.estado = "unido";
-    btn.innerText = "Participante";
-
-  } else {
-
-    let modal = document.getElementById("modalSalir");
-    if (modal) modal.classList.remove("hidden");
-  }
+  fetch(BASE + "unirse_foro.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ foro_id: actual })
+  })
+  .then(r => r.json())
+  .then(() => actualizarEstado(actual))
+  .catch(err => console.error(err));
 }
+
 
 /* =========================
-   PUBLICAR COMENTARIO
+   ACTUALIZAR ESTADO (BOTÓN + CONTADOR)
 ========================= */
+function actualizarEstado(id){
 
-function publicar(){
+  fetch(BASE + "verificar_miembro.php?foro_id=" + id)
+  .then(r => r.json())
+  .then(data => {
 
-  let input = document.getElementById("inputComentario");
-  if (!input) return;
+    const btn = document.getElementById("btnUnirse");
+    const contador = document.getElementById("miembros");
 
-  let texto = input.value;
+    if (btn) {
+      btn.innerText = data.unido ? "Participante" : "Unirse";
+      btn.dataset.estado = data.unido ? "unido" : "no";
+    }
 
-  if(texto.trim() == "") return;
+    if (contador) {
+      contador.innerText = (data.ahora ?? 0) + " miembros";
+    }
 
-  fetch("comentarios.php", {
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({
-      foro_id:actual,
-      comentario:texto,
-      usuario:usuario
-    })
   })
-  .then(r => r.text())
-  .then(() => {
-
-    input.value = "";
-    cargarComentarios();
-
-  });
-
+  .catch(err => console.error("verificar error:", err));
 }
+
+
+/* =========================
+   SALIR (MODAL)
+========================= */
+function confirmarSalida(){
+
+  fetch(BASE + "salir_foro.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ foro_id: actual })
+  })
+  .then(r => r.json())
+  .then(() => {
+    cerrarModal();
+    actualizarEstado(actual);
+  })
+  .catch(err => console.error(err));
+}
+
+function cerrarModal(){
+  const modal = document.getElementById("modalSalir");
+  if (modal) modal.classList.add("hidden");
+}
+
 
 /* =========================
    ELIMINAR COMENTARIO
 ========================= */
-
 function eliminarComentario(id){
 
-  fetch("eliminar_comentario.php", {
-    method:"POST",
-    headers:{ "Content-Type":"application/json" },
-    body:JSON.stringify({ id:id })
+  fetch(BASE + "eliminar_comentario.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id:id })
   })
   .then(() => cargarComentarios());
-
 }
 
-/* =========================
-   DESTACADO (SEGURO)
-========================= */
 
+/* =========================
+   DESTACADO
+========================= */
 function cargarDestacado(){
 
-  fetch("get_destacado.php?foro_id=" + actual)
+  fetch(BASE + "get_destacado.php?foro_id=" + actual)
   .then(r => r.text())
   .then(text => {
 
@@ -191,32 +193,29 @@ function cargarDestacado(){
       return;
     }
 
+    const nombre = document.getElementById("destacado-nombre");
+    const info = document.getElementById("destacado-info");
+
     if(!data || !data.data){
 
-      document.getElementById("destacado-nombre").innerText = "Sin participantes";
-      document.getElementById("destacado-info").innerText = "Aún nadie se ha unido";
-      document.getElementById("destacado-img").src = "";
-
+      if (nombre) nombre.innerText = "Sin participantes";
+      if (info) info.innerText = "Aún nadie se ha unido";
       return;
     }
 
-    document.getElementById("destacado-nombre").innerText =
-      data.data.nombre_usuario;
-
-    document.getElementById("destacado-info").innerText =
-      "Miembro destacado";
+    if (nombre) nombre.innerText = data.data.nombre_usuario;
+    if (info) info.innerText = "Miembro destacado";
 
   });
-
 }
+
 
 /* =========================
    BUSCADOR
 ========================= */
+function toggleSearch(){
 
-function toggleSearch() {
   const input = document.getElementById("searchInput");
-
   if (!input) return;
 
   input.classList.toggle("hidden");
@@ -229,7 +228,7 @@ function toggleSearch() {
   }
 }
 
-function buscar(texto) {
+function buscar(texto){
 
   let comentarios = document.querySelectorAll(".comentario");
   let encontrados = 0;
@@ -250,28 +249,6 @@ function buscar(texto) {
   let resultado = document.getElementById("resultadoBusqueda");
 
   if (resultado) {
-    resultado.innerText =
-      texto === "" ? "" : `Resultados: ${encontrados}`;
+    resultado.innerText = texto === "" ? "" : `Resultados: ${encontrados}`;
   }
-}
-
-/* =========================
-   MODAL SALIR
-========================= */
-
-function confirmarSalida(){
-
-  let btn = document.getElementById("btnUnirse");
-
-  if (btn) {
-    btn.dataset.estado = "no";
-    btn.innerText = "Unirse";
-  }
-
-  cerrarModal();
-}
-
-function cerrarModal(){
-  let modal = document.getElementById("modalSalir");
-  if (modal) modal.classList.add("hidden");
 }
