@@ -230,6 +230,7 @@ unset($_SESSION['flash']);
         <button onclick="enviarComentario(<?= $fila['id_experiencia'] ?>)">Enviar</button>
       </div>
     </div>
+    
 
   </div><!-- /card-experiencia -->
 

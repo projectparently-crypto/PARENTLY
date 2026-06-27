@@ -23,7 +23,7 @@ if(isset($_POST['respuesta'])){
 
 }
 
-header("Location: comunidad.php");
+header("Location: comunidades.php");
 exit();
 
 ?>

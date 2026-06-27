@@ -1,21 +1,20 @@
    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
  
-  :root {
-    --azul:      #1E3A4D;
-    --azul-claro:#1E3A4D;
-    --azul-suave:#EBF1F9;
-    --crema:     #FDF6ED;
-    --crema-oscura:#F3E8D5;
-    --dorado:    #FDC473;
-    --dorado-claro:#FDC473;
-    --verde:     #6B9E78;
-    --verde-suave:#E8F4EB;
-    --texto:     #2D2D2D;
-    --texto-suave:#6B6B6B;
-    --blanco:    #FFFFFF;
-    --sombra:    0 4px 24px rgba(44,74,124,0.10);
-    --radio:     16px;
-  }
+:root {
+  --am50:   #FFFBF0;
+  --am100:  #FEF3C7;
+  --am200:  #FDE68A;
+  --am400:  #FBBF24;
+  --am600:  #D97706;
+  --am800:  #92400E;
+  --am900:  #78350F;
+  --texto:  #1a1a1a;
+  --gris:   #6B6B6B;
+  --blanco: #FFFFFF;
+  --radio:  14px;
+  --sombra: 0 3px 16px rgba(180,120,0,0.10);
+}
+
  
   body {
     font-family: 'Inter', sans-serif;
@@ -87,5 +86,18 @@
     position: relative;
   }
   .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,168,83,0.4); }
+
+  .comunidad {
+  background-color: #ffcc00; /* amarillo */
+  color: #5a3a00;           /* marrón para el texto */
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+.comunidad h2 {
+  margin-top: 0;
+}
+
 
   

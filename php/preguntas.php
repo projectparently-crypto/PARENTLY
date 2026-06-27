@@ -70,5 +70,14 @@
   <h1>Un lugar para compartir <span>tus dudas</span></h1>
   <p>Aquí cada pregunta importa. Expresa tus dudas, recibe respuestas y comparte aprendizajes con quienes recorren caminos similares.</p>
 </header>
+
+<div class="comunidad">
+  <h2>👥 Nuestra comunidad</h2>
+  <p>
+    Cada pregunta merece respeto y atención.  
+    Aquí no hay preguntas tontas — solo padres y madres aprendiendo juntos.
+  </p>
+</div>
+
 </body>
  

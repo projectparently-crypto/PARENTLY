@@ -279,8 +279,11 @@ while($respuesta = mysqli_fetch_assoc($respuestas)){
 
 ?>
 
+</div>
+</section>
+
 <!-- ── EXPERIENCIAS ────── -->
- <section class="preguntas-section" id="preguntas">
+ <section class="experiencias-section" id="experiencias"></section>
   <div class="page">
     <div class="section-header" style="margin-bottom:2rem;">
       <div class="section-title">
@@ -326,7 +329,8 @@ FROM experiencias e
 INNER JOIN categorias_experiencias c
 ON e.id_categoria = c.id_categoria
 
-ORDER BY e.fecha_publicacion DESC";
+ORDER BY e.fecha_publicacion DESC
+LIMIT 2";
 
 $resultado = mysqli_query($conexion,$sql);
 ?>
@@ -414,6 +418,8 @@ $resultado = mysqli_query($conexion,$sql);
 
 <?php } ?>
 
+</section>
+</div> <!-- page -->
 </section>
 
 <!-- FOOTER -->
