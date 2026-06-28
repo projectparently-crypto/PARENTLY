@@ -547,7 +547,7 @@ $id = $_GET["id"] ?? 1;
     </div>
 
   </div>
-
+<p>ola solo para probar lo de github</p>
 </div>
 <script>
   window.foroInicial = <?php echo $_GET['id'] ?? 1; ?>;
