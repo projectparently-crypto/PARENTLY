@@ -462,9 +462,7 @@ $id = $_GET["id"] ?? 1;
 
   </div>
 
-  <button id="btnUnirse" onclick="unirse()" data-estado="no">
-    Unirse
-  </button>
+  <button id="btnUnirse" onclick="abrirModalSalida()">Unirse</button>
 </div>
 </div>
 

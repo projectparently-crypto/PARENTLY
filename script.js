@@ -136,7 +136,17 @@ function actualizarEstado(id){
   .catch(err => console.error("verificar error:", err));
 }
 
+function abrirModalSalida(){
 
+  const btn = document.getElementById("btnUnirse");
+
+  if (btn.dataset.estado !== "unido") {
+    unirse();
+    return;
+  }
+
+  document.getElementById("modalSalir")?.classList.remove("hidden");
+}
 /* =========================
    SALIR (MODAL)
 ========================= */
