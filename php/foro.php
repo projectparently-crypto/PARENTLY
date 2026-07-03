@@ -438,7 +438,7 @@ $id = $_GET["id"] ?? 1;
       <p>
         <span id="tipo-foro">Público</span> ·
         <span id="miembros">0</span>
-
+      </p>
     </div>
 
     
@@ -514,9 +514,15 @@ $id = $_GET["id"] ?? 1;
       placeholder="Escribe un comentario..."
     >
 
-    <button onclick="publicar()">
-      Publicar
-    </button>
+
+  <button id="btnAnonimo" onclick="toggleAnonimo()">
+      Anónimo: OFF
+  </button>
+
+  <button onclick="publicar()">
+    Publicar
+  </button>
+
 
   </div>
 
@@ -547,7 +553,6 @@ $id = $_GET["id"] ?? 1;
     </div>
 
   </div>
-<p>ola solo para probar lo de github</p>
 </div>
 <script>
   window.foroInicial = <?php echo $_GET['id'] ?? 1; ?>;
@@ -558,6 +563,6 @@ $id = $_GET["id"] ?? 1;
   const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
 </script>
 
-<script src="../script.js?v=11"></script>
+<script src="../script.js?v=12"></script>
 </body>
 </html>
