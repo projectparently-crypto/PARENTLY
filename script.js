@@ -1,5 +1,5 @@
+window.actual = window.foroInicial || 0;
 let foros = [];
-let actual;
 let anonimo = false;
 // 🔥 BASE FIJA DE RUTAS (IMPORTANTE)
 const BASE = "/parently/PARENTLY/php/";
@@ -36,7 +36,7 @@ fetch(BASE + "get_foros.php")
 function cargarForo(id){
 
   actual = id;
-
+  
   let foro = foros.find(f => f.id == id);
   if(!foro) return;
 
@@ -145,15 +145,17 @@ function renderComentario(c) {
 
           <div class="menu-dropdown hidden">
 
+            ${c.es_mio ? `
             <button onclick="editarComentario(${c.id})">
-              <i class="fa-solid fa-pen"></i>
-              Editar
+                <i class="fa-solid fa-pen"></i>
+                Editar
             </button>
 
             <button onclick="eliminarComentario(${c.id})">
-              <i class="fa-solid fa-trash"></i>
-              Eliminar
+                <i class="fa-solid fa-trash"></i>
+                Eliminar
             </button>
+            ` : ""}
 
             <button onclick="reportar(${c.id}, 'comentario')">
               <i class="fa-solid fa-flag"></i>
@@ -252,15 +254,17 @@ function renderRespuesta(r){
 
                     <div class="menu-dropdown hidden">
 
-                        <button onclick="editarRespuesta(${r.id})">
-                            <i class="fa-solid fa-pen"></i>
-                            Editar
-                        </button>
+                        ${r.es_mio ? `
+                  <button onclick="editarRespuesta(${r.id})">
+                      <i class="fa-solid fa-pen"></i>
+                      Editar
+                  </button>
 
-                        <button onclick="eliminarComentario(${r.id})">
-                            <i class="fa-solid fa-trash"></i>
-                            Eliminar
-                        </button>
+                  <button onclick="eliminarComentario(${r.id})">
+                      <i class="fa-solid fa-trash"></i>
+                      Eliminar
+                  </button>
+                  ` : ""}
 
                         <button onclick="reportar(${r.id},'respuesta')">
                             <i class="fa-solid fa-flag"></i>
@@ -500,14 +504,25 @@ function cerrarModal(){
 ========================= */
 function eliminarComentario(id){
 
-  fetch(BASE + "eliminar_comentario.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id:id })
-  })
-  .then(() => cargarComentarios());
-}
+    fetch(BASE + "eliminar_comentario.php",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({ id:id })
+    })
+    .then(r=>r.json())
+    .then(data=>{
 
+        if(data.ok){
+            cargarComentarios();
+        }else{
+            alert(data.mensaje);
+        }
+
+    });
+
+}
 
 /* =========================
    DESTACADO
@@ -944,3 +959,158 @@ function mostrarToast(mensaje){
 
     setTimeout(()=> t.remove(), 2500);
 }
+
+function verMiembros(){
+
+    fetch(BASE + "get_lista_miembros.php?foro_id=" + actual)
+    .then(r => r.json())
+    .then(data => {
+
+        let html = "";
+
+        data.forEach(m => {
+
+            const foto = m.foto_perfil
+                ? "../photos/" + m.foto_perfil
+                : "../photos/default.png";
+
+            html += `
+            <div class="miembro-item">
+
+                <img src="${foto}"
+                    onerror="this.src='../photos/default.png'">
+
+                <div class="miembro-info">
+                    <b style="cursor:pointer" onclick="abrirPerfil(${m.usuario_id})">
+                        ${m.nombre_usuario}
+                    </b>
+                    <span>Se unió ${tiempoRelativo(m.fecha_union)}</span>
+                </div>
+
+                <div class="menu-wrapper">
+
+                    <button class="menu-btn"
+                            onclick="toggleMenu(this,event)">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+
+                    <div class="menu-dropdown hidden">
+
+                        <button onclick="abrirPerfil(${m.usuario_id})">
+                            <i class="fa-solid fa-user"></i>
+                            Ver perfil
+                        </button>
+
+                        <button onclick="reportarUsuario(${m.usuario_id})">
+                            <i class="fa-solid fa-flag"></i>
+                            Reportar usuario
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+            `;
+        });
+
+        document.getElementById("listaMiembros").innerHTML = html;
+        document.getElementById("modalMiembros").classList.remove("hidden");
+
+    });
+
+}
+
+function cerrarMiembros(){
+
+    document.getElementById("modalMiembros")
+        .classList.add("hidden");
+
+}
+
+let usuarioReportado = null;
+
+function reportarUsuario(id){
+    usuarioReportado = id;
+
+    document.getElementById("modalReporte")
+        .classList.remove("hidden");
+}
+
+function cerrarReporte(){
+    document.getElementById("modalReporte")
+        .classList.add("hidden");
+
+    document.getElementById("motivoReporte").value = "";
+    usuarioReportado = null;
+}
+
+function enviarReporteUsuario(){
+
+    const motivo = document.getElementById("motivoReporte").value.trim();
+
+    if(!motivo) return;
+
+    fetch(BASE + "reportar_usuario.php", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+            usuario_id: usuarioReportado,
+            foro_id: actual,
+            motivo: motivo
+        })
+    })
+    .then(r=>r.json())
+    .then(data=>{
+
+        cerrarReporte();
+
+        mostrarToast(
+            data.success
+                ? "Usuario reportado"
+                : "Error al reportar"
+        );
+
+    });
+}
+
+let perfilActual = null;
+
+function abrirPerfil(id){
+
+    perfilActual = id;
+  
+    fetch(BASE + "get_perfil.php?id=" + id + "&foro_id=" + actual)
+    .then(r => r.json())
+    .then(data => {
+
+    if(!data){
+        console.log("Perfil vacío o no encontrado");
+        return;
+    }
+
+    document.getElementById("perfilNombre").innerText = data.nombre_usuario || "Desconocido";
+    document.getElementById("perfilBio").innerText = data.bio || "Sin bio";
+
+    document.getElementById("perfilForos").innerText = data.foros ?? 0;
+    document.getElementById("perfilComentarios").innerText = data.comentarios ?? 0;
+
+    const fecha = data.fecha_registro
+        ? new Date(data.fecha_registro).toLocaleDateString()
+        : "Desconocido";
+
+    document.getElementById("perfilMiembroDesde").innerText = fecha;
+
+    document.getElementById("perfilFoto").src = data.foto_perfil
+        ? "../photos/" + data.foto_perfil
+        : "../photos/default.png";
+
+    document.getElementById("modalPerfil").classList.remove("hidden");
+});
+
+}
+
+function cerrarPerfil(){
+    document.getElementById("modalPerfil").classList.add("hidden");
+}
+

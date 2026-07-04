@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: application/json");
 
 include "db.php";
@@ -37,7 +38,10 @@ $comentarios = [];
 while($fila = $res->fetch_assoc()){
 
     if($fila["anonimo"] == 1){
-
+        $fila["es_mio"] = (
+    isset($_SESSION["usuario_id"]) &&
+    $_SESSION["usuario_id"] == $fila["usuario_id"]
+);
         $fila["nombre_usuario"] = "Anónimo";
         $fila["foto_perfil"] = "";
 
