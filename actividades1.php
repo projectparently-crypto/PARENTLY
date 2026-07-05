@@ -2,8 +2,18 @@
 session_start();
 include("php/conexion.php");
 
-$sql = "SELECT * FROM actividades ORDER BY id ASC";
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+$categoria = mysqli_real_escape_string($conexion, $categoria);
+
+$sql = "SELECT * FROM actividades
+        WHERE categoria = '$categoria'
+        ORDER BY id ASC";
+
 $resultado = mysqli_query($conexion, $sql);
+
+if(!$resultado){
+    die("Error en la consulta: " . mysqli_error($conexion));
+}
 ?>
 
 <!DOCTYPE html>
@@ -125,16 +135,9 @@ $resultado = mysqli_query($conexion, $sql);
 <h1 class="titulo">Actividades</h1>
 
 <!-- BOTONES -->
-
-<div class="edades">
-
-    <button class="edad-btn">0-3 años</button>
-    <button class="edad-btn">4-6 años</button>
-    <button class="edad-btn">7-9 años</button>
-    <button class="edad-btn">9-12 años</button>
-    <button class="edad-btn">+13 años</button>
-
-</div>
+<a href="actividades.php" class="btn btn-success">
+    ← Volver a categorías
+</a>
 
 <!-- CARDS DINAMICAS -->
 
@@ -155,10 +158,9 @@ $resultado = mysqli_query($conexion, $sql);
                 <?php echo htmlspecialchars($actividad['activity_name']); ?>
             </h3>
 
-            <a href="contenido_actividades.php">
+           <a href="contenido_actividades.php?id=<?php echo $actividad['id']; ?>">
                 <button type="button">Ver más</button>
             </a>
-
         </div>
 
     </div>

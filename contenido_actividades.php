@@ -2,10 +2,22 @@
 session_start();
 include("php/conexion.php");
 
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-$sql = "SELECT * FROM descripcion_actividades ORDER BY id ASC";
+$sql = "SELECT * FROM descripcion_actividades
+        WHERE id = $id";
+
 $resultado = mysqli_query($conexion, $sql);
+
+if(!$resultado){
+    die("Error en la consulta: " . mysqli_error($conexion));
+}
+
 $actividad = mysqli_fetch_assoc($resultado);
+
+if(!$actividad){
+    die("Actividad no encontrada");
+}
 ?>
 
 <!DOCTYPE html>
