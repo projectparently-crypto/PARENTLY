@@ -1,38 +1,22 @@
 <?php
-header("Content-Type: application/json");
 include "db.php";
 
-$id = $_GET["id"] ?? 0;
-$foro_id = $_GET["foro_id"] ?? 0;
+function getRecursosMasVistos($limit = 2){
+    global $conn;
 
-if (!$id || !$foro_id) {
-  echo json_encode(["error" => "faltan datos"]);
-  exit;
+    $limit = intval($limit);
+
+    $sql = "SELECT *
+            FROM recursos
+            WHERE activo = 1
+            ORDER BY fecha_creacion DESC
+            LIMIT $limit";
+
+    return $conn->query($sql);
 }
 
-$sql = "
-SELECT 
-    u.id,
-    u.nombre_usuario,
-    u.bio,
-    u.foto_perfil,
-    u.fecha_registro
-FROM usuarios u
-INNER JOIN participantes p ON p.usuario_id = u.id
-WHERE u.id = ? AND p.foro_id = ?
-LIMIT 1
-";
+function getEtapas(){
+    global $conn;
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $id, $foro_id);
-$stmt->execute();
-
-$result = $stmt->get_result();
-$data = $result->fetch_assoc();
-
-if (!$data) {
-  echo json_encode(["error" => "Perfil vacío o no encontrado"]);
-  exit;
+    return $conn->query("SELECT * FROM etapas ORDER BY id");
 }
-
-echo json_encode($data);
