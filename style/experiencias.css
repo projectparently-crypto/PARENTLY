@@ -49,13 +49,95 @@ body {
   line-height: 1.65;
 }
 
+/* ===== FILTRO DE CATEGORÍAS ===== */
+.categorias-tabs{
+    margin:40px 0;
+}
+
+.categorias-tabs__inner{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.categoria-tab{
+
+    width:180px;
+    height:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:3px solid #FDC473;
+    border-radius:30em;
+
+    background:white;
+
+    color:#2C4A7C;
+    text-decoration:none;
+
+    font-weight:600;
+
+    box-shadow:
+        6px 6px 12px #d9d9d9,
+       -6px -6px 12px white;
+
+    transition:.35s;
+}
+
+.categoria-tab:hover{
+
+    background:#FDC473;
+
+    color:white;
+
+}
+
+.categoria-tab.active{
+
+    background:#FDC473;
+
+    color:white;
+
+}
+
+.dropdown-menu{
+
+    border:none;
+
+    border-radius:15px;
+
+    padding:8px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.dropdown-item{
+
+    border-radius:10px;
+
+    padding:10px 15px;
+
+}
+
+.dropdown-item:hover{
+
+    background:#FDC473;
+
+    color:white;
+
+}
+
 /* ── FORM COMPARTIR ── */
 
 .compartir-card {
   background: var(--blanco);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
-  max-width: 1400px;
+  max-width: 500px;
   margin: 30px auto  30px;
   padding: 20px 10px;
   position:center;
@@ -110,16 +192,16 @@ body {
 
 /* ── CONTENEDOR FEED ── */
 .contenedor {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 18px 60px;
 }
 .titulo-seccion {
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 700;
   color: var(--azul);
   margin-bottom: 24px;
-  padding-bottom: 10px;
+  padding: 30px;
   border-bottom: 2px solid var(--crema-borde);
 }
 
@@ -129,9 +211,9 @@ body {
   border-radius: var(--radio);
   justify-content:center;
   box-shadow: var(--sombra);
-  width: 100%;
+  width: 50%;
   padding: 20px;
-  margin:5px;
+  margin:20px;
   margin-bottom: 25px;
   position: relative;
   transition: transform .2s, box-shadow .2s;
@@ -380,4 +462,70 @@ body {
   .acciones       { gap: 6px; }
   .btn-reaccion   { padding: 6px 10px; font-size: 12px; }
   .btn-comentarios{ margin-left: 0; width: 100%; justify-content: center; }
+}
+
+.menu-exp{
+    position:relative;
+}
+
+.btn-menu{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#666;
+}
+
+.btn-menu:hover{
+    color:#000;
+}
+
+.dropdown-menu-exp{
+
+    display:none;
+
+    position:absolute;
+
+    right:0;
+
+    top:35px;
+
+    width:190px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.18);
+
+    overflow:hidden;
+
+    z-index:1000;
+
+}
+
+.dropdown-menu-exp.show{
+
+    display:block;
+
+}
+
+.dropdown-menu-exp a{
+
+    display:block;
+
+    padding:12px 16px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    transition:.2s;
+
+}
+
+.dropdown-menu-exp a:hover{
+
+    background:#f5f5f5;
+
 }

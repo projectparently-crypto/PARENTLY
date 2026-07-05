@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("conexion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +15,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
    <!-- NAVBAR -->
@@ -206,7 +213,7 @@ while($fila = mysqli_fetch_assoc($resultado)){
     </div>
 
     <p class="pregunta-text">
-        "<?php echo $fila['pregunta']; ?>"
+        "<?php echo htmlspecialchars($fila['pregunta']); ?>"
     </p>
 
     <form
@@ -217,12 +224,12 @@ while($fila = mysqli_fetch_assoc($resultado)){
             type="hidden"
             name="id_pregunta"
             value="<?php echo $fila['id_pregunta']; ?>">
+        <input type="hidden" name="redirect" value="comunidades.php#preguntas">
 
         <textarea
             name="respuesta"
             placeholder="Escribe una respuesta..."
-            required>
-        </textarea>
+            required></textarea>
 
         <br><br>
 
@@ -260,7 +267,7 @@ while($respuesta = mysqli_fetch_assoc($respuestas)){
         </div>
 
         <p class="respuesta-text">
-            <?php echo $respuesta['respuesta']; ?>
+            <?php echo nl2br(htmlspecialchars($respuesta['respuesta'])); ?>
         </p>
 
     </div>
@@ -354,61 +361,83 @@ $resultado = mysqli_query($conexion,$sql);
             </div>
 
             <div>
-                <h3><?php echo $fila['nombre_autor']; ?></h3>
+                <h3><?php echo htmlspecialchars($fila['nombre_autor']); ?></h3>
 
                 <span>
-                    <?php echo $fila['fecha_publicacion']; ?>
-                    <?php echo $fila['ciudad']; ?>
+                    <?php echo htmlspecialchars($fila['fecha_publicacion']); ?>
+                    <?php echo htmlspecialchars($fila['ciudad']); ?>
                 </span>
             </div>
 
         </div>
 
         <span class="categoria">
-            <?php echo strtoupper($fila['categoria']); ?>
+            <?php echo htmlspecialchars(strtoupper($fila['categoria'])); ?>
         </span>
 
     </div>
 
     <h2 class="titulo">
-        <?php echo $fila['titulo']; ?>
+        <?php echo htmlspecialchars($fila['titulo']); ?>
     </h2>
 
     <p class="contenido">
-        <?php echo substr($fila['contenido'],0,250); ?>...
+        <?php echo htmlspecialchars(substr($fila['contenido'],0,250)); ?>...
     </p>
 
     <hr>
 
   <div class="acciones">
 
-    <form action="reaccionar.php" method="POST">
+    <form class="form-reaccion">
         <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
         <input type="hidden" name="tipo" value="identifica">
 
-        <button type="submit">
-            🤝 Me identifica
-            <strong><?php echo $fila['identifica']; ?></strong>
+        <button
+        type="button"
+        class="btn-reaccion"
+        data-exp="<?php echo $fila['id_experiencia']; ?>"
+        data-tipo="identifica"
+        onclick="reaccionar(this)">
+
+        🤝 Me identifica
+        <strong class="cnt"><?php echo $fila['identifica']; ?></strong>
+
         </button>
     </form>
 
-    <form action="reaccionar.php" method="POST">
+    <form class="form-reaccion">
         <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
         <input type="hidden" name="tipo" value="conmueve">
 
-        <button type="submit">
-            ❤️ Me conmueve
-            <strong><?php echo $fila['conmueve']; ?></strong>
+        <button
+        type="button"
+        class="btn-reaccion"
+        data-exp="<?php echo $fila['id_experiencia']; ?>"
+        data-tipo="conmueve"
+        onclick="reaccionar(this)">
+
+        ❤️ Me conmueve
+        <strong class="cnt"><?php echo $fila['conmueve']; ?></strong>
+
         </button>
     </form>
 
-    <form action="reaccionar.php" method="POST">
+
+    <form class="form-reaccion">
         <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
         <input type="hidden" name="tipo" value="ayudo">
 
-        <button type="submit">
-            💡 Me ayudó
-            <strong><?php echo $fila['ayudo']; ?></strong>
+        <button
+        type="button"
+        class="btn-reaccion"
+        data-exp="<?php echo $fila['id_experiencia']; ?>"
+        data-tipo="ayudo"
+        onclick="reaccionar(this)">
+
+        💡 Me ayudó
+        <strong class="cnt"><?php echo $fila['ayudo']; ?></strong>
+
         </button>
     </form>
 
@@ -424,42 +453,89 @@ $resultado = mysqli_query($conexion,$sql);
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-logo">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
-    </div>
-    <div class="footer-content">
-      <h2>Contáctanos:</h2>
-      <div class="footer-links">
-        <div class="footer-column">
-          <p>
-            <a href="https://www.instagram.com/parently_team" class="footer-link">
-              <i class="bi bi-instagram"></i> Instagram
-            </a>
-          </p>
-          <p>
-            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
-              <i class="bi bi-whatsapp"></i> WhatsApp
-            </a>
-          </p>
+
+    <div class="footer-container">
+
+        <!-- Columna 1 -->
+        <div class="footer-col footer-about">
+
+            <img class="logo-footer"
+                src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
+                alt="Parently">
+
+                <h2 class="footer-logo"> <span>P</span>arently </h2>
+
+            <p>
+                Creando conexiones más fuertes entre padres e hijos,
+                ofreciendo un espacio seguro para compartir experiencias,
+                resolver dudas y fortalecer los lazos familiares.
+            </p>
+
         </div>
-        <div class="footer-column">
-          <p>
-            <a href="mailto:contacto@parently.com" class="footer-link">
-              <i class="bi bi-envelope"></i> Correo
-            </a>
-          </p>
-          <p>
-            <a href="https://www.facebook.com/parently" class="footer-link">
-              <i class="bi bi-facebook"></i> Facebook
-            </a>
-          </p>
+
+        <!-- Columna 2 -->
+        <div class="footer-col">
+
+            <h3>Comunidad</h3>
+
+            <ul>
+
+                <li><a href="#"><i class="fa-solid fa-users"></i> Nosotros</a></li>
+
+                <li><a href="#"><i class="fa-solid fa-shield-heart"></i> Normas</a></li>
+
+                <li><a href="#"><i class="fa-solid fa-lock"></i> Privacidad</a></li>
+
+                <li><a href="#"><i class="fa-solid fa-file-contract"></i> Términos</a></li>
+
+            </ul>
+
         </div>
-      </div>
+
+        <!-- Columna 3 -->
+        <div class="footer-col">
+
+            <h3>Contáctanos</h3>
+
+            <p>
+
+                ¿Necesitas ayuda?<br>
+                Escríbenos por cualquiera de nuestros medios.
+
+            </p>
+
+            <div class="footer-social">
+
+                <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+                <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.instagram.com/parently_team" class="instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="mailto:contacto@parently.com" class="mail">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+
+            </div>
+
+        </div>
+
     </div>
-  </div>
+
+    <div class="footer-bottom">
+
+        © 2026 Parently | Todos los derechos reservados.
+
+    </div>
+
 </footer>
 
-
+<script src="../experiencias.js"></script>
 </body>
 </html>

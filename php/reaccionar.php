@@ -1,4 +1,5 @@
 <?php
+session_start();
 // reaccionar.php — llamado por fetch() desde experiencias.js
 // Devuelve JSON, NO redirige
 header('Content-Type: application/json; charset=utf-8');
@@ -20,7 +21,7 @@ if (str_contains($ct, 'application/json')) {
 $id_experiencia = (int)($data['id_experiencia'] ?? 0);
 $tipo           = $data['tipo'] ?? '';
 // Usamos id_usuario = 0 para usuarios invitados (igual que tu BD tiene ya)
-$id_usuario     = 0;
+$id_usuario     = (int)($_SESSION['usuario_id'] ?? $_SESSION['id_usuario'] ?? $_SESSION['id'] ?? 0);
 
 $tipos_ok = ['identifica', 'conmueve', 'ayudo'];
 if (!$id_experiencia || !in_array($tipo, $tipos_ok)) {
