@@ -21,7 +21,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($nombre_usuario) || empty($contraseña)) {
         $error = "Completa todos los campos.";
     } else {
+
         $stmt = $conn->prepare("SELECT id, nombre_usuario, `contraseña` AS password_hash FROM usuarios_comunidades WHERE nombre_usuario = ?");
+
+        $stmt = $conn->prepare("
+        SELECT
+        id,
+        nombre_usuario,
+        contraseña,
+        foto_perfil
+        FROM usuarios
+        WHERE nombre_usuario = ?
+        ");
+
         $stmt->bind_param("s", $nombre_usuario);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -31,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($contraseña, $row["password_hash"])) {
                 $_SESSION["usuario_id"] = $row["id"];
                 $_SESSION["usuario_nombre"] = $row["nombre_usuario"];
+                $_SESSION["foto_perfil"] = $row["foto_perfil"];
                 session_regenerate_id(true);
 
                 $stmt->close();

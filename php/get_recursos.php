@@ -1,48 +1,38 @@
 <?php
+header("Content-Type: application/json");
+include "db.php";
 
-include 'db.php'; // Tu conexión a la base de datos
+$id = $_GET["id"] ?? 0;
+$foro_id = $_GET["foro_id"] ?? 0;
 
-// Obtener recursos más vistos
-function getRecursosMasVistos($limit = 2) {
-    global $conn;
-    $query = "SELECT * FROM recursos WHERE activo = 1 ORDER BY fecha_creacion DESC LIMIT $limit";
-    return $conn->query($query);
+if (!$id || !$foro_id) {
+  echo json_encode(["error" => "faltan datos"]);
+  exit;
 }
 
-// Obtener consejos del día
-function getConsejos($limit = 4) {
-    global $conn;
-    $query = "SELECT * FROM recursos WHERE tipo = 'articulo' AND activo = 1 LIMIT $limit";
-    return $conn->query($query);
+$sql = "
+SELECT 
+    u.id,
+    u.nombre_usuario,
+    u.bio,
+    u.foto_perfil,
+    u.fecha_registro
+FROM usuarios u
+INNER JOIN participantes p ON p.usuario_id = u.id
+WHERE u.id = ? AND p.foro_id = ?
+LIMIT 1
+";
+
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("ii", $id, $foro_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
+
+if (!$data) {
+  echo json_encode(["error" => "Perfil vacío o no encontrado"]);
+  exit;
 }
 
-// Obtener etapas
-function getEtapas() {
-    global $conn;
-    $query = "SELECT * FROM etapas ORDER BY nombre";
-    return $conn->query($query);
-}
-
-// Obtener guías
-function getGuias($limit = 4) {
-    global $conn;
-    $query = "SELECT * FROM recursos WHERE tipo = 'guia' AND activo = 1 LIMIT $limit";
-    return $conn->query($query);
-}
-
-// Obtener recursos por categoría
-function getRecursosPorCategoria($categoria) {
-    global $conn;
-    $categoria = $conn->real_escape_string($categoria);
-    $query = "SELECT * FROM recursos WHERE categoria = '$categoria' AND activo = 1";
-    return $conn->query($query);
-}
-
-// Obtener un recurso específico
-function getRecursoById($id) {
-    global $conn;
-    $id = intval($id);
-    $query = "SELECT * FROM recursos WHERE id = $id AND activo = 1";
-    return $conn->query($query)->fetch_assoc();
-}
-?>
+echo json_encode($data);

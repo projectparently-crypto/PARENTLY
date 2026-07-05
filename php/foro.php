@@ -438,7 +438,7 @@ $id = $_GET["id"] ?? 1;
       <p>
         <span id="tipo-foro">Público</span> ·
         <span id="miembros">0</span>
-
+      </p>
     </div>
 
     
@@ -471,7 +471,9 @@ $id = $_GET["id"] ?? 1;
 
     <button>Discusión</button>
     <button>Media</button>
-    <button>Miembros</button>
+    <button onclick="verMiembros()">
+    Miembros
+    </button>
     <button>Sobre</button>
 
   </div> 
@@ -514,9 +516,15 @@ $id = $_GET["id"] ?? 1;
       placeholder="Escribe un comentario..."
     >
 
-    <button onclick="publicar()">
-      Publicar
-    </button>
+
+  <button id="btnAnonimo" onclick="toggleAnonimo()">
+      Anónimo: OFF
+  </button>
+
+  <button onclick="publicar()">
+    Publicar
+  </button>
+
 
   </div>
 
@@ -525,7 +533,24 @@ $id = $_GET["id"] ?? 1;
   <div id="comentarios"></div>
 
 </div>
-  
+
+<div id="modalMiembros" class="modal-miembros hidden">
+
+  <div class="miembros-box">
+
+    <div class="miembros-header">
+      <h3>Miembros</h3>
+
+      <button class="mi-close-btn" onclick="cerrarMiembros()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div id="listaMiembros"></div>
+
+  </div>
+
+</div>
 <div id="modalSalir" class="modal-salir hidden">
 
   <div class="modal-contenido">
@@ -547,7 +572,70 @@ $id = $_GET["id"] ?? 1;
     </div>
 
   </div>
-<p>ola solo para probar lo de github</p>
+</div>
+<div id="modalReporte" class="modal-reporte hidden">
+
+  <div class="reporte-box">
+
+    <div class="reporte-header">
+      <h3>Reportar usuario</h3>
+
+      <button onclick="cerrarReporte()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <textarea id="motivoReporte" placeholder="Escribe el motivo del reporte..."></textarea>
+
+    <div class="reporte-actions">
+      <button class="btn-cancel" onclick="cerrarReporte()">Cancelar</button>
+      <button class="btn-send" onclick="enviarReporteUsuario()">Enviar</button>
+    </div>
+
+  </div>
+
+</div>
+<div id="modalPerfil" class="modal-perfil hidden">
+
+  <div class="perfil-box">
+
+    <div class="perfil-header">
+      <h3>Perfil</h3>
+
+      <button onclick="cerrarPerfil()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="perfil-content">
+
+      <img id="perfilFoto" src="../photos/default.png">
+
+      <h2 id="perfilNombre"></h2>
+
+      <p id="perfilBio">Sin bio</p>
+
+      <div class="perfil-stats">
+        <div>
+          <b id="perfilForos">0</b>
+          <span>Foros</span>
+        </div>
+
+        <div>
+          <b id="perfilComentarios">0</b>
+          <span>Comentarios</span>
+        </div>
+
+        <div>
+          <b id="perfilMiembroDesde">-</b>
+          <span>Desde</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 <script>
   window.foroInicial = <?php echo $_GET['id'] ?? 1; ?>;
@@ -558,6 +646,6 @@ $id = $_GET["id"] ?? 1;
   const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
 </script>
 
-<script src="../script.js?v=11"></script>
+<script src="../script.js?v=12"></script>
 </body>
 </html>
