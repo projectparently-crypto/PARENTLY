@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once "db.php";
 
@@ -46,28 +46,29 @@ if (!$specialist) {
 
 $specialistName = trim($specialist["nombre"] . " " . $specialist["apellido"]);
 $graduationPlace = trim($specialist["lugar_graduacion"] ?? "");
+
 $educationTitles = [
-    "psicologos" => "Psicologia",
-    "pediatras" => "Medicina general",
-    "terapeutas" => "Terapia familiar",
-    "educadores" => "Educacion inicial",
+    "psicologos" => "Psicología",
+    "pediatras" => "Medicina General",
+    "terapeutas" => "Terapia Familiar",
+    "educadores" => "Educación Inicial",
 ];
 $educationTitle = $educationTitles[$specialist["especialidad"]] ?? $specialist["especialidad"];
 $showReviewsTab = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["crear_resena"])) {
     if (!isset($_SESSION["usuario_id"], $_SESSION["usuario_nombre"])) {
-        $reviewError = "Debes iniciar sesion para dejar una resena.";
+        $reviewError = "Debes iniciar sesión para dejar una reseña.";
         $showReviewsTab = true;
     } else {
         $rating = isset($_POST["puntuacion"]) ? (int) $_POST["puntuacion"] : 0;
         $comment = trim($_POST["comentario"] ?? "");
 
         if ($rating < 1 || $rating > 5) {
-            $reviewError = "Selecciona una puntuacion de 1 a 5 estrellas.";
+            $reviewError = "Selecciona una puntuación de 1 a 5 estrellas.";
             $showReviewsTab = true;
         } elseif ($comment === "") {
-            $reviewError = "Escribe tu resena antes de publicarla.";
+            $reviewError = "Escribe tu reseña antes de publicar.";
             $showReviewsTab = true;
         } else {
             $userId = (int) $_SESSION["usuario_id"];
@@ -80,14 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["crear_resena"])) {
                 exit;
             }
 
-            $reviewError = "No se pudo guardar la resena. Intenta de nuevo.";
+            $reviewError = "No se pudo guardar la reseña. Intenta de nuevo.";
             $showReviewsTab = true;
         }
     }
 }
 
 if (isset($_GET["resena"]) && $_GET["resena"] === "ok") {
-    $reviewMessage = "Tu resena se publico correctamente.";
+    $reviewMessage = "Tu reseña se publicó correctamente.";
     $showReviewsTab = true;
 }
 
@@ -124,10 +125,11 @@ if (count($reviews) > 0) {
     <link rel="stylesheet" href="../style/especialistas.css?v=rounded2026">
 </head>
 <body class="specialist-profile-page">
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Logo">
       Parently
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -135,21 +137,11 @@ if (count($reviews) > 0) {
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
-        <li class="nav-item">
-          <a class="nav-link" href="recursos.php">Recursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="actividades.php">Actividades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="especialistas.php">Especialistas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="comunidades.php">Comunidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contactanos.php">Contactanos</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="actividades.php">Actividades</a></li>
+        <li class="nav-item"><a class="nav-link" href="especialistas.php">Especialistas</a></li>
+        <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactanos.php">Contáctanos</a></li>
       </ul>
       <div class="d-flex gap-2 align-items-center">
         <?php if (isset($_SESSION["usuario_nombre"])): ?>
@@ -160,10 +152,10 @@ if (count($reviews) > 0) {
               </div>
             </a>
             <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
-            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesi&oacute;n</a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
           </div>
         <?php else: ?>
-          <a href="login.php" class="btn btn-outline-success">Iniciar Sesi&oacute;n</a>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
           <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
@@ -183,8 +175,8 @@ if (count($reviews) > 0) {
             <h1><?php echo htmlspecialchars($specialistName); ?></h1>
             <p class="profile-title"><?php echo htmlspecialchars($specialist["descripcion"] ?? ""); ?></p>
             <h2>Especialidad</h2>
-            <p><?php echo htmlspecialchars($specialist["especialidad"]); ?></p>
-            <h2>Informacion de contacto</h2>
+            <p><?php echo htmlspecialchars(ucfirst($educationTitle)); ?></p>
+            <h2>Información de contacto</h2>
             <a href="https://wa.me/503<?php echo htmlspecialchars($specialist["telefono"] ?? ""); ?>">
                 <i class="bi bi-whatsapp"></i>
                 <?php echo htmlspecialchars($specialist["telefono"] ?? ""); ?>
@@ -197,24 +189,24 @@ if (count($reviews) > 0) {
 
         <section class="profile-main-info">
             <div class="profile-actions">
-                <button class="profile-action profile-tab <?php echo !$showReviewsTab ? "active" : ""; ?>" type="button" data-profile-view="education">Informacion personal</button>
-                <button class="profile-action profile-tab <?php echo $showReviewsTab ? "active" : ""; ?>" type="button" data-profile-view="reviews">Rese&ntilde;as</button>
+                <button class="profile-action profile-tab <?php echo !$showReviewsTab ? "active" : ""; ?>" type="button" data-profile-view="education">Información personal</button>
+                <button class="profile-action profile-tab <?php echo $showReviewsTab ? "active" : ""; ?>" type="button" data-profile-view="reviews">Reseñas</button>
             </div>
 
             <div class="profile-info-grid">
                 <article class="education-card profile-view <?php echo !$showReviewsTab ? "active" : ""; ?>" data-profile-panel="education">
-                    <h2>Educaci&oacute;n</h2>
+                    <h2>Educación</h2>
                     <div class="education-entry">
                         <strong><?php echo htmlspecialchars(strtoupper($educationTitle)); ?></strong>
-                        <p><?php echo htmlspecialchars($graduationPlace !== "" ? $graduationPlace : "Lugar de graduacion no registrado"); ?></p>
+                        <p><?php echo htmlspecialchars($graduationPlace !== "" ? $graduationPlace : "Lugar de graduación no registrado"); ?></p>
                     </div>
                 </article>
 
-                <aside class="reviews-panel profile-view <?php echo $showReviewsTab ? "active" : ""; ?>" id="resenas" data-profile-panel="reviews" aria-label="Resenas del especialista">
+                <aside class="reviews-panel profile-view <?php echo $showReviewsTab ? "active" : ""; ?>" id="resenas" data-profile-panel="reviews" aria-label="Reseñas del especialista">
                     <div class="reviews-summary">
                         <div>
-                            <h2>Rese&ntilde;as</h2>
-                            <p><?php echo count($reviews); ?> opinion<?php echo count($reviews) === 1 ? "" : "es"; ?></p>
+                            <h2>Reseñas</h2>
+                            <p><?php echo count($reviews); ?> opinión<?php echo count($reviews) === 1 ? "" : "es"; ?></p>
                         </div>
                         <div class="rating-average">
                             <strong><?php echo $averageRating > 0 ? htmlspecialchars((string) $averageRating) : "0"; ?></strong>
@@ -250,27 +242,27 @@ if (count($reviews) > 0) {
                                 </article>
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <p class="empty-reviews">Aun no hay resenas. Se la primera persona en opinar.</p>
+                            <p class="empty-reviews">Aún no hay reseñas. Sé la primera persona en opinar.</p>
                         <?php endif; ?>
                     </div>
 
                     <?php if (isset($_SESSION["usuario_id"])): ?>
                         <form class="review-form" method="POST" action="especialista_perfil.php?id=<?php echo urlencode($specialist["id"]); ?>#resenas">
-                            <h3>Escribe tu rese&ntilde;a</h3>
+                            <h3>Escribe tu reseña</h3>
                             <fieldset class="rating-field">
-                                <legend>Puntuacion</legend>
+                                <legend>Puntuación</legend>
                                 <?php for ($star = 5; $star >= 1; $star--): ?>
                                     <input type="radio" id="rating-<?php echo $star; ?>" name="puntuacion" value="<?php echo $star; ?>" required>
                                     <label for="rating-<?php echo $star; ?>" aria-label="<?php echo $star; ?> estrellas"><i class="bi bi-star-fill"></i></label>
                                 <?php endfor; ?>
                             </fieldset>
                             <textarea name="comentario" rows="4" maxlength="600" placeholder="Comparte tu experiencia con este especialista" required></textarea>
-                            <button type="submit" name="crear_resena">Publicar rese&ntilde;a</button>
+                            <button type="submit" name="crear_resena">Publicar reseña</button>
                         </form>
                     <?php else: ?>
                         <div class="review-login-box">
-                            <p>Inicia sesion para dejar tu rese&ntilde;a y puntuar con estrellas.</p>
-                            <a href="login.php">Iniciar sesion</a>
+                            <p>Inicia sesión para dejar tu reseña y puntuar con estrellas.</p>
+                            <a href="login.php">Iniciar sesión</a>
                         </div>
                     <?php endif; ?>
                 </aside>
@@ -279,36 +271,35 @@ if (count($reviews) > 0) {
     </section>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-logo">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="Logo Parently">
     </div>
     <div class="footer-content">
-      <h2>Cont&aacute;ctanos:</h2>
+      <h2>Contáctanos:</h2>
       <div class="footer-links">
         <div class="footer-column">
           <p>
             <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
-              <i class="bi bi-instagram"></i> Instagram:
+              <i class="bi bi-instagram"></i> @parently_team
             </a>
           </p>
           <p>
             <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
-              <i class="bi bi-whatsapp"></i> WhatsApp:
+              <i class="bi bi-whatsapp"></i> Canal de WhatsApp
             </a>
           </p>
         </div>
         <div class="footer-column">
           <p>
             <a href="mailto:tucorreo@gmail.com" class="footer-link">
-              <i class="bi bi-envelope"></i> Correo:
+              <i class="bi bi-envelope"></i> parently@gmail.com
             </a>
           </p>
           <p>
             <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="footer-link">
-              <i class="bi bi-facebook"></i> Facebook:
+              <i class="bi bi-facebook"></i> Comunidad Facebook
             </a>
           </p>
         </div>
@@ -340,9 +331,7 @@ profileTabs.forEach((tab) => {
 
 if (window.location.hash === '#resenas' || new URLSearchParams(window.location.search).has('resena')) {
     showProfilePanel('reviews');
-
 }
 </script>
 </body>
 </html>
-

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 require_once "db.php";
 
@@ -21,11 +21,11 @@ if ($result) {
     <link rel="stylesheet" href="../style/especialistas.css?v=rounded2026">
 </head>
 <body class="specialists-page">
-<!-- NAVBAR -->
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Logo Parently">
       Parently
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -33,21 +33,11 @@ if ($result) {
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
-        <li class="nav-item">
-          <a class="nav-link" href="recursos.php">Recursos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="actividades.php">Actividades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="especialistas.php">Especialistas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="comunidades.php">Comunidades</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contactanos.php">Contactanos</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
+        <li class="nav-item"><a class="nav-link" href="actividades.php">Actividades</a></li>
+        <li class="nav-item"><a class="nav-link" href="especialistas.php">Especialistas</a></li>
+        <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactanos.php">Contáctanos</a></li>
       </ul>
       <div class="d-flex gap-2 align-items-center">
         <?php if (isset($_SESSION["usuario_nombre"])): ?>
@@ -58,10 +48,10 @@ if ($result) {
               </div>
             </a>
             <a href="perfil.php" class="profile-name"><?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?></a>
-            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesi&oacute;n</a>
+            <a href="logout.php" class="btn btn-danger btn-sm">Cerrar Sesión</a>
           </div>
         <?php else: ?>
-          <a href="login.php" class="btn btn-outline-success">Iniciar Sesi&oacute;n</a>
+          <a href="login.php" class="btn btn-outline-success">Iniciar Sesión</a>
           <a href="registro.php" class="btn btn-success">Registrarse</a>
         <?php endif; ?>
       </div>
@@ -85,7 +75,7 @@ if ($result) {
         </button>
         <button class="specialty-filter" type="button" data-filter="psicologos">
             <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
-            <span>Psicologos</span>
+            <span>Psicólogos</span>
         </button>
         <button class="specialty-filter" type="button" data-filter="pediatras">
             <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="">
@@ -117,36 +107,35 @@ if ($result) {
     </section>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-logo">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="Logo Parently">
     </div>
     <div class="footer-content">
-      <h2>Cont&aacute;ctanos:</h2>
+      <h2>Contáctanos:</h2>
       <div class="footer-links">
         <div class="footer-column">
           <p>
             <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
-              <i class="bi bi-instagram"></i> Instagram:
+              <i class="bi bi-instagram"></i> @parently_team
             </a>
           </p>
           <p>
             <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
-              <i class="bi bi-whatsapp"></i> WhatsApp:
+              <i class="bi bi-whatsapp"></i> Canal de WhatsApp
             </a>
           </p>
         </div>
         <div class="footer-column">
           <p>
             <a href="mailto:tucorreo@gmail.com" class="footer-link">
-              <i class="bi bi-envelope"></i> Correo:
+              <i class="bi bi-envelope"></i> parently@gmail.com
             </a>
           </p>
           <p>
             <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="footer-link">
-              <i class="bi bi-facebook"></i> Facebook:
+              <i class="bi bi-facebook"></i> Comunidad Facebook
             </a>
           </p>
         </div>
@@ -176,4 +165,3 @@ filterButtons.forEach((button) => {
 </script>
 </body>
 </html>
-

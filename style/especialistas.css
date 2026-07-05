@@ -7,14 +7,14 @@
   color: #2f2f2f;
   min-height: 100vh;
 }
-
+ 
 .specialists-shell,
 .profile-shell {
   width: min(100%, 1040px);
   margin: 0 auto;
   padding: 22px 16px 36px;
 }
-
+ 
 .specialists-hero {
   position: relative;
   overflow: hidden;
@@ -27,7 +27,7 @@
   box-shadow: 0 18px 38px rgba(217, 69, 113, 0.16);
   animation: specialistZoomIn 1s ease forwards;
 }
-
+ 
 .specialists-hero::before {
   content: "";
   position: absolute;
@@ -35,7 +35,7 @@
   background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.08) 48%, rgba(245,230,211,0.15));
   z-index: 1;
 }
-
+ 
 .specialists-hero img {
   width: 100%;
   height: 330px;
@@ -43,7 +43,7 @@
   object-position: center;
   display: block;
 }
-
+ 
 .specialists-hero-copy {
   position: absolute;
   top: 30px;
@@ -53,7 +53,7 @@
   width: min(92%, 640px);
   text-align: center;
 }
-
+ 
 .specialists-hero-copy p {
   margin: 0;
   color: #0f6172;
@@ -63,7 +63,7 @@
   font-style: italic;
   line-height: 0.95;
 }
-
+ 
 .specialists-hero-copy h1 {
   margin: 6px auto 0;
   color: #0c6171;
@@ -73,14 +73,14 @@
   line-height: 1.02;
   text-transform: uppercase;
 }
-
+ 
 .specialty-filters {
   display: grid;
   grid-template-columns: repeat(5, minmax(96px, 1fr));
   gap: 18px;
   margin: 28px 0 34px;
 }
-
+ 
 .specialty-filter {
   border: 0;
   background: #ff98a9;
@@ -98,28 +98,28 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   animation: specialistFloatUp 1s ease forwards;
 }
-
+ 
 .specialty-filter img {
   width: 74px;
   height: 74px;
   object-fit: contain;
   filter: drop-shadow(0 8px 12px rgba(217, 69, 113, 0.16));
 }
-
+ 
 .specialty-filter:hover,
 .specialty-filter.active {
   background: #ff7f99;
   transform: translateY(-3px);
   box-shadow: 0 10px 24px rgba(217, 69, 113, 0.28);
 }
-
+ 
 .specialists-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(190px, 1fr));
   gap: 30px;
   justify-items: center;
 }
-
+ 
 .specialist-card {
   width: 100%;
   max-width: 240px;
@@ -133,16 +133,16 @@
   transition: transform 0.25s ease, opacity 0.2s ease, box-shadow 0.25s ease;
   animation: specialistFloatUp 1s ease forwards;
 }
-
+ 
 .specialist-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 36px rgba(217, 69, 113, 0.16);
 }
-
+ 
 .specialist-card.is-hidden {
   display: none;
 }
-
+ 
 .specialist-photo {
   width: 108px;
   height: 108px;
@@ -153,7 +153,7 @@
   border: 5px solid #f9e8da;
   box-shadow: 0 10px 22px rgba(63, 49, 38, 0.12);
 }
-
+ 
 .specialist-card h2 {
   font-size: 18px;
   font-weight: 800;
@@ -161,7 +161,7 @@
   margin: 0 0 3px;
   line-height: 1.2;
 }
-
+ 
 .specialist-card p {
   font-size: 14px;
   color: #8b8585;
@@ -169,7 +169,7 @@
   line-height: 1.2;
   font-weight: 700;
 }
-
+ 
 .specialist-icons {
   display: flex;
   justify-content: center;
@@ -178,7 +178,7 @@
   font-size: 16px;
   margin-bottom: 12px;
 }
-
+ 
 .specialist-card a {
   display: inline-flex;
   align-items: center;
@@ -194,13 +194,13 @@
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
   transition: transform 0.25s ease, background 0.25s ease;
 }
-
+ 
 .specialist-card a:hover {
   background: #ffc3e5;
   color: #5d4639;
   transform: translateY(-2px);
 }
-
+ 
 /* ===== FOOTER ===== */
 .specialists-page .footer,
 .specialist-profile-page .footer {
@@ -208,7 +208,7 @@
   padding: 30px 50px;
   margin-top: 10px;
 }
-
+ 
 .specialists-page .footer-container,
 .specialist-profile-page .footer-container {
   display: flex;
@@ -219,7 +219,7 @@
   margin: auto;
   padding-left: 40px;
 }
-
+ 
 .specialists-page .footer-content h2,
 .specialist-profile-page .footer-content h2 {
   color: white;
@@ -227,7 +227,7 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
-
+ 
 .specialists-page .footer-link,
 .specialist-profile-page .footer-link {
   color: white;
@@ -237,30 +237,30 @@
   gap: 8px;
   transition: all 0.3s ease;
 }
-
+ 
 .specialists-page .footer-link:hover,
 .specialist-profile-page .footer-link:hover {
   color: #d85999;
   transform: translateX(8px) scale(1.05);
   text-shadow: 0 0 8px rgba(255, 51, 187, 0.7);
 }
-
+ 
 .specialists-page .footer-link i,
 .specialist-profile-page .footer-link i {
   transition: transform 0.3s ease;
 }
-
+ 
 .specialists-page .footer-link:hover i,
 .specialist-profile-page .footer-link:hover i {
   transform: rotate(10deg) scale(1.2);
 }
-
+ 
 .specialists-page .footer-links,
 .specialist-profile-page .footer-links {
   display: flex;
   gap: 80px;
 }
-
+ 
 .specialists-page .footer-column p,
 .specialist-profile-page .footer-column p {
   color: white;
@@ -270,26 +270,26 @@
   align-items: center;
   gap: 12px;
 }
-
+ 
 .specialists-page .footer-column i,
 .specialist-profile-page .footer-column i {
   font-size: 28px;
   color: white;
   transition: 0.3s ease;
 }
-
+ 
 .specialists-page .footer-column p:hover i,
 .specialist-profile-page .footer-column p:hover i {
   transform: scale(1.2);
   color: #D94571;
 }
-
+ 
 .specialists-page .footer-logo img,
 .specialist-profile-page .footer-logo img {
   width: 200px;
   height: auto;
 }
-
+ 
 .profile-brand {
   display: flex;
   align-items: center;
@@ -303,20 +303,20 @@
   font-style: italic;
   animation: specialistZoomIn 1s ease forwards;
 }
-
+ 
 .profile-brand img {
   width: clamp(94px, 17vw, 160px);
   height: clamp(94px, 17vw, 160px);
   object-fit: contain;
 }
-
+ 
 .specialist-profile-layout {
   display: grid;
   grid-template-columns: minmax(245px, 340px) 1fr;
   gap: 42px;
   align-items: start;
 }
-
+ 
 .profile-contact-card {
   position: relative;
   background: #fff;
@@ -326,7 +326,7 @@
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
   animation: specialistFloatLeft 1s ease forwards;
 }
-
+ 
 .profile-photo {
   position: absolute;
   top: -68px;
@@ -338,7 +338,7 @@
   object-fit: cover;
   background: #d7d7d7;
 }
-
+ 
 .profile-contact-card h1 {
   color: #8b8585;
   font-size: 19px;
@@ -346,7 +346,7 @@
   line-height: 1.2;
   margin: 0 0 12px;
 }
-
+ 
 .profile-contact-card h2 {
   color: #b6a7a0;
   font-size: 15px;
@@ -354,19 +354,19 @@
   margin: 18px 0 8px;
   text-transform: uppercase;
 }
-
+ 
 .profile-contact-card p {
   margin: 0;
   color: #1d1d1d;
   font-size: 14px;
   font-weight: 700;
 }
-
+ 
 .profile-contact-card .profile-title {
   font-size: 13px;
   line-height: 1.35;
 }
-
+ 
 .profile-contact-card a {
   display: flex;
   align-items: center;
@@ -378,64 +378,64 @@
   text-decoration: none;
   word-break: break-word;
 }
-
+ 
 .profile-contact-card i {
   font-size: 22px;
 }
-
+ 
 .profile-main-info {
   padding-top: 12px;
   animation: specialistFloatRight 1s ease forwards;
 }
-
+ 
 @keyframes specialistFloatUp {
   from {
     opacity: 0;
     transform: translateY(80px);
   }
-
+ 
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
+ 
 @keyframes specialistFloatLeft {
   from {
     opacity: 0;
     transform: translateX(-100px);
   }
-
+ 
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
+ 
 @keyframes specialistFloatRight {
   from {
     opacity: 0;
     transform: translateX(100px);
   }
-
+ 
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
-
+ 
 @keyframes specialistZoomIn {
   from {
     opacity: 0;
     transform: scale(0.8);
   }
-
+ 
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   .specialists-hero,
   .specialty-filter,
@@ -446,14 +446,14 @@
     animation: none;
   }
 }
-
+ 
 .profile-actions {
   display: flex;
   gap: 14px;
   justify-content: center;
   margin-bottom: 54px;
 }
-
+ 
 .profile-action {
   min-width: 160px;
   min-height: 42px;
@@ -469,32 +469,32 @@
   text-decoration: none;
   cursor: pointer;
 }
-
+ 
 .profile-action:hover,
 .profile-action.active {
   color: #fff;
   background: #ff9bd0;
 }
-
+ 
 .profile-info-grid {
   display: block;
 }
-
+ 
 .profile-view {
   display: none;
 }
-
+ 
 .profile-view.active {
   display: block;
 }
-
+ 
 .education-card {
   background: #f4cfc9;
   border-radius: 6px;
   padding: 28px 22px;
   min-height: 170px;
 }
-
+ 
 .education-card h2 {
   margin: 0 0 18px;
   color: #1d1d1d;
@@ -502,12 +502,12 @@
   font-weight: 900;
   text-transform: uppercase;
 }
-
+ 
 .education-entry {
   position: relative;
   padding-left: 18px;
 }
-
+ 
 .education-entry::before {
   content: "";
   width: 1px;
@@ -517,7 +517,7 @@
   left: 6px;
   top: 13px;
 }
-
+ 
 .education-entry::after {
   content: "";
   width: 12px;
@@ -528,7 +528,7 @@
   left: 0;
   top: 0;
 }
-
+ 
 .education-card strong {
   display: block;
   color: #1d1d1d;
@@ -536,7 +536,7 @@
   font-weight: 900;
   margin-bottom: 8px;
 }
-
+ 
 .education-card p {
   color: #1d1d1d;
   font-size: 13px;
@@ -544,7 +544,7 @@
   line-height: 1.35;
   margin: 0;
 }
-
+ 
 .reviews-panel {
   scroll-margin-top: 18px;
   background: #fff9f4;
@@ -553,7 +553,7 @@
   padding: 18px;
   box-shadow: 0 8px 18px rgba(63, 49, 38, 0.08);
 }
-
+ 
 .reviews-summary {
   display: flex;
   justify-content: space-between;
@@ -561,7 +561,7 @@
   align-items: flex-start;
   margin-bottom: 14px;
 }
-
+ 
 .reviews-summary h2,
 .review-form h3 {
   margin: 0;
@@ -570,25 +570,25 @@
   font-weight: 900;
   text-transform: uppercase;
 }
-
+ 
 .reviews-summary p {
   margin: 3px 0 0;
   color: #8b8585;
   font-size: 12px;
   font-weight: 800;
 }
-
+ 
 .rating-average {
   text-align: right;
 }
-
+ 
 .rating-average strong {
   display: block;
   color: #e9487d;
   font-size: 22px;
   line-height: 1;
 }
-
+ 
 .stars {
   display: inline-flex;
   gap: 2px;
@@ -596,7 +596,7 @@
   font-size: 14px;
   line-height: 1;
 }
-
+ 
 .review-alert {
   border-radius: 6px;
   padding: 9px 11px;
@@ -604,17 +604,17 @@
   font-size: 12px;
   font-weight: 800;
 }
-
+ 
 .review-alert-success {
   background: #e7f7ed;
   color: #237a48;
 }
-
+ 
 .review-alert-error {
   background: #ffe3e7;
   color: #b92243;
 }
-
+ 
 .reviews-list {
   max-height: 260px;
   overflow-y: auto;
@@ -622,14 +622,14 @@
   gap: 10px;
   padding-right: 4px;
 }
-
+ 
 .review-item {
   background: #fff;
   border-radius: 8px;
   padding: 12px;
   border: 1px solid rgba(233, 72, 125, 0.12);
 }
-
+ 
 .review-head {
   display: flex;
   justify-content: space-between;
@@ -637,19 +637,19 @@
   align-items: center;
   margin-bottom: 5px;
 }
-
+ 
 .review-head strong {
   color: #6d6969;
   font-size: 13px;
 }
-
+ 
 .review-head span {
   color: #b6a7a0;
   font-size: 11px;
   font-weight: 800;
   white-space: nowrap;
 }
-
+ 
 .review-item p,
 .empty-reviews,
 .review-login-box p {
@@ -659,20 +659,20 @@
   line-height: 1.35;
   margin: 8px 0 0;
 }
-
+ 
 .empty-reviews {
   background: #fff;
   border-radius: 8px;
   padding: 14px;
   margin: 0;
 }
-
+ 
 .review-form {
   display: grid;
   gap: 10px;
   margin-top: 16px;
 }
-
+ 
 .rating-field {
   border: 0;
   display: flex;
@@ -682,7 +682,7 @@
   margin: 0;
   padding: 0;
 }
-
+ 
 .rating-field legend {
   width: 100%;
   margin-bottom: 2px;
@@ -691,13 +691,13 @@
   font-weight: 900;
   text-transform: uppercase;
 }
-
+ 
 .rating-field input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-
+ 
 .rating-field label {
   color: #e6d3be;
   cursor: pointer;
@@ -705,17 +705,17 @@
   line-height: 1;
   transition: color 0.2s ease, transform 0.2s ease;
 }
-
+ 
 .rating-field label:hover,
 .rating-field label:hover ~ label,
 .rating-field input:checked ~ label {
   color: #f3b331;
 }
-
+ 
 .rating-field label:hover {
   transform: translateY(-1px);
 }
-
+ 
 .review-form textarea {
   width: 100%;
   resize: vertical;
@@ -728,12 +728,12 @@
   font-weight: 700;
   outline: none;
 }
-
+ 
 .review-form textarea:focus {
   border-color: #e9487d;
   box-shadow: 0 0 0 3px rgba(233, 72, 125, 0.12);
 }
-
+ 
 .review-form button,
 .review-login-box a {
   border: 0;
@@ -749,7 +749,7 @@
   font-weight: 900;
   text-decoration: none;
 }
-
+ 
 .review-login-box {
   display: grid;
   gap: 10px;
@@ -758,226 +758,226 @@
   border-radius: 8px;
   padding: 12px;
 }
-
+ 
 .review-login-box p {
   margin: 0;
 }
-
+ 
 @media (max-width: 768px) {
   .specialists-shell,
   .profile-shell {
     padding-left: 10px;
     padding-right: 10px;
   }
-
+ 
   .footer {
     padding: 28px 20px;
   }
-
+ 
   .footer-container {
     flex-direction: column;
     align-items: center;
     padding-left: 0;
     text-align: center;
   }
-
+ 
   .footer-content h2 {
     font-size: 32px;
   }
-
+ 
   .footer-links {
     gap: 32px;
     justify-content: center;
   }
-
+ 
   .footer-column p {
     font-size: 18px;
   }
-
+ 
   .footer-logo img {
     width: 160px;
   }
-
+ 
   .specialists-hero,
   .specialists-hero img {
     min-height: 260px;
     height: 260px;
   }
-
+ 
   .specialty-filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
   }
-
+ 
   .specialty-filter {
     min-height: 118px;
     border-radius: 22px;
   }
-
+ 
   .specialists-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 18px;
   }
-
+ 
   .specialist-profile-layout {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-
+ 
   .profile-contact-card {
     margin-top: 60px;
   }
-
+ 
   .profile-actions {
     margin-bottom: 24px;
   }
-
+ 
   .profile-info-grid {
     grid-template-columns: 1fr;
   }
 }
-
+ 
 @media (max-width: 430px) {
   .specialists-hero-copy p {
     font-size: 33px;
   }
-
+ 
   .specialists-hero-copy h1 {
     font-size: 21px;
   }
-
+ 
   .specialty-filters {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
   }
-
+ 
   .specialty-filter {
     min-height: 86px;
     padding: 9px 4px 7px;
     font-size: 9px;
   }
-
+ 
   .specialty-filter:first-child {
     display: none;
   }
-
+ 
   .specialty-filter img {
     width: 48px;
     height: 48px;
   }
-
+ 
   .specialist-card {
     min-height: 176px;
     padding: 10px 8px;
     border-radius: 22px;
   }
-
+ 
   .specialist-photo {
     width: 72px;
     height: 72px;
   }
-
+ 
   .specialist-card h2,
   .specialist-card p {
     font-size: 10px;
   }
-
+ 
   .specialist-card a {
     font-size: 10px;
     min-height: 22px;
     padding: 3px 9px;
   }
-
+ 
   .profile-brand {
     justify-content: flex-start;
     font-size: 54px;
     gap: 6px;
     margin-bottom: 42px;
   }
-
+ 
   .profile-brand img {
     width: 96px;
     height: 96px;
   }
-
+ 
   .specialist-profile-layout {
     grid-template-columns: minmax(142px, 43%) 1fr;
     gap: 10px;
     align-items: start;
   }
-
+ 
   .profile-contact-card {
     max-width: none;
     min-height: 410px;
     margin-top: 50px;
     padding: 86px 12px 20px;
   }
-
+ 
   .profile-photo {
     width: 120px;
     height: 120px;
   }
-
+ 
   .profile-contact-card h1 {
     font-size: 13px;
   }
-
+ 
   .profile-contact-card h2 {
     font-size: 12px;
   }
-
+ 
   .profile-contact-card p,
   .profile-contact-card a {
     font-size: 10px;
   }
-
+ 
   .profile-main-info {
     width: auto;
     min-height: 410px;
     margin: 50px 0 0;
     padding-top: 0;
   }
-
+ 
   .profile-actions {
     flex-direction: row;
     gap: 8px;
     margin-bottom: 18px;
   }
-
+ 
   .profile-action {
     min-width: 0;
     width: 100%;
     min-height: 32px;
     font-size: 9px;
   }
-
+ 
   .education-card {
     padding: 22px 14px;
     min-height: 166px;
   }
-
+ 
   .education-card h2 {
     font-size: 11px;
   }
-
+ 
   .education-card strong,
   .education-card p {
     font-size: 8px;
   }
-
+ 
   .reviews-panel {
     padding: 12px;
   }
-
+ 
   .reviews-summary h2,
   .review-form h3 {
     font-size: 11px;
   }
-
+ 
   .rating-average strong {
     font-size: 18px;
   }
-
+ 
   .stars,
   .review-head strong,
   .review-form textarea,
@@ -985,24 +985,24 @@
   .review-login-box a {
     font-size: 10px;
   }
-
+ 
   .reviews-list {
     max-height: 210px;
   }
-
+ 
   .rating-field label {
     font-size: 18px;
   }
-
+ 
   .footer-links {
     flex-direction: column;
     gap: 0;
   }
-
+ 
   .footer-content h2 {
     font-size: 28px;
   }
-
+ 
   .footer-column p {
     justify-content: center;
   }
