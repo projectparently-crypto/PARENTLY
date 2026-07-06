@@ -2,10 +2,11 @@
 session_start();
 include("php/conexion.php");
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
+$nombre = mysqli_real_escape_string($conexion, $nombre);
 
 $sql = "SELECT * FROM descripcion_actividades
-        WHERE id = $id";
+        WHERE nombre_activity = '$nombre'";
 
 $resultado = mysqli_query($conexion, $sql);
 

@@ -158,7 +158,7 @@ if(!$resultado){
                 <?php echo htmlspecialchars($actividad['activity_name']); ?>
             </h3>
 
-           <a href="contenido_actividades.php?id=<?php echo $actividad['id']; ?>">
+            <a href="contenido_actividades.php?nombre=<?php echo urlencode($actividad['activity_name']); ?>">
                 <button type="button">Ver más</button>
             </a>
         </div>
