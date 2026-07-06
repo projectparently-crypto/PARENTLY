@@ -51,10 +51,9 @@ body {
     justify-content: center;
     text-decoration: none !important;
     color: var(--teal-dark) !important; /* tu color */
-    background: white;
+    background: #fdfdfd;
 
-    box-shadow: 6px 6px 12px #c5c5c5,
-               -6px -6px 12px #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
 
     transition: .3s;
 }
@@ -68,12 +67,12 @@ body {
     top: 0;
     left: 0;
 
-    /* Cambia estos colores por los de Parently */
-    background-image: linear-gradient(
+
+    background-image: linear-gradient( 
         to right,
         #ffcf86 0%,
-        #FAC16D 100%
-        #FDC473 0%,
+        #FAC16D 500%,
+        #FDC473 100%,
         #FDC473 100%
 
     )!important;
@@ -87,7 +86,9 @@ body {
 }
 
 .age-tab:hover{
-    color: white !important;
+
+    color:#fff !important;
+    border-color:#fff;
 }
 
 .age-tabs__inner{
@@ -100,8 +101,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-    .age-tab:hover { border-color:#ffffff !important; color: #ffffff ; }
-    .age-tab.active { background:#bb1370; border-color: #4b082d; color: #eb65af; box-shadow: 0 4px 14px rgba(253, 251, 251, 0.3); }
+    .age-tab.active { background:#bb1370; border-color: #4b082d; color: #eb65af; }
      /* ── PAGE WRAPPER ─────────────────────────────────── */
     .page { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,5vw,40px); }
  
@@ -2197,6 +2197,118 @@ body {
     max-width: 420px; 
 }
 
+/* Ajustes finales: preguntas, experiencias y botones */
+.btn-white:hover {
+    background: #FFF8EE !important;
+    border-color: #E5A94E !important;
+    color: #1E3A4D !important;
+}
+
+.card .btn:hover {
+    color: inherit !important;
+}
+
+.btn-verde:hover {
+    background: #EAF6EC !important;
+    border-color: #2f7d38 !important;
+    color: #2f7d38 !important;
+}
+
+.btn-turquesa:hover {
+    background: #E8FAF8 !important;
+    border-color: #14a899 !important;
+    color: #14a899 !important;
+}
+
+.preguntas-section .page,
+.experiencias-section + .page {
+    max-width: 980px;
+}
+
+.pregunta-item {
+    height: auto !important;
+    min-height: 0;
+    padding: 24px !important;
+    border-radius: 16px !important;
+    border: 1px solid #EDE0CC !important;
+    box-shadow: 0 3px 16px rgba(44,74,124,.09) !important;
+}
+
+.pregunta-item .avatar {
+    width: 46px !important;
+    height: 46px !important;
+    background: linear-gradient(135deg,#3D6099,#2C4A7C) !important;
+    color: white !important;
+    font-size: 24px !important;
+}
+
+.pregunta-text {
+    color: #2C4A7C !important;
+    font-size: 18px !important;
+    font-weight: 700;
+    line-height: 1.55 !important;
+}
+
+.pregunta-item textarea {
+    width: 100%;
+    min-height: 78px;
+    border: 1.5px solid #EDE0CC;
+    border-radius: 12px;
+    background: #FDF6ED;
+    padding: 12px 14px;
+    resize: vertical;
+}
+
+.respuesta-card {
+    background: #EBF1F9 !important;
+    border-left: 4px solid #2C4A7C;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+}
+
+.respuesta-label {
+    color: #2C4A7C !important;
+}
+
+.experiencias {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.card-experiencia {
+    border: 1px solid #EDE0CC;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    box-shadow: 0 3px 16px rgba(44,74,124,.09) !important;
+}
+
+.card-experiencia .avatar {
+    background: linear-gradient(135deg,#3D6099,#2C4A7C) !important;
+}
+
+.card-experiencia .titulo {
+    color: #2C4A7C !important;
+    font-size: 24px !important;
+}
+
+.card-experiencia .contenido {
+    font-size: 16px !important;
+}
+
+.card-experiencia .acciones button {
+    background: #FDF6ED !important;
+    border: 1.5px solid #EDE0CC !important;
+    color: #5F5F5F !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.card-experiencia .acciones button:hover {
+    background: #EBF1F9 !important;
+    border-color: #2C4A7C !important;
+    color: #2C4A7C !important;
+}
 
 /*==================
     ANIMACIONES
