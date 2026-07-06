@@ -855,6 +855,14 @@ body{
         flex-direction:column;
     }
 
+    .info-derecha{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+
 
     .formulario,
     .info-contacto{
@@ -920,5 +928,60 @@ body{
         width: 140px;
     }
 
+    .team-pixel{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .team-pixel img{
+    width: 170px;
+    height: auto;
+    }
+
+    .team-message{
+     width: 90%;
+    max-width: 320px;
+    }
+
+    /* Flecha del globo */
+
+    .team-message::before{
+    left: 50%;
+    bottom: -18px;
+    transform: translateX(-50%) rotate(90deg);
+    }
+
+    .team-message::after{
+    left: 50%;
+    bottom: -14px;
+    transform: translateX(-50%) rotate(90deg);
+    }
+
+}
+
+/* =========================
+   PERSONAJE PIXEL
+========================= */
+
+.team-pixel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.team-pixel img{
+    width: 220px;
+    height: auto;
+    transition: .3s;
+}
+
+.team-message{
+    max-width: 300px;
 }
 
