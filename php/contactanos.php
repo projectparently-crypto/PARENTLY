@@ -143,7 +143,7 @@ if (isset($_POST["enviar_feedback"])) {
  
 <section class="contacto">
  
-    <div class="contacto-header">
+  <div class="contacto-header">
  
         <div class="texto">
  
@@ -172,18 +172,21 @@ if (isset($_POST["enviar_feedback"])) {
 
             <form method="POST">
 
-                <h2>¡Envíanos un mensaje!</h2>
+              <h2>¡Envíanos un mensaje!</h2>
+              <p class="descripcion-formulario">
+              Estamos aquí para ayudarte. Si tienes preguntas, sugerencias o necesitas asistencia con la plataforma, envíanos un mensaje y nos pondremos en contacto contigo.
+              </p>
 
-                <label>Nombre</label>
-                <input type="text" name="nombre">
+             <label>Nombre</label>
+              <input type="text" name="nombre">
 
-                <label>Correo electrónico</label>
-                <input type="email" name="email" placeholder="correo electronico">
+             <label>Correo electrónico</label>
+              <input type="email" name="email" placeholder="correo electronico">
 
-                <label>Mensaje</label>
-                <textarea name="mensaje"></textarea>
+             <label>Mensaje</label>
+              <textarea name="mensaje"></textarea>
 
-                <button type="submit" name="enviar_mensaje">Enviar</button>
+              <button type="submit" name="enviar_mensaje">Enviar</button>
 
             </form>
 
@@ -191,116 +194,130 @@ if (isset($_POST["enviar_feedback"])) {
  
         <!-- INFO -->
  
-        <div class="info-contacto">
+       <div class="info-derecha">
 
-    <h2>Otras formas de contacto</h2>
+    <div class="info-contacto">
 
-    <a href="https://wa.me/50367863434" class="card-link" target="_blank">
-        <div class="card-contact whatsapp">
-            <div class="icono"><i class="fa-brands fa-whatsapp"></i></div>
-            <div>
-                <h3>WhatsApp</h3>
-                <p>+503 6786-3434</p>
+        <h2>Otras formas de contacto</h2>
+
+        <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="card-link" target="_blank">
+            <div class="card-contact whatsapp">
+                <div class="icono">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                    <h3>WhatsApp</h3>
+                    <p>Parently</p>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
 
-    <a href="mailto:tucorreo@gmail.com" class="card-link">
-        <div class="card-contact email">
-            <div class="icono"> <i class="bi bi-envelope"></i></div>
-            <div>
-                <h3>Correo electrónico</h3>
-                <p>soporte@parently.com</p>
+        <a href="tel:+50368345476" class="card-link">
+            <div class="card-contact phone">
+                <div class="icono">
+                    <i class="fa-solid fa-mobile"></i>
+                </div>
+                <div>
+                    <h3>Teléfono</h3>
+                    <p>+503 6834-5476</p>
+                </div>
             </div>
-        </div>
-    </a>
+        </a>
 
-    <a href="tel:+50368345476" class="card-link">
-        <div class="card-contact phone">
-            <div class="icono"><i class="fa-solid fa-mobile"></i></div>
-            <div>
-                <h3>Teléfono</h3>
-                <p>+503 6834-5476</p>
+        <a href="https://www.instagram.com/parently.sv/" class="card-link" target="_blank">
+            <div class="card-contact instagram">
+                <div class="icono">
+                    <i class="bi bi-instagram"></i>
+                </div>
+                <div>
+                    <h3>Instagram</h3>
+                    <p>@Parently.sv</p>
+                </div>
             </div>
+        </a>
 
-        </div>
-    </a>
-
-    <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="card-link">
-        <div class="card-contact Instagram">
-            <div class="icono"><i class="bi bi-instagram"></i></div>
-            <div>
-                <h3>Instagram</h3>
-                <p>@Parently.sv</p>
+        <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="card-link" target="_blank">
+            <div class="card-contact facebook">
+                <div class="icono">
+                    <i class="bi bi-facebook"></i>
+                </div>
+                <div>
+                    <h3>Facebook</h3>
+                    <p>@ParentlyFC</p>
+                </div>
             </div>
+        </a>
 
+    </div>
+
+    <!-- Personaje Pixel -->
+    <div class="team-pixel">
+
+        <img src="../photos/Team-parently2.jpeg" alt="Equipo Parently">
+
+        <div class="team-message">
+            <span id="typing"></span>
         </div>
-    </a>
-    
 
-    <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="card-link">
-        <div class="card-contact facebook">
-            <div class="icono"><i class="bi bi-facebook"></i></i></div>
-            <div>
-                <h3>Facebook</h3>
-                <p>@ParentlyFC</p>
-            </div>
-
-        </div>
-    </a>
+    </div>
 
 </div>
-    </div>
- 
 </section>
+
+
  
 <!-- =========================
-     COMENTARIOS
+     FEEDBACK
 ========================= -->
- 
+
 <section class="comentarios">
- 
-    <div class="comentarios-box">
- 
-        <form method="POST">
 
-         <h2>¿Te ha sido útil Parently?</h2>
+  <div class="comentarios-box">
 
-            <div class="rating">
-                <input type="radio" name="rating" value="5" id="star5">
-                <label for="star5">★</label>
+    <form method="POST">
 
-                <input type="radio" name="rating" value="4" id="star4">
-                <label for="star4">★</label>
+      <h2>¿Te ha sido útil Parently?</h2>
 
-                <input type="radio" name="rating" value="3" id="star3">
-                <label for="star3">★</label>
+      <div class="rating">
+        <input type="radio" name="rating" value="5" id="star5">
+          <label for="star5">★</label>
 
-                <input type="radio" name="rating" value="2" id="star2">
-                <label for="star2">★</label>
+        <input type="radio" name="rating" value="4" id="star4">
+          <label for="star4">★</label>
 
-                <input type="radio" name="rating" value="1" id="star1">
-                <label for="star1">★</label>
-            </div>
+        <input type="radio" name="rating" value="3" id="star3">
+          <label for="star3">★</label>
 
-            <textarea name="comentario" placeholder="Déjanos tus comentarios..."></textarea>
+        <input type="radio" name="rating" value="2" id="star2">
+          <label for="star2">★</label>
 
-            <div class="comentario-footer">
+        <input type="radio" name="rating" value="1" id="star1">
+          <label for="star1">★</label>
+      </div>
 
-                <img src="../photos/osito.png" alt="Osito">
+      <textarea
+        name="comentario"
+        placeholder="Déjanos tus comentarios..."
+      ></textarea>
 
-                <button type="submit" name="enviar_feedback">Enviar comentario</button>
+      <div class="comentario-footer">
 
-            </div>
+        <img src="../photos/osito.png" alt="Osito">
 
-        </form>
- 
-    </div>
- 
-    <div class="seguridad">
-         Tu información es segura con nosotros
-    </div>
- 
+        <button type="submit" name="enviar_feedback">
+          Enviar comentario
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div class="seguridad">
+    Tu información es segura con nosotros
+  </div>
+
 </section>
 
 
@@ -345,5 +362,79 @@ if (isset($_POST["enviar_feedback"])) {
 <!-- Bootstrap JS -->
  
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+const mensajes = [
+
+"Steven and Jesús: ¡Hola! Bienvenido a Parently.",
+
+"Derek: ¿Necesitas ayuda? Envíanos un mensaje.",
+
+"Alejandra: Síguenos en Instagram y Facebook.",
+
+"Leydi: ¡Gracias por formar parte de nuestra comunidad!",
+
+"Mirian: Tu opinión nos ayuda a mejorar. 💖"
+
+];
+
+let indiceMensaje = 0;
+let indiceLetra = 0;
+
+const typing = document.getElementById("typing");
+
+function escribir(){
+
+    if(indiceLetra < mensajes[indiceMensaje].length){
+
+        typing.textContent += mensajes[indiceMensaje].charAt(indiceLetra);
+
+        indiceLetra++;
+
+        setTimeout(escribir,40);
+
+    }
+
+    else{
+
+        setTimeout(borrar,2500);
+
+    }
+
+}
+
+function borrar(){
+
+    if(typing.textContent.length>0){
+
+        typing.textContent=
+        typing.textContent.slice(0,-1);
+
+        setTimeout(borrar,20);
+
+    }
+
+    else{
+
+        indiceMensaje++;
+
+        if(indiceMensaje>=mensajes.length){
+
+            indiceMensaje=0;
+
+        }
+
+        indiceLetra=0;
+
+        escribir();
+
+    }
+
+}
+
+escribir();
+
+</script>
 </body>
 </html>

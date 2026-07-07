@@ -6,7 +6,7 @@ $error = "";
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "db_parently"; // Cambia esto
+$database = "db_parently";  
 
 $conn = new mysqli($servername, $username, $password, $database);
 
@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($nombre_usuario) || empty($contraseña)) {
         $error = "Completa todos los campos.";
     } else {
+
         $stmt = $conn->prepare("
         SELECT
         id,
@@ -30,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         FROM usuarios
         WHERE nombre_usuario = ?
         ");
+
         $stmt->bind_param("s", $nombre_usuario);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -439,4 +441,5 @@ body {
     </div>
 </body>
 </html>
+
 

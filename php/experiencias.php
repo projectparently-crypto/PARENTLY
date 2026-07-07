@@ -2,6 +2,9 @@
 // experiencias.php
 session_start();
 include("conexion.php");
+$filtro_categoria = isset($_GET['categoria'])
+    ? (int)$_GET['categoria']
+    : 0;
 
 // ── Mensaje flash (tras guardar o reaccionar) ──────────────
 $flash = $_SESSION['flash'] ?? '';
@@ -63,18 +66,112 @@ unset($_SESSION['flash']);
   <h1>Un lugar para compartir lo que <span>la vida nos enseña</span></h1>
   <p>Aquí cada historia importa. Comparte tus experiencias, aprende de los demás y encuentra personas que entienden tu camino.</p>
 </header>
+<!-- ═══════════════════════════════ FEED ═══════════════════════════════ -->
+<div class="categorias-tabs">
+    <div class="categorias-tabs__inner">
 
+        <!-- TODAS -->
+        <a href="experiencias.php"
+           class="categoria-tab <?= $filtro_categoria==0 ? 'active' : '' ?>">
+            TODAS
+        </a>
+
+        <?php
+
+        $categorias = mysqli_query(
+            $conexion,
+            "SELECT * FROM categorias_experiencias ORDER BY nombre"
+        );
+
+        $listaCategorias = [];
+
+        while($cat = mysqli_fetch_assoc($categorias)){
+            $listaCategorias[] = $cat;
+        }
+
+        // Mostrar solo las primeras 5
+        for($i=0; $i<4 && $i<count($listaCategorias); $i++){
+
+            $cat = $listaCategorias[$i];
+        ?>
+
+            <a href="experiencias.php?categoria=<?= $cat['id_categoria']?>"
+               class="categoria-tab <?= $filtro_categoria==$cat['id_categoria']?'active':'' ?>">
+
+                <?= htmlspecialchars($cat['nombre']) ?>
+
+            </a>
+
+        <?php } ?>
+
+
+        <!-- VER MÁS -->
+
+        <div class="dropdown">
+
+            <button
+                class="categoria-tab dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+
+                VER MÁS
+
+            </button>
+
+            <ul class="dropdown-menu">
+
+                <?php
+
+                for($i=5; $i<count($listaCategorias); $i++){
+
+                    $cat = $listaCategorias[$i];
+
+                ?>
+
+                    <li>
+
+                        <a class="dropdown-item"
+                           href="experiencias.php?categoria=<?= $cat['id_categoria']?>">
+
+                            <?= htmlspecialchars($cat['nombre']) ?>
+
+                        </a>
+
+                    </li>
+
+                <?php } ?>
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>
 <!-- ═══════════════════════════════ FORM COMPARTIR ═══════════════════════════════ -->
     <div class="compartir-card">
-    <h3>🖍 Compartir experiencia</h3>
+    <h3> Compartir experiencia</h3>
     <form action="guardar_experiencia.php" method="POST">
 
-    <input
-      type="text"
-      name="nombre_autor"
-      placeholder="Tu nombre (o escribe 'Anónimo')"
-      required
-    >
+      <input
+          type="text"
+          id="nombre_autor"
+          name="nombre_autor"
+          placeholder="Tu nombre"
+      >
+
+      <div class="anonimo-check">
+          <input
+              type="checkbox"
+              id="anonimo"
+              name="anonimo"
+              onchange="toggleAnonimo()"
+          >
+
+          <label for="anonimo">
+              Publicar como Anónimo
+          </label>
+      </div>
 
     <input
       type="text"
@@ -109,38 +206,50 @@ unset($_SESSION['flash']);
       required
     ></textarea>
 
-    <button type="submit">🌟 Publicar mi experiencia</button>
+    <button type="submit"> Publicar mi experiencia</button>
   </form>
 </div>
 
-<!-- ═══════════════════════════════ FEED ═══════════════════════════════ -->
-<div class="contenedor">
   <h2 class="titulo-seccion">Experiencias compartidas</h2>
 
   <?php
   // Traer experiencias con conteos de reacciones y comentarios
-  $sql = "
-    SELECT
-      e.*,
-      ce.nombre AS categoria_nombre,
-      COALESCE(SUM(r.tipo = 'identifica'), 0) AS cnt_identifica,
-      COALESCE(SUM(r.tipo = 'conmueve'),   0) AS cnt_conmueve,
-      COALESCE(SUM(r.tipo = 'ayudo'),      0) AS cnt_ayudo,
-      (SELECT COUNT(*) FROM comentarios_experiencias c
-       WHERE c.id_experiencia = e.id_experiencia)  AS cnt_comentarios
-    FROM experiencias e
-    LEFT JOIN categorias_experiencias ce ON e.id_categoria = ce.id_categoria
-    LEFT JOIN reacciones_experiencias  r  ON r.id_experiencia = e.id_experiencia
-    GROUP BY e.id_experiencia
-    ORDER BY e.fecha_publicacion DESC
-  ";
+$sql = "
+SELECT
+    e.*,
+    ce.nombre AS categoria_nombre,
+    COALESCE(SUM(r.tipo='identifica'),0) AS cnt_identifica,
+    COALESCE(SUM(r.tipo='conmueve'),0) AS cnt_conmueve,
+    COALESCE(SUM(r.tipo='ayudo'),0) AS cnt_ayudo,
+    (
+        SELECT COUNT(*)
+        FROM comentarios_experiencias c
+        WHERE c.id_experiencia=e.id_experiencia
+    ) AS cnt_comentarios
+FROM experiencias e
+LEFT JOIN categorias_experiencias ce
+ON e.id_categoria=ce.id_categoria
+LEFT JOIN reacciones_experiencias r
+ON r.id_experiencia=e.id_experiencia
+";
+
+if($filtro_categoria>0){
+    $sql.=" WHERE e.id_categoria=".$filtro_categoria;
+}
+
+$sql.="
+
+GROUP BY e.id_experiencia
+
+ORDER BY e.fecha_publicacion DESC";
+
   $resultado = mysqli_query($conexion, $sql);
 
   if (!$resultado) {
     echo "<p style='color:red'>Error: " . mysqli_error($conexion) . "</p>";
   } elseif (mysqli_num_rows($resultado) === 0) {
     echo "<p style='text-align:center;color:#999;padding:40px 0'>
-            Aún no hay experiencias. ¡Sé el primero en compartir! 🌟
+            Aún no hay experiencias. ¡Sé el primero en compartir! 
           </p>";
   }
 
@@ -158,6 +267,9 @@ unset($_SESSION['flash']);
     else                     $cuando = date('d/m/Y', strtotime($fila['fecha_publicacion']));
     $i++;
   ?>
+
+
+<!-- ═══════════════════════════════ FEED ═══════════════════════════════ -->
 
   <!-- TARJETA -->
   <div class="card-experiencia" style="animation-delay: <?= $i * 0.07 ?>s">
@@ -178,6 +290,49 @@ unset($_SESSION['flash']);
       <?php if (!empty($fila['categoria_nombre'])): ?>
         <span class="etiqueta-cat"><?= htmlspecialchars($fila['categoria_nombre']) ?></span>
       <?php endif; ?>
+   <div class="menu-exp">
+
+    <button
+        class="btn-menu"
+        onclick="toggleMenu(<?php echo $fila['id_experiencia']; ?>)">
+
+        <i class="bi bi-three-dots-vertical"></i>
+
+    </button>
+
+    <div
+        class="dropdown-menu-exp"
+        id="menu-<?php echo $fila['id_experiencia']; ?>">
+
+        <?php
+        if(
+            isset($_SESSION["usuario_id"]) &&
+            $_SESSION["usuario_id"] == $fila["id_usuario"]
+        ){
+        ?>
+
+            <a
+                href="eliminar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>"
+                onclick="return confirm('¿Eliminar esta experiencia?')">
+
+                 Eliminar
+
+            </a>
+
+        <?php }else{ ?>
+
+            <a
+                href="denunciar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>">
+
+                 Denunciar
+
+            </a>
+
+        <?php } ?>
+
+    </div>
+
+</div>
     </div>
 
     <!-- CONTENIDO -->
@@ -188,9 +343,9 @@ unset($_SESSION['flash']);
     <div class="acciones">
 
       <?php foreach ([
-        'identifica' => ['🤝', 'Me identifica', (int)$fila['cnt_identifica']],
-        'conmueve'   => ['❤️', 'Me conmueve',   (int)$fila['cnt_conmueve']],
-        'ayudo'      => ['💡', 'Me ayudó',      (int)$fila['cnt_ayudo']],
+        'identifica' => ['', 'Me identifica', (int)$fila['cnt_identifica']],
+        'conmueve'   => ['', 'Me conmueve',   (int)$fila['cnt_conmueve']],
+        'ayudo'      => ['', 'Me ayudó',      (int)$fila['cnt_ayudo']],
       ] as $tipo => [$icono, $label, $cnt]): ?>
 
         <button
@@ -227,7 +382,9 @@ unset($_SESSION['flash']);
           placeholder="Escribe tu comentario..."
           maxlength="500"
         >
-        <button onclick="enviarComentario(<?= $fila['id_experiencia'] ?>)">Enviar</button>
+        <button type="button" onclick="enviarComentario(<?= $fila['id_experiencia'] ?>)">
+          Enviar
+        </button>
       </div>
     </div>
     
@@ -247,6 +404,34 @@ unset($_SESSION['flash']);
 <?php endif; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  window.PARENTLY_USER = <?= json_encode($_SESSION["usuario_nombre"] ?? "Anonimo") ?>;
+</script>
 <script src="../experiencias.js"></script>
+
+<script>
+function toggleAnonimo(){
+
+    const check = document.getElementById("anonimo");
+    const nombre = document.getElementById("nombre_autor");
+
+    if(check.checked){
+
+        nombre.value = "Anónimo";
+        nombre.readOnly = true;
+        nombre.style.background = "#f2f2f2";
+
+    }else{
+
+        nombre.value = "";
+        nombre.readOnly = false;
+        nombre.style.background = "";
+        nombre.focus();
+
+    }
+
+}
+</script>
+
 </body>
 </html>

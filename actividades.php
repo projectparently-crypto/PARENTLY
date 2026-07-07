@@ -3,7 +3,12 @@ session_start();
 
 include("php/conexion.php");
 
-$sql = "SELECT * FROM contenido_actividades ORDER BY id ASC";
+$edad = isset($_GET['edad']) ? $_GET['edad'] : '0-3';
+
+$sql = "SELECT * FROM contenido_actividades
+        WHERE edad = '$edad'
+        ORDER BY id ASC";
+
 $resultado = mysqli_query($conexion, $sql);
 ?>
 
@@ -125,14 +130,41 @@ $resultado = mysqli_query($conexion, $sql);
 <h1 class="titulo">Actividades</h1>
 
 <!-- BOTONES -->
+<?php
+$edad = isset($_GET['edad']) ? $_GET['edad'] : '0-3';
+?>
 
 <div class="edades">
 
-    <button class="edad-btn">0-3 años</button>
-    <button class="edad-btn">4-6 años</button>
-    <button class="edad-btn">7-9 años</button>
-    <button class="edad-btn">9-12 años</button>
-    <button class="edad-btn">+13 años</button>
+<a href="?edad=0-3">
+    <button class="edad-btn <?=($edad=="0-3")?"active":""?>">
+        0-3 años
+    </button>
+</a>
+
+<a href="?edad=4-6">
+    <button class="edad-btn <?=($edad=="4-6")?"active":""?>">
+        4-6 años
+    </button>
+</a>
+
+<a href="?edad=7-9">
+    <button class="edad-btn <?=($edad=="7-9")?"active":""?>">
+        7-9 años
+    </button>
+</a>
+
+<a href="?edad=9-12">
+    <button class="edad-btn <?=($edad=="9-12")?"active":""?>">
+        9-12 años
+    </button>
+</a>
+
+<a href="?edad=13-18">
+    <button class="edad-btn <?=($edad=="13-18")?"active":""?>">
+        13-18 años
+    </button>
+</a>
 
 </div>
 
@@ -155,7 +187,7 @@ $resultado = mysqli_query($conexion, $sql);
                 <?php echo htmlspecialchars($actividad['nombre_actividad']); ?>
             </h3>
 
-            <a href="actividades1.php">
+            <a href="actividades1.php?categoria=<?php echo urlencode($actividad['nombre_actividad']); ?>">
                 <button type="button">Ver más</button>
             </a>
 

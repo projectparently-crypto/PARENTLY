@@ -101,17 +101,6 @@
 
   <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
 
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
-
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
-
-
-
- 
-  <img src="photos/comunidadesP.jpg" class="w-100" height="750" alt="familia">
- 
- 
-
   <!-- Texto encima -->
     <div class="hero-text">
     <h1 class="title">No estás solo en la crianza</h1>
