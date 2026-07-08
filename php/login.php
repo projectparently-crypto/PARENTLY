@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            if (password_verify($contraseña, $row["password_hash"])) {
+            if (password_verify($contraseña, $row["contraseña"])) {
                 $_SESSION["usuario_id"] = $row["id"];
                 $_SESSION["usuario_nombre"] = $row["nombre_usuario"];
                 $_SESSION["foto_perfil"] = $row["foto_perfil"];
