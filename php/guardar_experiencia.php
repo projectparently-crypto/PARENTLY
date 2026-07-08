@@ -1,81 +1,92 @@
 <?php
 session_start();
 include("conexion.php");
-include("comunidad_schema.php");
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+// Verificar que venga del formulario
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: experiencias.php");
     exit;
 }
 
-$nombre_autor = trim(strip_tags($_POST['nombre_autor'] ?? ''));
-$titulo = trim(strip_tags($_POST['titulo'] ?? ''));
-$id_categoria = (int)($_POST['id_categoria'] ?? 0);
-$ciudad = trim(strip_tags($_POST['ciudad'] ?? ''));
-$contenido = trim(strip_tags($_POST['contenido'] ?? ''));
-$id_usuario = $_SESSION['usuario_id'] ?? $_SESSION['id_usuario'] ?? $_SESSION['id'] ?? null;
+// Verificar que el usuario haya iniciado sesión
+if (!isset($_SESSION["usuario_id"])) {
+    $_SESSION["flash"] = "Debes iniciar sesión para publicar una experiencia.";
+    header("Location: login.php");
+    exit;
+}
 
-if (!$titulo || !$contenido || $id_categoria < 1) {
-    $_SESSION['flash'] = 'Por favor completa todos los campos obligatorios.';
+$id_usuario = $_SESSION["usuario_id"];
+
+$nombre_autor = trim($_POST["nombre_autor"] ?? "");
+$titulo = trim($_POST["titulo"] ?? "");
+$id_categoria = (int)($_POST["id_categoria"] ?? 0);
+$ciudad = trim($_POST["ciudad"] ?? "");
+$contenido = trim($_POST["contenido"] ?? "");
+
+// Si eligió publicar como anónimo
+if (isset($_POST["anonimo"])) {
+    $nombre_autor = "Anónimo";
+}
+
+// Validaciones
+if (
+    empty($nombre_autor) ||
+    empty($titulo) ||
+    empty($contenido) ||
+    $id_categoria <= 0
+) {
+    $_SESSION["flash"] = "Completa todos los campos obligatorios.";
     header("Location: experiencias.php");
     exit;
 }
 
-if (!$nombre_autor) {
-    $nombre_autor = 'Anonimo';
+$foto_perfil = NULL;
+
+$sql = "INSERT INTO experiencias
+(
+    id_usuario,
+    id_categoria,
+    nombre_autor,
+    foto_perfil,
+    titulo,
+    contenido,
+    ciudad
+)
+VALUES
+(
+    ?,?,?,?,?,?,?
+)";
+
+$stmt = mysqli_prepare($conexion, $sql);
+
+if (!$stmt) {
+    die("Error en la consulta: " . mysqli_error($conexion));
 }
 
-$tieneIdUsuario = columna_existe($conexion, 'experiencias', 'id_usuario');
-
-if ($tieneIdUsuario) {
-    $stmt = mysqli_prepare(
-        $conexion,
-        "INSERT INTO experiencias (id_usuario, id_categoria, nombre_autor, titulo, contenido, ciudad)
-         VALUES (?, ?, ?, ?, ?, ?)"
-    );
-    mysqli_stmt_bind_param(
-        $stmt,
-        'iissss',
-        $id_usuario,
-        $id_categoria,
-        $nombre_autor,
-        $titulo,
-        $contenido,
-        $ciudad
-    );
-} else {
-    $stmt = mysqli_prepare(
-        $conexion,
-        "INSERT INTO experiencias (id_categoria, nombre_autor, titulo, contenido, ciudad)
-         VALUES (?, ?, ?, ?, ?)"
-    );
-    mysqli_stmt_bind_param(
-        $stmt,
-        'issss',
-        $id_categoria,
-        $nombre_autor,
-        $titulo,
-        $contenido,
-        $ciudad
-    );
-}
+mysqli_stmt_bind_param(
+    $stmt,
+    "iisssss",
+    $id_usuario,
+    $id_categoria,
+    $nombre_autor,
+    $foto_perfil,
+    $titulo,
+    $contenido,
+    $ciudad
+);
 
 if (mysqli_stmt_execute($stmt)) {
-    $nuevo_id = mysqli_insert_id($conexion);
 
-    $stmt2 = mysqli_prepare(
-        $conexion,
-        "INSERT INTO experienciasform (id_experiencia, id_usuario, id_categoria, titulo, contenido)
-         VALUES (?, ?, ?, ?, ?)"
-    );
-    mysqli_stmt_bind_param($stmt2, 'iiiss', $nuevo_id, $id_usuario, $id_categoria, $titulo, $contenido);
-    mysqli_stmt_execute($stmt2);
+    $_SESSION["flash"] = "🎉 Tu experiencia fue publicada correctamente.";
 
-    $_SESSION['flash'] = 'Tu experiencia fue publicada. Gracias por compartir.';
 } else {
-    $_SESSION['flash'] = 'Hubo un error al guardar. Intenta de nuevo.';
+
+    die("Error al guardar: " . mysqli_error($conexion));
+
 }
 
 mysqli_stmt_close($stmt);
+mysqli_close($conexion);
+
 header("Location: experiencias.php");
 exit;

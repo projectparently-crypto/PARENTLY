@@ -22,8 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Completa todos los campos.";
     } else {
 
-        $stmt = $conn->prepare("SELECT id, nombre_usuario, `contraseña` AS password_hash FROM usuarios_comunidades WHERE nombre_usuario = ?");
-
         $stmt = $conn->prepare("
         SELECT
         id,

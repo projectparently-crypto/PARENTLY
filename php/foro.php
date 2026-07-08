@@ -469,68 +469,93 @@ $id = $_GET["id"] ?? 1;
   <!-- TABS -->
   <div class="tabs">
 
-    <button>Discusión</button>
-    <button>Media</button>
-    <button onclick="verMiembros()">
+  <button class="tab active" onclick="cambiarTab(this, 'discusion')">
+    Discusión
+  </button>
+
+  <button class="tab" onclick="cambiarTab(this, 'media')">
+    Media
+  </button>
+
+  <button onclick="verMiembros()">
     Miembros
-    </button>
-    <button>Sobre</button>
+  </button>
 
-  </div> 
-  
-  <!-- ================= USUARIO DESTACADO ================= -->
-<div class="destacado">
-
-  <!-- IZQUIERDA -->
-  <div class="destacado-user">
-
-   <img id="destacado-img" src="">
-
-    <div>
-
-      <h3 id="destacado-nombre">Usuario destacado</h3>
-
-      <p id="destacado-info">
-        Se unió hace...
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- DERECHA -->
-  <div class="chat-icon">
-    <i class="fa fa-comment"></i>
-  </div>
+  <button class="tab" onclick="cambiarTab(this, 'sobre')">
+    Sobre
+  </button>
 
 </div>
 
+<div id="discusion" class="seccion">
 
+  <!-- DESTACADO (AQUÍ ARRIBA) -->
+ <div class="destacado">
 
+    <img id="destacado-img" class="destacado-avatar" src="../photos/default.png">
 
-  <!-- ================= COMENTAR ================= -->
+    <div class="destacado-info">
+
+        <div class="destacado-header">
+
+            <h3 id="destacado-nombre">Usuario</h3>
+
+            <span class="badge-top">
+                <i class="fa-solid fa-crown"></i>
+                Destacado
+            </span>
+
+        </div>
+
+        <small id="destacado-extra">
+            Usuario más activo del foro
+        </small>
+
+        <div class="destacado-stats">
+
+            <span>
+              
+                <span id="destacado-comentarios">0 comentarios</span>
+            </span>
+
+            <span>
+                <i class="fa-solid fa-fire"></i>
+                Muy activo
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+  <!-- COMENTAR -->
   <div class="coment-box">
+    <input id="inputComentario" placeholder="Escribe un comentario...">
 
-    <input
-      id="inputComentario"
-      placeholder="Escribe un comentario..."
-    >
+    <label class="media-btn" for="inputImagen">
+  <i class="fa-solid fa-image"></i>
+</label>
 
-
-  <button id="btnAnonimo" onclick="toggleAnonimo()">
+<input type="file" id="inputImagen" multiple hidden>
+          <div class="preview-comentario"></div>
+    <button id="btnAnonimo" onclick="toggleAnonimo()">
       Anónimo: OFF
-  </button>
+    </button>
 
-  <button onclick="publicar()">
-    Publicar
-  </button>
-
-
+    <button onclick="publicar()">Publicar</button>
   </div>
 
-
-  <!-- ================= COMENTARIOS ================= -->
+  <!-- COMENTARIOS -->
   <div id="comentarios"></div>
+
+</div>
+
+<!-- 🟢 MEDIA -->
+<div id="media" class="seccion" style="display:none">
+  <div id="mediaGrid"></div>
+</div>
+
+<div id="sobre" class="seccion" style="display:none">
 
 </div>
 
@@ -547,31 +572,28 @@ $id = $_GET["id"] ?? 1;
     </div>
 
     <div id="listaMiembros"></div>
-
+        
   </div>
 
 </div>
+
 <div id="modalSalir" class="modal-salir hidden">
 
   <div class="modal-contenido">
 
     <h3>¿Salir del foro?</h3>
 
-    <p>¿Estás seguro de que deseas salir de esta comunidad?</p>
+    <p>¿Estás seguro de que deseas salir?</p>
 
     <div class="modal-botones">
 
-      <button class="btn-cancelar" onclick="cerrarModal()">
-        Cancelar
-      </button>
-
-      <button class="btn-salir" onclick="confirmarSalida()">
-        Sí, salir
-      </button>
+      <button class="btn-cancelar" onclick="cerrarModalSalida()">Cancelar</button>
+      <button class="btn-salir" onclick="confirmarSalida()">Sí, salir</button>
 
     </div>
 
   </div>
+
 </div>
 <div id="modalReporte" class="modal-reporte hidden">
 
@@ -605,6 +627,7 @@ $id = $_GET["id"] ?? 1;
       <button onclick="cerrarPerfil()">
         <i class="fa-solid fa-xmark"></i>
       </button>
+      <div id="perfilAcciones"></div>
     </div>
 
     <div class="perfil-content">
@@ -637,6 +660,12 @@ $id = $_GET["id"] ?? 1;
   </div>
 
 </div>
+<div id="modal" class="modal-img" onclick="cerrarModal()">
+  <img id="modalImg" src="">
+</div>
+<script>
+  window.usuarioActual = <?= $_SESSION["usuario_id"] ?? 0 ?>;
+</script>
 <script>
   window.foroInicial = <?php echo $_GET['id'] ?? 1; ?>;
   window.actual = window.foroInicial;
