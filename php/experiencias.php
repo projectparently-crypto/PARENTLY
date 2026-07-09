@@ -151,7 +151,7 @@ unset($_SESSION['flash']);
 <!-- ═══════════════════════════════ FORM COMPARTIR ═══════════════════════════════ -->
     <div class="compartir-card">
     <h3> Compartir experiencia</h3>
-    <form action="guardar_experiencia.php" method="POST">
+    <form action="guardar_experiencia.php" method="POST" enctype="multipart/form-data">
 
       <input
           type="text"
