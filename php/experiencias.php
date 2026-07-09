@@ -153,12 +153,25 @@ unset($_SESSION['flash']);
     <h3> Compartir experiencia</h3>
     <form action="guardar_experiencia.php" method="POST">
 
-    <input
-      type="text"
-      name="nombre_autor"
-      placeholder="Tu nombre (o escribe 'Anónimo')"
-      required
-    >
+      <input
+          type="text"
+          id="nombre_autor"
+          name="nombre_autor"
+          placeholder="Tu nombre"
+      >
+
+      <div class="anonimo-check">
+          <input
+              type="checkbox"
+              id="anonimo"
+              name="anonimo"
+              onchange="toggleAnonimo()"
+          >
+
+          <label for="anonimo">
+              Publicar como Anónimo
+          </label>
+      </div>
 
     <input
       type="text"
@@ -298,10 +311,6 @@ ORDER BY e.fecha_publicacion DESC";
         ){
         ?>
 
-            <a href="editar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>">
-                 Editar
-            </a>
-
             <a
                 href="eliminar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>"
                 onclick="return confirm('¿Eliminar esta experiencia?')">
@@ -317,10 +326,6 @@ ORDER BY e.fecha_publicacion DESC";
 
                  Denunciar
 
-            </a>
-
-            <a href="#" onclick="copiarLink(<?php echo $fila['id_experiencia']; ?>)">
-                 Copiar enlace
             </a>
 
         <?php } ?>
@@ -403,5 +408,30 @@ ORDER BY e.fecha_publicacion DESC";
   window.PARENTLY_USER = <?= json_encode($_SESSION["usuario_nombre"] ?? "Anonimo") ?>;
 </script>
 <script src="../experiencias.js"></script>
+
+<script>
+function toggleAnonimo(){
+
+    const check = document.getElementById("anonimo");
+    const nombre = document.getElementById("nombre_autor");
+
+    if(check.checked){
+
+        nombre.value = "Anónimo";
+        nombre.readOnly = true;
+        nombre.style.background = "#f2f2f2";
+
+    }else{
+
+        nombre.value = "";
+        nombre.readOnly = false;
+        nombre.style.background = "";
+        nombre.focus();
+
+    }
+
+}
+</script>
+
 </body>
 </html>

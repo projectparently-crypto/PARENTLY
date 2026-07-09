@@ -1002,7 +1002,7 @@ body {
 /* Pantallas medianas (769px - 1024px) */
 @media (max-width: 1024px) {
     .feature-grid {
-        gap: 80px;
+        gap: 20px;
     }
 
     .footer-links {
@@ -1013,3 +1013,4 @@ body {
         padding-left: 10vw;
     }
 }
+

@@ -1,9 +1,12 @@
 window.actual = window.foroInicial || 0;
 let foros = [];
+window.imagenesComentario = [];
+let imagenesRespuesta = new Map();
 let anonimo = false;
+
 // 🔥 BASE FIJA DE RUTAS (IMPORTANTE)
 const BASE = "/parently/PARENTLY/php/";
-
+const foroActual = new URLSearchParams(window.location.search).get("id");
 /* =========================
    CARGAR FOROS
 ========================= */
@@ -36,7 +39,6 @@ fetch(BASE + "get_foros.php")
 function cargarForo(id){
 
   actual = id;
-  
   let foro = foros.find(f => f.id == id);
   if(!foro) return;
 
@@ -46,6 +48,7 @@ function cargarForo(id){
   cargarComentarios();
   cargarDestacado();
   actualizarEstado(id);
+  
 }
 
 
@@ -171,7 +174,26 @@ function renderComentario(c) {
       <div class="comentario-body">
         ${c.texto}
       </div>
+        
+      ${
+      c.imagenes && c.imagenes !== ""
+      ?
+      `
+      <div class="comentario-imagenes">
+      ${(() => {
+      let imgs = [];
+      try { imgs = JSON.parse(c.imagenes); } catch(e) {}
 
+      return imgs.map(img => `
+        <img src="../uploads/comentarios/${img}"
+            onclick="verImagen(this.src)">
+      `).join("");
+      })()}
+      </div>
+      `
+      :
+      ""
+      }
       <div class="comentario-actions">
 
         <button
@@ -189,6 +211,7 @@ function renderComentario(c) {
         </button>
 
       </div>
+     
 
       <div class="contenedor-respuestas">
         ${respuestasHTML}
@@ -280,7 +303,23 @@ function renderRespuesta(r){
             <div class="respuesta-texto">
                 ${r.texto}
             </div>
+              ${
+                  r.imagenes
+                  ? `
+                  <div class="comentario-imagenes">
 
+                      ${
+                          JSON.parse(r.imagenes).map(img=>`
+                              <img
+                                  src="../uploads/comentarios/${img}"
+                                  onclick="verImagen(this.src)">
+                          `).join("")
+                      }
+
+                  </div>
+                  `
+                  : ""
+              }
             <div class="comentario-actions">
 
                 <button
@@ -371,25 +410,49 @@ function cargarComentarios() {
 
 function enviarRespuesta(id){
 
-  const box = document.getElementById("respuesta-" + id);
-  const texto = box.querySelector("textarea").value.trim();
+    let box = document.getElementById("respuesta-" + id);
+    if(!box) return;
 
-  if(!texto) return;
+    let texto = box.querySelector("textarea").value.trim();
 
-  fetch(BASE + "comentarios.php", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify({
-      foro_id: actual,
-      comentario: texto,
-      parent_id: id
+    if(texto === ""){
+        alert("Escribe una respuesta");
+        return;
+    }
+
+    let form = new FormData();
+
+    form.append("foro_id", new URLSearchParams(window.location.search).get("id"));
+    form.append("comentario", texto);
+    form.append("parent_id", id);
+
+    // ✅ SOLO ESTA LÍNEA
+    form.append("anonimo", box.dataset.anonimo || "0");
+
+    const boxId = box.id;
+    const files = imagenesRespuesta.get(boxId) || [];
+
+      for(const file of files){
+          form.append("imagenes[]", file);
+      }
+
+    fetch("/parently/PARENTLY/php/comentarios.php", {
+        method: "POST",
+        body: form
     })
-  })
-  .then(r => r.json())
-  .then(() => {
-    cargarComentarios();
-  });
+    .then(r => r.json())
+    .then(data => {
 
+        if(!data.ok){
+            alert(data.mensaje);
+            return;
+        }
+
+        imagenesRespuesta.delete(boxId);
+        box.remove();
+
+        cargarComentarios();
+    });
 }
 function like(id, btn){
 
@@ -464,22 +527,32 @@ function actualizarEstado(id){
   .catch(err => console.error("verificar error:", err));
 }
 
-function abrirModalSalida(){
+function abrirModalSalida() {
 
   const btn = document.getElementById("btnUnirse");
 
-  if (btn.dataset.estado !== "unido") {
+  if (!btn) return;
+
+  const estado = btn.dataset.estado || "no";
+
+  if (estado !== "unido") {
     unirse();
     return;
   }
 
-  document.getElementById("modalSalir")?.classList.remove("hidden");
-}
-/* =========================
-   SALIR (MODAL)
-========================= */
-function confirmarSalida(){
+  const modal = document.getElementById("modalSalir");
+  if (!modal) return console.error("No existe modalSalir");
 
+  modal.classList.remove("hidden");
+}
+
+function cerrarModalSalida() {
+  const modal = document.getElementById("modalSalir");
+  if (!modal) return;
+  modal.classList.add("hidden");
+}
+
+function confirmarSalida() {
   fetch(BASE + "salir_foro.php", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -487,17 +560,11 @@ function confirmarSalida(){
   })
   .then(r => r.json())
   .then(() => {
-    cerrarModal();
+    cerrarModalSalida();
     actualizarEstado(actual);
   })
-  .catch(err => console.error(err));
+  .catch(console.error);
 }
-
-function cerrarModal(){
-  const modal = document.getElementById("modalSalir");
-  if (modal) modal.classList.add("hidden");
-}
-
 
 /* =========================
    ELIMINAR COMENTARIO
@@ -529,36 +596,26 @@ function eliminarComentario(id){
 ========================= */
 function cargarDestacado(){
 
-  fetch(BASE + "get_destacado.php?foro_id=" + actual)
-  .then(r => r.text())
-  .then(text => {
+    fetch(BASE + "get_destacado.php?foro_id=" + actual)
+    .then(r => r.json())
+    .then(u => {
 
-    let data;
+        if(!u) return;
 
-    try {
-      data = JSON.parse(text);
-    } catch (e) {
-      console.error("Error JSON destacado", text);
-      return;
-    }
+        document.getElementById("destacado-img").src =
+            u.foto_perfil ? "../photos/" + u.foto_perfil : "../photos/default.png";
 
-    const nombre = document.getElementById("destacado-nombre");
-    const info = document.getElementById("destacado-info");
+        document.getElementById("destacado-nombre").innerText =
+            u.nombre_usuario;
 
-    if(!data || !data.data){
+        document.getElementById("destacado-comentarios").innerHTML =
+            `<i class="fa-solid fa-comments"></i> ${u.total_comentarios} comentarios`;
 
-      if (nombre) nombre.innerText = "Sin participantes";
-      if (info) info.innerText = "Aún nadie se ha unido";
-      return;
-    }
+        document.getElementById("destacado-extra").innerHTML =
+            `<i class="fa-solid fa-fire"></i> Miembro más activo`;
+    });
 
-    if (nombre) nombre.innerText = data.data.nombre_usuario;
-    if (info) info.innerText = "Miembro destacado";
-
-  });
 }
-
-
 /* =========================
    BUSCADOR
 ========================= */
@@ -604,6 +661,7 @@ document.addEventListener("click", function () {
   document.querySelectorAll(".menu-dropdown")
     .forEach(m => m.classList.add("hidden"));
 });
+
 function toggleMenu(btn, event){
   if (event) event.stopPropagation();
 
@@ -615,42 +673,55 @@ function toggleMenu(btn, event){
 
   menu.classList.toggle("hidden");
 }
-function publicar(){
+
+function publicar() {
 
   const input = document.querySelector("#inputComentario");
+  const fileInput = document.querySelector("#inputImagen");
 
-  if(!input){
-    console.error("No existe inputComentario");
-    return;
-  }
+  if (!input) return;
 
   const texto = input.value.trim();
-  if(texto === "") return;
+  if (texto === "") return;
 
-  fetch(BASE+"comentarios.php",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-      foro_id: actual,
-      comentario: texto,
-      parent_id: 0,
-      anonimo: anonimo ? 1 : 0
-    })
+  const form = new FormData();
+
+  form.append("foro_id", actual);
+  form.append("comentario", texto);
+  form.append("parent_id", 0);
+  form.append("anonimo", anonimo ? 1 : 0);
+
+  console.log("ANTES DE ENVIAR:", imagenesComentario);
+
+  for (const file of window.imagenesComentario) {
+    form.append("imagenes[]", file);
+  }
+
+  fetch(BASE + "comentarios.php", {
+    method: "POST",
+    body: form
   })
-  .then(r=>r.json())
+  .then(r => r.json())
   .then(data => {
 
-    console.log("PUBLICADO:", data);
+    if (!data.ok) return;
 
     input.value = "";
-    cargarComentarios(); // 🔥 refresca todo
+    if (fileInput) fileInput.value = "";
 
-  });
+    imagenesComentario = []; // 🔥 IMPORTANTÍSIMO
 
+    const preview = document.querySelector(".preview-comentario");
+   
+   if (preview) preview.innerHTML = "";
+
+    cargarComentarios();
+  })
+  .catch(console.error);
 }
 
 function responder(id){
-
+  
     const cont = document.querySelector(`[data-id="${id}"]`);
     if(!cont) return;
 
@@ -660,27 +731,64 @@ function responder(id){
         box.remove();
         return;
     }
-
+    imagenesRespuesta.set("respuesta-" + id, []);
     box = document.createElement("div");
     box.id = "respuesta-" + id;
     box.className = "respuesta-box";
-
+    box.dataset.anonimo = "0";
     box.innerHTML = `
-        <textarea placeholder="Escribe una respuesta..."></textarea>
+  
+    <textarea
+        class="respuesta-texto"
+        placeholder="Escribe una respuesta..."></textarea>
 
-        <div class="respuesta-box-actions">
-            <button onclick="enviarRespuesta(${id})">
-                <i class="fa-solid fa-paper-plane"></i>
-                Publicar
-            </button>
+    <label class="media-btn">
+    <i class="fa-solid fa-image"></i>
+    <span class="media-text">Adjuntar imagen</span>
+    <div class="preview-respuesta"></div>
+    <input
+        type="file"
+        class="respuestaImagen"
+        multiple
+        accept="image/*"
+        hidden>
+    </label>
 
-            <button onclick="this.closest('.respuesta-box').remove()">
-                <i class="fa-solid fa-xmark"></i>
-                Cancelar
-            </button>
-        </div>
-    `;
+    <div class="respuesta-box-actions">
+        <button onclick="enviarRespuesta(${id})">
+            <i class="fa-solid fa-paper-plane"></i>
+            Publicar
+        </button>
+        <button type="button" class="btn-anonimo" onclick="toggleAnonimoRespuesta(this)">
+            Anónimo: OFF
+        </button>
+        <button onclick="this.closest('.respuesta-box').remove()">
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+        </button>
+    </div>
+`;
+const input = box.querySelector(".respuestaImagen");
 
+input.addEventListener("change", function(e){
+
+    const preview = box.querySelector(".preview-respuesta");
+
+    preview.innerHTML = "";
+
+    const files = [];
+
+    for (const file of e.target.files) {
+
+        files.push(file);
+
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+    }
+
+    imagenesRespuesta.set(box.id, files);
+});
     // 🔥 FIX: buscar contenedor seguro
     const target =
         cont.querySelector(".contenedor-respuestas") ||
@@ -782,31 +890,37 @@ function editarRespuesta(id){
 
 function guardarEdicionRespuesta(id){
 
-  const box = document.querySelector(`#respuesta-${id} .edit-reply-box`);
-  if(!box) return;
+  const cont = document.querySelector(`[data-respuesta-id="${id}"]`);
 
-  const nuevoTexto = box.querySelector("textarea").value;
+  if(!cont){
+    console.log("No existe respuesta:", id);
+    return;
+  }
+
+  const editor = cont.querySelector(".edit-reply-box");
+  if(!editor) return;
+
+  const texto = editor.querySelector("textarea").value.trim();
+  if(texto === "") return;
 
   fetch(BASE + "editar_comentario.php", {
     method: "POST",
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify({
       id: id,
-      texto: nuevoTexto
+      texto: texto
     })
   })
   .then(r => r.json())
   .then(() => {
 
-    const cont = document.querySelector(`[data-respuesta-id="${id}"]`);
-    if(!cont) return;
+    const body = cont.querySelector(".respuesta-texto");
+    if(body){
+      body.innerText = texto;
+    }
 
-    cont.querySelector(".respuesta-texto").innerText = nuevoTexto;
-
-    box.remove();
-
+    editor.remove();
   });
-
 }
   function agregarComentarioEnPantalla(c){
 
@@ -1001,10 +1115,12 @@ function verMiembros(){
                             Ver perfil
                         </button>
 
+                       ${m.usuario_id == window.usuarioActual ? "" : `
                         <button onclick="reportarUsuario(${m.usuario_id})">
                             <i class="fa-solid fa-flag"></i>
                             Reportar usuario
                         </button>
+                        `}
 
                     </div>
 
@@ -1079,38 +1195,400 @@ let perfilActual = null;
 function abrirPerfil(id){
 
     perfilActual = id;
-  
+
     fetch(BASE + "get_perfil.php?id=" + id + "&foro_id=" + actual)
     .then(r => r.json())
     .then(data => {
 
-    if(!data){
-        console.log("Perfil vacío o no encontrado");
-        return;
+        if(!data) return;
+
+        document.getElementById("perfilNombre").innerText = data.nombre_usuario || "Desconocido";
+        document.getElementById("perfilBio").innerText = data.bio || "Sin bio";
+        document.getElementById("perfilForos").innerText = data.foros ?? 0;
+        document.getElementById("perfilComentarios").innerText = data.comentarios ?? 0;
+
+        const fecha = data.fecha_registro
+            ? new Date(data.fecha_registro).toLocaleDateString()
+            : "Desconocido";
+
+        document.getElementById("perfilMiembroDesde").innerText = fecha;
+
+        document.getElementById("perfilFoto").src = data.foto_perfil
+            ? "../photos/" + data.foto_perfil
+            : "../photos/default.png";
+
+        // 🔥 AQUÍ ESTÁ LA CLAVE
+        const acciones = document.getElementById("perfilAcciones");
+        acciones.innerHTML = "";
+
+        if (id != window.usuarioActual) {
+            acciones.innerHTML = `
+            `;
+        }
+
+        document.getElementById("modalPerfil").classList.remove("hidden");
+    });
+}
+function cerrarPerfil(){
+    document.getElementById("modalPerfil").classList.add("hidden");
+}
+
+function verImagen(src){
+    document.getElementById("modalImg").src = src;
+    document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal(){
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("modalImg").src = "";
+}
+
+
+
+function toggleAnonimoRespuesta(btn){
+
+    const box = btn.closest(".respuesta-box");
+
+    if(box.dataset.anonimo === "1"){
+        box.dataset.anonimo = "0";
+        btn.innerHTML = '<i class="fa-regular fa-user"></i> Anónimo: OFF';
+        btn.classList.remove("on");
+    } else {
+        box.dataset.anonimo = "1";
+        btn.innerHTML = '<i class="fa-solid fa-user-secret"></i> Anónimo: ON';
+        btn.classList.add("on");
+    }
+}
+
+document.addEventListener("change", function (e) {
+
+  if (e.target.id !== "inputImagen") return;
+
+  const preview = document.querySelector(".preview-comentario");
+
+  window.imagenesComentario = [];
+
+  if (preview) preview.innerHTML = "";
+
+  for (const file of e.target.files) {
+    window.imagenesComentario.push(file);
+
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  }
+
+  console.log("IMAGENES OK:", window.imagenesComentario);
+});
+
+document.addEventListener("change", function (e) {
+
+  if (!e.target.classList.contains("respuestaImagen")) return;
+
+  const box = e.target.closest(".respuesta-box");
+  if (!box) return;
+
+  const preview = box.querySelector(".preview-respuesta");
+  if (!preview) return;
+
+  preview.innerHTML = "";
+
+  const files = [];
+
+  for (const file of e.target.files) {
+
+    files.push(file);
+
+    const img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    preview.appendChild(img);
+  }
+
+  // guardar archivos en memoria
+  imagenesRespuesta.set(box.id, files);
+
+});
+function cargarMedia(){
+
+    fetch(BASE + "get_media.php?foro_id=" + actual)
+    .then(r => r.json())
+    .then(data => {
+
+        const grid = document.getElementById("mediaGrid");
+        grid.innerHTML = "";
+
+        data.forEach(item => {
+
+            console.log("MEDIA ITEM:", item);
+
+            let imagenes = [];
+
+            try {
+                imagenes = JSON.parse(item.imagenes);
+            } catch(e){}
+
+            const esAnonimo = Number(item.anonimo) === 1;
+
+            // 👇 NOMBRE (con icono si es anónimo)
+            const nombre = esAnonimo
+                ? `<span class="anonimo-text">
+                        <i class="fa-solid fa-user-secret"></i> Anónimo
+                   </span>`
+                : item.nombre_usuario;
+
+            // 👇 FOTO (blindada contra fugas)
+            let foto;
+
+            if (esAnonimo) {
+                foto = "../photos/default.png";
+            } else {
+                foto = item.foto_perfil;
+
+                if (!foto || foto.trim() === "") {
+                    foto = "default.png";
+                }
+
+                foto = "../photos/" + foto;
+            }
+
+            imagenes.forEach(img => {
+
+                grid.innerHTML += `
+                <div class="media-card">
+
+                    <div class="media-image">
+
+                        <img
+                            src="../uploads/comentarios/${img}"
+                            onclick="verImagen(this.src)">
+
+                        <div class="menu-wrapper">
+
+                            <button class="media-menu-btn"
+                                onclick="toggleMenu(this,event)">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+
+                            <div class="menu-dropdown hidden">
+
+                                ${
+                                    item.es_mio
+                                    ? `
+                                        <button onclick="eliminarComentario(${item.id})">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Eliminar
+                                        </button>
+                                    `
+                                    : `
+                                        <button onclick="reportar(${item.id})">
+                                            <i class="fa-solid fa-flag"></i>
+                                            Reportar
+                                        </button>
+                                    `
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="media-user">
+
+                        <img
+                            class="media-avatar"
+                            src="${foto}"
+                            onerror="this.src='../photos/default.png'">
+
+                        <div class="media-info">
+                            <b>${nombre}</b>
+                            <small>${tiempoRelativo(item.fecha)}</small>
+                        </div>
+
+                    </div>
+
+                </div>`;
+            });
+
+        });
+
+    });
+}
+
+function cambiarTab(btn, id){
+
+    document.querySelectorAll(".seccion").forEach(sec=>{
+        sec.style.display="none";
+    });
+
+    document.getElementById(id).style.display="block";
+
+    document.querySelectorAll(".tab").forEach(tab=>{
+        tab.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+
+
+    if(id==="media"){
+        cargarMedia();
     }
 
-    document.getElementById("perfilNombre").innerText = data.nombre_usuario || "Desconocido";
-    document.getElementById("perfilBio").innerText = data.bio || "Sin bio";
 
-    document.getElementById("perfilForos").innerText = data.foros ?? 0;
-    document.getElementById("perfilComentarios").innerText = data.comentarios ?? 0;
-
-    const fecha = data.fecha_registro
-        ? new Date(data.fecha_registro).toLocaleDateString()
-        : "Desconocido";
-
-    document.getElementById("perfilMiembroDesde").innerText = fecha;
-
-    document.getElementById("perfilFoto").src = data.foto_perfil
-        ? "../photos/" + data.foto_perfil
-        : "../photos/default.png";
-
-    document.getElementById("modalPerfil").classList.remove("hidden");
-});
+    if(id==="sobre"){
+        cargarSobre();
+    }
 
 }
 
-function cerrarPerfil(){
-    document.getElementById("modalPerfil").classList.add("hidden");
+function cargarSobre(){
+
+    const foro = foros.find(f => f.id == actual);
+
+    if(!foro) return;
+
+
+    document.getElementById("sobre").innerHTML = `
+
+    <div class="sobre-container">
+
+
+        <div class="sobre-header">
+
+            <h2>
+                <i class="fa-solid fa-circle-info"></i>
+                ${foro.nombre}
+            </h2>
+
+            <p>
+                ${foro.descripcion || "Información de esta comunidad"}
+            </p>
+
+        </div>
+
+
+
+        <div class="sobre-stats">
+
+
+            <div class="sobre-stat">
+
+                <i class="fa-solid fa-users"></i>
+
+                <b>${foro.miembros}</b>
+
+                <span>Miembros</span>
+
+            </div>
+
+
+
+            <div class="sobre-stat">
+
+                <i class="fa-solid fa-comments"></i>
+
+                <b>${foro.comentarios || 0}</b>
+
+                <span>Comentarios</span>
+
+            </div>
+
+
+
+            <div class="sobre-stat">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <b>${formatearFecha(foro.fecha_creacion)}</b>
+
+                <span>Creado</span>
+
+            </div>
+
+
+        </div>
+
+
+          <div class="sobre-card creador-card">
+
+              <h3>
+                  <i class="fa-solid fa-user-group"></i>
+                  Comunidad creada por
+              </h3>
+
+              <p>
+                  <b>Parently</b> creó este espacio para que padres puedan compartir,
+                  aprender y apoyarse mutuamente.
+              </p>
+
+          </div>
+
+
+        <div class="sobre-card">
+
+            <h3>
+                <i class="fa-solid fa-bullseye"></i>
+                Objetivo
+            </h3>
+
+            <p>
+                ${foro.objetivo || "Sin información"}
+            </p>
+
+        </div>
+
+
+
+
+        <div class="sobre-card">
+
+          <h3>
+              <i class="fa-solid fa-shield-heart"></i>
+              Normas de la comunidad
+          </h3>
+
+            <ul>
+
+            ${
+            foro.reglas 
+            ? foro.reglas.split("|")
+            .map(r=>`
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    ${r}
+                </li>
+            `).join("")
+            : "<li>No hay reglas registradas</li>"
+            }
+
+            </ul>
+
+
+        </div>
+
+
+    </div>
+
+    `;
+
+}
+
+function formatearFecha(fecha){
+
+    if(!fecha) return "-";
+
+
+    const opciones = {
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+    };
+
+
+    return new Date(fecha).toLocaleDateString(
+        "es-ES",
+        opciones
+    );
+
 }
 

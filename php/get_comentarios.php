@@ -37,22 +37,22 @@ $comentarios = [];
 
 while($fila = $res->fetch_assoc()){
 
+    $usuarioActual = $_SESSION["usuario_id"] ?? 0;
+
+    // 👇 SIEMPRE calcular esto
+    $fila["es_mio"] = ($usuarioActual == $fila["usuario_id"]);
+
     if($fila["anonimo"] == 1){
-        $fila["es_mio"] = (
-    isset($_SESSION["usuario_id"]) &&
-    $_SESSION["usuario_id"] == $fila["usuario_id"]
-);
         $fila["nombre_usuario"] = "Anónimo";
         $fila["foto_perfil"] = "";
-
-    }else{
-
+    } else {
         if(empty($fila["foto_perfil"])){
             $fila["foto_perfil"] = "default.png";
         }
-
     }
-
+    if(empty($fila["imagenes"])){
+    $fila["imagenes"] = "";
+}
     $comentarios[] = $fila;
 }
 

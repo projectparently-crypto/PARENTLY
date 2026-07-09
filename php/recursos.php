@@ -10,7 +10,7 @@ include 'get_guias.php';
 $recursosMasVistos = getRecursosMasVistos(2);
 $consejos = getConsejosDelDia(4);
 $etapas = getEtapas();
-$guias = getGuiasParaFamilias(4);
+$guias = getGuiasMasVistas(4);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,7 +73,6 @@ $guias = getGuiasParaFamilias(4);
    </div>
 </nav>
  
-
 
 <!-- PORTAL SECTION -->
 <div class="portal-section">

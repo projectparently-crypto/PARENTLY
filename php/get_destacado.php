@@ -1,37 +1,27 @@
 <?php
+header("Content-Type: application/json; charset=utf-8");
+include "db.php";
 
-header("Content-Type: application/json");
-include "conexion.php";
-error_reporting(0);
+$foro_id = $_GET["foro_id"] ?? 0;
 
-$foro_id = $_GET["foro_id"] ?? 1;
-
-$sql = "SELECT u.nombre_usuario, p.fecha_union
-        FROM participantes p
-        INNER JOIN usuarios u ON p.usuario_id = u.id
-        WHERE p.foro_id = ?
-        ORDER BY p.fecha_union ASC
-        LIMIT 1";
-
-$stmt = $conexion->prepare($sql);
-
-if (!$stmt) {
-    echo json_encode([
-        "error" => true,
-        "data" => null
-    ]);
-    exit;
-}
+$stmt = $conn->prepare("
+    SELECT 
+        u.id,
+        u.nombre_usuario,
+        u.foto_perfil,
+        COUNT(c.id) AS total_comentarios
+    FROM comentarios c
+    INNER JOIN usuarios u ON u.id = c.usuario_id
+    WHERE c.foro_id = ?
+    GROUP BY u.id, u.nombre_usuario, u.foto_perfil
+    ORDER BY total_comentarios DESC
+    LIMIT 1
+");
 
 $stmt->bind_param("i", $foro_id);
 $stmt->execute();
 
-$resultado = $stmt->get_result();
-$data = $resultado->fetch_assoc() ?: null;
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 
-echo json_encode([
-    "error" => false,
-    "data" => $data
-]);
-
-exit;
+echo json_encode($row ?? null);
