@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("php/conexion.php");
+include("php/contenido_actividades.php");
 
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $nombre = mysqli_real_escape_string($conexion, $nombre);
