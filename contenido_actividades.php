@@ -59,23 +59,23 @@ if(!$actividad){
             <ul class="navbar-nav mx-auto gap-2">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/recursos.php">Recursos</a>
+                    <a class="nav-link" href="php/recursos.php">Recursos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/actividades.php">Actividades</a>
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/especialistas.php">Especialistas</a>
+                    <a class="nav-link" href="php/especialistas.php">Especialistas</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/comunidades.php">Comunidades</a>
+                    <a class="nav-link" href="php/comunidades.php">Comunidades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/contactanos.php">Contactanos</a>
+                    <a class="nav-link" href="php/contactanos.php">Contactanos</a>
                 </li>
 
             </ul>
