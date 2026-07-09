@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("contactanos_conexion.php");
+include("db.php");
 
 if (isset($_POST["enviar_mensaje"])) {
 
