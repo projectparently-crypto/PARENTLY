@@ -1,6 +1,15 @@
 <?php
 session_start();
-include("php/actIvidades.php");
+
+include("php/conexion.php");
+
+$edad = isset($_GET['edad']) ? $_GET['edad'] : '0-3';
+
+$sql = "SELECT * FROM contenido_actividades
+        WHERE edad = '$edad'
+        ORDER BY id ASC";
+
+$resultado = mysqli_query($conexion, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -63,17 +72,17 @@ include("php/actIvidades.php");
 
                     <div class="profile-btn d-flex align-items-center gap-2">
 
-                        <a href="perfil.php" class="avatar-link">
+                        <a href="php/perfil.php" class="avatar-link">
                             <div class="avatar-small">
                                 <?php echo strtoupper(substr($_SESSION["usuario_nombre"],0,1)); ?>
                             </div>
                         </a>
 
-                        <a href="perfil.php" class="profile-name">
+                        <a href="php/perfil.php" class="profile-name">
                             <?php echo htmlspecialchars($_SESSION["usuario_nombre"]); ?>
                         </a>
 
-                        <a href="logout.php" class="btn btn-danger btn-sm">
+                        <a href="php/logout.php" class="btn btn-danger btn-sm">
                             Cerrar Sesión
                         </a>
 
@@ -81,11 +90,11 @@ include("php/actIvidades.php");
 
                 <?php else: ?>
 
-                    <a href="login.php" class="btn btn-outline-success">
+                    <a href="php/login.php" class="btn btn-outline-success">
                         Iniciar Sesión
                     </a>
 
-                    <a href="registro.php" class="btn btn-success">
+                    <a href="php/registro.php" class="btn btn-success">
                         Registrarse
                     </a>
 
