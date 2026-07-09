@@ -1,28 +1,24 @@
 <?php 
 
 include("conexion.php");
-include("../contenido_actividades.php");
 
+$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
+$nombre = mysqli_real_escape_string($conexion, $nombre);
 
-$sql = "SELECT * FROM contenido_actividades ORDER BY id ASC";
+$sql = "SELECT * FROM descripcion_actividades
+        WHERE nombre_activity = '$nombre'";
 
 $resultado = mysqli_query($conexion, $sql);
 
 if(!$resultado){
     die("Error en la consulta: " . mysqli_error($conexion));
 }
+
+$actividad = mysqli_fetch_assoc($resultado);
+
+if(!$actividad){
+    die("Actividad no encontrada");
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-    <link rel="stylesheet" href="../style/contenido_actividades.css">
-    
-<body>
-</body>
-</html>
 

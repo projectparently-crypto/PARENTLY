@@ -113,6 +113,7 @@ $busqueda = $_GET['busqueda'] ?? '';
 
 }
 </style>
+<link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -120,7 +121,7 @@ $busqueda = $_GET['busqueda'] ?? '';
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <a class="navbar-brand d-flex align-items-center" href="../index.php">
       <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
@@ -133,7 +134,7 @@ $busqueda = $_GET['busqueda'] ?? '';
           <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="actividades.php">Actividades</a>
+          <a class="nav-link" href="../actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="especialistas.php">Especialistas</a>

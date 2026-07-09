@@ -22,6 +22,7 @@ $guias = getGuiasMasVistas(4);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -41,7 +42,7 @@ $guias = getGuiasMasVistas(4);
            <a class="nav-link" href="recursos.php">Recursos</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="actividades.php">Actividades</a>
+           <a class="nav-link" href="../actividades.php">Actividades</a>
          </li>
          <li class="nav-item">
            <a class="nav-link" href="especialistas.php">Especialistas</a>
@@ -151,6 +152,25 @@ $guias = getGuiasMasVistas(4);
   <?php endif; ?>
 </div>
 
+<!-- ETAPAS -->
+<div class="etapas-section">
+  <h3>¿Qué estás buscando?</h3>
+  <p>Ingresá a la etapa de tu interés:</p>
+  
+  <div class="etapas-buttons">
+    <?php if($etapas && $etapas->num_rows > 0): ?>
+      <?php while($etapa = $etapas->fetch_assoc()): ?>
+        <button class="etapa-btn" onclick="window.location.href='recursos-etapa.php?etapa=<?php echo urlencode($etapa['slug']); ?>'">
+          <div class="card-img-container">
+            <img src="<?php echo htmlspecialchars($etapa['imagen']); ?>" alt="<?php echo htmlspecialchars($etapa['nombre']); ?>">
+          </div>
+          <?php echo htmlspecialchars($etapa['nombre']); ?>
+        </button>
+      <?php endwhile; ?>
+    <?php endif; ?>
+  </div>
+</div>
+
 <!-- GUÍAS PARA FAMILIAS -->
 <h2 class="section-title">Guías para familias</h2>
 
@@ -214,3 +234,4 @@ $guias = getGuiasMasVistas(4);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+  

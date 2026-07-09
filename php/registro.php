@@ -345,6 +345,7 @@ body {
 }
 
     </style>
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">

@@ -273,6 +273,7 @@ $inicial = strtoupper(substr($nombre, 0, 1));
             }
         }
     </style>
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
