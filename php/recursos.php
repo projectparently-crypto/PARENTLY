@@ -28,7 +28,7 @@ $guias = getGuiasMasVistas(4);
    <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid">
-     <a class="navbar-brand d-flex align-items-center" href="../index.php">
+     <a class="navbar-brand d-flex align-items-center" href="index.php">
      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
        Parently
      </a>
@@ -151,6 +151,25 @@ $guias = getGuiasMasVistas(4);
   <?php endif; ?>
 </div>
 
+<!-- ETAPAS -->
+<div class="etapas-section">
+  <h3>¿Qué estás buscando?</h3>
+  <p>Ingresá a la etapa de tu interés:</p>
+  
+  <div class="etapas-buttons">
+    <?php if($etapas && $etapas->num_rows > 0): ?>
+      <?php while($etapa = $etapas->fetch_assoc()): ?>
+        <button class="etapa-btn" onclick="window.location.href='recursos-etapa.php?etapa=<?php echo urlencode($etapa['slug']); ?>'">
+          <div class="card-img-container">
+            <img src="<?php echo htmlspecialchars($etapa['imagen']); ?>" alt="<?php echo htmlspecialchars($etapa['nombre']); ?>">
+          </div>
+          <?php echo htmlspecialchars($etapa['nombre']); ?>
+        </button>
+      <?php endwhile; ?>
+    <?php endif; ?>
+  </div>
+</div>
+
 <!-- GUÍAS PARA FAMILIAS -->
 <h2 class="section-title">Guías para familias</h2>
 
@@ -214,3 +233,4 @@ $guias = getGuiasMasVistas(4);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+  
