@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- TUS CSS -->
-    <link rel="stylesheet" href="../style/homepage.css">
+    <link rel="stylesheet" href="style/homepage.css">
     
     <!-- SPLASH SCREEN CSS -->
     <style>
@@ -183,7 +183,7 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="index.php">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -192,19 +192,19 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
         <li class="nav-item">
-          <a class="nav-link" href="recursos.php">Recursos</a>
+          <a class="nav-link" href="php/recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="actividades.php">Actividades</a>
+          <a class="nav-link" href="php/actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="especialistas.php">Especialistas</a>
+          <a class="nav-link" href="php/especialistas.php">Especialistas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="comunidades.php">Comunidades</a>
+          <a class="nav-link" href="php/comunidades.php">Comunidades</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contactanos.php">Contactanos</a>
+          <a class="nav-link" href="php/contactanos.php">Contactanos</a>
         </li>
       </ul>
       <div class="d-flex gap-2 align-items-center">
@@ -229,7 +229,7 @@
 
 <!-- HERO SECTION -->
 <div class="hero position-relative">
-  <img src="../photos/cheapest_places_to_live_on_the_west_coast__4088x2725___v1222x580.jpg" class="hero-img" alt="familia">
+  <img src="photos/cheapest_places_to_live_on_the_west_coast__4088x2725___v1222x580.jpg" class="hero-img" alt="familia">
   <div class="overlay"></div>
   <div class="hero-text">
     <h1 class="title">GUÍA PARA <span>PADRES</span></h1>
@@ -265,7 +265,7 @@
     </div>
   </div>
   <div class="about-img">
-    <img src="../photos/保育園_幼稚園の運動会大成功アイデア集_年齢別種目_親子競技編__保育のお仕事レポート-removebg-preview (1).png" alt="happy family">
+    <img src="photos/保育園_幼稚園の運動会大成功アイデア集_年齢別種目_親子競技編__保育のお仕事レポート-removebg-preview (1).png" alt="happy family">
   </div>
 </div>
  <div class="row justify-content-center mb-5 mission-section">
@@ -345,7 +345,7 @@
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-logo">
-      <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
     </div>
     <div class="footer-content">
       <h2>Contáctanos:</h2>
