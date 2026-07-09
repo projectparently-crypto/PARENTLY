@@ -49,7 +49,7 @@ $resultado = mysqli_query($conexion, $sql);
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="actividades.php">Actividades</a>
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
                 </li>
 
                 <li class="nav-item">
