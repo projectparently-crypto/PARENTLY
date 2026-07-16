@@ -235,7 +235,7 @@
   <div class="hero-text">
     <h1 class="title">GUÍA PARA <span>PADRES</span></h1>
     <p class="subtitle">Consejos reales para tu familia.</p>
-    <a href="../php/recursos.php">
+    <a href="php/recursos.php">
       <button class="hero-btn">Empezar ahora</button>
     </a>
     

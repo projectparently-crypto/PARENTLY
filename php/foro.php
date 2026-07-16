@@ -675,7 +675,7 @@ $id = $_GET["id"] ?? 1;
   
   const usuario = "<?php echo $_SESSION['usuario_nombre'] ?? 'Invitado'; ?>";
 </script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../script.js?v=12"></script>
 </body>
 </html>

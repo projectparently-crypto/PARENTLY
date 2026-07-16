@@ -511,7 +511,7 @@ function actualizarEstado(id){
     const btn = document.getElementById("btnUnirse");
     const contador = document.getElementById("miembros");
 
-   if (btn) {
+    if (btn) {
       btn.innerHTML = data.unido
         ? `<i class="fa-solid fa-check"></i> Participante`
         : `<i class="fa-solid fa-plus"></i> Unirse`;
@@ -523,6 +523,17 @@ function actualizarEstado(id){
       contador.innerText = (data.ahora ?? 0) + " miembros";
     }
 
+    // ⭐ ACTUALIZAR EL OBJETO DEL FORO
+    const foro = foros.find(f => Number(f.id) === Number(id));
+
+    if (foro) {
+  foro.miembros = Number(data.ahora);
+
+  // Si la pestaña Sobre está abierta, actualízala
+  if (document.getElementById("sobre")) {
+    cargarSobre();
+  }
+}
   })
   .catch(err => console.error("verificar error:", err));
 }
@@ -1443,133 +1454,114 @@ function cambiarTab(btn, id){
 
 function cargarSobre(){
 
-    const foro = foros.find(f => f.id == actual);
+    fetch(BASE + "verificar_miembro.php?foro_id=" + actual)
+    .then(r => r.json())
+    .then(data => {
 
-    if(!foro) return;
+        const foro = foros.find(f => Number(f.id) === Number(actual));
 
+        if(!foro) return;
 
-    document.getElementById("sobre").innerHTML = `
+        // Actualizar el objeto del foro con el valor real
+        foro.miembros = Number(data.ahora);
 
-    <div class="sobre-container">
+        document.getElementById("sobre").innerHTML = `
 
+        <div class="sobre-container">
 
-        <div class="sobre-header">
+            <div class="sobre-header">
 
-            <h2>
-                <i class="fa-solid fa-circle-info"></i>
-                ${foro.nombre}
-            </h2>
+                <h2>
+                    <i class="fa-solid fa-circle-info"></i>
+                    ${foro.nombre}
+                </h2>
 
-            <p>
-                ${foro.descripcion || "Información de esta comunidad"}
-            </p>
-
-        </div>
-
-
-
-        <div class="sobre-stats">
-
-
-            <div class="sobre-stat">
-
-                <i class="fa-solid fa-users"></i>
-
-                <b>${foro.miembros}</b>
-
-                <span>Miembros</span>
+                <p>
+                    ${foro.descripcion || "Información de esta comunidad"}
+                </p>
 
             </div>
 
+            <div class="sobre-stats">
 
+                <div class="sobre-stat">
+                    <i class="fa-solid fa-users"></i>
+                    <b>${foro.miembros}</b>
+                    <span>Miembros</span>
+                </div>
 
-            <div class="sobre-stat">
+                <div class="sobre-stat">
+                    <i class="fa-solid fa-comments"></i>
+                    <b>${foro.comentarios || 0}</b>
+                    <span>Comentarios</span>
+                </div>
 
-                <i class="fa-solid fa-comments"></i>
-
-                <b>${foro.comentarios || 0}</b>
-
-                <span>Comentarios</span>
-
-            </div>
-
-
-
-            <div class="sobre-stat">
-
-                <i class="fa-solid fa-calendar-days"></i>
-
-                <b>${formatearFecha(foro.fecha_creacion)}</b>
-
-                <span>Creado</span>
+                <div class="sobre-stat">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <b>${formatearFecha(foro.fecha_creacion)}</b>
+                    <span>Creado</span>
+                </div>
 
             </div>
 
+            <div class="sobre-card creador-card">
+
+                <h3>
+                    <i class="fa-solid fa-user-group"></i>
+                    Comunidad creada por
+                </h3>
+
+                <p>
+                    <b>Parently</b> creó este espacio para que padres puedan compartir,
+                    aprender y apoyarse mutuamente.
+                </p>
+
+            </div>
+
+            <div class="sobre-card">
+
+                <h3>
+                    <i class="fa-solid fa-bullseye"></i>
+                    Objetivo
+                </h3>
+
+                <p>
+                    ${foro.objetivo || "Sin información"}
+                </p>
+
+            </div>
+
+            <div class="sobre-card">
+
+                <h3>
+                    <i class="fa-solid fa-shield-heart"></i>
+                    Normas de la comunidad
+                </h3>
+
+                <ul>
+
+                ${
+                    foro.reglas
+                    ? foro.reglas.split("|")
+                        .map(r => `
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                ${r}
+                            </li>
+                        `).join("")
+                    : "<li>No hay reglas registradas</li>"
+                }
+
+                </ul>
+
+            </div>
 
         </div>
 
+        `;
 
-          <div class="sobre-card creador-card">
-
-              <h3>
-                  <i class="fa-solid fa-user-group"></i>
-                  Comunidad creada por
-              </h3>
-
-              <p>
-                  <b>Parently</b> creó este espacio para que padres puedan compartir,
-                  aprender y apoyarse mutuamente.
-              </p>
-
-          </div>
-
-
-        <div class="sobre-card">
-
-            <h3>
-                <i class="fa-solid fa-bullseye"></i>
-                Objetivo
-            </h3>
-
-            <p>
-                ${foro.objetivo || "Sin información"}
-            </p>
-
-        </div>
-
-
-
-
-        <div class="sobre-card">
-
-          <h3>
-              <i class="fa-solid fa-shield-heart"></i>
-              Normas de la comunidad
-          </h3>
-
-            <ul>
-
-            ${
-            foro.reglas 
-            ? foro.reglas.split("|")
-            .map(r=>`
-                <li>
-                    <i class="fa-solid fa-check"></i>
-                    ${r}
-                </li>
-            `).join("")
-            : "<li>No hay reglas registradas</li>"
-            }
-
-            </ul>
-
-
-        </div>
-
-
-    </div>
-
-    `;
+    })
+    .catch(err => console.error(err));
 
 }
 
