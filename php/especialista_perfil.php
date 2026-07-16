@@ -123,7 +123,7 @@ if (count($reviews) > 0) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../style/homepage.css">
     <link rel="stylesheet" href="../style/especialistas.css?v=rounded2026">
-    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 <body class="specialist-profile-page">
 

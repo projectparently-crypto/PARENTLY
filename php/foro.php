@@ -370,7 +370,7 @@ $id = $_GET["id"] ?? 1;
 }
 
 </style>
-<link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 
 <body>

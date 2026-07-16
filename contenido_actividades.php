@@ -35,7 +35,7 @@ if(!$actividad){
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/contenido_actividades.css">
-    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 
 </head>
 

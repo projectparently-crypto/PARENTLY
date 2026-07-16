@@ -19,7 +19,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style/comunidades.css">
-    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 
 </head>
 
