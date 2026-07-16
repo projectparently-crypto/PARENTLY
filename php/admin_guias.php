@@ -60,6 +60,7 @@ $guias = $conn->query($query);
         .btn-primary:hover { background: #e91e63; }
         .table-hover tbody tr:hover { background-color: #f5e6d3; }
     </style>
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div class="container-fluid">

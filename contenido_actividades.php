@@ -35,6 +35,7 @@ if(!$actividad){
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/contenido_actividades.css">
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 
 </head>
 
@@ -63,7 +64,11 @@ if(!$actividad){
                 </li>
 
                 <li class="nav-item">
+<<<<<<< HEAD
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
+=======
                     <a class="nav-link" href="actividades.php">Actividades</a>
+>>>>>>> 38b407b52de29234bd86626fc7befcd687fe7481
                 </li>
 
                 <li class="nav-item">

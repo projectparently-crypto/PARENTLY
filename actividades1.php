@@ -15,6 +15,7 @@ include("php/actividades1.php");
 
     <!-- CSS -->
    <link rel="stylesheet" href="style/actividades1.css">
+   <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -42,7 +43,7 @@ include("php/actividades1.php");
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="actividades.php">Actividades</a>
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
                 </li>
 
                 <li class="nav-item">

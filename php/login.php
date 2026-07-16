@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $stmt->close();
                 $conn->close();
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
             } else {
                 $error = "Contraseña incorrecta.";
@@ -389,6 +389,7 @@ body {
 }
 
     </style>
+    <link rel="shortcut icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container login-container">
