@@ -83,11 +83,9 @@ if (isset($_POST["enviar_feedback"])) {
  
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<<<<<<< HEAD
  
 <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
-=======
->>>>>>> 7b91d5ef1cb8294cd61118669ac9abcc606a6c6d
+
 </head>
  
 <body>
