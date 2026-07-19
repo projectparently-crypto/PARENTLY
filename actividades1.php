@@ -1,19 +1,7 @@
 <?php
 session_start();
-include("php/conexion.php");
+include("php/actividades1.php");
 
-$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
-$categoria = mysqli_real_escape_string($conexion, $categoria);
-
-$sql = "SELECT * FROM actividades
-        WHERE categoria = '$categoria'
-        ORDER BY id ASC";
-
-$resultado = mysqli_query($conexion, $sql);
-
-if(!$resultado){
-    die("Error en la consulta: " . mysqli_error($conexion));
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +15,7 @@ if(!$resultado){
 
     <!-- CSS -->
    <link rel="stylesheet" href="style/actividades1.css">
+   <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 
 <body>
@@ -50,23 +39,23 @@ if(!$resultado){
             <ul class="navbar-nav mx-auto gap-2">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="recursos.php">Recursos</a>
+                    <a class="nav-link" href="php/recursos.php">Recursos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="actividades.php">Actividades</a>
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="especialistas.php">Especialistas</a>
+                    <a class="nav-link" href="php/especialistas.php">Especialistas</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="comunidades.php">Comunidades</a>
+                    <a class="nav-link" href="php/comunidades.php">Comunidades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contactanos.php">Contactanos</a>
+                    <a class="nav-link" href="php/contactanos.php">Contactanos</a>
                 </li>
 
             </ul>

@@ -17,6 +17,7 @@ include("conexion.php");
 <link rel="stylesheet" href="../style/experiencias.css">
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 
 </head>
 

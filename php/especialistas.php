@@ -19,12 +19,13 @@ if ($result) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../style/navbar.css">
     <link rel="stylesheet" href="../style/especialistas.css?v=rounded2026">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 <body class="specialists-page">
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <a class="navbar-brand d-flex align-items-center" href="../index.php">
       <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3" alt="Logo Parently">
       Parently
     </a>
@@ -34,7 +35,7 @@ if ($result) {
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mx-auto gap-2">
         <li class="nav-item"><a class="nav-link" href="recursos.php">Recursos</a></li>
-        <li class="nav-item"><a class="nav-link" href="actividades.php">Actividades</a></li>
+        <li class="nav-item"><a class="nav-link" href="../actividades.php">Actividades</a></li>
         <li class="nav-item"><a class="nav-link" href="especialistas.php">Especialistas</a></li>
         <li class="nav-item"><a class="nav-link" href="comunidades.php">Comunidades</a></li>
         <li class="nav-item"><a class="nav-link" href="contactanos.php">Contáctanos</a></li>

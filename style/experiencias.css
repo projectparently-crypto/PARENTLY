@@ -1,151 +1,133 @@
 /* ================================================
    experiencias.css — Parently
+   Paleta alineada con situaciones.css
    ================================================ */
 
-   
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+* { box-sizing: border-box; }
+
 body {
   background-color: #F5E6D3 !important;
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', Arial, sans-serif;
 }
 
-
-/* ── Variables ── */
 :root {
   --azul:        #2C4A7C;
-  --azul-claro:  #3D6099;
-  --azul-suave:  #EBF1F9;
-  --crema:       #FDF6ED;
+  --rosa:        #D94571;
+  --rosa-hover:  #c23a62;
+  --dorado:      #FAC16D;
+  --dorado-hover:#F3AF4E;
+  --dorado-tinte:#FFF1D9;
+  --verde:       #2BA84A;
+  --verde-tinte: #E5F7E9;
   --crema-borde: #EDE0CC;
-  --dorado:      #D4A853;
-  --verde:       #4f8c5e;
-  --verde-suave: #E8F4EB;
-  --texto:       #2D2D2D;
-  --gris:        #6B6B6B;
+  --texto:       #333333;
+  --gris:        #6b6b6b;
   --blanco:      #FFFFFF;
-  --radio:       14px;
-  --sombra:      0 3px 16px rgba(44,74,124,0.09);
+  --radio:       16px;
+  --sombra:      0 8px 24px rgba(44,74,124,.08);
 }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
-  padding: 200px 90px 300px;
+  background-color: var(--azul);
+  padding: 80px 30px 100px;
   text-align: center;
+  border-radius: 0 0 28px 28px;
 }
 .hero h1 {
-  font-size: clamp(24px, 4vw, 40px);
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 4vw, 2.6rem);
   color: #fff;
-  font-weight: 900;
+  font-weight: 800;
   max-width: 580px;
   margin: 0 auto 14px;
   line-height: 1.3;
+  letter-spacing: -0.5px;
 }
-.hero h1 span { color: #F0D9A0; }
+.hero h1 span { color: #FFBDC8; }
 .hero p {
-  color: rgba(255,255,255,.78);
-  font-size: 25px;
-  max-width: 460px;
+  color: rgba(255,255,255,.82);
+  font-size: 1.05rem;
+  max-width: 480px;
   margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 /* ===== FILTRO DE CATEGORÍAS ===== */
 .categorias-tabs{
-    margin:40px 0;
+    margin: 40px 0 40px;
+    position: relative;
+    z-index: 5;
 }
 
 .categorias-tabs__inner{
     display:flex;
     justify-content:center;
-    gap:20px;
+    gap:12px;
     flex-wrap:wrap;
+    padding: 0 20px;
 }
 
 .categoria-tab{
-
-    width:180px;
-    height:60px;
-
+    padding: 0 22px;
+    height: 46px;
     display:flex;
     justify-content:center;
     align-items:center;
-
-    border:3px solid #FDC473;
-    border-radius:30em;
-
-    background:white;
-
-    color:#2C4A7C;
+    border: none;
+    border-radius: 30em;
+    background: var(--blanco);
+    color: var(--azul);
     text-decoration:none;
-
     font-weight:600;
-
-    box-shadow:
-        6px 6px 12px #d9d9d9,
-       -6px -6px 12px white;
-
-    transition:.35s;
+    font-size: 14px;
+    box-shadow: var(--sombra);
+    transition: background .2s ease, color .2s ease, transform .2s ease;
 }
 
 .categoria-tab:hover{
-
-    background:#FDC473;
-
-    color:white;
-
+    background: var(--dorado-tinte);
+    transform: translateY(-1px);
 }
 
 .categoria-tab.active{
-
-    background:#FDC473;
-
-    color:white;
-
+    background: var(--dorado);
+    color: var(--blanco);
 }
 
 .dropdown-menu{
-
     border:none;
-
-    border-radius:15px;
-
+    border-radius:14px;
     padding:8px;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-
+    box-shadow: 0 8px 24px rgba(0,0,0,.15);
 }
 
 .dropdown-item{
-
     border-radius:10px;
-
     padding:10px 15px;
-
+    font-size: 14px;
 }
 
 .dropdown-item:hover{
-
-    background:#FDC473;
-
-    color:white;
-
+    background: var(--dorado-tinte);
+    color: var(--azul);
 }
 
 /* ── FORM COMPARTIR ── */
-
 .compartir-card {
   background: var(--blanco);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
-  max-width: 500px;
-  margin: 30px auto  30px;
-  padding: 20px 10px;
-  position:center;
-  right: 300px;
-  z-index: 10;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  padding: 30px 28px;
+  border-top: 5px solid var(--azul);
 }
 .compartir-card h3 {
-  font-size: 17px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
   font-weight: 700;
   color: var(--azul);
   margin-bottom: 18px;
@@ -154,12 +136,12 @@ body {
 .compartir-card select,
 .compartir-card textarea {
   width: 100%;
-  padding: 20px 14px;
+  padding: 12px 14px;
   border: 1.5px solid var(--crema-borde);
   border-radius: 10px;
   font-size: 14px;
   font-family: inherit;
-  background: var(--crema);
+  background: #FAFAFA;
   color: var(--texto);
   margin-bottom: 12px;
   outline: none;
@@ -174,19 +156,19 @@ body {
 }
 .compartir-card textarea { resize: vertical; min-height: 110px; }
 .compartir-card button[type="submit"] {
-  width: 95%;
-  background: var(--azul);
+  width: 100%;
+  background: var(--rosa);
   color: var(--blanco);
   border: none;
-  border-radius: 100px;
+  border-radius: 10px;
   padding: 13px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   transition: background .2s, transform .15s;
 }
 .compartir-card button[type="submit"]:hover {
-  background: var(--azul-claro);
+  background: var(--rosa-hover);
   transform: translateY(-1px);
 }
 
@@ -194,34 +176,34 @@ body {
     display:flex;
     align-items:center;
     gap:10px;
-    margin-top:10px;
+    margin-top:6px;
     margin-bottom:15px;
-    font-size:15px;
+    font-size:14px;
 }
-
 .anonimo-check input{
     width:18px;
     height:18px;
     cursor:pointer;
+    accent-color: var(--rosa);
 }
-
 .anonimo-check label{
     cursor:pointer;
-    color:#555;
+    color: var(--gris);
 }
 
 /* ── CONTENEDOR FEED ── */
 .contenedor {
-  max-width: 720px;
+  max-width: 680px;
   margin: 0 auto;
   padding: 0 18px 60px;
 }
 .titulo-seccion {
-  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--azul);
   margin-bottom: 24px;
-  padding: 30px;
+  padding-bottom: 14px;
   border-bottom: 2px solid var(--crema-borde);
 }
 
@@ -229,21 +211,32 @@ body {
 .card-experiencia {
   background: var(--blanco);
   border-radius: var(--radio);
-  justify-content:center;
   box-shadow: var(--sombra);
-  width: 50%;
-  padding: 20px;
-  margin:20px;
-  margin-bottom: 25px;
-  position: relative;
+  width: 100%;
+  padding: 25px;
+  margin: 1.5rem;
+  flex-direction:column;
+  align-items:flex-start;
   transition: transform .2s, box-shadow .2s;
-  overflow: hidden;
 }
 .card-experiencia:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(44,74,124,.13);
+  box-shadow: 0 10px 28px rgba(44,74,124,.14);
+}
+/* Evita que el menú de tres puntos quede tapado por la siguiente card */
+.card-experiencia:has(.dropdown-menu-exp.show) {
+  z-index: 50;
 }
 
+.linea-azul{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-radius: var(--radio) var(--radio) 0 0;
+  background: var(--azul);
+}
 
 /* ── HEADER DE TARJETA ── */
 .header-exp {
@@ -259,12 +252,12 @@ body {
   gap: 12px;
 }
 .avatar {
-  width: 46px; height: 46px;
+  width: 44px; height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--azul-claro), var(--azul));
+  background: var(--azul);
   color: var(--blanco);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
@@ -283,10 +276,10 @@ body {
 .etiqueta-cat {
   font-size: 11px;
   font-weight: 700;
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 100px;
-  background: var(--azul-suave);
-  color: var(--azul);
+  background: var(--dorado-tinte);
+  color: #a3670b;
   text-transform: uppercase;
   letter-spacing: .5px;
   white-space: nowrap;
@@ -294,6 +287,7 @@ body {
 
 /* ── CONTENIDO TARJETA ── */
 .titulo {
+  font-family: 'Poppins', sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: var(--azul);
@@ -324,7 +318,7 @@ body {
   padding: 7px 14px;
   border: 1.5px solid var(--crema-borde);
   border-radius: 100px;
-  background: var(--crema);
+  background: #FAFAFA;
   color: var(--gris);
   font-size: 13px;
   font-family: inherit;
@@ -332,9 +326,9 @@ body {
   transition: all .18s;
 }
 .btn-reaccion:hover {
-  background: var(--azul-suave);
-  border-color: var(--azul);
-  color: var(--azul);
+  background: var(--dorado-tinte);
+  border-color: var(--dorado);
+  color: #a3670b;
 }
 .btn-reaccion.activa {
   background: var(--azul);
@@ -378,9 +372,9 @@ body {
 }
 .comentario:last-of-type { border-bottom: none; }
 .av-mini {
-  width: 32px; height: 32px;
+  width: 30px; height: 30px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6B9E78, #4f8c5e);
+  background: var(--verde);
   color: var(--blanco);
   font-size: 12px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
@@ -418,7 +412,7 @@ body {
   border-radius: 100px;
   font-size: 13px;
   font-family: inherit;
-  background: var(--crema);
+  background: #FAFAFA;
   color: var(--texto);
   outline: none;
   transition: border-color .2s;
@@ -440,7 +434,7 @@ body {
   transition: background .18s;
   white-space: nowrap;
 }
-.form-comentario button:hover { background: var(--azul-claro); }
+.form-comentario button:hover { background: #1e3760; }
 
 /* Sin comentarios */
 .sin-comentarios {
@@ -475,15 +469,7 @@ body {
 }
 .card-experiencia { animation: fadeUp .35s ease both; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  .compartir-card { margin: -24px 12px 28px; padding: 20px 16px; }
-  .contenedor     { padding: 0 12px 40px; }
-  .acciones       { gap: 6px; }
-  .btn-reaccion   { padding: 6px 10px; font-size: 12px; }
-  .btn-comentarios{ margin-left: 0; width: 100%; justify-content: center; }
-}
-
+/* ── MENÚ DE TRES PUNTOS ── */
 .menu-exp{
     position:relative;
 }
@@ -491,61 +477,57 @@ body {
 .btn-menu{
     border:none;
     background:none;
-    font-size:22px;
+    font-size:20px;
     cursor:pointer;
-    color:#666;
+    color: var(--gris);
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background .15s, color .15s;
 }
 
 .btn-menu:hover{
-    color:#000;
+    background: var(--dorado-tinte);
+    color: var(--azul);
 }
 
 .dropdown-menu-exp{
-
     display:none;
-
     position:absolute;
-
     right:0;
-
-    top:35px;
-
+    top:38px;
     width:190px;
-
-    background:#fff;
-
-    border-radius:10px;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.18);
-
+    background: var(--blanco);
+    border-radius:12px;
+    box-shadow: 0 10px 28px rgba(0,0,0,.18);
     overflow:hidden;
-
     z-index:1000;
-
+    border: 1px solid var(--crema-borde);
 }
 
 .dropdown-menu-exp.show{
-
     display:block;
-
 }
 
 .dropdown-menu-exp a{
-
     display:block;
-
     padding:12px 16px;
-
     text-decoration:none;
-
-    color:#333;
-
-    transition:.2s;
-
+    color: var(--texto);
+    font-size: 14px;
+    transition:.15s;
 }
 
 .dropdown-menu-exp a:hover{
+    background: var(--dorado-tinte);
+    color: var(--azul);
+}
 
-    background:#f5f5f5;
-
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hero            { padding: 60px 24px 90px; }
+  .compartir-card  { margin: -40px 12px 30px; padding: 22px 18px; }
+  .contenedor      { padding: 0 12px 40px; }
+  .acciones        { gap: 6px; }
+  .btn-reaccion    { padding: 6px 10px; font-size: 12px; }
+  .btn-comentarios { margin-left: 0; width: 100%; justify-content: center; }
 }

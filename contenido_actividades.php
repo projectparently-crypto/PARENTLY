@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("php/conexion.php");
+include("php/contenido_actividades.php");
 
 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
 $nombre = mysqli_real_escape_string($conexion, $nombre);
@@ -35,6 +35,7 @@ if(!$actividad){
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/contenido_actividades.css">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 
 </head>
 
@@ -59,23 +60,27 @@ if(!$actividad){
             <ul class="navbar-nav mx-auto gap-2">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/recursos.php">Recursos</a>
+                    <a class="nav-link" href="php/recursos.php">Recursos</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/actividades.php">Actividades</a>
+<<<<<<< HEAD
+                    <a class="nav-link" href="php/actividades.php">Actividades</a>
+=======
+                    <a class="nav-link" href="actividades.php">Actividades</a>
+>>>>>>> 38b407b52de29234bd86626fc7befcd687fe7481
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/especialistas.php">Especialistas</a>
+                    <a class="nav-link" href="php/especialistas.php">Especialistas</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/comunidades.php">Comunidades</a>
+                    <a class="nav-link" href="php/comunidades.php">Comunidades</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="../php/contactanos.php">Contactanos</a>
+                    <a class="nav-link" href="php/contactanos.php">Contactanos</a>
                 </li>
 
             </ul>

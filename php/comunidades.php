@@ -17,12 +17,13 @@ include("conexion.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 <body>
    <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="index.php">
+    <a class="navbar-brand d-flex align-items-center" href="../index.php">
       <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" width="50" class="me-3">
       Parently
     </a>
@@ -35,7 +36,7 @@ include("conexion.php");
           <a class="nav-link" href="recursos.php">Recursos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="actividades.php">Actividades</a>
+          <a class="nav-link" href="../actividades.php">Actividades</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="especialistas.php">Especialistas</a>
@@ -163,28 +164,35 @@ include("conexion.php");
 
     <?php } ?>
     
-<!-- ── PREGUNTAS ──────────────────────────────────────── -->
- <section class="preguntas-section" id="preguntas">
-  <div class="page">
-    <div class="section-header" style="margin-bottom:2rem;">
-      <div class="section-title">
-        <small>Comunidad</small>
-        Preguntas
-      </div>
-      <a href="preguntas.php" class="btn-white">Ver todas </a>
-    </div>
- <!-- Hacer una pregunta -->
- 
+<!-- ── APRENDE EN COMUNIDAD ──────────────────────────────────────── -->
+<section class="preguntas-section" id="aprende">
+
+    <div class="page">
+
+        <div class="section-header" style="margin-bottom:2rem;">
+
+            <div class="section-title">
+                <small>Comunidad</small>
+                Aprende en Comunidad
+            </div>
+
+            <a href="aprendecomunidad.php" class="btn-white">
+                Ver todas
+            </a>
+
+        </div>
+
 <?php
 
 include("conexion.php");
 
 $sql = "SELECT *
-        FROM preguntasc
-        ORDER BY fecha DESC
+        FROM situaciones
+        WHERE fecha_publicacion <= CURDATE()
+        ORDER BY fecha_publicacion DESC
         LIMIT 1";
 
-$resultado = mysqli_query($conexion, $sql);
+$resultado = mysqli_query($conexion,$sql);
 
 while($fila = mysqli_fetch_assoc($resultado)){
 
@@ -195,156 +203,111 @@ while($fila = mysqli_fetch_assoc($resultado)){
     <div class="pregunta-user">
 
         <div class="avatar">
-            <i class="bi bi-person-circle"></i>
+            <i class="bi bi-lightbulb-fill"></i>
         </div>
 
         <div>
 
             <div class="pregunta-user-name">
-                Usuario
+                Situación de la semana
             </div>
 
             <div class="pregunta-user-time">
-                <?php echo $fila['fecha']; ?>
+                <?php echo date("d/m/Y", strtotime($fila['fecha_publicacion'])); ?>
             </div>
 
         </div>
 
     </div>
 
+    <h4 style="margin-top:15px; color:#2C4A7C;">
+        <?php echo htmlspecialchars($fila['titulo']); ?>
+    </h4>
+
     <p class="pregunta-text">
-        "<?php echo htmlspecialchars($fila['pregunta']); ?>"
+        <?php echo nl2br(htmlspecialchars($fila['descripcion'])); ?>
     </p>
 
-    <form
-        action="guardar_respuesta.php"
-        method="POST">
+    <a href="aprendecomunidad.php?id=<?php echo $fila['id_situacion']; ?>"
+       class="btn-responder">
 
-        <input
-            type="hidden"
-            name="id_pregunta"
-            value="<?php echo $fila['id_pregunta']; ?>">
-        <input type="hidden" name="redirect" value="comunidades.php#preguntas">
+        Ver situación
 
-        <textarea
-            name="respuesta"
-            placeholder="Escribe una respuesta..."
-            required></textarea>
+    </a>
 
-        <br><br>
-
-        <button
-            type="submit"
-            class="btn-responder">
-            Responder
-        </button>
-
-    </form>
+</div>
 
 <?php
 
-$id = $fila['id_pregunta'];
-
-$sqlRes = "SELECT *
-           FROM respuestasc
-           WHERE id_pregunta = $id
-           ORDER BY fecha ASC
-           LIMIT 2";
-
-$respuestas = mysqli_query(
-    $conexion,
-    $sqlRes
-);
-
-while($respuesta = mysqli_fetch_assoc($respuestas)){
+}
 
 ?>
-
-    <div class="respuesta-card">
-
-        <div class="respuesta-label">
-            RESPUESTA
-        </div>
-
-        <p class="respuesta-text">
-            <?php echo nl2br(htmlspecialchars($respuesta['respuesta'])); ?>
-        </p>
 
     </div>
 
-<?php
-
-}
-
-?>
-
-</div>
-
-<?php
-
-}
-
-?>
-
-</div>
 </section>
 
-<!-- ── EXPERIENCIAS ────── -->
- <section class="experiencias-section" id="experiencias"></section>
-  <div class="page">
+<!-- ═════════════ EXPERIENCIAS (VISTA PREVIA) ═════════════ -->
+<section class="experiencias-section" id="experiencias">
+
+<div class="page">
+
     <div class="section-header" style="margin-bottom:2rem;">
-      <div class="section-title">
-        <small>Comunidad</small>
-        Experiencias
-      </div>
-      <a href="experiencias.php" class="btn-white">Ver todas </a>
+
+        <div class="section-title">
+            <small>Comunidad</small>
+            Experiencias
+        </div>
+
+        <a href="experiencias.php" class="btn-white">
+            Ver todas
+        </a>
+
     </div>
- 
 
 <?php
 
 include("conexion.php");
-$sql = "SELECT *
-        FROM experiencias
-        ORDER BY fecha ASC
-        LIMIT 2";
 
 $sql = "SELECT
+
 e.*,
+
 c.nombre AS categoria,
 
-(SELECT COUNT(*)
-FROM reacciones_experiencias r
-WHERE r.id_experiencia=e.id_experiencia
-AND r.tipo='identifica') AS identifica,
+COALESCE(SUM(r.tipo='identifica'),0) AS identifica,
 
-(SELECT COUNT(*)
-FROM reacciones_experiencias r
-WHERE r.id_experiencia=e.id_experiencia
-AND r.tipo='conmueve') AS conmueve,
+COALESCE(SUM(r.tipo='conmueve'),0) AS conmueve,
 
-(SELECT COUNT(*)
-FROM reacciones_experiencias r
-WHERE r.id_experiencia=e.id_experiencia
-AND r.tipo='ayudo') AS ayudo,
+COALESCE(SUM(r.tipo='ayudo'),0) AS ayudo,
 
-(SELECT COUNT(*)
+(
+SELECT COUNT(*)
 FROM comentarios_experiencias co
-WHERE co.id_experiencia=e.id_experiencia) AS comentarios
+WHERE co.id_experiencia=e.id_experiencia
+) AS comentarios
 
-FROM experiencias e
-INNER JOIN categorias_experiencias c
-ON e.id_categoria = c.id_categoria
+FROM experienciasform e
+
+LEFT JOIN categorias_experiencias c
+ON e.id_categoria=c.id_categoria
+
+LEFT JOIN reacciones_experiencias r
+ON r.id_experiencia=e.id_experiencia
+
+GROUP BY e.id_experiencia
 
 ORDER BY e.fecha_publicacion DESC
+
 LIMIT 2";
 
 $resultado = mysqli_query($conexion,$sql);
+
 ?>
 
 <section class="experiencias">
 
-<?php while($fila = mysqli_fetch_assoc($resultado)){ ?>
+<?php while($fila=mysqli_fetch_assoc($resultado)){ ?>
 
 <div class="card-experiencia">
 
@@ -355,186 +318,173 @@ $resultado = mysqli_query($conexion,$sql);
         <div class="usuario">
 
             <div class="avatar">
+
                 <?php
-                echo strtoupper(substr($fila['nombre_autor'],0,1));
+                echo strtoupper(substr($fila["nombre_autor"],0,1));
                 ?>
+
             </div>
 
             <div>
-                <h3><?php echo htmlspecialchars($fila['nombre_autor']); ?></h3>
+
+                <h3>
+
+                    <?php
+                    echo htmlspecialchars($fila["nombre_autor"]);
+                    ?>
+
+                </h3>
 
                 <span>
-                    <?php echo htmlspecialchars($fila['fecha_publicacion']); ?>
-                    <?php echo htmlspecialchars($fila['ciudad']); ?>
+
+                    <?php
+
+                    $diff=time()-strtotime($fila["fecha_publicacion"]);
+
+                    if($diff<60){
+
+                        echo "Hace un momento";
+
+                    }elseif($diff<3600){
+
+                        echo "Hace ".floor($diff/60)." min";
+
+                    }elseif($diff<86400){
+
+                        echo "Hace ".floor($diff/3600)." h";
+
+                    }else{
+
+                        echo date("d/m/Y",strtotime($fila["fecha_publicacion"]));
+
+                    }
+
+                    if(!empty($fila["ciudad"])){
+
+                        echo " · ".htmlspecialchars($fila["ciudad"]);
+
+                    }
+
+                    ?>
+
                 </span>
+
             </div>
 
         </div>
 
         <span class="categoria">
-            <?php echo htmlspecialchars(strtoupper($fila['categoria'])); ?>
+
+            <?= htmlspecialchars(strtoupper($fila["categoria"])) ?>
+
         </span>
 
     </div>
 
     <h2 class="titulo">
-        <?php echo htmlspecialchars($fila['titulo']); ?>
+
+        <?= htmlspecialchars($fila["titulo"]) ?>
+
     </h2>
 
     <p class="contenido">
-        <?php echo htmlspecialchars(substr($fila['contenido'],0,250)); ?>...
+
+        <?= nl2br(htmlspecialchars(substr($fila["contenido"],0,220))) ?>...
+
     </p>
 
     <hr>
 
-  <div class="acciones">
-
-    <form class="form-reaccion">
-        <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
-        <input type="hidden" name="tipo" value="identifica">
+    <div class="acciones">
 
         <button
-        type="button"
         class="btn-reaccion"
-        data-exp="<?php echo $fila['id_experiencia']; ?>"
-        data-tipo="identifica"
-        onclick="reaccionar(this)">
+        disabled>
 
         🤝 Me identifica
-        <strong class="cnt"><?php echo $fila['identifica']; ?></strong>
+
+        <strong><?= $fila["identifica"] ?></strong>
 
         </button>
-    </form>
-
-    <form class="form-reaccion">
-        <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
-        <input type="hidden" name="tipo" value="conmueve">
 
         <button
-        type="button"
         class="btn-reaccion"
-        data-exp="<?php echo $fila['id_experiencia']; ?>"
-        data-tipo="conmueve"
-        onclick="reaccionar(this)">
+        disabled>
 
         ❤️ Me conmueve
-        <strong class="cnt"><?php echo $fila['conmueve']; ?></strong>
+
+        <strong><?= $fila["conmueve"] ?></strong>
 
         </button>
-    </form>
-
-
-    <form class="form-reaccion">
-        <input type="hidden" name="id_experiencia" value="<?php echo $fila['id_experiencia']; ?>">
-        <input type="hidden" name="tipo" value="ayudo">
 
         <button
-        type="button"
         class="btn-reaccion"
-        data-exp="<?php echo $fila['id_experiencia']; ?>"
-        data-tipo="ayudo"
-        onclick="reaccionar(this)">
+        disabled>
 
         💡 Me ayudó
-        <strong class="cnt"><?php echo $fila['ayudo']; ?></strong>
+
+        <strong><?= $fila["ayudo"] ?></strong>
 
         </button>
-    </form>
 
-</div>
+        <button
+        class="btn-comentarios"
+        disabled>
+
+        💬 <?= $fila["comentarios"] ?>
+
+        </button>
+
+    </div>
 
 </div>
 
 <?php } ?>
 
 </section>
-</div> <!-- page -->
+
+</div>
+
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-
-    <div class="footer-container">
-
-        <!-- Columna 1 -->
-        <div class="footer-col footer-about">
-
-            <img class="logo-footer"
-                src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png"
-                alt="Parently">
-
-                <h2 class="footer-logo"> <span>P</span>arently </h2>
-
-            <p>
-                Creando conexiones más fuertes entre padres e hijos,
-                ofreciendo un espacio seguro para compartir experiencias,
-                resolver dudas y fortalecer los lazos familiares.
-            </p>
-
-        </div>
-
-        <!-- Columna 2 -->
-        <div class="footer-col">
-
-            <h3>Comunidad</h3>
-
-            <ul>
-
-                <li><a href="#"><i class="fa-solid fa-users"></i> Nosotros</a></li>
-
-                <li><a href="#"><i class="fa-solid fa-shield-heart"></i> Normas</a></li>
-
-                <li><a href="#"><i class="fa-solid fa-lock"></i> Privacidad</a></li>
-
-                <li><a href="#"><i class="fa-solid fa-file-contract"></i> Términos</a></li>
-
-            </ul>
-
-        </div>
-
-        <!-- Columna 3 -->
-        <div class="footer-col">
-
-            <h3>Contáctanos</h3>
-
-            <p>
-
-                ¿Necesitas ayuda?<br>
-                Escríbenos por cualquiera de nuestros medios.
-
-            </p>
-
-            <div class="footer-social">
-
-                <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-
-                <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-
-                <a href="https://www.instagram.com/parently_team" class="instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-
-                <a href="mailto:contacto@parently.com" class="mail">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-
-            </div>
-
-        </div>
-
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
     </div>
-
-    <div class="footer-bottom">
-
-        © 2026 Parently | Todos los derechos reservados.
-
+    <div class="footer-content">
+      <h2>Contáctanos:</h2>
+      <div class="footer-links">
+        <div class="footer-column">
+          <p>
+            <a href="https://www.instagram.com/parently_team" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram
+            </a>
+          </p>
+          <p>
+            <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </a>
+          </p>
+        </div>
+        <div class="footer-column">
+          <p>
+            <a href="mailto:contacto@parently.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/parently" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
-
+  </div>
 </footer>
+
 
 <script src="../experiencias.js"></script>
 </body>
