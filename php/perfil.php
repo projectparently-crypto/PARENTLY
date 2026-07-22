@@ -281,7 +281,7 @@ $inicial = strtoupper(substr($nombre, 0, 1));
 
 <!-- CONTENEDOR PERFIL -->
 <div class="container-perfil">
-    
+    z
     <!-- Avatar -->
     <div class="avatar">
         <?php echo $inicial; ?>

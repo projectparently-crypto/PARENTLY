@@ -2,13 +2,13 @@
 session_start();
 include("conexion.php");
 
-// Verificar que venga del formulario
+// Verificar método
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: experiencias.php");
     exit;
 }
 
-// Verificar que el usuario haya iniciado sesión
+// Verificar sesión
 if (!isset($_SESSION["usuario_id"])) {
     $_SESSION["flash"] = "Debes iniciar sesión para publicar una experiencia.";
     header("Location: login.php");
@@ -23,7 +23,7 @@ $id_categoria = (int)($_POST["id_categoria"] ?? 0);
 $ciudad = trim($_POST["ciudad"] ?? "");
 $contenido = trim($_POST["contenido"] ?? "");
 
-// Si eligió publicar como anónimo
+// Si publicó como anónimo
 if (isset($_POST["anonimo"])) {
     $nombre_autor = "Anónimo";
 }
@@ -40,21 +40,19 @@ if (
     exit;
 }
 
-$foto_perfil = NULL;
-
-$sql = "INSERT INTO experiencias
+// Consulta
+$sql = "INSERT INTO experienciasform
 (
     id_usuario,
     id_categoria,
     nombre_autor,
-    foto_perfil,
     titulo,
     contenido,
     ciudad
 )
 VALUES
 (
-    ?,?,?,?,?,?,?
+    ?, ?, ?, ?, ?, ?
 )";
 
 $stmt = mysqli_prepare($conexion, $sql);
@@ -65,11 +63,10 @@ if (!$stmt) {
 
 mysqli_stmt_bind_param(
     $stmt,
-    "iisssss",
+    "iissss",
     $id_usuario,
     $id_categoria,
     $nombre_autor,
-    $foto_perfil,
     $titulo,
     $contenido,
     $ciudad
@@ -90,3 +87,4 @@ mysqli_close($conexion);
 
 header("Location: experiencias.php");
 exit;
+?>

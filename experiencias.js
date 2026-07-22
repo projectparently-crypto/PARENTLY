@@ -122,124 +122,6 @@ function toggleComentarios(btn, id_experiencia) {
   }
 }
 
-// ── ENVIAR COMENTARIO ──────────────────────────────────────
-// Guardamos el nombre elegido durante la sesión de navegación
-let _nombreElegido = null;
-
-function enviarComentario(id_experiencia) {
-  const inp    = document.getElementById('inp-com-' + id_experiencia);
-  const texto  = inp.value.trim();
-
-  if (!texto) {
-    mostrarToast('Escribe algo antes de enviar 📝');
-    return;
-  }
-
-  // Si ya eligió nombre, mandar directo
-  if (_nombreElegido !== null) {
-    _postComentario(id_experiencia, inp, _nombreElegido);
-    return;
-  }
-
-  // Si no, mostrar modal de elección de nombre
-  _abrirModalNombre(function(nombreElegido) {
-    _nombreElegido = nombreElegido;
-    _postComentario(id_experiencia, inp, _nombreElegido);
-  });
-}
-
-function _postComentario(id_experiencia, inp, nombre) {
-  const texto = inp.value.trim();
-  if (!texto) return;
-
-  const btn = inp.nextElementSibling; // botón Enviar
-  inp.disabled = true;
-  btn.disabled = true;
-
-  fetch('comentarios.php', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({
-      id_experiencia,
-      nombre_usuario: nombre,
-      comentario:     texto,
-    }),
-  })
-  .then(r => r.text().then(txt => {
-    try { return JSON.parse(txt); }
-    catch { throw new Error('Respuesta inválida del servidor'); }
-  }))
-  .then(data => {
-    inp.disabled = false;
-    btn.disabled = false;
-
-    if (!data.ok) {
-      mostrarToast('⚠️ ' + (data.error || 'No se pudo enviar'));
-      return;
-    }
-
-    const lista = document.getElementById('lista-' + id_experiencia);
-
-    // Quitar mensaje "sé el primero"
-    const placeholder = lista.querySelector('.sin-comentarios');
-    if (placeholder) placeholder.remove();
-
-    agregarComentarioDOM(lista, data);
-    inp.value = '';
-
-    // Actualizar contador del botón
-    const btnComs = document.querySelector(
-      `[onclick="toggleComentarios(this, ${id_experiencia})"]`
-    );
-    if (btnComs) _actualizarContadorBtn(btnComs, lista);
-
-    mostrarToast('¡Comentario publicado! 💬');
-  })
-  .catch(err => {
-    inp.disabled = false;
-    btn.disabled = false;
-    mostrarToast('❌ ' + err.message);
-  });
-}
-
-// ── MODAL DE NOMBRE ────────────────────────────────────────
-function _abrirModalNombre(callback) {
-  const modal    = document.getElementById('modal-nombre');
-  const bsModal  = new bootstrap.Modal(modal, { backdrop: 'static', keyboard: false });
-
-  const btnNombre   = document.getElementById('modal-btn-nombre');
-  const btnAnonimo  = document.getElementById('modal-btn-anonimo');
-  const inputNombre = document.getElementById('modal-input-nombre');
-
-  // Precargar nombre de sesión si viene del servidor
-  const nombreSesion = window.PARENTLY_USER || '';
-  if (nombreSesion) inputNombre.value = nombreSesion;
-
-  // Limpiar listeners previos clonando
-  const btnN2 = btnNombre.cloneNode(true);
-  const btnA2 = btnAnonimo.cloneNode(true);
-  btnNombre.parentNode.replaceChild(btnN2, btnNombre);
-  btnAnonimo.parentNode.replaceChild(btnA2, btnAnonimo);
-
-  document.getElementById('modal-btn-nombre').addEventListener('click', () => {
-    const nombre = document.getElementById('modal-input-nombre').value.trim();
-    if (!nombre) {
-      document.getElementById('modal-input-nombre').focus();
-      document.getElementById('modal-input-nombre').style.borderColor = '#dc3545';
-      return;
-    }
-    bsModal.hide();
-    callback(nombre);
-  });
-
-  document.getElementById('modal-btn-anonimo').addEventListener('click', () => {
-    bsModal.hide();
-    callback('Anónimo');
-  });
-
-  bsModal.show();
-}
-
 // ── HELPERS ────────────────────────────────────────────────
 function agregarComentarioDOM(lista, c) {
   const nombre = c.nombre_usuario || 'Anónimo';
@@ -271,6 +153,7 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+// ── MENÚ DE TRES PUNTOS ─────────────────────────────────────
 function toggleMenu(id){
 
     document.querySelectorAll(".dropdown-menu-exp").forEach(menu=>{
@@ -319,6 +202,9 @@ function copiarLink(id){
     alert("Enlace copiado.");
 
 }
+
+// ── ENVIAR COMENTARIO ──────────────────────────────────────
+let _nombreElegido = null;
 
 function enviarComentario(id_experiencia) {
   const inp = document.getElementById('inp-com-' + id_experiencia);
