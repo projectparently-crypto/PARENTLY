@@ -4935,12 +4935,6 @@ textarea{
     }
 
 
-    .comentario-header{
-        flex-direction:column;
-        gap:15px;
-    }
-
-
     .comentario-actions{
         flex-wrap:wrap;
     }
@@ -5110,5 +5104,45 @@ textarea{
         width:95%;
     }
 
+
+}
+
+@media (max-width:768px){
+
+    .menu-wrapper{
+        position: relative;
+    }
+
+    .menu-dropdown{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: auto;
+        min-width: 150px;
+        z-index: 9999;
+    }
+
+}
+@media (max-width:768px){
+
+    .comentario-header{
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .left{
+        flex: 1;
+        min-width: 0;
+    }
+
+    .menu-wrapper{
+        margin-left: 10px;
+    }
+
+    .menu-dropdown{
+        right: 0;
+        left: auto;
+    }
 
 }
