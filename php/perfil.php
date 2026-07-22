@@ -281,7 +281,7 @@ $inicial = strtoupper(substr($nombre, 0, 1));
 
 <!-- CONTENEDOR PERFIL -->
 <div class="container-perfil">
-    z
+    
     <!-- Avatar -->
     <div class="avatar">
         <?php echo $inicial; ?>
@@ -313,10 +313,10 @@ $inicial = strtoupper(substr($nombre, 0, 1));
 
     <!-- Botones -->
     <div class="botones-grupo">
-        <a href="index.php" class="btn-inicio">
+        <a href="../index.php" class="btn-inicio">
             <i class="bi bi-house"></i> Volver al Inicio
         </a>
-        <a href="logout.php" class="btn-salir">
+        <a href="../logout.php" class="btn-salir">
             <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
         </a>
     </div>

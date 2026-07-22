@@ -642,4 +642,15 @@
     .etapas-buttons {
         grid-template-columns: repeat(2, 1fr);
     }
+
+     .footer {
+        padding: 25px 20px; 
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+  
 }

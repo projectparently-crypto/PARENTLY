@@ -961,6 +961,15 @@ body{
     transform: translateX(-50%) rotate(90deg);
     }
 
+    /* Reducir el tamaño de las estrellas en móvil */
+    .rating{
+    gap: 4px;
+    }
+
+    .rating label{
+    font-size: 50px;
+    }
+
 }
 
 /* =========================

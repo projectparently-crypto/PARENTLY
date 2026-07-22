@@ -1014,3 +1014,50 @@ body {
     }
 }
 
+/* ===== SEPARACIÓN MISIÓN Y VISIÓN EN RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+    .mission-section .row {
+        gap: 25px;
+    }
+
+    .mission-card {
+        margin-bottom: 20px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .mission-section .row {
+        gap: 20px;
+    }
+
+    .mission-card {
+        margin-bottom: 25px;
+        padding: 25px 15px;
+    }
+
+}
+@media (max-width: 768px){
+
+    .hero-img {
+        height: 60vh;
+        object-fit: cover;
+        object-position: center;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .dropdown-menu{
+        left: auto;
+        right: 0;
+        min-width: 160px;
+    }
+
+}
+

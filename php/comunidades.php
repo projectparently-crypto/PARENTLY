@@ -18,6 +18,7 @@ include("conexion.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
+     <link rel="stylesheet" href="../style/recursos-detalle.css">
 </head>
 <body>
    <!-- NAVBAR -->
@@ -447,6 +448,7 @@ $resultado = mysqli_query($conexion,$sql);
 
 </section>
 
+<<<<<<< HEAD
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-container">
@@ -484,6 +486,8 @@ $resultado = mysqli_query($conexion,$sql);
     </div>
   </div>
 </footer>
+=======
+>>>>>>> 5088e9eba405b6371fa93f33f93241fa018ae511
 
 
 <script src="../experiencias.js"></script>
