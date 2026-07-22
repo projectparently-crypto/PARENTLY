@@ -152,7 +152,7 @@ unset($_SESSION['flash']);
 <!-- ═══════════════════════════════ FORM COMPARTIR ═══════════════════════════════ -->
     <div class="compartir-card">
     <h3> Compartir experiencia</h3>
-    <form action="guardar_experiencia.php" method="POST">
+    <form action="guardar_experiencia.php" method="POST" enctype="multipart/form-data">
 
       <input
           type="text"
@@ -227,7 +227,7 @@ SELECT
         FROM comentarios_experiencias c
         WHERE c.id_experiencia=e.id_experiencia
     ) AS cnt_comentarios
-FROM experiencias e
+FROM experienciasform e
 LEFT JOIN categorias_experiencias ce
 ON e.id_categoria=ce.id_categoria
 LEFT JOIN reacciones_experiencias r
@@ -319,17 +319,18 @@ ORDER BY e.fecha_publicacion DESC";
                  Eliminar
 
             </a>
+<?php
+} else {
+?>
 
-        <?php }else{ ?>
+    <a href="denunciar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>">
+        Denunciar
+    </a>
 
-            <a
-                href="denunciar_experiencia.php?id=<?php echo $fila['id_experiencia']; ?>">
+<?php
+  }
 
-                 Denunciar
-
-            </a>
-
-        <?php } ?>
+?>
 
     </div>
 
