@@ -23,6 +23,7 @@ $guias = getGuiasMasVistas(4);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
+    <link rel="stylesheet" href="../style/recurso-detalle.css">
 </head>
 <body>
 
@@ -153,6 +154,7 @@ $guias = getGuiasMasVistas(4);
 </div>
 
 
+
 <!-- GUÍAS PARA FAMILIAS -->
 <h2 class="section-title">Guías para familias</h2>
 
@@ -186,25 +188,25 @@ $guias = getGuiasMasVistas(4);
       <div class="footer-links">
         <div class="footer-column">
           <p>
-            <a href="https://www.instagram.com/parently_team?igsh=d251dXlzcnF4anp5" class="footer-link">
-              <i class="bi bi-instagram"></i> Instagram:
+            <a href="https://www.instagram.com/parently_team" class="footer-link">
+              <i class="bi bi-instagram"></i> Instagram
             </a>
           </p>
           <p>
             <a href="https://whatsapp.com/channel/0029VbD4Q1CEawdpYOZHis1g" class="footer-link">
-              <i class="bi bi-whatsapp"></i> WhatsApp:
+              <i class="bi bi-whatsapp"></i> WhatsApp
             </a>
           </p>
         </div>
         <div class="footer-column">
           <p>
-            <a href="mailto:tucorreo@gmail.com" class="footer-link">
-              <i class="bi bi-envelope"></i> Correo:
+            <a href="mailto:contacto@parently.com" class="footer-link">
+              <i class="bi bi-envelope"></i> Correo
             </a>
           </p>
           <p>
-            <a href="https://www.facebook.com/share/g/1CgdV2AhZ4/" class="footer-link">
-              <i class="bi bi-facebook"></i> Facebook:
+            <a href="https://www.facebook.com/parently" class="footer-link">
+              <i class="bi bi-facebook"></i> Facebook
             </a>
           </p>
         </div>
@@ -212,6 +214,7 @@ $guias = getGuiasMasVistas(4);
     </div>
   </div>
 </footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
