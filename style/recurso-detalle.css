@@ -69,11 +69,13 @@ body {
 
 /* ===== HEADER CON IMAGEN ===== */
 .recurso-header {
-    background: linear-gradient(135deg, #f08a8f 0%, #F4C16B 100%);
-    padding: 40px 20px;
+   
+    background: linear-gradient(135deg, #FFD6E0 0%, #FFF5F7 100%);
+     padding: 40px 20px;
     overflow: hidden;
 }
 
+   
 .header-image {
     position: relative;
     max-width: 600px;
