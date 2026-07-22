@@ -451,7 +451,7 @@ $resultado = mysqli_query($conexion,$sql);
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-logo">
-      <img src="photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
+     <img src="../photos/ChatGPT_Image_May_3__2026__07_29_09_PM-removebg-preview.png" alt="logo">
     </div>
     <div class="footer-content">
       <h2>Contáctanos:</h2>
@@ -487,5 +487,6 @@ $resultado = mysqli_query($conexion,$sql);
 
 
 <script src="../experiencias.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
