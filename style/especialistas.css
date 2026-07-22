@@ -96,7 +96,7 @@
   justify-content: space-between;
   box-shadow: 0 8px 18px rgba(217, 69, 113, 0.14);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  animation: specialistFloatUp 1s ease forwards;
+  animation: floating 3.2s ease-in-out infinite;
 }
  
 .specialty-filter img {
@@ -109,7 +109,7 @@
 .specialty-filter:hover,
 .specialty-filter.active {
   background: #ff7f99;
-  transform: translateY(-3px);
+  animation: floating 1.8s ease-in-out infinite;
   box-shadow: 0 10px 24px rgba(217, 69, 113, 0.28);
 }
  
@@ -131,12 +131,22 @@
   border: 1px solid rgba(255, 255, 255, 0.72);
   box-shadow: 0 14px 30px rgba(63, 49, 38, 0.1);
   transition: transform 0.25s ease, opacity 0.2s ease, box-shadow 0.25s ease;
-  animation: specialistFloatUp 1s ease forwards;
+  animation: floating 3.4s ease-in-out infinite;
 }
  
 .specialist-card:hover {
-  transform: translateY(-5px);
+  animation: floating 1.8s ease-in-out infinite;
   box-shadow: 0 20px 36px rgba(217, 69, 113, 0.16);
+}
+
+.specialty-filter:nth-child(2n),
+.specialist-card:nth-child(2n) {
+  animation-delay: 0.4s;
+}
+
+.specialty-filter:nth-child(3n),
+.specialist-card:nth-child(3n) {
+  animation-delay: 0.8s;
 }
  
 .specialist-card.is-hidden {
@@ -435,16 +445,44 @@
     transform: scale(1);
   }
 }
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
  
 @media (prefers-reduced-motion: reduce) {
   .specialists-hero,
-  .specialty-filter,
-  .specialist-card,
   .profile-brand,
   .profile-contact-card,
   .profile-main-info {
     animation: none;
   }
+}
+
+.specialists-page .specialty-filter {
+  animation: floating 2.6s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+.specialists-page .specialist-card {
+  animation: floating 2.8s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+.specialists-page .specialty-filter:hover,
+.specialists-page .specialty-filter.active,
+.specialists-page .specialist-card:hover {
+  animation: floating 1.6s ease-in-out infinite !important;
 }
  
 .profile-actions {

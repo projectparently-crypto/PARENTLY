@@ -122,7 +122,7 @@ if (count($reviews) > 0) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../style/homepage.css">
-    <link rel="stylesheet" href="../style/especialistas.css?v=rounded2026">
+    <link rel="stylesheet" href="../style/especialistas.css?v=float2026">
     <link rel="icon" type="image/x-icon" href="../photos/favicon.ico">
 </head>
 <body class="specialist-profile-page">
