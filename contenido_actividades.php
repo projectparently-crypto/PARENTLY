@@ -64,11 +64,7 @@ if(!$actividad){
                 </li>
 
                 <li class="nav-item">
-<<<<<<< HEAD
-                    <a class="nav-link" href="php/actividades.php">Actividades</a>
-=======
                     <a class="nav-link" href="actividades.php">Actividades</a>
->>>>>>> 38b407b52de29234bd86626fc7befcd687fe7481
                 </li>
 
                 <li class="nav-item">

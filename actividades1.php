@@ -123,11 +123,6 @@ include("php/actividades1.php");
 
 <h1 class="titulo">Actividades</h1>
 
-<!-- BOTONES -->
-<a href="actividades.php" class="btn btn-success">
-    ← Volver a categorías
-</a>
-
 <!-- CARDS DINAMICAS -->
 
 <section class="contenedor-cards">
@@ -157,6 +152,13 @@ include("php/actividades1.php");
 <?php endwhile; ?>
 
 </section>
+
+<!-- BOTONES -->
+<div class="volver-container">
+    <a href="actividades.php" class="volver-btn">
+        ← Volver a categorías
+    </a>
+</div>
 
 <!-- FOOTER -->
 
