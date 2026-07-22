@@ -2,6 +2,8 @@
 session_start();
 include("contactanos_conexion.php");
 
+  $mensajeExito = "";
+
 if (isset($_POST["enviar_mensaje"])) {
 
     if (!isset($_SESSION["usuario_nombre"])) {
@@ -22,12 +24,13 @@ if (isset($_POST["enviar_mensaje"])) {
 
     if(mysqli_query($conn, $sql)){
 
-        echo "<script>
-            alert('Mensaje enviado correctamente');
-            window.location='contactanos.php';
-        </script>";
-        exit();
-    }
+    $mensajeExito = "mensaje";
+  } else {
+
+    echo "Error: " . mysqli_error($conn);
+
+}
+
 }
 
 if (isset($_POST["enviar_feedback"])) {
@@ -48,12 +51,8 @@ if (isset($_POST["enviar_feedback"])) {
             VALUES (NULL, '$rating', '$comentario')";
 
     if(mysqli_query($conn, $sql)){
-
-        echo "<script>
-            alert('¡Gracias por tu comentario!');
-            window.location='contactanos.php';
-        </script>";
-        exit();
+      $mensajeExito = "feedback";
+      
 
     } else {
 
@@ -437,5 +436,39 @@ function borrar(){
 escribir();
 
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php if($mensajeExito == "mensaje"): ?>
+
+<script>
+Swal.fire({
+    icon: "success",
+    title: "¡Mensaje enviado!",
+    text: "Gracias por comunicarte con Parently.",
+    confirmButtonColor: "#FC7885"
+}).then(() => {
+    window.location.href = "contactanos.php";
+});
+</script>
+
+<?php endif; ?>
+
+
+<?php if($mensajeExito == "feedback"): ?>
+
+<script>
+Swal.fire({
+    icon: "success",
+    title: "¡Gracias!",
+    text: "Tu comentario nos ayuda a mejorar Parently.",
+    confirmButtonColor: "#FC7885"
+}).then(() => {
+    window.location.href = "contactanos.php";
+});
+</script>
+
+<?php endif; ?>
+
 </body>
 </html>
