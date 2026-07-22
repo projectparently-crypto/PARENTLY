@@ -387,22 +387,9 @@ body {
       margin-bottom: 14px;
     }
  
-    .foro-card__footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
+    
  
-    .foro-card__members {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: .75rem;
-      font-weight: 700;
-      color: var(--light);
-    }
- 
+   
     .foro-card__members-dot {
       width: 28px; height: 28px;
       border-radius: 50%;
