@@ -7,6 +7,12 @@
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: #F5E6D3 !important;
+  font-family: Arial, sans-serif;
+}
+
+
 /* ===== NAVBAR ===== */
 .navbar {
     background-color: #FFBDC8 !important;

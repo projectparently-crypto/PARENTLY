@@ -232,7 +232,7 @@ while($opcion=mysqli_fetch_assoc($consultaOpciones)){
 
 <div class="historial-card">
 
-    <h3>📚 Situaciones anteriores</h3>
+    <h3>Situaciones anteriores</h3>
 
     <p>
 

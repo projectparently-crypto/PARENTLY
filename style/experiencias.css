@@ -192,11 +192,12 @@ body {
 }
 
 /* ── CONTENEDOR FEED ── */
-.contenedor {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 18px 60px;
+.contenedor{
+    max-width:800px;
+    margin:0 auto;
+    padding:0 20px 60px;
 }
+
 .titulo-seccion {
   font-family: 'Poppins', sans-serif;
   font-size: 1.7rem;
@@ -208,17 +209,16 @@ body {
 }
 
 /* ── TARJETA EXPERIENCIA ── */
-.card-experiencia {
-  background: var(--blanco);
-  border-radius: var(--radio);
-  box-shadow: var(--sombra);
-  width: 100%;
-  padding: 25px;
-  margin: 1.5rem;
-  flex-direction:column;
-  align-items:flex-start;
-  transition: transform .2s, box-shadow .2s;
+.card-experiencia{
+    position: relative;
+    width:100%;
+    margin:0 auto 25px;
+    padding:30px;
+    border-radius:18px;
+    background:#fff;
+    box-shadow:0 8px 24px rgba(44,74,124,.08);
 }
+
 .card-experiencia:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 28px rgba(44,74,124,.14);
@@ -530,4 +530,59 @@ body {
   .acciones        { gap: 6px; }
   .btn-reaccion    { padding: 6px 10px; font-size: 12px; }
   .btn-comentarios { margin-left: 0; width: 100%; justify-content: center; }
+}
+
+@media (max-width:768px){
+
+    .contenedor{
+        width:100%;
+        padding:0 18px 40px;
+    }
+
+    .card-experiencia{
+        width:100%;
+        margin:0 0 24px;
+        padding:24px;
+        border-radius:18px;
+    }
+
+    .header-exp{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:16px;
+    }
+
+    .usuario{
+        width:100%;
+    }
+
+    .avatar{
+        width:55px;
+        height:55px;
+        font-size:20px;
+    }
+
+    .titulo{
+        font-size:22px;
+    }
+
+    .contenido{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .acciones{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .btn-reaccion,
+    .btn-comentarios{
+        width:100%;
+        justify-content:center;
+        margin:0;
+        padding:12px;
+    }
+
 }

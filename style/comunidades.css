@@ -1897,7 +1897,7 @@ body {
 .footer-container {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
     max-width: 2200px;
     margin: auto;
     padding-left: 40px;
@@ -1905,10 +1905,10 @@ body {
 }
 
 .footer-content h2 {
-    color: white;
-    font-size: 40px;
+    color: #d85999;
+    font-size: 30px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .footer-link {
@@ -1963,6 +1963,7 @@ body {
     width: 200px;
     height: auto;
 }
+
 
 /* Ajustes finales: preguntas, experiencias y botones */
 .btn-white:hover {
@@ -5045,18 +5046,14 @@ textarea{
         max-width:250px;
     }
 
-
-
     .foro-img{
         height:200px;
     }
 
 
-
     .info-left h1{
         font-size:23px;
     }
-
 
 
     .search-icon{
@@ -5065,12 +5062,10 @@ textarea{
     }
 
 
-
     .comentario-card{
         border-radius:18px;
         padding:15px;
     }
-
 
 
     .avatar{
@@ -5079,12 +5074,10 @@ textarea{
     }
 
 
-
     .menu-dropdown{
         right:-10px;
         width:180px;
     }
-
 
 
     .modal-contenido{
@@ -5094,6 +5087,166 @@ textarea{
 
 }
 
+<<<<<<< HEAD
+/* ===============================
+   TELÉFONOS
+================================*/
+@media (max-width:768px){
+
+    /* CONTENEDOR GENERAL */
+    .page{
+        padding:0 18px;
+    }
+
+    /* TÍTULOS */
+    .section-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .btn-white{
+        width:100%;
+        text-align:center;
+    }
+
+    /* ==========================
+       APRENDE EN COMUNIDAD
+    ========================== */
+
+    .preguntas-layout{
+        grid-template-columns:1fr;
+    }
+
+    .pregunta-item{
+        width:100%;
+        padding:24px;
+        border-radius:20px;
+        margin-bottom:25px;
+    }
+
+    .pregunta-user{
+        gap:15px;
+    }
+
+    .pregunta-user-name{
+        font-size:1rem;
+    }
+
+    .pregunta-text{
+        font-size:16px;
+        line-height:1.7;
+    }
+
+    .btn-responder{
+        width:100%;
+        padding:14px;
+        text-align:center;
+        margin-top:18px;
+    }
+
+    /* ==========================
+       EXPERIENCIAS
+    ========================== */
+
+    .experiencias{
+        width:100%;
+        margin:0;
+        padding:0;
+    }
+
+    .card-experiencia{
+        width:100%;
+        padding:26px;
+        margin-bottom:28px;
+        border-radius:20px;
+    }
+
+    .header-exp{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+    }
+
+    .usuario{
+        width:100%;
+    }
+
+    .avatar{
+        width:58px;
+        height:58px;
+        font-size:24px;
+    }
+
+    .titulo{
+        font-size:25px;
+        line-height:1.3;
+    }
+
+    .contenido{
+        font-size:16px;
+        line-height:1.8;
+    }
+
+    .acciones{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .acciones button{
+        width:100%;
+        padding:12px;
+        font-size:14px;
+    }
+}
+
+
+/* ===============================
+   CELULARES PEQUEÑOS
+================================*/
+@media (max-width:480px){
+
+    .page{
+        padding:0 15px;
+    }
+
+    .section-title{
+        font-size:1.8rem;
+    }
+
+    .pregunta-item{
+        padding:22px;
+    }
+
+    .pregunta-text{
+        font-size:15px;
+    }
+
+    .card-experiencia{
+        padding:22px;
+    }
+
+    .titulo{
+        font-size:22px;
+    }
+
+    .contenido{
+        font-size:15px;
+    }
+
+    .acciones{
+        grid-template-columns:1fr;
+    }
+
+    .acciones button{
+        width:100%;
+    }
+=======
 @media (max-width:768px){
 
     .menu-wrapper{
@@ -5132,4 +5285,5 @@ textarea{
         left: auto;
     }
 
+>>>>>>> 5088e9eba405b6371fa93f33f93241fa018ae511
 }
