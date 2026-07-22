@@ -334,6 +334,62 @@ $busqueda = $_GET['busqueda'] ?? '';
             </a>
 
         </div>
+        
+        <!-- DESARROLLO -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=9" class="community-card card-item">
+        <i class="fa-solid fa-seedling"></i>
+        <h5>Desarrollo</h5>
+    </a>
+</div>
+
+<!-- CRECIMIENTO -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=10" class="community-card card-item">
+        <i class="fa-solid fa-chart-line"></i>
+        <h5>Crecimiento</h5>
+    </a>
+</div>
+
+<!-- CRIANZA -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=11" class="community-card card-item">
+        <i class="fa-solid fa-people-roof"></i>
+        <h5>Crianza</h5>
+    </a>
+</div>
+
+<!-- SOCIAL -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=12" class="community-card card-item">
+        <i class="fa-solid fa-user-group"></i>
+        <h5>Social</h5>
+    </a>
+</div>
+
+<!-- TECNOLOGÍA -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=13" class="community-card card-item">
+        <i class="fa-solid fa-laptop"></i>
+        <h5>Tecnología</h5>
+    </a>
+</div>
+
+<!-- RECREACIÓN -->
+<div class="col-md-4 col-6">
+    <a href="foro.php?id=14" class="community-card card-item">
+        <i class="fa-solid fa-puzzle-piece"></i>
+        <h5>Recreación</h5>
+    </a>
+</div>
+
+<!-- BIENESTAR -->
+<div class="col-md-6 col-6">
+    <a href="foro.php?id=15" class="community-card card-item">
+        <i class="fa-solid fa-spa"></i>
+        <h5>Bienestar</h5>
+    </a>
+</div>
 
     </div>
 
